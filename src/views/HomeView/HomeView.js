@@ -69,7 +69,7 @@ export class HomeView extends React.Component {
           <option value='fr'>French</option>
           <option value='en'>English</option>
         </select>
-        <h1><FormattedMessage {...messages.welcome} />"</h1>
+        <h1><FormattedMessage {...messages.welcome} /></h1>
         <h2>
           <FormattedMessage {...messages.sampleCounter} />
           <span className={classes['counter--green']}>{this.props.counter}</span>
