@@ -1,78 +1,78 @@
-import React from 'react';
-import AppBar from 'material-ui/lib/app-bar';
-import IconButton from 'material-ui/lib/icon-button';
-import IconMenu from 'material-ui/lib/menus/icon-menu';
-import MoreVertIcon from 'material-ui/lib/svg-icons/navigation/more-vert';
-import MenuItem from 'material-ui/lib/menus/menu-item';
-import {Spacing} from 'material-ui/lib/styles';
+import React from 'react'
+import AppBar from 'material-ui/lib/app-bar'
+import IconButton from 'material-ui/lib/icon-button'
+import IconMenu from 'material-ui/lib/menus/icon-menu'
+import MoreVertIcon from 'material-ui/lib/svg-icons/navigation/more-vert'
+import MenuItem from 'material-ui/lib/menus/menu-item'
+import {Spacing} from 'material-ui/lib/styles'
 import {
   StylePropable,
-  StyleResizable,
-} from 'material-ui/lib/mixins';
+  StyleResizable
+} from 'material-ui/lib/mixins'
 
 import {
   Colors,
-  getMuiTheme,
-} from 'material-ui/lib/styles';
+  getMuiTheme
+} from 'material-ui/lib/styles'
 
-import AppLeftNav from './app-left-nav';
-import FullWidthSection from './full-width-section';
+import AppLeftNav from './app-left-nav'
+import FullWidthSection from './full-width-section'
 
 const githubButton = (
   <IconButton
-    iconClassName="muidocs-icon-custom-github"
-    href="https://github.com/callemall/material-ui"
+    iconClassName='muidocs-icon-custom-github'
+    href='https://github.com/callemall/material-ui'
     linkButton={true}
   />
-);
+)
 
 const Master = React.createClass({
 
   propTypes: {
     children: React.PropTypes.node,
     history: React.PropTypes.object,
-    location: React.PropTypes.object,
+    location: React.PropTypes.object
   },
 
   childContextTypes: {
-    muiTheme: React.PropTypes.object,
+    muiTheme: React.PropTypes.object
   },
 
   mixins: [
     StylePropable,
-    StyleResizable,
+    StyleResizable
   ],
 
-  getInitialState() {
+  getInitialState () {
     return {
       muiTheme: getMuiTheme(),
-      leftNavOpen: false,
-    };
+      leftNavOpen: false
+    }
   },
 
-  getChildContext() {
+  getChildContext () {
     return {
-      muiTheme: this.state.muiTheme,
-    };
+      muiTheme: this.state.muiTheme
+    }
   },
 
-  componentWillMount() {
-    const newMuiTheme = this.state.muiTheme;
-    newMuiTheme.inkBar.backgroundColor = Colors.yellow200;
+  componentWillMount () {
+    const newMuiTheme = this.state.muiTheme
+    newMuiTheme.inkBar.backgroundColor = Colors.yellow200
     this.setState({
-      muiTheme: newMuiTheme,
-    });
+      muiTheme: newMuiTheme
+    })
   },
 
-  componentWillReceiveProps(nextProps, nextContext) {
-    const newMuiTheme = nextContext.muiTheme ? nextContext.muiTheme : this.state.muiTheme;
+  componentWillReceiveProps (nextProps, nextContext) {
+    const newMuiTheme = nextContext.muiTheme ? nextContext.muiTheme : this.state.muiTheme
     this.setState({
-      muiTheme: newMuiTheme,
-    });
+      muiTheme: newMuiTheme
+    })
   },
 
-  getStyles() {
-    const darkWhite = Colors.darkWhite;
+  getStyles () {
+    const darkWhite = Colors.darkWhite
 
     const styles = {
       appBar: {
@@ -80,93 +80,92 @@ const Master = React.createClass({
         // Needed to overlap the examples
         zIndex: this.state.muiTheme.zIndex.appBar + 1,
         top: 0,
-        backgroundColor: Colors.lightGreen400
+        backgroundColor: Colors.lightGreen500
       },
       root: {
         paddingTop: Spacing.desktopKeylineIncrement,
-        minHeight: 400,
+        minHeight: 400
       },
       content: {
-        margin: Spacing.desktopGutter,
+        margin: Spacing.desktopGutter
       },
       contentWhenMedium: {
-        margin: `${Spacing.desktopGutter * 2}px ${Spacing.desktopGutter * 3}px`,
+        margin: `${Spacing.desktopGutter * 2}px ${Spacing.desktopGutter * 3}px`
       },
       footer: {
         backgroundColor: Colors.grey900,
-        textAlign: 'center',
+        textAlign: 'center'
       },
       a: {
-        color: darkWhite,
+        color: darkWhite
       },
       p: {
         margin: '0 auto',
         padding: 0,
         color: Colors.lightWhite,
-        maxWidth: 335,
+        maxWidth: 450
       },
       iconButton: {
-        color: darkWhite,
-      },
-    };
+        color: darkWhite
+      }
+    }
 
     if (this.isDeviceSize(StyleResizable.statics.Sizes.MEDIUM) ||
         this.isDeviceSize(StyleResizable.statics.Sizes.LARGE)) {
-      styles.content = this.mergeStyles(styles.content, styles.contentWhenMedium);
+      styles.content = this.mergeStyles(styles.content, styles.contentWhenMedium)
     }
-
-    return styles;
+    return styles
   },
 
-  handleTouchTapLeftIconButton() {
+  handleTouchTapLeftIconButton () {
     this.setState({
-      leftNavOpen: !this.state.leftNavOpen,
-    });
+      leftNavOpen: !this.state.leftNavOpen
+    })
   },
 
-  handleChangeRequestLeftNav(open) {
+  handleChangeRequestLeftNav (open) {
     this.setState({
-      leftNavOpen: open,
-    });
+      leftNavOpen: open
+    })
   },
 
-  handleRequestChangeList(event, value) {
-    this.props.history.push(value);
+  handleRequestChangeList (event, value) {
+    this.props.history.push(value)
     this.setState({
-      leftNavOpen: false,
-    });
+      leftNavOpen: false
+    })
   },
 
-  render() {
+  render () {
     const {
       history,
       location,
-      children,
-    } = this.props;
+      children
+    } = this.props
 
     let {
-      leftNavOpen,
-    } = this.state;
+      leftNavOpen
+    } = this.state
 
-    const styles = this.getStyles();
+    const styles = this.getStyles()
     const title =
       history.isActive('/pictogramas') ? 'Pictogramas' :
       history.isActive('/programas') ? 'Programas' :
       history.isActive('/contactar') ? 'Contactar' : '';
 
-    let docked = false;
-    let showMenuIconButton = true;
+    let docked = false
+    let showMenuIconButton = true
 
     if (this.isDeviceSize(StyleResizable.statics.Sizes.LARGE) && title !== '') {
-      docked = true;
-      leftNavOpen = true;
-      showMenuIconButton = false;
+      docked = true
+      leftNavOpen = true
+      showMenuIconButton = false
 
       styles.leftNav = {
-        zIndex: styles.appBar.zIndex - 1,
-      };
-      styles.root.paddingLeft = 256;
-      styles.footer.paddingLeft = 256;
+        zIndex: styles.appBar.zIndex - 1
+      }
+      styles.root.paddingLeft = 256
+      styles.footer.paddingLeft = 256
     }
 
     return (
@@ -185,12 +184,13 @@ const Master = React.createClass({
                 targetOrigin={{horizontal: 'right', vertical: 'top'}}
                 anchorOrigin={{horizontal: 'right', vertical: 'top'}}
                 >
-              <MenuItem primaryText="Refresh" />
-              <MenuItem primaryText="Help" />
-              <MenuItem primaryText="Sign out" />
+              <MenuItem primaryText='Refresh' />
+              <MenuItem primaryText='Help' />
+              <MenuItem primaryText='Sign out' />
             </IconMenu>
           }
-        />
+        >
+        </AppBar>
         {title !== '' ?
           <div style={this.prepareStyles(styles.root)}>
             <div style={this.prepareStyles(styles.content)}>
@@ -211,26 +211,21 @@ const Master = React.createClass({
         />
         <FullWidthSection style={styles.footer}>
           <p style={this.prepareStyles(styles.p)}>
-            {'Hand crafted with love by the engineers at '}
-            <a style={styles.a} href="http://call-em-all.com">
-              Call-Em-All
-            </a>
-            {' and our awesome '}
-            <a style={this.prepareStyles(styles.a)}
-              href="https://github.com/callemall/material-ui/graphs/contributors">
-              contributors
-            </a>.
+            {'© ARASAAC - Gobierno de Aragón, 2016'}</p><p style={this.prepareStyles(styles.p)}>
+            {'Designed and built with all the love in the world by'} <a style={styles.a} href='https://github.com/orgs/Arasaac/people'>
+            {'the Arasaac team.'}</a></p>
+          <p style={this.prepareStyles(styles.p)}>{'Code licensed MIT, docs'} <a style={styles.a} href='https://creativecommons.org/licenses/by/3.0/'>{'CC BY 3.0.'}</a>
           </p>
           <IconButton
             iconStyle={styles.iconButton}
-            iconClassName="muidocs-icon-custom-github"
-            href="https://github.com/callemall/material-ui"
+            iconClassName='muidocs-icon-custom-github'
+            href='https://github.com/callemall/material-ui'
             linkButton={true}
           />
         </FullWidthSection>
       </div>
-    );
-  },
-});
+    )
+  }
+})
 
-export default Master;
+export default Master

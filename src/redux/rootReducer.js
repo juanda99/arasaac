@@ -4,7 +4,7 @@ import counter from './modules/counter'
 import locale from './modules/locale'
 
 export default combineReducers({
+  locale,
   counter,
-  router,
-  locale
+  router
 })

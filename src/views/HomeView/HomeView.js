@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import { actions as counterActions } from '../../redux/modules/counter'
+import DuckImage from './Duck.jpg'
 import classes from './HomeView.scss'
 import { actions as localeActions } from '../../redux/modules/locale'
 import { defineMessages, FormattedMessage } from 'react-intl'
+import LanguageSelector from 'components/LanguageSelector'
 
 const messages = defineMessages({
   welcome: {
@@ -62,15 +64,19 @@ export class HomeView extends React.Component {
   }
 
   render () {
+    const {localeChange} = this.props
     return (
       <div className='container text-center'>
-        <select defaultValue={this.props.locale} onChange={(e) => this.handleChange(e)}>
-          <option value='es'>Spanish</option>
-          <option value='fr'>French</option>
-          <option value='en'>English</option>
-        </select>
+      <LanguageSelector onChange={localeChange}>prueba Idioma Selector</LanguageSelector>
+
         <h1><FormattedMessage {...messages.welcome} /></h1>
-        <h2>
+        <div className='row'>
+          <div className='col-xs-2 col-xs-offset-5'>
+            <img className={classes.duck}
+                 src={DuckImage}
+                 alt='This is a duck, because Redux.' />
+          </div>
+        </div><h2>
           <FormattedMessage {...messages.sampleCounter} />
           <span className={classes['counter--green']}>{this.props.counter}</span>
         </h2>
@@ -78,6 +84,7 @@ export class HomeView extends React.Component {
                 onClick={() => this.props.increment(1)}>
           Increment
         </button>
+        {' '}
         <button className='btn btn-default'
                 onClick={this.props.doubleAsync}>
           Double (Async)

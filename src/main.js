@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { createHistory, useBasename } from 'history'
-import { syncReduxAndRouter } from 'redux-simple-router'
+import { useRouterHistory } from 'react-router'
+import { createHistory } from 'history'
 import routes from './routes'
 import Root from './containers/Root'
 import configureStore from './redux/configureStore'
@@ -11,7 +11,6 @@ import de from 'react-intl/lib/locale-data/de'
 import it from 'react-intl/lib/locale-data/it'
 import es from 'react-intl/lib/locale-data/es'
 import fr from 'react-intl/lib/locale-data/fr'
-
 import injectTapEventPlugin from 'react-tap-event-plugin'
 
 // Needed for onTouchTap
@@ -19,13 +18,12 @@ import injectTapEventPlugin from 'react-tap-event-plugin'
 // Check this repo:
 // https://github.com/zilverline/react-tap-event-plugin
 injectTapEventPlugin()
+const historyConfig = { basename: __BASENAME__ }
+const history = useRouterHistory(createHistory)(historyConfig)
 
-const history = useBasename(createHistory)({
-  basename: __BASENAME__
-})
-const store = configureStore(window.__INITIAL_STATE__)
 
-syncReduxAndRouter(history, store, (state) => state.router)
+const initialState = window.__INITIAL_STATE__
+const store = configureStore({ initialState, history })
 
 addLocaleData(en)
 addLocaleData(de)
