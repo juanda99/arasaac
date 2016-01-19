@@ -17,10 +17,12 @@ import HomeView from 'views/HomeView2/HomeView'
 // import NotFoundView from 'views/NotFoundView/NotFoundView'
 // import Header from 'layouts/Header'
 import Master from 'components/master'
+import Footer from 'components/footer'
 
 export default (
   <Route path='/' component={Master}>
     <Route path='home' component={HomeView} />
+    <Route path='footer' component={Footer} />
     <Redirect from='pictogramas' to='/pictogramas/buscar' />
     <Route path='pictogramas'>
         <Route path='buscar' component={HomeView} />

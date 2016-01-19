@@ -5,6 +5,7 @@ import IconMenu from 'material-ui/lib/menus/icon-menu'
 import MoreVertIcon from 'material-ui/lib/svg-icons/navigation/more-vert'
 import MenuItem from 'material-ui/lib/menus/menu-item'
 import {Spacing} from 'material-ui/lib/styles'
+import Footer from 'components/footer'
 import {
   StylePropable,
   StyleResizable
@@ -209,20 +210,7 @@ const Master = React.createClass({
           onRequestChangeList={this.handleRequestChangeList}
           open={leftNavOpen}
         />
-        <FullWidthSection style={styles.footer}>
-          <p style={this.prepareStyles(styles.p)}>
-            {'© ARASAAC - Gobierno de Aragón, 2016'}</p><p style={this.prepareStyles(styles.p)}>
-            {'Designed and built with all the love in the world by'} <a style={styles.a} href='https://github.com/orgs/Arasaac/people'>
-            {'the Arasaac team.'}</a></p>
-          <p style={this.prepareStyles(styles.p)}>{'Code licensed MIT, docs'} <a style={styles.a} href='https://creativecommons.org/licenses/by/3.0/'>{'CC BY 3.0.'}</a>
-          </p>
-          <IconButton
-            iconStyle={styles.iconButton}
-            iconClassName='muidocs-icon-custom-github'
-            href='https://github.com/callemall/material-ui'
-            linkButton={true}
-          />
-        </FullWidthSection>
+        <Footer/>
       </div>
     )
   }

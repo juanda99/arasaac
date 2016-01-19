@@ -17,7 +17,46 @@ import UnionEuropea from './union-europea-logo.png'
 import SoftwareImage from './software.png'
 import NewsImage from './news.png'
 import PictogramsImage from './pictograms.png'
+import { Router, Route, Link } from 'react-router'
 
+const messages = defineMessages({
+  heading: {
+    id: 'home.heading',
+    description: 'Home heading',
+    defaultMessage: '{aragones} portal of Augmentative and Alternative Communication'
+  },
+  aragonese: {
+    id: 'home.aragonese',
+    description: 'Home heading',
+    defaultMessage: 'Aragonese'
+  },
+  pictograms: {
+    id: 'home.pictograms',
+    description: 'pictogramas',
+    defaultMessage: 'Pictograms'
+  },
+  software: {
+    id: 'home.software',
+    description: 'Software',
+    defaultMessage: 'Software'
+  },
+  news: {
+    id: 'home.news',
+    description: 'Arasaac news',
+    defaultMessage: 'Arasaac news'
+  },
+  participate: {
+    id: 'home.participate',
+    description: 'Participate building Arasaac',
+    defaultMessage: 'We are building Arasaac. Would you like to join us?'
+  },
+  contact: {
+    id: 'home.contact',
+    description: 'Contact button',
+    defaultMessage: 'Contact us'
+  }
+
+})
 
 // We define mapStateToProps where we'd normally use
 // the @connect decorator so the data requirements are clear upfront, but then
@@ -98,58 +137,17 @@ const HomeView = React.createClass({
       styles.h1 = this.mergeStyles(styles.h1, styles.h1WhenLarge)
       styles.h2 = this.mergeStyles(styles.h2, styles.h2WhenLarge)
     }
-    
-
+    const {localeChange} = this.props
+    var aragones = (<span style={styles.strong}><FormattedMessage {...messages.aragonese} /> </span>)
     return (
       <FullWidthSection style={styles.root}>
         <img style={styles.svgLogo} src={ArasaacLogo} />
         <div style={styles.tagline}>
           <h1 style={styles.h1}>ARA<span style={styles.strong}>SAAC</span></h1>
           <h2 style={styles.h2}>
-            Portal <span style={styles.strong}>Aragonés</span> de la Comunicación Aumentativa y Alternativa
+            <FormattedMessage  {...messages.heading} values={{aragones}} />
           </h2>
-          
-        </div>
-      </FullWidthSection>
-    )
-  },
-
-  _getHomePurpose () {
-    const styles = {
-      root: {
-        backgroundColor: Colors.grey200
-      },
-      content: {
-        maxWidth: 700,
-        padding: 0,
-        margin: '0 auto',
-        fontWeight: Typography.fontWeightLight,
-        fontSize: 20,
-        lineHeight: '28px',
-        paddingTop: 19,
-        marginBottom: 13,
-        letterSpacing: 0,
-        color: Typography.textDarkBlack
-      }
-    }
-
-    return (
-      <FullWidthSection
-        style={styles.root}
-        useContent={true}
-        contentStyle={styles.content}
-        contentType='p'
-        className='home-purpose'>
-        Arasaac es un proyecto del <a target='_blank' href='http://www.aragon.es/'>
-        Gobierno de Aragón </a> financiado con fondos sociales europeos.
-        El proyecto está en fase de desarrollo.
-        <div class='row'>
-        <div class='col-sm-4'>
-        <img class='img-responsive' src={GobiernoAragon}/>
-        </div>
-        <div class='col-sm-4'>
-        <img src={UnionEuropea}/>
-        </div>
+          <LanguageSelector style={styles.content} onChange={localeChange}/>
         </div>
       </FullWidthSection>
     )
@@ -157,29 +155,21 @@ const HomeView = React.createClass({
 
   _getHomeFeatures () {
     const styles = {maxWidth: 906}
-    const {localeChange} = this.props
-
     return (
       <FullWidthSection useContent={true} contentStyle={styles}>
-      <h1>Elige tu idioma</h1>
-      <div>
-        <img style={{width:'300px'}} 
-          src={WelcomeImage}
-                 alt='' />
-      <LanguageSelector onChange={localeChange}/>
-    </div>
+
         <HomeFeature
-          heading='Pictogramas'
+          heading={<FormattedMessage  {...messages.pictograms} />}
           route='/get-started'
           img={PictogramsImage}
           firstChild={true}/>
         <HomeFeature
-          heading='Programas'
+          heading={<FormattedMessage {...messages.software} />}
           route='/customization'
           img={SoftwareImage} />
         <HomeFeature
-          heading='Portal de Arasaac'
-          route='/components'
+          heading={<FormattedMessage  {...messages.news} />}
+          route='/get-news'
           img={NewsImage}
           lastChild={true}/>
       </FullWidthSection>
@@ -199,18 +189,18 @@ const HomeView = React.createClass({
         fontSize: 22
       },
       button: {
-        marginTop: 32
+        marginTop: 32,
+        backgroundColor: Colors.green900
       }
     }
 
     return (
       <FullWidthSection useContent={true} style={styles.root}>
         <h3 style={styles.h3}>
-          Want to help make this <span style={styles.nowrap}>project awesome? </span>
-          <span style={styles.nowrap}>Check out our repo.</span>
+          <FormattedMessage  {...messages.participate} />
         </h3>
         <RaisedButton
-          label='GitHub'
+          label={<FormattedMessage  {...messages.contact} />}
           primary={true}
           linkButton={true}
           href='https://github.com/callemall/material-ui'
@@ -231,7 +221,6 @@ const HomeView = React.createClass({
     return (
       <div style={style}>
         {this._getHomePageHero()}
-        {this._getHomePurpose()}
         {this._getHomeFeatures()}
         {this._getHomeContribute()}
       </div>

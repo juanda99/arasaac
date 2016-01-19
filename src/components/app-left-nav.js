@@ -14,6 +14,11 @@ import {StylePropable} from 'material-ui/lib/mixins'
 import { defineMessages, FormattedMessage } from 'react-intl'
 
 const messages = defineMessages({
+  home: {
+    id: 'menu.home',
+    description: 'Menu option: Homepage',
+    defaultMessage: 'Home'
+  },
   pictograms: {
     id: 'menu.pictograms',
     description: 'Menu option: Pictograms',
@@ -23,6 +28,56 @@ const messages = defineMessages({
     id: 'menu.searchPictograms',
     description: 'Menu option: Search Pictograms',
     defaultMessage: 'Search Pictograms'
+  },
+  api: {
+    id: 'menu.api',
+    description: 'Menu option: API',
+    defaultMessage: 'API for developers'
+  },
+  software: {
+    id: 'menu.software',
+    description: 'Menu option: Software',
+    defaultMessage: 'Software'
+  },
+  bingo: {
+    id: 'menu.bingo',
+    description: 'Menu option: Bingo',
+    defaultMessage: 'Bingo'
+  },
+  boards: {
+    id: 'menu.boards',
+    description: 'Menu option: Boards',
+    defaultMessage: 'Boards'
+  },
+  dominos: {
+    id: 'menu.dominos',
+    description: 'Menu option: Dominós',
+    defaultMessage: 'Dominós'
+  },
+  dominosencadenados: {
+    id: 'menu.dominosencadenados',
+    description: 'Menu option: Dominós Encadenados',
+    defaultMessage: 'Dominós Encadenados'
+  },
+  news: {
+    id: 'menu.news',
+    description: 'Menu option: News',
+    defaultMessage: 'News'
+  },
+  materials: {
+    id: 'menu.materials',
+    description: 'Menu option: Materials',
+    defaultMessage: 'Materials'
+  },
+  portal: {
+    id: 'menu.portal',
+    description: 'Menu title: Arasaac Web Portal',
+    defaultMessage: 'Arasaac Web Portal'
+  },
+  contact: {
+    id: 'menu.contact',
+    description: 'Menu option: Contact',
+    defaultMessage: 'Contact us'
   }
 })
 
@@ -108,10 +163,10 @@ const AppLeftNav = React.createClass({
         >
           <ListItem
                 value='/'
-                primaryText='Inicio'
+                primaryText={<FormattedMessage {...messages.home} />}
           />
           <ListItem
-            primaryText='Pictogramas'
+            primaryText={<FormattedMessage  {...messages.pictograms} />}
             primaryTogglesNestedList={true}
             nestedItems={[
               <ListItem
@@ -120,36 +175,36 @@ const AppLeftNav = React.createClass({
               />,
               <ListItem
                 value='/pictogramas/api'
-                primaryText='Api para desarrolladores'
+                primaryText={<FormattedMessage {...messages.api} />}
               />
             ]}
           />
           <ListItem
-            primaryText='Programas'
+            primaryText={<FormattedMessage {...messages.software} />}
             primaryTogglesNestedList={true}
             nestedItems={[
               <ListItem
                 value='/programas/bingo'
-                primaryText='Bingos'
+                primaryText={<FormattedMessage  {...messages.bingo} />}
               />,
               <ListItem
                 value='/programas/tablero'
-                primaryText='Tableros'
+                primaryText={<FormattedMessage  {...messages.boards} />}
               />,
               <ListItem
                 value='/programas/dominos'
-                primaryText='Dominós'
+                primaryText={<FormattedMessage  {...messages.dominos} />}
               />,
               <ListItem
                 value='/programas/dominos-encadenados'
-                primaryText='Dominós Encadenados'
+                primaryText={<FormattedMessage  {...messages.dominosencadenados} />}
               />
             ]}
           />
         </SelectableList>
         <Divider />
         <SelectableList
-          subheader='Portal de Arasaac'
+          subheader={<FormattedMessage  {...messages.portal} />}
           valueLink={{
             value: '',
             requestChange: this.handleRequestChangeLink
@@ -157,19 +212,19 @@ const AppLeftNav = React.createClass({
         >
           <ListItem
             value='https://github.com/callemall/material-ui'
-            primaryText='Noticias'
+            primaryText={<FormattedMessage  {...messages.news} />}
           />
           <ListItem
             value='http://facebook.github.io/react'
-            primaryText='Materiales'
+            primaryText={<FormattedMessage  {...messages.materials} />}
           />
           <ListItem
             value='https://www.google.com/design/spec/material-design/introduction.html'
-            primaryText='Software'
+            primaryText={<FormattedMessage  {...messages.software} />}
           />
           <ListItem
             value='https://www.google.com/design/spec/material-design/introduction.html'
-            primaryText='Contactar'
+            primaryText={<FormattedMessage  {...messages.contact} />}
           />
         </SelectableList>
       </LeftNav>

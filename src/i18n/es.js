@@ -1,12 +1,27 @@
 /*eslint-disable max-len,quotes*/
 export default {
-  "home.welcome": "Bienvenido al Starter Kit de React Redux",
-  "home.sampleCounter": "Contador de ejemplo: ",
-  "home.linkNotFoundView": "Ir a la página de error 404",
   "languageSelector.spanish": "Español",
   "languageSelector.english": "Inglés",
   "languageSelector.french": "Francés",
   "languageSelector.choose": "Elige tu idioma",
-  "notFound.welcome": "Esta es la vista de error 404",
-  "notFound.linkHomeView": "Volver a la vista de Inicio"
+  "home.heading": "Portal {aragones} de la Comunicación Aumentativa y Alternativa",
+  "home.aragonese": "Aragonés",
+  "home.pictograms": "Pictogramas",
+  "home.software": "Programas",
+  "home.news": "Noticias de Arasaac",
+  "home.participate": "Estamos contruyendo Arasaac. ¿Quiéres participar?",
+  "home.contact": "Contactar",
+  "menu.home": "Inicio",
+  "menu.pictograms": "Pictogramas",
+  "menu.searchPictograms": "Buscar Pictogramas",
+  "menu.api": "API para desarrolladores",
+  "menu.software": "Programas",
+  "menu.bingo": "Bingo",
+  "menu.boards": "Tableros",
+  "menu.dominos": "Dominós",
+  "menu.dominosencadenados": "Dominós Encadenados",
+  "menu.news": "Noticias",
+  "menu.materials": "Materiales",
+  "menu.portal": "Portal Web de Arasaac",
+  "menu.contact": "Contactar"
 }
