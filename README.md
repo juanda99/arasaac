@@ -1,7 +1,9 @@
 React Redux Starter Kit with Localization
 ==========================================
 
-Based on [React Redux Starter Kit](https://github.com/davezuko/react-redux-starter-kit).
+Universal/Isomorphic ReactJS App. Using redux for application-state management. It will be the new release for [Arasaac Web](http://www.arasaac.org)
+
+Current status: In development
 
 Using material-ui
 =======
@@ -15,7 +17,7 @@ Getting Started
 Just clone the repo and install the necessary node modules:
 
 ```shell
-$ git clone https://github.com/davezuko/react-redux-starter-kit.git
+$ git clone git@github.com:juanda99/react-redux-material-ui.git
 $ cd react-redux-starter-kit
 $ npm install                   # Install Node modules listed in ./package.json (may take a while the first time)
 $ npm start                     # Compile and launch
@@ -41,5 +43,7 @@ $ npm run build:i18n:langs
 #### Thanks
 
 - [Emmenko react redux example](https://github.com/emmenko/redux-react-router-async-example) for the integration of React Intl.
->>>>>>> cfb906d788803f0d6856eca609d90f5269e2a171
+- [React Redux Starter Kit](https://github.com/davezuko/react-redux-starter-kit)
+- [Material-ui](https://github.com/callemall/material-ui)
+
 
