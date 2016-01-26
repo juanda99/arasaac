@@ -1,7 +1,10 @@
 import React, {Component, PropTypes} from 'react'
 import {defineMessages, injectIntl, intlShape} from 'react-intl'
+<<<<<<< HEAD
 import SelectField from 'material-ui/lib/select-field'
 import MenuItem from 'material-ui/lib/menus/menu-item'
+=======
+>>>>>>> da863c4d6609d9d3f2893c02b1ecd8429cc9de31
 const messages = defineMessages({
   spanish: {
     id: 'languageSelector.spanish',
@@ -37,11 +40,19 @@ class LanguageSelector extends Component {
     render () {
       const {formatMessage} = this.props.intl
       return (
+<<<<<<< HEAD
         <SelectField value={this.state.value} onChange={this.handleChange} floatingLabelText={formatMessage(messages.chooseLanguage)}>
             <MenuItem value={'es'} primaryText={formatMessage(messages.spanish)}/>
             <MenuItem value={'fr'} primaryText={formatMessage(messages.french)}/>
             <MenuItem value={'en'} primaryText={formatMessage(messages.english)}/>
         </SelectField>
+=======
+        <select defaultValue={locale} onChange={(e) => this.handleChange(e)}>
+                <option id='es' value='es'>{formatMessage(messages.spanish)}</option>
+                <option id='fr' value='fr'>{formatMessage(messages.french)}</option>
+                <option id='en' value='en'>{formatMessage(messages.english)}</option>
+        </select>
+>>>>>>> da863c4d6609d9d3f2893c02b1ecd8429cc9de31
         )
     }
   }
