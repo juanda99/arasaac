@@ -78,7 +78,7 @@ $ npm run build:i18n:langs
 #### Thanks
 
 - [Emmenko react redux example](https://github.com/emmenko/redux-react-router-async-example) for the integration of React Intl.
-- [React Redux Starter Kit](https://github.com/davezuko/react-redux-starter-kit)
-- [Material-ui](https://github.com/callemall/material-ui)
+- [React Redux Starter Kit](https://github.com/davezuko/react-redux-starter-kit) for the awesome boilerplate
+- [Material-ui](https://github.com/callemall/material-ui) for the ui components
 
 
