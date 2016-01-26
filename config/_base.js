@@ -43,7 +43,9 @@ const config = {
     'react-router',
     'redux',
     'redux-actions',
-    'react-router-redux'
+    'react-router-redux',
+    'material-ui',
+    'react-tap-event-plugin'
   ],
 
   // ----------------------------------
