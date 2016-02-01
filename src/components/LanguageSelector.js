@@ -28,20 +28,20 @@ const messages = defineMessages({
 class LanguageSelector extends Component {
     constructor (props) {
       super(props)
-      this.state = {value: this.props.intl.locale}
     }
     handleChange = (event, index, value) => {
-      this.setState({value: value})
       this.props.onChange(value)
     };
+
     render () {
       const {formatMessage} = this.props.intl
       return (
-        <SelectField value={this.state.value} onChange={this.handleChange} floatingLabelText={formatMessage(messages.chooseLanguage)}>
+        <SelectField value={this.props.intl.locale} onChange={this.handleChange} floatingLabelText={formatMessage(messages.chooseLanguage)}>
             <MenuItem value={'es'} primaryText={formatMessage(messages.spanish)}/>
             <MenuItem value={'fr'} primaryText={formatMessage(messages.french)}/>
             <MenuItem value={'en'} primaryText={formatMessage(messages.english)}/>
         </SelectField>
+
         )
     }
   }

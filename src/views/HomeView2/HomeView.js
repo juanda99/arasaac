@@ -10,14 +10,10 @@ import {Colors, Spacing, Typography, lightBaseTheme} from 'material-ui/lib/style
 import LanguageSelector from 'components/LanguageSelector'
 import { actions as localeActions } from 'redux/modules/locale'
 import { defineMessages, FormattedMessage } from 'react-intl'
-import WelcomeImage from './bienvenido.png'
 import ArasaacLogo from './arasaac-logo.svg'
-import GobiernoAragon from './gobierno-aragon-logo.svg'
-import UnionEuropea from './union-europea-logo.png'
 import SoftwareImage from './software.png'
 import NewsImage from './news.png'
 import PictogramsImage from './pictograms.png'
-import { Router, Route, Link } from 'react-router'
 
 const messages = defineMessages({
   heading: {
@@ -74,6 +70,10 @@ const HomeView = React.createClass({
     StyleResizable,
     History
   ],
+
+  propTypes: {
+    localeChange: React.PropTypes.func.isRequired
+  },
 
   _getHomePageHero () {
     let styles = {
@@ -145,7 +145,7 @@ const HomeView = React.createClass({
         <div style={styles.tagline}>
           <h1 style={styles.h1}>ARA<span style={styles.strong}>SAAC</span></h1>
           <h2 style={styles.h2}>
-            <FormattedMessage  {...messages.heading} values={{aragones}} />
+            <FormattedMessage {...messages.heading} values={{aragones}} />
           </h2>
           <LanguageSelector style={styles.content} onChange={localeChange}/>
         </div>
@@ -229,4 +229,4 @@ const HomeView = React.createClass({
 
 })
 
-export default connect(mapStateToProps, localeActions)(HomeView)
+export default connect(mapStateToProps, Object.assign({}, localeActions))(HomeView)
