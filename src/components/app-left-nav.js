@@ -16,67 +16,102 @@ import { defineMessages, FormattedMessage } from 'react-intl'
 const messages = defineMessages({
   home: {
     id: 'menu.home',
-    description: 'Menu option: Homepage',
+    description: 'Menu item',
     defaultMessage: 'Home'
   },
   pictograms: {
     id: 'menu.pictograms',
-    description: 'Menu option: Pictograms',
+    description: 'Menu item',
     defaultMessage: 'Pictograms'
   },
   searchPictograms: {
     id: 'menu.searchPictograms',
-    description: 'Menu option: Search Pictograms',
+    description: 'Menu item',
     defaultMessage: 'Search Pictograms'
   },
   api: {
     id: 'menu.api',
-    description: 'Menu option: API',
+    description: 'Menu item',
     defaultMessage: 'API for developers'
   },
   software: {
     id: 'menu.software',
-    description: 'Menu option: Software',
+    description: 'Menu item',
     defaultMessage: 'Software'
+  },
+  onlineTools: {
+    id: 'menu.onlineTools',
+    description: 'Menu item',
+    defaultMessage: 'Online Tools'
+  },
+  animationsMaker: {
+    id: 'menu.animationsMaker',
+    description: 'Menu item',
+    defaultMessage: 'Animations Maker'
+  },
+  symbolsCreator: {
+    id: 'menu.symbolsCreator',
+    description: 'Menu item',
+    defaultMessage: 'Symbols Creator'
+  },
+  scheduleGenerator: {
+    id: 'menu.scheduleGenerator',
+    description: 'Menu item',
+    defaultMessage: 'Schedule Generator'
+  },
+  calendarGenerator: {
+    id: 'menu.calendarGenerator',
+    description: 'Menu item',
+    defaultMessage: 'Calendar Generator'
+  },
+  snakesAndLadders: {
+    id: 'menu.snakesAndLadders',
+    description: 'Menu item',
+    defaultMessage: 'Snakes and Ladders'
   },
   bingo: {
     id: 'menu.bingo',
-    description: 'Menu option: Bingo',
+    description: 'Menu item',
     defaultMessage: 'Bingo'
-  },
-  boards: {
-    id: 'menu.boards',
-    description: 'Menu option: Boards',
-    defaultMessage: 'Boards'
   },
   dominos: {
     id: 'menu.dominos',
-    description: 'Menu option: Dominós',
+    description: 'Menu item',
     defaultMessage: 'Dominós'
   },
   dominosencadenados: {
     id: 'menu.dominosencadenados',
-    description: 'Menu option: Dominós Encadenados',
+    description: 'Menu item',
     defaultMessage: 'Dominós Encadenados'
   },
   news: {
     id: 'menu.news',
-    description: 'Menu option: News',
+    description: 'Menu item',
     defaultMessage: 'News'
   },
   materials: {
     id: 'menu.materials',
-    description: 'Menu option: Materials',
+    description: 'Menu item',
     defaultMessage: 'Materials'
   },
-  portal: {
-    id: 'menu.portal',
-    description: 'Menu title: Arasaac Web Portal',
-    defaultMessage: 'Arasaac Web Portal'
+  info: {
+    id: 'menu.info',
+    description: 'Menu division title',
+    defaultMessage: 'About us'
+  },
+  downloads: {
+    id: 'menu.info',
+    description: 'Menu item',
+    defaultMessage: 'Download Catalogs'
+  },
+  prizes: {
+    id: 'menu.prizes',
+    description: 'Menu item',
+    defaultMessage: 'Prizes'
   },
   contact: {
     id: 'menu.contact',
-    description: 'Menu option: Contact',
+    description: 'Menu item',
     defaultMessage: 'Contact us'
   }
 })
@@ -176,20 +211,44 @@ const AppLeftNav = React.createClass({
               <ListItem
                 value='/pictogramas/api'
                 primaryText={<FormattedMessage {...messages.api} />}
+              />,
+              <ListItem
+                value='https://www.google.com/design/spec/material-design/introduction.html'
+                primaryText={<FormattedMessage  {...messages.downloads} />}
               />
             ]}
           />
           <ListItem
-            primaryText={<FormattedMessage {...messages.software} />}
+                value='/materials'
+                primaryText={<FormattedMessage {...messages.materials} />}
+          />
+          <ListItem
+            primaryText={<FormattedMessage {...messages.onlineTools} />}
             primaryTogglesNestedList={true}
             nestedItems={[
               <ListItem
-                value='/programas/bingo'
+                value='/programas/animations-maker'
+                primaryText={<FormattedMessage  {...messages.animationsMaker} />}
+              />,
+              <ListItem
+                value='/programas/symbols-creator'
+                primaryText={<FormattedMessage  {...messages.symbolsCreator} />}
+              />,
+              <ListItem
+                value='/programas/schedule-generator'
+                primaryText={<FormattedMessage  {...messages.scheduleGenerator} />}
+              />,
+              <ListItem
+                value='/programas/calendar-generator'
+                primaryText={<FormattedMessage  {...messages.calendarGenerator} />}
+              />,
+              <ListItem
+                value='/programas/bingos-creator'
                 primaryText={<FormattedMessage  {...messages.bingo} />}
               />,
               <ListItem
-                value='/programas/tablero'
-                primaryText={<FormattedMessage  {...messages.boards} />}
+                value='/programas/snakes-and-ladders'
+                primaryText={<FormattedMessage  {...messages.snakesAndLadders} />}
               />,
               <ListItem
                 value='/programas/dominos'
@@ -202,9 +261,13 @@ const AppLeftNav = React.createClass({
             ]}
           />
         </SelectableList>
+        <ListItem
+            value='https://www.google.com/design/spec/material-design/introduction.html'
+            primaryText={<FormattedMessage  {...messages.software} />}
+        />
         <Divider />
         <SelectableList
-          subheader={<FormattedMessage  {...messages.portal} />}
+          subheader={<FormattedMessage  {...messages.info} />}
           valueLink={{
             value: '',
             requestChange: this.handleRequestChangeLink
@@ -215,17 +278,16 @@ const AppLeftNav = React.createClass({
             primaryText={<FormattedMessage  {...messages.news} />}
           />
           <ListItem
-            value='http://facebook.github.io/react'
-            primaryText={<FormattedMessage  {...messages.materials} />}
+            value='https://github.com/callemall/material-ui'
+            primaryText={<FormattedMessage  {...messages.prizes} />}
           />
-          <ListItem
-            value='https://www.google.com/design/spec/material-design/introduction.html'
-            primaryText={<FormattedMessage  {...messages.software} />}
-          />
-          <ListItem
+
+        <ListItem
             value='https://www.google.com/design/spec/material-design/introduction.html'
             primaryText={<FormattedMessage  {...messages.contact} />}
-          />
+        />
+
+
         </SelectableList>
       </LeftNav>
     )

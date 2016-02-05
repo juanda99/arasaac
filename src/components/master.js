@@ -185,8 +185,9 @@ const Master = React.createClass({
                 targetOrigin={{horizontal: 'right', vertical: 'top'}}
                 anchorOrigin={{horizontal: 'right', vertical: 'top'}}
                 >
-              <MenuItem primaryText='Refresh' />
-              <MenuItem primaryText='Help' />
+              <MenuItem primaryText='Sign In' />
+              <MenuItem primaryText='Register' />
+              <MenuItem primaryText='My selection' />
               <MenuItem primaryText='Sign out' />
             </IconMenu>
           }

@@ -31,6 +31,11 @@ const messages = defineMessages({
     description: 'pictogramas',
     defaultMessage: 'Pictograms'
   },
+  saac: {
+    id: 'home.saac',
+    description: 'banner',
+    defaultMessage: 'What is SAAC?'
+  },
   software: {
     id: 'home.software',
     description: 'Software',
@@ -159,7 +164,7 @@ const HomeView = React.createClass({
       <FullWidthSection useContent={true} contentStyle={styles}>
 
         <HomeFeature
-          heading={<FormattedMessage  {...messages.pictograms} />}
+          heading={<FormattedMessage  {...messages.saac} />}
           route='/get-started'
           img={PictogramsImage}
           firstChild={true}/>
