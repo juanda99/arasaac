@@ -17,9 +17,20 @@ import HomeView from 'views/HomeView2/HomeView'
 // import NotFoundView from 'views/NotFoundView/NotFoundView'
 // import Header from 'layouts/Header'
 import Master from 'components/master'
+import auth from 'components/auth'
+
+function requireAuth (nextState, replace) {
+  if (!auth.loggedIn()) {
+    replace({
+      pathname: '/signin',
+      state: { nextPathname: nextState.location.pathname }
+    })
+  }
+}
 
 export default (
   <Route path='/' component={Master}>
+    <IndexRoute component={HomeView}/>
     <Route path='home' component={HomeView} />
     <Route path='saac' component={HomeView} />
     <Route path='premios' component={HomeView} />
@@ -43,6 +54,13 @@ export default (
       <Route path='domino' component={HomeView} />
       <Route path='domino-encadenados' component={HomeView} />
     </Route>
-    <IndexRoute component={HomeView}/>
-    </Route>
+    // User Routes
+    <Route path='signin' component={HomeView} />
+    <Route path='register' component={HomeView} />
+    <Route path='profile' component={HomeView} onEnter={requireAuth} />
+    <Route path='usermaterial' component={HomeView} onEnter={requireAuth} />
+    <Route path='upload' component={HomeView} onEnter={requireAuth} />
+    <Route path='translate' component={HomeView} onEnter={requireAuth} />
+    <Route path='signout' component={HomeView} onEnter={requireAuth} />
+  </Route>
 )
