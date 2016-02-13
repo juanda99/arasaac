@@ -23,5 +23,12 @@ export default {
   "menu.news": "Noticias",
   "menu.materials": "Materiales",
   "menu.portal": "Portal Web de Arasaac",
-  "menu.contact": "Contactar"
+  "menu.contact": "Contactar",
+  "userMenu.signin": "Acceder",
+  "userMenu.register": "Registrarse",
+  "userMenu.userProfile": "Mi cuenta",
+  "userMenu.userMaterial": "Mis materiales",
+  "userMenu.uploadMaterial": "Compartir material",
+  "userMenu.translateArasaac": "Traducir Arasaac",
+  "userMenu.signout": "Cerrar sesión"
 }

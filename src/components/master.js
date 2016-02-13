@@ -15,8 +15,45 @@ import {
   Colors,
   getMuiTheme
 } from 'material-ui/lib/styles'
-
 import AppLeftNav from './app-left-nav'
+import { defineMessages, FormattedMessage } from 'react-intl'
+const messages = defineMessages({
+  signin: {
+    id: 'userMenu.signin',
+    description: 'User menu item',
+    defaultMessage: 'Sign in'
+  },
+  register: {
+    id: 'userMenu.register',
+    description: 'User menu item',
+    defaultMessage: 'Register'
+  },
+  userProfile: {
+    id: 'userMenu.userProfile',
+    description: 'User menu item',
+    defaultMessage: 'My profile'
+  },
+  userMaterial: {
+    id: 'userMenu.userMaterial',
+    description: 'User menu item',
+    defaultMessage: 'My material'
+  },
+  uploadMaterial: {
+    id: 'userMenu.uploadMaterial',
+    description: 'User menu item',
+    defaultMessage: 'Share material'
+  },
+  translateArasaac: {
+    id: 'userMenu.translateArasaac',
+    description: 'User menu item',
+    defaultMessage: 'Translate Arasaac'
+  },
+  signout: {
+    id: 'userMenu.signout',
+    description: 'User menu item',
+    defaultMessage: 'Sign out'
+  }
+})
 
 const Master = React.createClass({
 
@@ -174,10 +211,13 @@ const Master = React.createClass({
                 targetOrigin={{horizontal: 'right', vertical: 'top'}}
                 anchorOrigin={{horizontal: 'right', vertical: 'top'}}
                 >
-              <MenuItem primaryText='Sign In' />
-              <MenuItem primaryText='Register' />
-              <MenuItem primaryText='My selection' />
-              <MenuItem primaryText='Sign out' />
+              <MenuItem primaryText={<FormattedMessage {...messages.signin} />} linkButton={true} href='login'/>
+              <MenuItem primaryText={<FormattedMessage {...messages.register} />} linkButton={true} href='signup'/>
+              <MenuItem primaryText={<FormattedMessage {...messages.userProfile} />} linkButton={true} href='profile'/>
+              <MenuItem primaryText={<FormattedMessage {...messages.userMaterial} />} linkButton={true} href='usermaterial'/>
+              <MenuItem primaryText={<FormattedMessage {...messages.uploadMaterial} />} linkButton={true} href='upload'/>
+              <MenuItem primaryText={<FormattedMessage {...messages.translateArasaac} />} linkButton={true} href='translate'/>
+              <MenuItem primaryText={<FormattedMessage {...messages.signout} />} linkButton={true} href='logout'/>
             </IconMenu>
           }
         />
