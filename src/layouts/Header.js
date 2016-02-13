@@ -95,18 +95,18 @@ class Header extends Component {
           { materialIcon }
           <div style={ styles.container }>
             <Tabs style={ styles.tabs } value={ this.state.tabIndex } onChange={ this._handleTabChange }>
-              <Tab value="1"
-                   label="PICTOGRAMAS"
+              <Tab value='1'
+                   label='PICTOGRAMAS'
                    style={ styles.tab }
-                   route="/pictogramas" />
-              <Tab value="2"
-                   label="PROGRAMAS"
+                   route='/pictogramas' />
+              <Tab value='2'
+                   label='PROGRAMAS'
                    style={ styles.tab }
-                   route="/programas" />
-              <Tab value="3"
-                   label="CONTACTAR"
+                   route='/programas' />
+              <Tab value='3'
+                   label='CONTACTAR'
                    style={ styles.tab }
-                   route="/contactar" />
+                   route='/contactar' />
             </Tabs>
           </div>
         </Paper>
@@ -116,7 +116,7 @@ class Header extends Component {
 
   _getAppBar () {
     return (
-      <AppBar title="Arasaaccc" onLeftIconButtonTouchTap={ this._handleClick } isInitiallyOpen={ true } />
+      <AppBar title='Arasaaccc' onLeftIconButtonTouchTap={ this._handleClick } isInitiallyOpen={ true } />
       )
   }
   render () {
@@ -128,13 +128,13 @@ class Header extends Component {
       )
   }
   _getSelectedIndex () {
-    return this.props.history.isActive('/pictogramas') ? '1' :
-      this.props.history.isActive('/programas') ? '2' :
-        this.props.history.isActive('/contactar') ? '3' : '0';
+    return this.props.history.isActive('/pictogramas') ? '1'
+      : this.props.history.isActive('/programas') ? '2'
+      : this.props.history.isActive('/contactar') ? '3' : '0'
   }
 
   _handleTabChange (value, e, tab) {
-    this.props.history.pushState (null, tab.props.route)
+    this.props.history.pushState(null, tab.props.route)
     this.setState({
       tabIndex: this._getSelectedIndex()
     })
@@ -143,7 +143,8 @@ class Header extends Component {
 
 Header.propTypes = {
   initialTabs: React.PropTypes.bool,
-  history: React.PropTypes.object
+  history: React.PropTypes.object,
+  children: React.PropTypes.node
 }
 Header.defaultProps = {
   initialTabs: false

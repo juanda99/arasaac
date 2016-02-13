@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import {
-  Colors,
-  getMuiTheme
+  Colors
 } from 'material-ui/lib/styles'
 import UnionEuropea from 'images/union-europea-logo2.png'
 import GobiernoAragon from 'images/gobierno-aragon-logo.svg'

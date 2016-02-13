@@ -201,7 +201,7 @@ const AppLeftNav = React.createClass({
                 primaryText={<FormattedMessage {...messages.home} />}
           />
           <ListItem
-            primaryText={<FormattedMessage  {...messages.pictograms} />}
+            primaryText={<FormattedMessage {...messages.pictograms} />}
             primaryTogglesNestedList={true}
             nestedItems={[
               <ListItem
@@ -214,7 +214,7 @@ const AppLeftNav = React.createClass({
               />,
               <ListItem
                 value='https://www.google.com/design/spec/material-design/introduction.html'
-                primaryText={<FormattedMessage  {...messages.downloads} />}
+                primaryText={<FormattedMessage {...messages.downloads} />}
               />
             ]}
           />
@@ -228,46 +228,46 @@ const AppLeftNav = React.createClass({
             nestedItems={[
               <ListItem
                 value='/programas/animations-maker'
-                primaryText={<FormattedMessage  {...messages.animationsMaker} />}
+                primaryText={<FormattedMessage {...messages.animationsMaker} />}
               />,
               <ListItem
                 value='/programas/symbols-creator'
-                primaryText={<FormattedMessage  {...messages.symbolsCreator} />}
+                primaryText={<FormattedMessage {...messages.symbolsCreator} />}
               />,
               <ListItem
                 value='/programas/schedule-generator'
-                primaryText={<FormattedMessage  {...messages.scheduleGenerator} />}
+                primaryText={<FormattedMessage {...messages.scheduleGenerator} />}
               />,
               <ListItem
                 value='/programas/calendar-generator'
-                primaryText={<FormattedMessage  {...messages.calendarGenerator} />}
+                primaryText={<FormattedMessage {...messages.calendarGenerator} />}
               />,
               <ListItem
                 value='/programas/bingos-creator'
-                primaryText={<FormattedMessage  {...messages.bingo} />}
+                primaryText={<FormattedMessage {...messages.bingo} />}
               />,
               <ListItem
                 value='/programas/snakes-and-ladders'
-                primaryText={<FormattedMessage  {...messages.snakesAndLadders} />}
+                primaryText={<FormattedMessage {...messages.snakesAndLadders} />}
               />,
               <ListItem
                 value='/programas/dominos'
-                primaryText={<FormattedMessage  {...messages.dominos} />}
+                primaryText={<FormattedMessage {...messages.dominos} />}
               />,
               <ListItem
                 value='/programas/dominos-encadenados'
-                primaryText={<FormattedMessage  {...messages.dominosencadenados} />}
+                primaryText={<FormattedMessage {...messages.dominosencadenados} />}
               />
             ]}
           />
         </SelectableList>
         <ListItem
             value='https://www.google.com/design/spec/material-design/introduction.html'
-            primaryText={<FormattedMessage  {...messages.software} />}
+            primaryText={<FormattedMessage {...messages.software} />}
         />
         <Divider />
         <SelectableList
-          subheader={<FormattedMessage  {...messages.info} />}
+          subheader={<FormattedMessage {...messages.info} />}
           valueLink={{
             value: '',
             requestChange: this.handleRequestChangeLink
@@ -275,18 +275,17 @@ const AppLeftNav = React.createClass({
         >
           <ListItem
             value='https://github.com/callemall/material-ui'
-            primaryText={<FormattedMessage  {...messages.news} />}
+            primaryText={<FormattedMessage {...messages.news} />}
           />
           <ListItem
             value='https://github.com/callemall/material-ui'
-            primaryText={<FormattedMessage  {...messages.prizes} />}
+            primaryText={<FormattedMessage {...messages.prizes} />}
           />
 
         <ListItem
             value='https://www.google.com/design/spec/material-design/introduction.html'
-            primaryText={<FormattedMessage  {...messages.contact} />}
+            primaryText={<FormattedMessage {...messages.contact} />}
         />
-
 
         </SelectableList>
       </LeftNav>

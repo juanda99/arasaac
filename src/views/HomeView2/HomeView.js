@@ -164,7 +164,7 @@ const HomeView = React.createClass({
       <FullWidthSection useContent={true} contentStyle={styles}>
 
         <HomeFeature
-          heading={<FormattedMessage  {...messages.saac} />}
+          heading={<FormattedMessage {...messages.saac} />}
           route='/get-started'
           img={PictogramsImage}
           firstChild={true}/>
@@ -173,7 +173,7 @@ const HomeView = React.createClass({
           route='/customization'
           img={SoftwareImage} />
         <HomeFeature
-          heading={<FormattedMessage  {...messages.news} />}
+          heading={<FormattedMessage {...messages.news} />}
           route='/get-news'
           img={NewsImage}
           lastChild={true}/>
@@ -202,10 +202,10 @@ const HomeView = React.createClass({
     return (
       <FullWidthSection useContent={true} style={styles.root}>
         <h3 style={styles.h3}>
-          <FormattedMessage  {...messages.participate} />
+          <FormattedMessage {...messages.participate} />
         </h3>
         <RaisedButton
-          label={<FormattedMessage  {...messages.contact} />}
+          label={<FormattedMessage {...messages.contact} />}
           primary={true}
           linkButton={true}
           href='https://github.com/callemall/material-ui'

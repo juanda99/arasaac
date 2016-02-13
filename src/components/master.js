@@ -17,15 +17,6 @@ import {
 } from 'material-ui/lib/styles'
 
 import AppLeftNav from './app-left-nav'
-import FullWidthSection from './full-width-section'
-
-const githubButton = (
-  <IconButton
-    iconClassName='muidocs-icon-custom-github'
-    href='https://github.com/callemall/material-ui'
-    linkButton={true}
-  />
-)
 
 const Master = React.createClass({
 
@@ -150,9 +141,7 @@ const Master = React.createClass({
 
     const styles = this.getStyles()
     const title =
-      history.isActive('/pictogramas') ? 'Pictogramas' :
-      history.isActive('/programas') ? 'Programas' :
-      history.isActive('/contactar') ? 'Contactar' : '';
+      history.isActive('/pictogramas') ? 'Pictogramas' : history.isActive('/programas') ? 'Programas' : history.isActive('/contactar') ? 'Contactar' : ''
 
     let docked = false
     let showMenuIconButton = true
@@ -191,16 +180,14 @@ const Master = React.createClass({
               <MenuItem primaryText='Sign out' />
             </IconMenu>
           }
-        >
-        </AppBar>
-        {title !== '' ?
-          <div style={this.prepareStyles(styles.root)}>
+        />
+        {title !== ''
+        ? <div style={this.prepareStyles(styles.root)}>
             <div style={this.prepareStyles(styles.content)}>
               {children}
             </div>
           </div>
-          :
-          children
+         : children
         }
         <AppLeftNav
           style={styles.leftNav}
