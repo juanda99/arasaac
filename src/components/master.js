@@ -1,5 +1,5 @@
 import React from 'react'
-import Title from 'react-title-component';
+import Title from 'react-title-component'
 import AppBar from 'material-ui/lib/app-bar'
 import IconButton from 'material-ui/lib/icon-button'
 import IconMenu from 'material-ui/lib/menus/icon-menu'
@@ -154,7 +154,7 @@ const Master = React.createClass({
 
     if (this.isDeviceSize(StyleResizable.statics.Sizes.MEDIUM) ||
         this.isDeviceSize(StyleResizable.statics.Sizes.LARGE)) {
-      styles.content = Object.assign(styles.content, styles.contentWhenMedium);
+      styles.content = Object.assign(styles.content, styles.contentWhenMedium)
     }
     return styles
   },

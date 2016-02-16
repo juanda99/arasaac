@@ -30,7 +30,6 @@ class LanguageSelector extends Component {
       super(props)
     }
     handleChange = (event, index, value) => {
-      console.log("rrrrrrrrrrrrrrrrrrrrrr" + value)
       this.props.onChange(value)
     };
 
