@@ -30,5 +30,9 @@ export default {
   "userMenu.userMaterial": "Mis materiales",
   "userMenu.uploadMaterial": "Compartir material",
   "userMenu.translateArasaac": "Traducir Arasaac",
-  "userMenu.signout": "Cerrar sesión"
+  "userMenu.signout": "Cerrar sesión",
+  "header.pictograms": "Pictogramas",
+  "header.materials": "Materiales",
+  "header.onlineTools": "Herramientas Online",
+  "header.software": "Programas"
 }

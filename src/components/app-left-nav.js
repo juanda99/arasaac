@@ -205,15 +205,15 @@ const AppLeftNav = React.createClass({
             primaryTogglesNestedList={true}
             nestedItems={[
               <ListItem
-                value='/pictogramas/buscar'
+                value='/pictograms/search'
                 primaryText= {<FormattedMessage {...messages.searchPictograms} />}
               />,
               <ListItem
-                value='/pictogramas/api'
+                value='/pictograms/api'
                 primaryText={<FormattedMessage {...messages.api} />}
               />,
               <ListItem
-                value='https://www.google.com/design/spec/material-design/introduction.html'
+                value='/pictograms/catalogs'
                 primaryText={<FormattedMessage {...messages.downloads} />}
               />
             ]}
@@ -227,35 +227,35 @@ const AppLeftNav = React.createClass({
             primaryTogglesNestedList={true}
             nestedItems={[
               <ListItem
-                value='/programas/animations-maker'
+                value='/onlinetools/animations-maker'
                 primaryText={<FormattedMessage {...messages.animationsMaker} />}
               />,
               <ListItem
-                value='/programas/symbols-creator'
+                value='/onlineTools/symbols-creator'
                 primaryText={<FormattedMessage {...messages.symbolsCreator} />}
               />,
               <ListItem
-                value='/programas/schedule-generator'
+                value='/onlineTools/schedule-generator'
                 primaryText={<FormattedMessage {...messages.scheduleGenerator} />}
               />,
               <ListItem
-                value='/programas/calendar-generator'
+                value='/onlineTools/calendar-generator'
                 primaryText={<FormattedMessage {...messages.calendarGenerator} />}
               />,
               <ListItem
-                value='/programas/bingos-creator'
+                value='/onlineTools/bingos-creator'
                 primaryText={<FormattedMessage {...messages.bingo} />}
               />,
               <ListItem
-                value='/programas/snakes-and-ladders'
+                value='/onlineTools/snakes-and-ladders'
                 primaryText={<FormattedMessage {...messages.snakesAndLadders} />}
               />,
               <ListItem
-                value='/programas/dominos'
+                value='/onlineTools/dominos'
                 primaryText={<FormattedMessage {...messages.dominos} />}
               />,
               <ListItem
-                value='/programas/dominos-encadenados'
+                value='/onlineTools/dominos-encadenados'
                 primaryText={<FormattedMessage {...messages.dominosencadenados} />}
               />
             ]}

@@ -36,15 +36,16 @@ export default (
     <Route path='premios' component={HomeView} />
     <Route path='descargas' component={HomeView} />
     <Route path='condiciones-de-uso' component={HomeView} />
-    <Redirect from='pictogramas' to='/pictogramas/buscar' />
-    <Route path='pictogramas'>
-        <Route path='buscar' component={HomeView} />
+    <Redirect from='pictograms' to='/pictograms/search' />
+    <Route path='pictograms'>
+        <Route path='search' component={HomeView} />
         <Route path='api' component={HomeView} />
+        <Route path='catalogs' component={HomeView} />
     </Route>
-    <Route path='materiales' component={HomeView} />
+    <Route path='materials' component={HomeView} />
 
-    <Redirect from='programas' to='/programas/bingo' />
-    <Route path='programas'>
+    <Redirect from='onlinetools' to='/onlinetools/bingo' />
+    <Route path='onlinetools'>
       <Route path='animacion' component={HomeView} />
       <Route path='simbolos' component={HomeView} />
       <Route path='horarios' component={HomeView} />

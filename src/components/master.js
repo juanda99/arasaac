@@ -1,4 +1,5 @@
 import React from 'react'
+import Title from 'react-title-component';
 import AppBar from 'material-ui/lib/app-bar'
 import IconButton from 'material-ui/lib/icon-button'
 import IconMenu from 'material-ui/lib/menus/icon-menu'
@@ -6,15 +7,8 @@ import MoreVertIcon from 'material-ui/lib/svg-icons/navigation/more-vert'
 import MenuItem from 'material-ui/lib/menus/menu-item'
 import {Spacing} from 'material-ui/lib/styles'
 import Footer from 'components/footer'
-import {
-  StylePropable,
-  StyleResizable
-} from 'material-ui/lib/mixins'
-
-import {
-  Colors,
-  getMuiTheme
-} from 'material-ui/lib/styles'
+import { StyleResizable } from 'material-ui/lib/mixins'
+import {Colors, getMuiTheme} from 'material-ui/lib/styles'
 import AppLeftNav from './app-left-nav'
 import { defineMessages, FormattedMessage } from 'react-intl'
 const messages = defineMessages({
@@ -52,6 +46,26 @@ const messages = defineMessages({
     id: 'userMenu.signout',
     description: 'User menu item',
     defaultMessage: 'Sign out'
+  },
+  pictograms: {
+    id: 'header.pictograms',
+    description: 'Header title',
+    defaultMessage: 'Pictograms'
+  },
+  onlineTools: {
+    id: 'header.onlineTools',
+    description: 'Header title',
+    defaultMessage: 'Online Tools'
+  },
+  software: {
+    id: 'header.software',
+    description: 'Header title',
+    defaultMessage: 'Software'
+  },
+  materials: {
+    id: 'header.materials',
+    description: 'Header title',
+    defaultMessage: 'Materials'
   }
 })
 
@@ -68,7 +82,6 @@ const Master = React.createClass({
   },
 
   mixins: [
-    StylePropable,
     StyleResizable
   ],
 
@@ -141,7 +154,7 @@ const Master = React.createClass({
 
     if (this.isDeviceSize(StyleResizable.statics.Sizes.MEDIUM) ||
         this.isDeviceSize(StyleResizable.statics.Sizes.LARGE)) {
-      styles.content = this.mergeStyles(styles.content, styles.contentWhenMedium)
+      styles.content = Object.assign(styles.content, styles.contentWhenMedium);
     }
     return styles
   },
@@ -165,6 +178,12 @@ const Master = React.createClass({
     })
   },
 
+  handleChangeMuiTheme (muiTheme) {
+    this.setState({
+      muiTheme: muiTheme
+    })
+  },
+
   render () {
     const {
       history,
@@ -176,9 +195,15 @@ const Master = React.createClass({
       leftNavOpen
     } = this.state
 
+    const {prepareStyles} = this.state.muiTheme
+
     const styles = this.getStyles()
     const title =
-      history.isActive('/pictogramas') ? 'Pictogramas' : history.isActive('/programas') ? 'Programas' : history.isActive('/contactar') ? 'Contactar' : ''
+      history.isActive('/pictogramas') ? <FormattedMessage {...messages.pictograms} />
+      : history.isActive('/materials') ? <FormattedMessage {...messages.materials} />
+      : history.isActive('/onlinetools') ? <FormattedMessage {...messages.onlineTools} />
+      : history.isActive('/software') ? <FormattedMessage {...messages.software} />
+      : ''
 
     let docked = false
     let showMenuIconButton = true
@@ -197,6 +222,7 @@ const Master = React.createClass({
 
     return (
       <div>
+      <Title render='Arasaac' />
         <AppBar
           onLeftIconButtonTouchTap={this.handleTouchTapLeftIconButton}
           title={title}
@@ -222,12 +248,12 @@ const Master = React.createClass({
           }
         />
         {title !== ''
-        ? <div style={this.prepareStyles(styles.root)}>
-            <div style={this.prepareStyles(styles.content)}>
-              {children}
+        ? <div style={prepareStyles(styles.root)}>
+            <div style={prepareStyles(styles.content)}>
+              {React.cloneElement(children, {onChangeMuiTheme: this.handleChangeMuiTheme})}
             </div>
           </div>
-         : children
+        : children
         }
         <AppLeftNav
           style={styles.leftNav}
