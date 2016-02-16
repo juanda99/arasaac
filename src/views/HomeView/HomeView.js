@@ -1,44 +1,61 @@
-import React, { Component, PropTypes } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router'
-import { actions as counterActions } from '../../redux/modules/counter'
-import DuckImage from './Duck.jpg'
-import classes from './HomeView.scss'
-import { actions as localeActions } from '../../redux/modules/locale'
-import { defineMessages, FormattedMessage } from 'react-intl'
+import {History} from 'react-router'
+import HomeFeature from './HomeFeature'
+import FullWidthSection from 'components/full-width-section'
+import RaisedButton from 'material-ui/lib/raised-button'
+import {StylePropable, StyleResizable} from 'material-ui/lib/mixins'
+import {Colors, Spacing, Typography, lightBaseTheme} from 'material-ui/lib/styles'
 import LanguageSelector from 'components/LanguageSelector'
+import {localeChange} from 'redux/modules/locale'
+import { defineMessages, FormattedMessage } from 'react-intl'
+import ArasaacLogo from './arasaac-logo.svg'
+import SoftwareImage from './software.png'
+import NewsImage from './news.png'
+import PictogramsImage from './pictograms.png'
 
 const messages = defineMessages({
-  welcome: {
-    id: 'home.welcome',
-    description: 'Welcome to the homepage',
-    defaultMessage: 'Welcome to the React Redux Starter Kit'
+  heading: {
+    id: 'home.heading',
+    description: 'Home heading',
+    defaultMessage: '{aragones} portal of Augmentative and Alternative Communication'
   },
-  sampleCounter: {
-    id: 'home.sampleCounter',
-    description: 'Sample Counter text',
-    defaultMessage: 'Sample Counter: '
+  aragonese: {
+    id: 'home.aragonese',
+    description: 'Home heading',
+    defaultMessage: 'Aragonese'
   },
-  linkNotFoundView: {
-    id: 'home.linkNotFoundView',
-    description: 'Text link for not found view',
-    defaultMessage: 'Go to 404 Page'
+  pictograms: {
+    id: 'home.pictograms',
+    description: 'pictogramas',
+    defaultMessage: 'Pictograms'
   },
-  spanish: {
-    id: 'home.spanish',
-    description: 'Select language',
-    defaultMessage: 'Spanish'
+  saac: {
+    id: 'home.saac',
+    description: 'banner',
+    defaultMessage: 'What is SAAC?'
   },
-  english: {
-    id: 'home.english',
-    description: 'Select language',
-    defaultMessage: 'English'
+  software: {
+    id: 'home.software',
+    description: 'Software',
+    defaultMessage: 'Software'
   },
-  french: {
-    id: 'home.french',
-    description: 'Select language',
-    defaultMessage: 'French'
+  news: {
+    id: 'home.news',
+    description: 'Arasaac news',
+    defaultMessage: 'Arasaac news'
+  },
+  participate: {
+    id: 'home.participate',
+    description: 'Participate building Arasaac',
+    defaultMessage: 'We are building Arasaac. Would you like to join us?'
+  },
+  contact: {
+    id: 'home.contact',
+    description: 'Contact button',
+    defaultMessage: 'Contact us'
   }
+
 })
 
 // We define mapStateToProps where we'd normally use
@@ -47,47 +64,174 @@ const messages = defineMessages({
 // the component can be tested w/ and w/o being connected.
 // See: http://rackt.github.io/redux/docs/recipes/WritingTests.html
 const mapStateToProps = (state) => ({
-  counter: state.counter,
-  locale: state.locale
+  locale: state.locale,
+  counter: state.counter
 })
-export class HomeView extends Component {
-  static propTypes = {
-    counter: PropTypes.number.isRequired,
-    doubleAsync: PropTypes.func.isRequired,
-    increment: PropTypes.func.isRequired,
-    localeChange: PropTypes.func.isRequired
-  };
+
+const HomeView = React.createClass({
+
+  mixins: [
+    StylePropable,
+    StyleResizable,
+    History
+  ],
+
+  propTypes: {
+    localeChange: React.PropTypes.func.isRequired
+  },
+
+  _getHomePageHero () {
+    let styles = {
+      root: {
+        backgroundColor: Colors.lightGreen500,
+        overflow: 'hidden'
+      },
+      svgLogo: {
+        marginLeft: window.innerWidth * 0.5 - 225,
+        width: 300
+      },
+      tagline: {
+        margin: '16px auto 0 auto',
+        textAlign: 'center',
+        maxWidth: 625
+      },
+      label: {
+        color: lightBaseTheme.palette.primary1Color
+      },
+      githubStyle: {
+        margin: '16px 32px 0px 8px'
+      },
+      demoStyle: {
+        margin: '16px 32px 0px 32px'
+      },
+      h1: {
+        color: Colors.darkWhite,
+        fontWeight: Typography.fontWeightLight
+      },
+      h2: {
+        fontSize: 20,
+        lineHeight: '28px',
+        paddingTop: 19,
+        marginBottom: 13,
+        letterSpacing: 0
+      },
+      nowrap: {
+        whiteSpace: 'nowrap'
+      },
+      strong: {
+        color: Colors.green900
+      },
+      taglineWhenLarge: {
+        marginTop: 32
+      },
+      h1WhenLarge: {
+        fontSize: 56
+      },
+      h2WhenLarge: {
+        fontSize: 24,
+        lineHeight: '32px',
+        paddingTop: 16,
+        marginBottom: 12
+      }
+    }
+
+    styles.h2 = this.mergeStyles(styles.h1, styles.h2)
+
+    if (this.isDeviceSize(StyleResizable.statics.Sizes.LARGE)) {
+      styles.tagline = this.mergeStyles(styles.tagline, styles.taglineWhenLarge)
+      styles.h1 = this.mergeStyles(styles.h1, styles.h1WhenLarge)
+      styles.h2 = this.mergeStyles(styles.h2, styles.h2WhenLarge)
+    }
+    const { localeChange } = this.props
+    var aragones = (<span style={styles.strong}><FormattedMessage {...messages.aragonese} /> </span>)
+    return (
+      <FullWidthSection style={styles.root}>
+        <img style={styles.svgLogo} src={ArasaacLogo} />
+        <div style={styles.tagline}>
+          <h1 style={styles.h1}>ARA<span style={styles.strong}>SAAC</span></h1>
+          <h2 style={styles.h2}>
+            <FormattedMessage {...messages.heading} values={{aragones}} />
+          </h2>
+          <LanguageSelector style={styles.content} onChange={localeChange}/>
+        </div>
+      </FullWidthSection>
+    )
+  },
+
+  _getHomeFeatures () {
+    const styles = {maxWidth: 906}
+    return (
+      <FullWidthSection useContent={true} contentStyle={styles}>
+
+        <HomeFeature
+          heading={<FormattedMessage {...messages.saac} />}
+          route='/get-started'
+          img={PictogramsImage}
+          firstChild={true}/>
+        <HomeFeature
+          heading={<FormattedMessage {...messages.software} />}
+          route='/customization'
+          img={SoftwareImage} />
+        <HomeFeature
+          heading={<FormattedMessage {...messages.news} />}
+          route='/get-news'
+          img={NewsImage}
+          lastChild={true}/>
+      </FullWidthSection>
+    )
+  },
+
+  _getHomeContribute () {
+    const styles = {
+      root: {
+        backgroundColor: Colors.grey200,
+        textAlign: 'center'
+      },
+      h3: {
+        margin: 0,
+        padding: 0,
+        fontWeight: Typography.fontWeightLight,
+        fontSize: 22
+      },
+      button: {
+        marginTop: 32,
+        backgroundColor: Colors.green900
+      }
+    }
+
+    return (
+      <FullWidthSection useContent={true} style={styles.root}>
+        <h3 style={styles.h3}>
+          <FormattedMessage {...messages.participate} />
+        </h3>
+        <RaisedButton
+          label={<FormattedMessage {...messages.contact} />}
+          primary={true}
+          linkButton={true}
+          href='https://github.com/callemall/material-ui'
+          style={styles.button}/>
+      </FullWidthSection>
+    )
+  },
+
+  _onDemoClick () {
+    this.history.pushState(null, '/components')
+  },
 
   render () {
-    const {localeChange} = this.props
-    return (
-      <div className='container text-center'>
-      <LanguageSelector onChange={localeChange}>prueba Idioma Selector</LanguageSelector>
+    const style = {
+      paddingTop: Spacing.desktopKeylineIncrement
+    }
 
-        <h1><FormattedMessage {...messages.welcome} /></h1>
-        <div className='row'>
-          <div className='col-xs-2 col-xs-offset-5'>
-            <img className={classes.duck}
-                 src={DuckImage}
-                 alt='This is a duck, because Redux.' />
-          </div>
-        </div><h2>
-          <FormattedMessage {...messages.sampleCounter} />
-          <span className={classes['counter--green']}>{this.props.counter}</span>
-        </h2>
-        <button className='btn btn-default'
-                onClick={() => this.props.increment(1)}>
-          Increment
-        </button>
-        {' '}
-        <button className='btn btn-default'
-                onClick={this.props.doubleAsync}>
-          Double (Async)
-        </button>
-        <hr />
-        <Link to='/404'><FormattedMessage {...messages.linkNotFoundView} /></Link>
+    return (
+      <div style={style}>
+        {this._getHomePageHero()}
+        {this._getHomeFeatures()}
+        {this._getHomeContribute()}
       </div>
     )
   }
-}
-export default connect(mapStateToProps, Object.assign({}, counterActions, localeActions))(HomeView)
+
+})
+
+export default connect(mapStateToProps, {localeChange})(HomeView)

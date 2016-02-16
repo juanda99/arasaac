@@ -1,22 +1,12 @@
-import { createAction, handleActions } from 'redux-actions'
-
-// ------------------------------------
-// Constants
-// ------------------------------------
 export const LOCALE_CHANGE = 'LOCALE_CHANGE'
-
-// ------------------------------------
-// Actions
-// ------------------------------------
-export const localeChange = createAction(LOCALE_CHANGE, (value) => value)
-
-export const actions = {
-  localeChange
+export function localeChange (text) {
+  return { type: LOCALE_CHANGE, text: text }
 }
-
-// ------------------------------------
-// Reducer
-// ------------------------------------
-export default handleActions({
-  [LOCALE_CHANGE]: (state, { payload }) => payload
-}, 'en')
+export default function locale (state = 'en', action) {
+  switch (action.type) {
+    case LOCALE_CHANGE:
+      return action.text
+    default:
+      return state
+  }
+}

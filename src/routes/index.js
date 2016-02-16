@@ -8,7 +8,7 @@ import { Route, IndexRoute, Redirect } from 'react-router'
 // your current file is.
 // import CoreLayout from 'layouts/CoreLayout/CoreLayout'
 // import HomeView from 'views/HomeView/HomeView'
-import HomeView from 'views/HomeView2/HomeView'
+import HomeView from 'views/HomeView/HomeView'
 // import SearchView from 'views/SearchView'
 // import ApiView from 'views/ApiView'
 // import BingoView from 'views/BingoView'
