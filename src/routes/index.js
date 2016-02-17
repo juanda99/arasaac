@@ -9,6 +9,7 @@ import { Route, IndexRoute, Redirect } from 'react-router'
 // import CoreLayout from 'layouts/CoreLayout/CoreLayout'
 // import HomeView from 'views/HomeView/HomeView'
 import HomeView from 'views/HomeView/HomeView'
+import BingoView from 'views/BingoView/BingoView'
 // import SearchView from 'views/SearchView'
 // import ApiView from 'views/ApiView'
 // import BingoView from 'views/BingoView'
@@ -44,13 +45,13 @@ export default (
     </Route>
     <Route path='materials' component={HomeView} />
 
-    <Redirect from='onlinetools' to='/onlinetools/bingo' />
+    <Redirect from='onlinetools' to='/onlinetools/bingos-creator' />
     <Route path='onlinetools'>
       <Route path='animacion' component={HomeView} />
       <Route path='simbolos' component={HomeView} />
       <Route path='horarios' component={HomeView} />
       <Route path='calendarios' component={HomeView} />
-      <Route path='bingo' component={HomeView} />
+      <Route path='bingos-creator' component={BingoView} />
       <Route path='oca' component={HomeView} />
       <Route path='domino' component={HomeView} />
       <Route path='domino-encadenados' component={HomeView} />
