@@ -2,6 +2,6 @@
 *.log
 
 node_modules
-config/_base.js
+
 dist
 coverage
