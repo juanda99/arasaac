@@ -199,7 +199,7 @@ const Master = React.createClass({
 
     const styles = this.getStyles()
     const title =
-      history.isActive('/pictogramas') ? <FormattedMessage {...messages.pictograms} />
+      history.isActive('/pictograms') ? <FormattedMessage {...messages.pictograms} />
       : history.isActive('/materials') ? <FormattedMessage {...messages.materials} />
       : history.isActive('/onlinetools') ? <FormattedMessage {...messages.onlineTools} />
       : history.isActive('/software') ? <FormattedMessage {...messages.software} />

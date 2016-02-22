@@ -10,6 +10,7 @@ import { Route, IndexRoute, Redirect } from 'react-router'
 // import HomeView from 'views/HomeView/HomeView'
 import HomeView from 'views/HomeView/HomeView'
 import BingoView from 'views/BingoView/BingoView'
+import SearchPictogramsView from 'views/SearchPictogramsView/index'
 // import SearchView from 'views/SearchView'
 // import ApiView from 'views/ApiView'
 // import BingoView from 'views/BingoView'
@@ -39,7 +40,7 @@ export default (
     <Route path='condiciones-de-uso' component={HomeView} />
     <Redirect from='pictograms' to='/pictograms/search' />
     <Route path='pictograms'>
-        <Route path='search' component={HomeView} />
+        <Route path='search' component={SearchPictogramsView} />
         <Route path='api' component={HomeView} />
         <Route path='catalogs' component={HomeView} />
     </Route>
