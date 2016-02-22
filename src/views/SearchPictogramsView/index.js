@@ -56,16 +56,15 @@ export class SearchPictogramsView extends Component {
     'Watermelon'
   ]
     return (
-      <div className='container'>
-        <h2><FormattedMessage {...messages.heading} /></h2>
-        <hr />
+      <div className='row center-xs start-sm'>
+      <div class='col-sm-offset-3'>
         <SearchBox helpText={helpText} fullWidth={true} dataSource={fruit} />
+        <FloatingActionButton style={styles.button}>
+          <ActionSearch />
+        </FloatingActionButton>
         <div>
           <DropdownCatalog underlineStyle={{margin: '5px'}} />
-          
-          <FloatingActionButton style={styles.button}>
-            <ActionSearch />
-          </FloatingActionButton>
+
           <FloatingActionButton secondary={true} style={styles.button}>
             <ActionSettings />
           </FloatingActionButton>
@@ -75,9 +74,7 @@ export class SearchPictogramsView extends Component {
           <DropdownCatalog/>
           <DropdownCatalog/>
         </div>
-
-
-
+      </div>
       </div>
     )
   }
