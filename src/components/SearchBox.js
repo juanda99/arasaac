@@ -10,7 +10,7 @@ class SearchBox extends Component {
   render () {
     let dataSource = this.props.dataSource
     let helpText = this.props.helpText
-    return (    
+    return (
           <AutoComplete
             floatingLabelText={helpText}
             filter={AutoComplete.fuzzyFilter}
@@ -19,6 +19,7 @@ class SearchBox extends Component {
     )
   }
 }
+
 SearchBox.propTypes = {
   dataSource: PropTypes.string.isRequired,
   helpText: PropTypes.string.isRequired
