@@ -9,6 +9,7 @@ Current status: *In development*. Using redux for application-state management.
 
 ## Demo
 [New Arasaac](http://arasaac.catedu.aragon.es/)
+
 The demo is updated 15 minutes after each commit
 
 > ### Want Semicolons?
