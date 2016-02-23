@@ -30,7 +30,7 @@ function requireAuth (nextState, replace) {
   }
 }
 
-export default (
+export default (store) => (
   <Route path='/' component={Master}>
     <IndexRoute component={HomeView}/>
     <Route path='home' component={HomeView} />
