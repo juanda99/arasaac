@@ -13,5 +13,5 @@ COPY . /usr/src/app
 
 EXPOSE 3000
 
-CMD [ "npm", "run-script dev:no-debug" ]
+CMD [ "npm", "start" ]
 

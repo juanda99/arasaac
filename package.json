@@ -36,7 +36,10 @@
       }
     },
     "start": {
-      "command": "node -r dotenv/config bin/server"
+      "command": "node -r dotenv/config bin/server",
+      "env": {
+        "NODE_ENV": "production"
+      }
     },
     "test": {
       "command": "node -r dotenv/config ./node_modules/karma/bin/karma start bin/karma.js",
