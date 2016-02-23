@@ -19,8 +19,8 @@ const config = {
   // ----------------------------------
   // Server Configuration
   // ----------------------------------
-  server_host : '81.46.212.70',
-  server_port : process.env.PORT || 80,
+  server_host : 'localhost',
+  server_port : process.env.PORT || 3000,
 
   // ----------------------------------
   // Compiler Configuration
@@ -40,10 +40,8 @@ const config = {
     'history',
     'react',
     'react-redux',
-    'react-router',
-    'redux',
-    'redux-actions',
     'react-router-redux',
+    'redux',
     'material-ui',
     'react-tap-event-plugin'
   ],
@@ -93,8 +91,8 @@ config.compiler_vendor = config.compiler_vendor
 
     debug(
       `Package "${dep}" was not found as an npm dependency in package.json; ` +
-      `it won't be included in the webpack vendor bundle.\n` +
-      `Consider removing it from vendor_dependencies in ~/config/index.js`
+      `it won't be included in the webpack vendor bundle.
+      Consider removing it from vendor_dependencies in ~/config/index.js`
     )
   })
 
