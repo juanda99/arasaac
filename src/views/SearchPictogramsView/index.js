@@ -4,6 +4,9 @@ import SearchBox from 'components/SearchBox.js'
 import SelectCatalog from 'components/SelectCatalog'
 import RaisedButton from 'material-ui/lib/raised-button'
 import Toggle from 'material-ui/lib/toggle'
+import IconButton from 'material-ui/lib/icon-button'
+// import ActionGrade from 'material-ui/lib/svg-icons/action/grade'
+import Filter from 'svg-icons/filter'
 
 const messages = defineMessages({
   search: {
@@ -64,14 +67,18 @@ export class SearchPictogramsView extends Component {
             <Toggle label='Búsqueda avanzada' style={styles.toggle} />
           </div>
         </div>
-        <div className='row start-sm'>
+        <div className='row center-xs start-sm'>
+
           <SearchBox helpText={helpText} fullWidth={true} dataSource={fruit} />
           <RaisedButton label='Search' primary={true} style={styles.button} />
         </div>
         <div className='row'>
-            <SelectCatalog/>
-            <SelectCatalog/>
-            <SelectCatalog/>
+          <IconButton tooltip='bottom-right' touch={true} tooltipPosition='bottom-right'>
+            <Filter/>
+          </IconButton>
+          <SelectCatalog/>
+          <SelectCatalog/>
+          <SelectCatalog/>
         </div>
       </div>
     )
