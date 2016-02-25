@@ -11,6 +11,7 @@ import { StyleResizable } from 'material-ui/lib/mixins'
 import {Colors, getMuiTheme} from 'material-ui/lib/styles'
 import AppLeftNav from './app-left-nav'
 import { defineMessages, FormattedMessage } from 'react-intl'
+import 'styles/core.scss'
 const messages = defineMessages({
   signin: {
     id: 'userMenu.signin',
