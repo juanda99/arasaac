@@ -60,7 +60,7 @@ class Footer extends Component {
       return (
         <div style={styles.footer} className='container-fluid'>
           <div className='row middle-xs middle-xs'>
-              <div className='col-sm-6 col-sm-offset-1 col-xs-12'>
+              <div className='col-sm-4 col-sm-offset-1 col-xs-12'>
                  <p style={styles.p}>
                     {'© ARASAAC - Gobierno de Aragón, 2016'}</p><p style={styles.p}>
                     {'Designed and built with all the love in the world by'} <a style={styles.a} href='https://github.com/orgs/Arasaac/people'>
@@ -68,11 +68,11 @@ class Footer extends Component {
                 <p style={styles.p}>{'Code licensed MIT, docs'} <a style={styles.a} href='https://creativecommons.org/licenses/by/3.0/'>{'CC BY 3.0.'}</a>
                 </p>
             </div>
-              <div className='col-sm-2 col-xs-6 first-sm'>
+              <div className='col-sm-1 col-xs-6 col-sm-offset-3 first-sm'>
                 <img style={styles.img} src={GobiernoAragon} />
               </div>
 
-            <div className='col-sm-2 col-sm-offset-1 col-xs-6'>
+            <div className='col-sm-1 col-sm-offset-1 col-xs-6'>
                 <img style={styles.img} src={UnionEuropea} />
             </div>
           </div>

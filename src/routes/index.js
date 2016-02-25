@@ -9,6 +9,8 @@ import { Route, IndexRoute, Redirect } from 'react-router'
 // import CoreLayout from 'layouts/CoreLayout/CoreLayout'
 // import HomeView from 'views/HomeView/HomeView'
 import HomeView from 'views/HomeView/HomeView'
+import BingoView from 'views/BingoView/BingoView'
+import SearchPictogramsView from 'views/SearchPictogramsView/index'
 // import SearchView from 'views/SearchView'
 // import ApiView from 'views/ApiView'
 // import BingoView from 'views/BingoView'
@@ -28,7 +30,7 @@ function requireAuth (nextState, replace) {
   }
 }
 
-export default (
+export default (store) => (
   <Route path='/' component={Master}>
     <IndexRoute component={HomeView}/>
     <Route path='home' component={HomeView} />
@@ -38,19 +40,19 @@ export default (
     <Route path='condiciones-de-uso' component={HomeView} />
     <Redirect from='pictograms' to='/pictograms/search' />
     <Route path='pictograms'>
-        <Route path='search' component={HomeView} />
+        <Route path='search' component={SearchPictogramsView} />
         <Route path='api' component={HomeView} />
         <Route path='catalogs' component={HomeView} />
     </Route>
     <Route path='materials' component={HomeView} />
 
-    <Redirect from='onlinetools' to='/onlinetools/bingo' />
+    <Redirect from='onlinetools' to='/onlinetools/bingos-creator' />
     <Route path='onlinetools'>
       <Route path='animacion' component={HomeView} />
       <Route path='simbolos' component={HomeView} />
       <Route path='horarios' component={HomeView} />
       <Route path='calendarios' component={HomeView} />
-      <Route path='bingo' component={HomeView} />
+      <Route path='bingos-creator' component={BingoView} />
       <Route path='oca' component={HomeView} />
       <Route path='domino' component={HomeView} />
       <Route path='domino-encadenados' component={HomeView} />

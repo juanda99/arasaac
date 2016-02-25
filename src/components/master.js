@@ -52,6 +52,21 @@ const messages = defineMessages({
     description: 'Header title',
     defaultMessage: 'Pictograms'
   },
+  pictogramsSearch: {
+    id: 'header.pictogramsSearch',
+    description: 'Header title',
+    defaultMessage: 'Search pictograms'
+  },
+  api: {
+    id: 'header.api',
+    description: 'Header title',
+    defaultMessage: 'Api for developers'
+  },
+  catalogs: {
+    id: 'header.catalogs',
+    description: 'Header title',
+    defaultMessage: 'Download catalogs'
+  },
   onlineTools: {
     id: 'header.onlineTools',
     description: 'Header title',
@@ -199,7 +214,9 @@ const Master = React.createClass({
 
     const styles = this.getStyles()
     const title =
-      history.isActive('/pictogramas') ? <FormattedMessage {...messages.pictograms} />
+      history.isActive('/pictograms/search') ? <FormattedMessage {...messages.pictogramsSearch} />
+      : history.isActive('/pictograms/api') ? <FormattedMessage {...messages.api} />
+      : history.isActive('/pictograms/catalogs') ? <FormattedMessage {...messages.catalogs} />
       : history.isActive('/materials') ? <FormattedMessage {...messages.materials} />
       : history.isActive('/onlinetools') ? <FormattedMessage {...messages.onlineTools} />
       : history.isActive('/software') ? <FormattedMessage {...messages.software} />
