@@ -18,7 +18,7 @@ import SearchPictogramsView from 'views/SearchPictogramsView/index'
 // import DominoView from 'views/DominoView'
 // import NotFoundView from 'views/NotFoundView/NotFoundView'
 // import Header from 'layouts/Header'
-import Master from 'components/master'
+import Master from 'layouts/master'
 import auth from 'components/auth'
 
 function requireAuth (nextState, replace) {
