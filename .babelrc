@@ -16,7 +16,8 @@
         [ "react-intl", {
           "messagesDir": "./_translations",
           "enforceDescriptions": false
-        }]
+        },],
+	[ "transform-decorators-legacy"]
       ]
     }
   }

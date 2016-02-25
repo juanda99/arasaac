@@ -25,12 +25,12 @@ const messages = defineMessages({
     defaultMessage: 'Pictures'
   },
   lseVideos: {
-    id: 'catalog.colorPictograms',
+    id: 'catalog.lseVideos',
     description: 'Menu choose catalog',
     defaultMessage: 'LSE Videos'
   },
   lseColor: {
-    id: 'catalog.colorPictograms',
+    id: 'catalog.lseColor',
     description: 'Menu choose catalog',
     defaultMessage: 'LSE Color'
   }

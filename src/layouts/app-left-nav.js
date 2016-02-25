@@ -100,7 +100,7 @@ const messages = defineMessages({
     defaultMessage: 'About us'
   },
   downloads: {
-    id: 'menu.info',
+    id: 'menu.downloads',
     description: 'Menu item',
     defaultMessage: 'Download Catalogs'
   },
