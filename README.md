@@ -5,15 +5,10 @@ What it will (should) be?
 * Universal/Isomorphic ReactJS App.  T
 * The new release for [Arasaac Web](http://www.arasaac.org)
 
-Current status: *In development*. Using redux for application-state management.
+Current status: In development. Using redux for application-state management.
 
 ## Demo
 [New Arasaac](http://arasaac.catedu.aragon.es/)
-
-The demo is updated 15 minutes after each commit
-
-> ### Want Semicolons?
-> After installing npm dependencies, open `.eslintrc`, change the `semi` rule from `never` to `always`, and then run `npm run lint:fix` -- Easy as that! Alternatively, use the same npm script after installing and extending your preferred ESLint configuration; it's easy to customize the project's code style to suit your team's needs. See, we can coexist peacefully.
 
 Table of Contents
 -----------------
@@ -72,17 +67,6 @@ Features
 * [ESLint](http://eslint.org)
   * Uses [Standard Style](https://github.com/feross/standard) by default, but you're welcome to change this!
   * Includes separate test-specific `.eslintrc` to support chai assertions
-
-Getting Started
----------------
-
-Just clone the repo and install the necessary node modules:
-```shell
-$ git clone git@github.com:juanda99/react-redux-material-ui.git
-$ cd react-redux-starter-kit
-$ npm install                   # Install Node modules listed in ./package.json (may take a while the first time)
-$ npm start                     # Compile and launch
-```
 
 Usage
 -----
@@ -273,7 +257,6 @@ You can also run a script to extract all those translations as key-value.
 ```bash
 $ npm run build:i18n:langs
 ```
-
 
 ### High editor CPU usage after compilation
 

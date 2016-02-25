@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { useRouterHistory } from 'react-router'
 import { createHistory } from 'history'
-import routes from './routes'
+import makeRoutes from './routes'
 import Root from './containers/Root'
 import configureStore from './redux/configureStore'
 import { addLocaleData } from 'react-intl'
@@ -13,6 +13,7 @@ import es from 'react-intl/lib/locale-data/es'
 import fr from 'react-intl/lib/locale-data/fr'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 
+const routes = makeRoutes(store)
 // Needed for onTouchTap
 // Can go away when react 1.0 release
 // Check this repo:
