@@ -4,6 +4,7 @@ import {
 } from 'material-ui/lib/styles'
 import UnionEuropea from 'images/union-europea-logo2.png'
 import GobiernoAragon from 'images/gobierno-aragon-logo.svg'
+import myStyle from 'theme/variables'
 // import {defineMessages} from 'react-intl'
 /* const messages = defineMessages({
   spanish: {
@@ -35,8 +36,8 @@ class Footer extends Component {
     getStyles () {
       const darkWhite = Colors.darkWhite
       const styles = {
-        footer: {
-
+        row: {
+          minHeight: myStyle.footer.height
         },
         a: {
           color: darkWhite
@@ -57,7 +58,7 @@ class Footer extends Component {
       const styles = this.getStyles()
       return (
         <footer style={this.props.style} className='container-fluid'>
-          <div className='row middle-xs middle-xs'>
+          <div style={styles.row} className='row middle-xs middle-xs'>
               <div className='col-sm-7 col-xs-12'>
                  <p style={styles.p}>
                     {'© ARASAAC - Gobierno de Aragón, 2016'}</p><p style={styles.p}>

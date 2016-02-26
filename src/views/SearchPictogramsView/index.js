@@ -5,6 +5,7 @@ import SelectCatalog from 'components/SelectCatalog'
 import RaisedButton from 'material-ui/lib/raised-button'
 import Toggle from 'material-ui/lib/toggle'
 import IconButton from 'material-ui/lib/icon-button'
+
 // import ActionGrade from 'material-ui/lib/svg-icons/action/grade'
 import Filter from 'svg-icons/filter'
 import Tabs from 'material-ui/lib/tabs/tabs'
@@ -29,10 +30,6 @@ const styles = {
   button: {
     margin: 22
   },
-  dropdown: {
-    paddingLeft: 0,
-    backgroundColor: 'red'
-  },
   headline: {
     fontSize: 24,
     paddingTop: 16,
@@ -45,7 +42,7 @@ const styles = {
   }
 }
 
-export class SearchPictogramsView extends Component {
+class SearchPictogramsView extends Component {
   render () {
     const helpText = <FormattedMessage {...messages.search} />
     const fruit = [

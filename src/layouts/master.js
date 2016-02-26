@@ -8,10 +8,15 @@ import MenuItem from 'material-ui/lib/menus/menu-item'
 import {Spacing} from 'material-ui/lib/styles'
 import Footer from './footer'
 import { StyleResizable } from 'material-ui/lib/mixins'
-import {Colors, getMuiTheme} from 'material-ui/lib/styles'
 import AppLeftNav from './app-left-nav'
 import { defineMessages, FormattedMessage } from 'react-intl'
+// styles
+import {Colors} from 'material-ui/lib/styles'
+import MyRawTheme from 'theme/MyRawTheme'
+import ThemeManager from 'material-ui/lib/styles/theme-manager'
 import 'styles/core.scss'
+import myStyle from 'theme/variables'
+
 const messages = defineMessages({
   signin: {
     id: 'userMenu.signin',
@@ -103,7 +108,7 @@ const Master = React.createClass({
 
   getInitialState () {
     return {
-      muiTheme: getMuiTheme(),
+      muiTheme: ThemeManager.getMuiTheme(MyRawTheme),
       leftNavOpen: false
     }
   },
@@ -151,12 +156,13 @@ const Master = React.createClass({
         margin: `${Spacing.desktopGutter * 2}px ${Spacing.desktopGutter * 3}px`
       },
       footer: {
-        backgroundColor: Colors.grey900,
+        backgroundColor: Colors.grey800,
         textAlign: 'center',
+        padding: '1 rem',
+        width: '100%',
         position: 'absolute',
         bottom: 0,
-        padding: '1 rem',
-        width: '100%'
+        minHeight: myStyle.footer.height
       },
       a: {
         color: darkWhite
@@ -243,7 +249,16 @@ const Master = React.createClass({
     }
 
     return (
-      <div style={{minHeight: '100%', position: 'relative'}} >
+      <div id='1'>
+      <AppLeftNav
+          style={styles.leftNav}
+          history={history}
+          location={location}
+          docked={docked}
+          onRequestChangeLeftNav={this.handleChangeRequestLeftNav}
+          onRequestChangeList={this.handleRequestChangeList}
+          open={leftNavOpen}
+        />
       <Title render='Arasaac' />
         <AppBar
           onLeftIconButtonTouchTap={this.handleTouchTapLeftIconButton}
@@ -277,15 +292,7 @@ const Master = React.createClass({
           </div>
         : children
         }
-        <AppLeftNav
-          style={styles.leftNav}
-          history={history}
-          location={location}
-          docked={docked}
-          onRequestChangeLeftNav={this.handleChangeRequestLeftNav}
-          onRequestChangeList={this.handleRequestChangeList}
-          open={leftNavOpen}
-        />
+        <div style={{paddingTop: '8rem'}}></div>
         <Footer style={styles.footer}/>
       </div>
     )

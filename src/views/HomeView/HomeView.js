@@ -224,7 +224,7 @@ const HomeView = React.createClass({
     }
 
     return (
-      <div style={style}>
+      <div id='2' style={style}>
         {this._getHomePageHero()}
         {this._getHomeFeatures()}
         {this._getHomeContribute()}

@@ -45,7 +45,7 @@ class Root extends React.Component {
   render () {
     return (
       <Provider store={this.props.store}>
-        <div style={{ height: '100%' }}>
+        <div id='11' style={{ minHeight: '100%', position: 'relative' }}>
           {this.content}
           {this.devTools}
         </div>
