@@ -142,7 +142,7 @@ const Master = React.createClass({
       },
       root: {
         paddingTop: Spacing.desktopKeylineIncrement,
-        minHeight: 400
+        minHeight: '100%'
       },
       content: {
         margin: Spacing.desktopGutter
@@ -152,7 +152,11 @@ const Master = React.createClass({
       },
       footer: {
         backgroundColor: Colors.grey900,
-        textAlign: 'center'
+        textAlign: 'center',
+        position: 'absolute',
+        bottom: 0,
+        padding: '1 rem',
+        width: '100%'
       },
       a: {
         color: darkWhite
@@ -239,7 +243,7 @@ const Master = React.createClass({
     }
 
     return (
-      <div>
+      <div style={{minHeight: '100%', position: 'relative'}} >
       <Title render='Arasaac' />
         <AppBar
           onLeftIconButtonTouchTap={this.handleTouchTapLeftIconButton}
@@ -282,7 +286,7 @@ const Master = React.createClass({
           onRequestChangeList={this.handleRequestChangeList}
           open={leftNavOpen}
         />
-        <Footer/>
+        <Footer style={styles.footer}/>
       </div>
     )
   }
