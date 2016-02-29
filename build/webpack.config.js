@@ -110,10 +110,24 @@ webpackConfig.module.loaders = [{
   loader: 'babel',
   query: {
     cacheDirectory: true,
-    plugins: ['transform-runtime', 'transform-decorators-legacy'],
-    presets: __DEV__
-      ? ['es2015', 'react', 'stage-0', 'react-hmre']
-      : ['es2015', 'react', 'stage-0']
+    plugins: ['transform-runtime'],
+    presets: ['es2015', 'react', 'stage-0'],
+    env: {
+      development: {
+        plugins: [
+          ['react-transform', {
+            transforms: [{
+              transform: 'react-transform-hmr',
+              imports: ['react'],
+              locals: ['module']
+            }, {
+              transform: 'react-transform-catch-errors',
+              imports: ['react', 'redbox-react']
+            }]
+          }]
+        ]
+      }
+    }
   }
 },
 {
