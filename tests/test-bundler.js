@@ -19,9 +19,6 @@ global.should = chai.should()
 // ---------------------------------------
 // Require Tests
 // ---------------------------------------
-
-
-
 // require all `tests/**/*.spec.js`
 const testsContext = require.context('./', true, /\.spec\.js$/)
 testsContext.keys().forEach(testsContext)

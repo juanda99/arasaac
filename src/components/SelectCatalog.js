@@ -49,9 +49,6 @@ class SelectCatalog extends Component {
     super(props)
     this.state = {value: 2}
   }
-
-
-
   handleChange = (event, index, value) => this.setState({value});
 
   render () {

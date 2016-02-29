@@ -250,7 +250,7 @@ const Master = React.createClass({
 
     return (
       <div id='1'>
-      <AppLeftNav
+        <AppLeftNav
           style={styles.leftNav}
           history={history}
           location={location}
@@ -259,7 +259,7 @@ const Master = React.createClass({
           onRequestChangeList={this.handleRequestChangeList}
           open={leftNavOpen}
         />
-      <Title render='Arasaac' />
+        <Title render='Arasaac' />
         <AppBar
           onLeftIconButtonTouchTap={this.handleTouchTapLeftIconButton}
           title={title}
@@ -269,11 +269,11 @@ const Master = React.createClass({
           iconElementRight={
             <IconMenu
               iconButtonElement={
-                  <IconButton><MoreVertIcon /></IconButton>
-                }
-                targetOrigin={{horizontal: 'right', vertical: 'top'}}
-                anchorOrigin={{horizontal: 'right', vertical: 'top'}}
-                >
+                <IconButton><MoreVertIcon /></IconButton>
+              }
+              targetOrigin={{horizontal: 'right', vertical: 'top'}}
+              anchorOrigin={{horizontal: 'right', vertical: 'top'}}
+            >
               <MenuItem primaryText={<FormattedMessage {...messages.signin} />} linkButton={true} href='login'/>
               <MenuItem primaryText={<FormattedMessage {...messages.register} />} linkButton={true} href='signup'/>
               <MenuItem primaryText={<FormattedMessage {...messages.userProfile} />} linkButton={true} href='profile'/>
@@ -286,10 +286,10 @@ const Master = React.createClass({
         />
         {title !== ''
         ? <div style={prepareStyles(styles.root)}>
-            <div style={prepareStyles(styles.content)}>
+          <div style={prepareStyles(styles.content)}>
               {React.cloneElement(children, {onChangeMuiTheme: this.handleChangeMuiTheme})}
-            </div>
           </div>
+        </div>
         : children
         }
         <div style={{paddingTop: '8rem'}}></div>

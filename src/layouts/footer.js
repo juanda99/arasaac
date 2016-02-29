@@ -30,55 +30,52 @@ import myStyle from 'theme/variables'
 }) */
 
 class Footer extends Component {
-    constructor (props) {
-      super(props)
-    }
-    getStyles () {
-      const darkWhite = Colors.darkWhite
-      const styles = {
-        row: {
-          minHeight: myStyle.footer.height
-        },
-        a: {
-          color: darkWhite
-        },
-        p: {
-          margin: '0 auto',
-          padding: 0,
-          color: Colors.lightWhite,
-          maxWidth: 450
-        },
-        img: {
-          width: '100%'
-        }
+  getStyles () {
+    const darkWhite = Colors.darkWhite
+    const styles = {
+      row: {
+        minHeight: myStyle.footer.height
+      },
+      a: {
+        color: darkWhite
+      },
+      p: {
+        margin: '0 auto',
+        padding: 0,
+        color: Colors.lightWhite,
+        maxWidth: 450
+      },
+      img: {
+        width: '100%'
       }
-      return styles
     }
-    render () {
-      const styles = this.getStyles()
-      return (
-        <footer style={this.props.style} className='container-fluid'>
-          <div style={styles.row} className='row middle-xs middle-xs'>
-              <div className='col-sm-7 col-xs-12'>
-                 <p style={styles.p}>
+    return styles
+  }
+  render () {
+    const styles = this.getStyles()
+    return (
+      <footer style={this.props.style} className='container-fluid'>
+        <div style={styles.row} className='row middle-xs middle-xs'>
+          <div className='col-sm-7 col-xs-12'>
+            <p style={styles.p}>
                     {'© ARASAAC - Gobierno de Aragón, 2016'}</p><p style={styles.p}>
                     {'Designed and built with all the love in the world by'} <a style={styles.a} href='https://github.com/orgs/Arasaac/people'>
                     {'the Arasaac team.'}</a></p>
-                <p style={styles.p}>{'Code licensed MIT, docs'} <a style={styles.a} href='https://creativecommons.org/licenses/by/3.0/'>{'CC BY 3.0.'}</a>
-                </p>
-            </div>
-              <div className='col-sm-2 col-xs-6 first-sm'>
-                <img style={styles.img} src={GobiernoAragon} />
-              </div>
-
-            <div className='col-sm-2 col-xs-6'>
-                <img style={styles.img} src={UnionEuropea} />
-            </div>
+            <p style={styles.p}>{'Code licensed MIT, docs'} <a style={styles.a} href='https://creativecommons.org/licenses/by/3.0/'>{'CC BY 3.0.'}</a>
+            </p>
           </div>
-        </footer>
-        )
-    }
+          <div className='col-sm-2 col-xs-6 first-sm'>
+            <img style={styles.img} src={GobiernoAragon} />
+          </div>
+
+          <div className='col-sm-2 col-xs-6'>
+            <img style={styles.img} src={UnionEuropea} />
+          </div>
+        </div>
+      </footer>
+    )
   }
+}
 Footer.propTypes = {
   style: PropTypes.object
 }

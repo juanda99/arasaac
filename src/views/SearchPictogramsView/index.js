@@ -90,17 +90,11 @@ class SearchPictogramsView extends Component {
             <SelectCatalog/>
           </div>
         </div>
-         <Tabs
-          onChange={this.handleChange}
-          value={0}
-        >
+        <Tabs onChange={this.handleChange} value={0}>
           <Tab label='Resultados' value={0} />
           <Tab label='Mi selección' value={1} />
         </Tabs>
-        <SwipeableViews
-          index={0}
-          onChangeIndex={this.handleChange}
-        >
+        <SwipeableViews index={0} onChangeIndex={this.handleChange}>
           <div style={styles.slide}>
             <h2 style={styles.headline}>Tabs with slide effect</h2>
             Swipe to see the next slide.<br />

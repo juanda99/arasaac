@@ -26,24 +26,21 @@ const messages = defineMessages({
 })
 
 class LanguageSelector extends Component {
-    constructor (props) {
-      super(props)
-    }
-    handleChange = (event, index, value) => {
-      this.props.onChange(value)
-    };
+  handleChange = (event, index, value) => {
+    this.props.onChange(value)
+  };
 
-    render () {
-      const {formatMessage} = this.props.intl
-      return (
-        <SelectField value={this.props.intl.locale} onChange={this.handleChange} floatingLabelText={formatMessage(messages.chooseLanguage)}>
-            <MenuItem value={'es'} primaryText={formatMessage(messages.spanish)}/>
-            <MenuItem value={'fr'} primaryText={formatMessage(messages.french)}/>
-            <MenuItem value={'en'} primaryText={formatMessage(messages.english)}/>
-        </SelectField>
+  render () {
+    const {formatMessage} = this.props.intl
+    return (
+      <SelectField value={this.props.intl.locale} onChange={this.handleChange} floatingLabelText={formatMessage(messages.chooseLanguage)}>
+        <MenuItem value={'es'} primaryText={formatMessage(messages.spanish)}/>
+        <MenuItem value={'fr'} primaryText={formatMessage(messages.french)}/>
+        <MenuItem value={'en'} primaryText={formatMessage(messages.english)}/>
+      </SelectField>
 
         )
-    }
+  }
   }
 LanguageSelector.propTypes = {
   intl: intlShape.isRequired,

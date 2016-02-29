@@ -197,8 +197,8 @@ const AppLeftNav = React.createClass({
           }}
         >
           <ListItem
-                value='/'
-                primaryText={<FormattedMessage {...messages.home} />}
+            value='/'
+            primaryText={<FormattedMessage {...messages.home} />}
           />
           <ListItem
             primaryText={<FormattedMessage {...messages.pictograms} />}
@@ -206,7 +206,7 @@ const AppLeftNav = React.createClass({
             nestedItems={[
               <ListItem
                 value='/pictograms/search'
-                primaryText= {<FormattedMessage {...messages.searchPictograms} />}
+                primaryText={<FormattedMessage {...messages.searchPictograms} />}
               />,
               <ListItem
                 value='/pictograms/api'
@@ -219,8 +219,8 @@ const AppLeftNav = React.createClass({
             ]}
           />
           <ListItem
-                value='/materials'
-                primaryText={<FormattedMessage {...messages.materials} />}
+            value='/materials'
+            primaryText={<FormattedMessage {...messages.materials} />}
           />
           <ListItem
             primaryText={<FormattedMessage {...messages.onlineTools} />}
@@ -262,8 +262,8 @@ const AppLeftNav = React.createClass({
           />
         </SelectableList>
         <ListItem
-            value='https://www.google.com/design/spec/material-design/introduction.html'
-            primaryText={<FormattedMessage {...messages.software} />}
+          value='https://www.google.com/design/spec/material-design/introduction.html'
+          primaryText={<FormattedMessage {...messages.software} />}
         />
         <Divider />
         <SelectableList
@@ -281,12 +281,10 @@ const AppLeftNav = React.createClass({
             value='https://github.com/callemall/material-ui'
             primaryText={<FormattedMessage {...messages.prizes} />}
           />
-
-        <ListItem
+          <ListItem
             value='https://www.google.com/design/spec/material-design/introduction.html'
             primaryText={<FormattedMessage {...messages.contact} />}
-        />
-
+          />
         </SelectableList>
       </LeftNav>
     )

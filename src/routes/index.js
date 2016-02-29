@@ -40,9 +40,9 @@ export default (store) => (
     <Route path='condiciones-de-uso' component={HomeView} />
     <Redirect from='pictograms' to='/pictograms/search' />
     <Route path='pictograms'>
-        <Route path='search' component={SearchPictogramsView} />
-        <Route path='api' component={HomeView} />
-        <Route path='catalogs' component={HomeView} />
+      <Route path='search' component={SearchPictogramsView} />
+      <Route path='api' component={HomeView} />
+      <Route path='catalogs' component={HomeView} />
     </Route>
     <Route path='materials' component={HomeView} />
 
