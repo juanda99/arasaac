@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { browserHistory } from 'react-router'
+import { syncHistoryWithStore } from 'react-router-redux'
 import makeRoutes from './routes'
 import Root from './containers/Root'
 import configureStore from './redux/configureStore'
@@ -12,7 +13,6 @@ import es from 'react-intl/lib/locale-data/es'
 import fr from 'react-intl/lib/locale-data/fr'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 
-const routes = makeRoutes(store)
 // Needed for onTouchTap
 // Can go away when react 1.0 release
 // Check this repo:
@@ -20,7 +20,15 @@ const routes = makeRoutes(store)
 injectTapEventPlugin()
 
 const initialState = window.__INITIAL_STATE__
-const store = configureStore({ initialState, history })
+const store = configureStore({ initialState })
+const history = syncHistoryWithStore(browserHistory, store, {
+  selectLocationState: (state) => state.router
+})
+
+// Now that we have the Redux store, we can create our routes. We provide
+// the store to the route definitions so that routes have access to it for
+// hooks such as `onEnter`.
+const routes = makeRoutes(store)
 
 addLocaleData(en)
 addLocaleData(de)
@@ -41,9 +49,10 @@ if (!global.Intl) {
 }
 
 function start () {
-  // Render the React application to the DOM
+  // Now that redux and react-router have been configured, we can render the
+ // React application to the DOM!
   ReactDOM.render(
-    <Root history={browserHistory} routes={routes} store={store} />,
+    <Root history={history} routes={routes} store={store} />,
     document.getElementById('root')
   )
 }
