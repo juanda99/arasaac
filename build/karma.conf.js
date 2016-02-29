@@ -72,5 +72,6 @@ if (config.coverage_enabled) {
     exclude: /node_modules/
   }]
 }
+// cannot use `export default` because of Karma.
+module.exports = (cfg) => cfg.set(karmaConfig)
 
-export default (cfg) => cfg.set(karmaConfig)
