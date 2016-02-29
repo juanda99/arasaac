@@ -20,14 +20,13 @@ import injectTapEventPlugin from 'react-tap-event-plugin'
 // https://github.com/zilverline/react-tap-event-plugin
 injectTapEventPlugin()
 
-const initialState = window.__INITIAL_STATE__
-const store = configureStore({ initialState })
-
 // Configure history for react-router
 const browserHistory = useRouterHistory(createBrowserHistory)({
   basename: __BASENAME__
 })
 
+const initialState = window.__INITIAL_STATE__
+const store = configureStore(initialState, browserHistory)
 const history = syncHistoryWithStore(browserHistory, store, {
   selectLocationState: (state) => state.router
 })
