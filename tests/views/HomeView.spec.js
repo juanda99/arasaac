@@ -64,7 +64,8 @@ describe('(View) Home', function () {
   })
 
   it('Should render exactly two buttons.', function () {
-    const wrapper = mount(<HomeView />)
+    const wrapper = mount(<HomeView {..._props} />)
+
     expect(wrapper).to.have.descendants('.btn')
   })
 
@@ -73,7 +74,7 @@ describe('(View) Home', function () {
 
     beforeEach(() => {
       _btn = TestUtils.scryRenderedDOMComponentsWithTag(_rendered, 'button')
-        .filter(a => /Increment/.test(a.textContent))[0]
+        .filter((a) => /Increment/.test(a.textContent))[0]
     })
 
     it('should be rendered.', function () {
@@ -92,7 +93,7 @@ describe('(View) Home', function () {
 
     beforeEach(() => {
       _btn = TestUtils.scryRenderedDOMComponentsWithTag(_rendered, 'button')
-        .filter(a => /Double/.test(a.textContent))[0]
+        .filter((a) => /Double/.test(a.textContent))[0]
     })
 
     it('should be rendered.', function () {
