@@ -17,6 +17,6 @@
   "rules": {
     "semi" : [2, "never"],
     "react/jsx-boolean-value": 0,
-    "max-len": [2, 120, 2]
+    "max-len": [2, 150, 2]
   }
 }

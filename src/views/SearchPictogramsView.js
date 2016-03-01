@@ -2,10 +2,11 @@ import React, {Component, PropTypes} from 'react'
 import { defineMessages, FormattedMessage } from 'react-intl'
 import SearchBox from 'components/SearchBox.js'
 import SelectCatalog from 'components/SelectCatalog'
-import RaisedButton from 'material-ui/lib/raised-button'
 import Toggle from 'material-ui/lib/toggle'
 import IconButton from 'material-ui/lib/icon-button'
-
+import { connect } from 'react-redux'
+import { resetErrorMessage } from 'redux/modules/error'
+import { changePictogramsKeyword } from 'redux/modules/keyword'
 // import ActionGrade from 'material-ui/lib/svg-icons/action/grade'
 import Filter from 'svg-icons/filter'
 const messages = defineMessages({
@@ -21,15 +22,33 @@ const messages = defineMessages({
   }
 })
 
-const styles = {
-  button: {
-    margin: 22
-  }
-}
-
 class SearchPictogramsView extends Component {
+
+  handleDismissClick (e) {
+    this.props.resetErrorMessage()
+    e.preventDefault()
+  }
+
+  renderErrorMessage () {
+    const { errorMessage } = this.props
+    if (!errorMessage) {
+      return null
+    }
+
+    return (
+      <p style={{ backgroundColor: '#e99', padding: 10 }}>
+        <b>{errorMessage}</b>
+        {' '}
+        (<a href='#'
+          onClick={this.handleDismissClick}>
+          Dismiss
+        </a>)
+      </p>
+    )
+  }
+
   render () {
-    const { children } = this.props
+    const { children, inputValue } = this.props
     const helpText = <FormattedMessage {...messages.search} />
     const fruit = [
       'Apple', 'Apricot', 'Avocado',
@@ -61,12 +80,13 @@ class SearchPictogramsView extends Component {
       <div>
         <div className='row end-xs'>
           <div className='col-xs-6 col-sm-4 col-md-3'>
-            <Toggle label='Búsqueda avanzada' style={styles.toggle} />
+            <Toggle label='Búsqueda avanzada' />
           </div>
         </div>
         <div className='row start-xs'>
-          <SearchBox helpText={helpText} fullWidth={true} dataSource={fruit} />
-          <RaisedButton label='Search' primary={true} style={styles.button} />
+          <SearchBox value={inputValue} helpText={helpText} fullWidth={true} dataSource={fruit} onChange={this.props.changePictogramsKeyword} />
+          <hr />
+          {this.renderErrorMessage()}
         </div>
         <div className='row'>
           <div className='col-xs-12 col-sm-4'>
@@ -83,7 +103,18 @@ class SearchPictogramsView extends Component {
 }
 
 SearchPictogramsView.propTypes = {
+  // Injected by React Redux
+  errorMessage: PropTypes.string,
+  resetErrorMessage: PropTypes.func.isRequired,
+  changePictogramsKeyword: PropTypes.func.isRequired,
+  inputValue: PropTypes.string.isRequired,
+  // Injected by React Router
   children: PropTypes.node
 }
 
-export default SearchPictogramsView
+const mapStateToProps = (state) => ({
+  errorMessage: state.errorMessage,
+  inputValue: state.pictogramsKeyword
+})
+
+export default connect(mapStateToProps, {changePictogramsKeyword})(SearchPictogramsView)

@@ -26,6 +26,11 @@ const messages = defineMessages({
 })
 
 class LanguageSelector extends Component {
+  constructor (props) {
+    super(props)
+    this.handleChange = this.handleChange.bind(this)
+  }
+
   handleChange = (event, index, value) => {
     this.props.onChange(value)
   };
