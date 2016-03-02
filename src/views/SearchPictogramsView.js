@@ -6,8 +6,8 @@ import Toggle from 'material-ui/lib/toggle'
 import IconButton from 'material-ui/lib/icon-button'
 import { connect } from 'react-redux'
 import { resetErrorMessage } from 'redux/modules/error'
-import { changePictogramsKeyword } from 'redux/modules/keyword'
-import { loadKeywords } from '../actions'
+import { changePictogramsKeyword } from 'redux/modules/searchText'
+import { loadKeywords } from 'redux/modules/keywords'
 // import ActionGrade from 'material-ui/lib/svg-icons/action/grade'
 import Filter from 'svg-icons/filter'
 const messages = defineMessages({
@@ -30,12 +30,8 @@ class SearchPictogramsView extends Component {
     e.preventDefault()
   }
 
-  loadKeywords() {
-
-  }
-
   componentDidMount() {
-    loadKeywords()
+    this.props.loadKeywords()
   }
 
   renderErrorMessage() {
@@ -116,14 +112,21 @@ SearchPictogramsView.propTypes = {
   errorMessage: PropTypes.string,
   resetErrorMessage: PropTypes.func.isRequired,
   changePictogramsKeyword: PropTypes.func.isRequired,
+  loadKeywords: PropTypes.func.isRequired,
   inputValue: PropTypes.string.isRequired,
   // Injected by React Router
   children: PropTypes.node
 }
 
-const mapStateToProps = state => ({
-  errorMessage: state.errorMessage,
-  inputValue: state.pictogramsKeyword
-})
+const mapStateToProps = state => {
+  const errorMessage = state.errorMessage
+  const inputValue = state.searchText
+  const { entities: { keywords } } = state
+  return {
+    errorMessage,
+    inputValue,
+    keywords
+  }
+}
 
-export default connect(mapStateToProps, {changePictogramsKeyword})(SearchPictogramsView)
+export default connect(mapStateToProps, {resetErrorMessage, changePictogramsKeyword, loadKeywords})(SearchPictogramsView)

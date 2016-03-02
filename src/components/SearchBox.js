@@ -12,7 +12,7 @@ class SearchBox extends Component {
   constructor(props) {
     super(props)
     this.handleUpdateInput = this.handleUpdateInput.bind(this)
-    this.handleKeyUp = this.handleKeyUp.bind(this)
+    // this.handleKeyUp = this.handleKeyUp.bind(this)
   }
 
   handleUpdateInput = t => {
@@ -31,6 +31,7 @@ class SearchBox extends Component {
     let dataSource = this.props.dataSource
     let helpText = this.props.helpText
     let link = `/pictograms/keyword/${this.props.value}`
+    console.log('A ver .....' + this.props.value)
     return (
       <div>
         <AutoComplete ref='input' floatingLabelText={helpText} filter={AutoComplete.fuzzyFilter} dataSource={dataSource}

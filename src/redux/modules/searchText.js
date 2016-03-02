@@ -9,7 +9,7 @@ export function changePictogramsKeyword(text) {
 }
 
 // Updates error message to notify about the failed fetches.
-export default function pictogramsKeyword(state = '', action) {
+export default function searchText(state = '', action) {
   switch (action.type) {
     case CHANGE_PICTOGRAMS_KEYWORD:
       return action.text
