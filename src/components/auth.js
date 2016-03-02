@@ -1,12 +1,12 @@
 module.exports = {
-  login (email, pass, cb) {
+  login(email, pass, cb) {
     cb = arguments[arguments.length - 1]
     if (localStorage.token) {
       if (cb) cb(true)
       this.onChange(true)
       return
     }
-    pretendRequest(email, pass, (res) => {
+    pretendRequest(email, pass, res => {
       if (res.authenticated) {
         localStorage.token = res.token
         if (cb) cb(true)
@@ -18,24 +18,24 @@ module.exports = {
     })
   },
 
-  getToken: function () {
+  getToken: function() {
     return localStorage.token
   },
 
-  logout: function (cb) {
+  logout: function(cb) {
     delete localStorage.token
     if (cb) cb()
     this.onChange(false)
   },
 
-  loggedIn: function () {
+  loggedIn: function() {
     return !!localStorage.token
   },
 
-  onChange: function () {}
+  onChange: function() {}
 }
 
-function pretendRequest (email, pass, cb) {
+function pretendRequest(email, pass, cb) {
   // Aquí iría la petición asíncrona al api rest
   setTimeout(() => {
     if (email === 'juanda' && pass === 'juanda') {

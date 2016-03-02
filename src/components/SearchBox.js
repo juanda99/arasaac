@@ -9,13 +9,13 @@ const styles = {
 }
 
 class SearchBox extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.handleUpdateInput = this.handleUpdateInput.bind(this)
     this.handleKeyUp = this.handleKeyUp.bind(this)
   }
 
-  handleUpdateInput = (t) => {
+  handleUpdateInput = t => {
     this.props.onChange(t)
   }
 
@@ -27,7 +27,7 @@ class SearchBox extends Component {
   }
   */
 
-  render () {
+  render() {
     let dataSource = this.props.dataSource
     let helpText = this.props.helpText
     let link = `/pictograms/keyword/${this.props.value}`

@@ -10,7 +10,7 @@ const messages = defineMessages({
 })
 
 export class BingoView extends Component {
-  render () {
+  render() {
     return (
       <div className='container text-center'>
         <h1><FormattedMessage {...messages.bingo} /></h1>

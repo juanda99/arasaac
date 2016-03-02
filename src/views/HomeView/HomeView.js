@@ -63,7 +63,7 @@ const messages = defineMessages({
 // export the decorated component after the main class definition so
 // the component can be tested w/ and w/o being connected.
 // See: http://rackt.github.io/redux/docs/recipes/WritingTests.html
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   locale: state.locale,
   counter: state.counter
 })
@@ -80,7 +80,7 @@ const HomeView = React.createClass({
     localeChange: React.PropTypes.func.isRequired
   },
 
-  _getHomePageHero () {
+  _getHomePageHero() {
     let styles = {
       root: {
         backgroundColor: Colors.lightGreen500,
@@ -158,7 +158,7 @@ const HomeView = React.createClass({
     )
   },
 
-  _getHomeFeatures () {
+  _getHomeFeatures() {
     const styles = {maxWidth: 906}
     return (
       <FullWidthSection useContent={true} contentStyle={styles}>
@@ -181,7 +181,7 @@ const HomeView = React.createClass({
     )
   },
 
-  _getHomeContribute () {
+  _getHomeContribute() {
     const styles = {
       root: {
         backgroundColor: Colors.grey200,
@@ -214,11 +214,11 @@ const HomeView = React.createClass({
     )
   },
 
-  _onDemoClick () {
+  _onDemoClick() {
     this.history.pushState(null, '/components')
   },
 
-  render () {
+  render() {
     const style = {
       paddingTop: Spacing.desktopKeylineIncrement
     }

@@ -45,13 +45,13 @@ const styles = {
 
 class SelectCatalog extends Component {
 
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {value: 2}
   }
   handleChange = (event, index, value) => this.setState({value});
 
-  render () {
+  render() {
     return (
       <SelectField value={this.state.value} onChange={this.handleChange} style={styles.select}>
         <MenuItem value={1} primaryText={<FormattedMessage {...messages.allCatalogs} />} />

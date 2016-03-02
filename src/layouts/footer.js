@@ -30,7 +30,7 @@ import myStyle from 'theme/variables'
 }) */
 
 class Footer extends Component {
-  getStyles () {
+  getStyles() {
     const darkWhite = Colors.darkWhite
     const styles = {
       row: {
@@ -51,7 +51,7 @@ class Footer extends Component {
     }
     return styles
   }
-  render () {
+  render() {
     const styles = this.getStyles()
     return (
       <footer style={this.props.style} className='container-fluid'>

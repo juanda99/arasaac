@@ -26,7 +26,7 @@ const messages = defineMessages({
 })
 
 class LanguageSelector extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.handleChange = this.handleChange.bind(this)
   }
@@ -35,7 +35,7 @@ class LanguageSelector extends Component {
     this.props.onChange(value)
   };
 
-  render () {
+  render() {
     const {formatMessage} = this.props.intl
     return (
       <SelectField value={this.props.intl.locale} onChange={this.handleChange} floatingLabelText={formatMessage(messages.chooseLanguage)}>

@@ -19,7 +19,7 @@ const styles = {
   }
 }
 class ShowPictogramsView extends Component {
-  render () {
+  render() {
     return (
       <div>
         <div className='row end-xs'>

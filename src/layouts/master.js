@@ -106,20 +106,20 @@ const Master = React.createClass({
     StyleResizable
   ],
 
-  getInitialState () {
+  getInitialState() {
     return {
       muiTheme: ThemeManager.getMuiTheme(MyRawTheme),
       leftNavOpen: false
     }
   },
 
-  getChildContext () {
+  getChildContext() {
     return {
       muiTheme: this.state.muiTheme
     }
   },
 
-  componentWillMount () {
+  componentWillMount() {
     const newMuiTheme = this.state.muiTheme
     newMuiTheme.inkBar.backgroundColor = Colors.yellow200
     this.setState({
@@ -127,14 +127,14 @@ const Master = React.createClass({
     })
   },
 
-  componentWillReceiveProps (nextProps, nextContext) {
+  componentWillReceiveProps(nextProps, nextContext) {
     const newMuiTheme = nextContext.muiTheme ? nextContext.muiTheme : this.state.muiTheme
     this.setState({
       muiTheme: newMuiTheme
     })
   },
 
-  getStyles () {
+  getStyles() {
     const darkWhite = Colors.darkWhite
 
     const styles = {
@@ -185,32 +185,32 @@ const Master = React.createClass({
     return styles
   },
 
-  handleTouchTapLeftIconButton () {
+  handleTouchTapLeftIconButton() {
     this.setState({
       leftNavOpen: !this.state.leftNavOpen
     })
   },
 
-  handleChangeRequestLeftNav (open) {
+  handleChangeRequestLeftNav(open) {
     this.setState({
       leftNavOpen: open
     })
   },
 
-  handleRequestChangeList (event, value) {
+  handleRequestChangeList(event, value) {
     this.props.history.push(value)
     this.setState({
       leftNavOpen: false
     })
   },
 
-  handleChangeMuiTheme (muiTheme) {
+  handleChangeMuiTheme(muiTheme) {
     this.setState({
       muiTheme: muiTheme
     })
   },
 
-  render () {
+  render() {
     const {
       history,
       location,

@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 class PictogramView extends Component {
-  render () {
+  render() {
     return (
       <div>
         <div className='row'>

@@ -17,14 +17,14 @@ const FullWidthSection = React.createClass({
     StyleResizable
   ],
 
-  getDefaultProps () {
+  getDefaultProps() {
     return {
       useContent: false,
       contentType: 'div'
     }
   },
 
-  getStyles () {
+  getStyles() {
     return {
       root: {
         padding: DesktopGutter + 'px',
@@ -45,7 +45,7 @@ const FullWidthSection = React.createClass({
     }
   },
 
-  render () {
+  render() {
     const {
       style,
       useContent,

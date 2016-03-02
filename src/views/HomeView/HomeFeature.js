@@ -17,20 +17,20 @@ let HomeFeature = React.createClass({
 
   mixins: [StylePropable, StyleResizable],
 
-  getDefaultProps () {
+  getDefaultProps() {
     return {
       firstChild: false,
       lastChild: false
     }
   },
 
-  getInitialState () {
+  getInitialState() {
     return {
       zDepth: 0
     }
   },
 
-  getStyles () {
+  getStyles() {
     let desktopGutter = Spacing.desktopGutter
     let desktopKeylineIncrement = Spacing.desktopKeylineIncrement
     let styles = {
@@ -90,19 +90,19 @@ let HomeFeature = React.createClass({
     return styles
   },
 
-  _onMouseEnter () {
+  _onMouseEnter() {
     this.setState({
       zDepth: 4
     })
   },
 
-  _onMouseLeave () {
+  _onMouseLeave() {
     this.setState({
       zDepth: 0
     })
   },
 
-  render () {
+  render() {
     let styles = this.getStyles()
 
     return (

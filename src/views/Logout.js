@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import auth from 'components/auth'
 
 class Logout extends Component {
-  componentDidMount () {
+  componentDidMount() {
     auth.logout()
   }
-  render () {
+  render() {
     return <p>You are now logged out</p>
   }
 }

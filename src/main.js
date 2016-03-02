@@ -28,7 +28,7 @@ const browserHistory = useRouterHistory(createBrowserHistory)({
 const initialState = window.__INITIAL_STATE__
 const store = configureStore(initialState, browserHistory)
 const history = syncHistoryWithStore(browserHistory, store, {
-  selectLocationState: (state) => state.router
+  selectLocationState: state => state.router
 })
 
 // Now that we have the Redux store, we can create our routes. We provide
@@ -46,7 +46,7 @@ addLocaleData(fr)
 // the `ECMAScript Internationalization API`.
 // For that we need to patch in on runtime.
 if (!global.Intl) {
-  require.ensure(['intl'], (require) => {
+  require.ensure(['intl'], require => {
     require('intl')
     start()
   }, 'IntlBundle')
@@ -54,7 +54,7 @@ if (!global.Intl) {
   start()
 }
 
-function start () {
+function start() {
   // Now that redux and react-router have been configured, we can render the
  // React application to the DOM!
   ReactDOM.render(

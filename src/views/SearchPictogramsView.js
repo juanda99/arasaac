@@ -7,6 +7,7 @@ import IconButton from 'material-ui/lib/icon-button'
 import { connect } from 'react-redux'
 import { resetErrorMessage } from 'redux/modules/error'
 import { changePictogramsKeyword } from 'redux/modules/keyword'
+import { loadKeywords } from '../actions'
 // import ActionGrade from 'material-ui/lib/svg-icons/action/grade'
 import Filter from 'svg-icons/filter'
 const messages = defineMessages({
@@ -24,12 +25,20 @@ const messages = defineMessages({
 
 class SearchPictogramsView extends Component {
 
-  handleDismissClick (e) {
+  handleDismissClick(e) {
     this.props.resetErrorMessage()
     e.preventDefault()
   }
 
-  renderErrorMessage () {
+  loadKeywords() {
+
+  }
+
+  componentDidMount() {
+    loadKeywords()
+  }
+
+  renderErrorMessage() {
     const { errorMessage } = this.props
     if (!errorMessage) {
       return null
@@ -47,7 +56,7 @@ class SearchPictogramsView extends Component {
     )
   }
 
-  render () {
+  render() {
     const { children, inputValue } = this.props
     const helpText = <FormattedMessage {...messages.search} />
     const fruit = [
@@ -112,7 +121,7 @@ SearchPictogramsView.propTypes = {
   children: PropTypes.node
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   errorMessage: state.errorMessage,
   inputValue: state.pictogramsKeyword
 })

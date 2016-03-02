@@ -16,7 +16,7 @@ const messages = defineMessages({
 })
 
 export class NotFoundView extends React.Component {
-  render () {
+  render() {
     return (
       <div className='container text-center'>
         <h1><FormattedMessage {...messages.welcome} /></h1>

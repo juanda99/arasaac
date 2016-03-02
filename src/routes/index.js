@@ -23,7 +23,7 @@ import PictogramView from 'views/PictogramView'
 import Master from 'layouts/master'
 import auth from 'components/auth'
 
-function requireAuth (nextState, replace) {
+function requireAuth(nextState, replace) {
   if (!auth.loggedIn()) {
     replace({
       pathname: '/signin',
@@ -32,7 +32,7 @@ function requireAuth (nextState, replace) {
   }
 }
 
-export default (store) => (
+export default store => (
   <Route path='/' component={Master}>
     <IndexRoute component={HomeView}/>
     <Route path='home' component={HomeView} />

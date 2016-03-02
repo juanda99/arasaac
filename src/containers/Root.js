@@ -13,7 +13,7 @@ class Root extends React.Component {
     locale: PropTypes.string.isRequired
   };
 
-  get content () {
+  get content() {
     const intlData = {
       locale: this.props.locale,
       messages: messages[this.props.locale]
@@ -27,7 +27,7 @@ class Root extends React.Component {
     )
   }
 
-  get devTools () {
+  get devTools() {
     if (__DEBUG__) {
       if (__DEBUG_NEW_WINDOW__) {
         if (!window.devToolsExtension) {
@@ -42,7 +42,7 @@ class Root extends React.Component {
     }
   }
 
-  render () {
+  render() {
     return (
       <Provider store={this.props.store}>
         <div id='11' style={{ minHeight: '100%', position: 'relative' }}>
@@ -54,7 +54,7 @@ class Root extends React.Component {
   }
 }
 
-function mapStateToProps (state) {
+function mapStateToProps(state) {
   return { locale: state.locale }
 }
 export default connect(mapStateToProps)(Root)

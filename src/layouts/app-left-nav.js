@@ -139,18 +139,18 @@ const AppLeftNav = React.createClass({
     StylePropable
   ],
 
-  handleRequestChangeLink (event, value) {
+  handleRequestChangeLink(event, value) {
     window.location = value
   },
 
-  handleTouchTapHeader () {
+  handleTouchTapHeader() {
     this.props.history.push('/')
     this.setState({
       leftNavOpen: false
     })
   },
 
-  getStyles () {
+  getStyles() {
     return {
       logo: {
         cursor: 'pointer',
@@ -165,7 +165,7 @@ const AppLeftNav = React.createClass({
     }
   },
 
-  render () {
+  render() {
     const {
       location,
       docked,
