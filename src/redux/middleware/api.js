@@ -62,12 +62,17 @@ repoSchema.define({
   owner: userSchema
 })
 
+const keywordSchema = new Schema('repos', {
+  idAttribute: 'locale'
+})
+
 // Schemas for Github API responses.
 export const Schemas = {
   USER: userSchema,
   USER_ARRAY: arrayOf(userSchema),
   REPO: repoSchema,
-  REPO_ARRAY: arrayOf(repoSchema)
+  REPO_ARRAY: arrayOf(repoSchema),
+  KEYWORDS: keywordSchema
 }
 
 // Action key that carries API call info interpreted by this Redux middleware.
