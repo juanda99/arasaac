@@ -19,6 +19,10 @@ class SearchBox extends Component {
   }
 
   handleUpdateInput = t => {
+    if (t.keyCode === 13) {
+      let link = `/pictograms/keyword/${t}`
+      this.context.router.push(link)
+    }
     this.props.onChange(t)
   }
 
