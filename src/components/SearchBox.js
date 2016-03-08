@@ -33,14 +33,6 @@ class SearchBox extends Component {
     this.context.router.push(link)
   }
 
-  /* Como capturar el enter para pulsar el botón?????
-  handleKeyUp (e) {
-    if (e.keyCode === 13) {
-      this.handleUpdateInput(this.props.value)
-    }
-  }
-  */
-
   render() {
     let dataSource = this.props.dataSource
     let helpText = this.props.helpText
