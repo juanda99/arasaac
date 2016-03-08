@@ -15,6 +15,9 @@ class SearchBox extends Component {
     super(props)
     this.handleUpdateInput = this.handleUpdateInput.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    /* this.state = {
+      dataSource: []
+    } */
     // this.handleKeyUp = this.handleKeyUp.bind(this)
   }
 
@@ -37,6 +40,7 @@ class SearchBox extends Component {
     let dataSource = this.props.dataSource
     let helpText = this.props.helpText
     let link = `/pictograms/keyword/${this.props.value}`
+    // if (typeof dataSource === 'undefined') dataSource = []
     return (
       <div>
         <AutoComplete ref='input' floatingLabelText={helpText} filter={AutoComplete.fuzzyFilter} dataSource={dataSource}
@@ -47,12 +51,9 @@ class SearchBox extends Component {
   }
 }
 
-SearchBox.contextTypes = {
-  router: React.PropTypes.object.isRequired
-}
 
 SearchBox.propTypes = {
-  dataSource: PropTypes.string.isRequired,
+  dataSource: PropTypes.array.isRequired,
   helpText: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired

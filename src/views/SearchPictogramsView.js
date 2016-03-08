@@ -55,32 +55,7 @@ class SearchPictogramsView extends Component {
   render() {
     const { children, inputValue } = this.props
     const helpText = <FormattedMessage {...messages.search} />
-    const fruit = [
-      'Apple', 'Apricot', 'Avocado',
-      'Banana', 'Bilberry', 'Blackberry', 'Blackcurrant', 'Blueberry',
-      'Boysenberry', 'Blood Orange',
-      'Cantaloupe', 'Currant', 'Cherry', 'Cherimoya', 'Cloudberry',
-      'Coconut', 'Cranberry', 'Clementine',
-      'Damson', 'Date', 'Dragonfruit', 'Durian',
-      'Elderberry',
-      'Feijoa', 'Fig',
-      'Goji berry', 'Gooseberry', 'Grape', 'Grapefruit', 'Guava',
-      'Honeydew', 'Huckleberry',
-      'Jabouticaba', 'Jackfruit', 'Jambul', 'Jujube', 'Juniper berry',
-      'Kiwi fruit', 'Kumquat',
-      'Lemon', 'Lime', 'Loquat', 'Lychee',
-      'Nectarine',
-      'Mango', 'Marion berry', 'Melon', 'Miracle fruit', 'Mulberry', 'Mandarine',
-      'Olive', 'Orange',
-      'Papaya', 'Passionfruit', 'Peach', 'Pear', 'Persimmon', 'Physalis', 'Plum', 'Pineapple',
-      'Pumpkin', 'Pomegranate', 'Pomelo', 'Purple Mangosteen',
-      'Quince',
-      'Raspberry', 'Raisin', 'Rambutan', 'Redcurrant',
-      'Salal berry', 'Satsuma', 'Star fruit', 'Strawberry', 'Squash', 'Salmonberry',
-      'Tamarillo', 'Tamarind', 'Tomato', 'Tangerine',
-      'Ugli fruit',
-      'Watermelon'
-    ]
+    const { keywords } = this.props.keywords
     return (
       <div>
         <div className='row end-xs'>
@@ -89,7 +64,7 @@ class SearchPictogramsView extends Component {
           </div>
         </div>
         <div className='row start-xs'>
-          <SearchBox value={inputValue} helpText={helpText} fullWidth={true} dataSource={fruit} onChange={this.props.changePictogramsKeyword} />
+          <SearchBox value={inputValue} helpText={helpText} fullWidth={true} dataSource={keywords} onChange={this.props.changePictogramsKeyword} />
           <hr />
           {this.renderErrorMessage()}
         </div>
@@ -114,6 +89,7 @@ SearchPictogramsView.propTypes = {
   changePictogramsKeyword: PropTypes.func.isRequired,
   loadKeywords: PropTypes.func.isRequired,
   inputValue: PropTypes.string.isRequired,
+  keywords: PropTypes.object,
   // Injected by React Router
   children: PropTypes.node
 }
@@ -122,10 +98,12 @@ const mapStateToProps = state => {
   const errorMessage = state.errorMessage
   const inputValue = state.searchText
   const { entities: { keywords } } = state
+  const {locale} = state
+
   return {
     errorMessage,
     inputValue,
-    keywords
+    keywords: keywords[locale]
   }
 }
 
