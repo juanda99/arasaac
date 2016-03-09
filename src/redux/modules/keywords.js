@@ -11,7 +11,7 @@ function fetchKeywords() {
   return {
     [CALL_API]: {
       types: [ KEYWORDS_REQUEST, KEYWORDS_SUCCESS, KEYWORDS_FAILURE ],
-      endpoint: 'users/56deee9a85cd6a05c58af61a',
+      endpoint: 'users/56e01555bed6cb1a096facb6',
       schema: Schemas.KEYWORDS
     }
   }
