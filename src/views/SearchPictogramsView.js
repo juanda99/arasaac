@@ -31,7 +31,7 @@ class SearchPictogramsView extends Component {
   }
 
   componentDidMount() {
-    this.props.loadKeywords()
+    this.props.loadKeywords(this.props.locale)
   }
 
   renderErrorMessage() {
@@ -90,6 +90,7 @@ SearchPictogramsView.propTypes = {
   loadKeywords: PropTypes.func.isRequired,
   inputValue: PropTypes.string.isRequired,
   keywords: PropTypes.object,
+  locale: PropTypes.string.required,
   // Injected by React Router
   children: PropTypes.node
 }
@@ -103,6 +104,7 @@ const mapStateToProps = state => {
   return {
     errorMessage,
     inputValue,
+    locale,
     keywords: keywords[locale]
   }
 }

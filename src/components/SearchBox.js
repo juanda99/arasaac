@@ -51,6 +51,9 @@ class SearchBox extends Component {
   }
 }
 
+SearchBox.contextTypes = {
+  router: React.PropTypes.object.isRequired
+}
 
 SearchBox.propTypes = {
   dataSource: PropTypes.array.isRequired,

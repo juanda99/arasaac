@@ -11,7 +11,7 @@ function fetchKeywords() {
   return {
     [CALL_API]: {
       types: [ KEYWORDS_REQUEST, KEYWORDS_SUCCESS, KEYWORDS_FAILURE ],
-      endpoint: 'users/56e01555bed6cb1a096facb6',
+      endpoint: 'keywords',
       schema: Schemas.KEYWORDS
     }
   }
@@ -19,9 +19,9 @@ function fetchKeywords() {
 
 // Fetches all keywords for pictograms from our API unless it is cached.
 // Relies on Redux Thunk middleware.
-export function loadKeywords() {
+export function loadKeywords(locale) {
   return (dispatch, getState) => {
-    const keywords = getState().entities.keywords
+    const keywords = getState().entities.keywords[locale].keywords
     if (!isEmpty(keywords)) {
       return null
     }
