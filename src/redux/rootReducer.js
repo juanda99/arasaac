@@ -6,7 +6,7 @@ import errorMessage from './modules/error'
 import searchText from './modules/searchText'
 
 // Updates an entity cache in response to any action with response.entities.
-function entities(state = { users: {}, repos: {}, keywords: { 'en': { 'keywords': [] } } }, action) {
+function entities(state = { users: {}, repos: {}, searchs: {}, keywords: { 'en': { 'keywords': [] } } }, action) {
   if (action.response && action.response.entities) {
     return merge({}, state, action.response.entities)
   }

@@ -23,7 +23,7 @@ class SearchBox extends Component {
 
   handleUpdateInput = t => {
     if (t.keyCode === 13) {
-      let link = `/pictograms/keyword/${t}`
+      let link = `/pictograms/search/${t}`
       this.context.router.push(link)
     }
     this.props.onChange(t)
@@ -32,14 +32,14 @@ class SearchBox extends Component {
   handleSubmit = t => {
     console.log(t)
     this.props.onChange(t)
-    let link = `/pictograms/keyword/${t}`
+    let link = `/pictograms/search/${t}`
     this.context.router.push(link)
   }
 
   render() {
     let dataSource = this.props.dataSource
     let helpText = this.props.helpText
-    let link = `/pictograms/keyword/${this.props.value}`
+    let link = `/pictograms/search/${this.props.value}`
     // if (typeof dataSource === 'undefined') dataSource = []
     return (
       <div>

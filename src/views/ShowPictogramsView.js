@@ -1,8 +1,12 @@
-import React, {Component} from 'react'
+import React, {Component, PropTypes} from 'react'
+import { loadPictograms } from 'redux/modules/pictograms'
+import { connect } from 'react-redux'
+
 import Tabs from 'material-ui/lib/tabs/tabs'
 import Tab from 'material-ui/lib/tabs/tab'
 // From https://github.com/oliviertassinari/react-swipeable-views
 import SwipeableViews from 'react-swipeable-views'
+
 const styles = {
   button: {
     margin: 22
@@ -18,7 +22,23 @@ const styles = {
     overflow: 'hidden'
   }
 }
+
+function loadData(props) {
+  const { searchText } = props
+  props.loadPictograms(searchText)
+}
+
 class ShowPictogramsView extends Component {
+  componentWillMount() {
+    loadData(this.props)
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.searchText !== this.props.searchText) {
+      loadData(nextProps)
+    }
+  }
+
   render() {
     return (
       <div>
@@ -42,4 +62,9 @@ class ShowPictogramsView extends Component {
   }
 }
 
-export default ShowPictogramsView
+ShowPictogramsView.propTypes = {
+  searchText: PropTypes.string.isRequired,
+  loadPictograms: PropTypes.func.isRequired
+}
+
+export default connect('', {loadPictograms})(ShowPictogramsView)

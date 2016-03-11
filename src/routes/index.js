@@ -43,7 +43,7 @@ export default store => (
     <Redirect from='pictograms' to='/pictograms/search' />
     <Route path='pictograms'>
       <Route path='search' component={SearchPictogramsView}>
-        <Route path='/pictograms/keyword/:keyword' component={ShowPictogramsView} />
+        <Route path='/pictograms/search/:searchText' component={ShowPictogramsView} />
         <Route path='/pictograms/id/:id' component={PictogramView} />
       </Route>
       <Route path='api' component={HomeView} />
