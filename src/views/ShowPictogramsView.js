@@ -29,6 +29,7 @@ function loadData(props) {
 }
 
 class ShowPictogramsView extends Component {
+
   componentWillMount() {
     loadData(this.props)
   }
@@ -67,4 +68,11 @@ ShowPictogramsView.propTypes = {
   loadPictograms: PropTypes.func.isRequired
 }
 
-export default connect('', {loadPictograms})(ShowPictogramsView)
+function mapStateToProps(state, ownProps) {
+  const { searchText } = ownProps.params
+  return {
+    searchText
+  }
+}
+
+export default connect(mapStateToProps, {loadPictograms})(ShowPictogramsView)

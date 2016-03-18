@@ -50,29 +50,20 @@ function callApi(endpoint, schema) {
 
 // Read more about Normalizr: https://github.com/gaearon/normalizr
 
-const userSchema = new Schema('users', {
-  idAttribute: 'login'
-})
-
-const repoSchema = new Schema('repos', {
-  idAttribute: 'fullName'
-})
-
-repoSchema.define({
-  owner: userSchema
+const pictoSchema = new Schema('pictograms', {
+  idAttribute: '_id'
 })
 
 const keywordSchema = new Schema('keywords', {
   idAttribute: 'locale'
 })
 
-// Schemas for Github API responses.
+// Schemas for API responses.
 export const Schemas = {
-  USER: userSchema,
-  USER_ARRAY: arrayOf(userSchema),
-  REPO: repoSchema,
-  REPO_ARRAY: arrayOf(repoSchema),
-  KEYWORDS: keywordSchema
+  KEYWORDS: keywordSchema,
+  PICTO: pictoSchema,
+  PICTO_ARRAY: arrayOf(pictoSchema)
+
 }
 
 // Action key that carries API call info interpreted by this Redux middleware.
