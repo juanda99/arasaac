@@ -51,7 +51,7 @@ function callApi(endpoint, schema) {
 // Read more about Normalizr: https://github.com/gaearon/normalizr
 
 const pictoSchema = new Schema('pictograms', {
-  idAttribute: '_id'
+  idAttribute: 'id'
 })
 
 const keywordSchema = new Schema('keywords', {
