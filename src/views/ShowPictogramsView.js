@@ -1,7 +1,8 @@
 import React, {Component, PropTypes} from 'react'
 import { loadPictograms } from 'redux/modules/pictograms'
 import { connect } from 'react-redux'
-
+import List from 'components/List'
+import { map, keyBy } from 'lodash/zip'
 import Tabs from 'material-ui/lib/tabs/tabs'
 import Tab from 'material-ui/lib/tabs/tab'
 // From https://github.com/oliviertassinari/react-swipeable-views
@@ -30,6 +31,12 @@ function loadData(props) {
 
 class ShowPictogramsView extends Component {
 
+  constructor(props) {
+    super(props)
+    this.renderRepo = this.renderRepo.bind(this)
+    this.handleLoadMoreClick = this.handleLoadMoreClick.bind(this)
+  }
+
   componentWillMount() {
     loadData(this.props)
   }
@@ -38,6 +45,17 @@ class ShowPictogramsView extends Component {
     if (nextProps.searchText !== this.props.searchText) {
       loadData(nextProps)
     }
+  }
+
+  handleLoadMoreClick() {
+    this.props.loadPictograms(this.props.searchText, true)
+  }
+
+  renderPictogram(pictogram) {
+    return (
+      <Pictogram picto={pictogram}
+            key={pictogram.id} />
+    )
   }
 
   render() {
@@ -58,6 +76,14 @@ class ShowPictogramsView extends Component {
             slide n°2
           </div>
         </SwipeableViews>
+
+        <List renderItem={this.renderPictogram}
+              items={pictograms}
+              onLoadMoreClick={this.handleLoadMoreClick}
+              loadingLabel={`Cargando pictogramas sobre ${searchText}...`}
+              {...starredPagination} />
+
+
       </div>
     )
   }
@@ -70,8 +96,25 @@ ShowPictogramsView.propTypes = {
 
 function mapStateToProps(state, ownProps) {
   const { searchText } = ownProps.params
+  const {
+    pagination: { pictogramsBySearchText },
+    entities: { pictograms }
+  } = state
+  let pictogramsPagination = pictogramsBySearchText[searchText] || { ids: [] }
+  /* http://stackoverflow.com/questions/36129060/extend-one-object-with-another-using-lodash/36130327#36130327 */
+  /*
+  let listOfPictograms = pictogramsBySearchText[searchText]
+  var myIds = keyBy(listOfPictograms.ids)
+  map(myIds, function(key, value) {
+    myIds[key] = pictograms[key]
+  })
+  listOfPictograms.ids = myIds
+  */
+  const pictograms = pictogramsPagination.ids.map(id => pictograms[id])
+
   return {
-    searchText
+    searchText,
+    pictograms
   }
 }
 
