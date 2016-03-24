@@ -1,8 +1,9 @@
 import React, {Component, PropTypes} from 'react'
 import { loadPictograms } from 'redux/modules/pictograms'
+import {Pictogram} from 'components/Pictogram'
 import { connect } from 'react-redux'
 import List from 'components/List'
-import { map, keyBy } from 'lodash/zip'
+// import { map, keyBy } from 'lodash/zip'
 import Tabs from 'material-ui/lib/tabs/tabs'
 import Tab from 'material-ui/lib/tabs/tab'
 // From https://github.com/oliviertassinari/react-swipeable-views
@@ -35,6 +36,7 @@ class ShowPictogramsView extends Component {
     super(props)
     this.renderRepo = this.renderRepo.bind(this)
     this.handleLoadMoreClick = this.handleLoadMoreClick.bind(this)
+    this.searchText = this.props.searchText
   }
 
   componentWillMount() {
@@ -59,6 +61,7 @@ class ShowPictogramsView extends Component {
   }
 
   render() {
+    const { searchText, pictogramsList } = this.props
     return (
       <div>
         <div className='row end-xs'>
@@ -78,12 +81,9 @@ class ShowPictogramsView extends Component {
         </SwipeableViews>
 
         <List renderItem={this.renderPictogram}
-              items={pictograms}
-              onLoadMoreClick={this.handleLoadMoreClick}
-              loadingLabel={`Cargando pictogramas sobre ${searchText}...`}
-              {...starredPagination} />
-
-
+          items={pictogramsList}
+          onLoadMoreClick={this.handleLoadMoreClick}
+          loadingLabel={`Cargando pictogramas sobre ${searchText}...`} />
       </div>
     )
   }
@@ -91,7 +91,8 @@ class ShowPictogramsView extends Component {
 
 ShowPictogramsView.propTypes = {
   searchText: PropTypes.string.isRequired,
-  loadPictograms: PropTypes.func.isRequired
+  loadPictograms: PropTypes.func.isRequired,
+  pictogramsList: React.PropTypes.arrayOf(React.PropTypes.object)
 }
 
 function mapStateToProps(state, ownProps) {
@@ -110,11 +111,11 @@ function mapStateToProps(state, ownProps) {
   })
   listOfPictograms.ids = myIds
   */
-  const pictograms = pictogramsPagination.ids.map(id => pictograms[id])
+  const pictogramsList = pictogramsPagination.ids.map(id => pictograms[id])
 
   return {
     searchText,
-    pictograms
+    pictogramsList
   }
 }
 

@@ -26,7 +26,7 @@ export default class Pictogram extends Component {
   }
 }
 
-Pictograms.propTypes = {
+Pictogram.propTypes = {
   pictogram: PropTypes.shape({
     name: PropTypes.string.isRequired,
     tags: PropTypes.array,
