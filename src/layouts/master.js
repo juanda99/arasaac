@@ -5,6 +5,7 @@ import IconButton from 'material-ui/lib/icon-button'
 import IconMenu from 'material-ui/lib/menus/icon-menu'
 import MoreVertIcon from 'material-ui/lib/svg-icons/navigation/more-vert'
 import MenuItem from 'material-ui/lib/menus/menu-item'
+import { Link } from 'react-router'
 import {Spacing} from 'material-ui/lib/styles'
 import Footer from './footer'
 import { StyleResizable } from 'material-ui/lib/mixins'
@@ -242,7 +243,8 @@ const Master = React.createClass({
       showMenuIconButton = false
 
       styles.leftNav = {
-        zIndex: styles.appBar.zIndex - 1
+        zIndex: styles.appBar.zIndex - 1,
+        fontWeight: 300
       }
       styles.root.paddingLeft = 256
       styles.footer.paddingLeft = 256
@@ -274,13 +276,13 @@ const Master = React.createClass({
               targetOrigin={{horizontal: 'right', vertical: 'top'}}
               anchorOrigin={{horizontal: 'right', vertical: 'top'}}
             >
-              <MenuItem primaryText={<FormattedMessage {...messages.signin} />} linkButton={true} href='login'/>
-              <MenuItem primaryText={<FormattedMessage {...messages.register} />} linkButton={true} href='signup'/>
-              <MenuItem primaryText={<FormattedMessage {...messages.userProfile} />} linkButton={true} href='profile'/>
-              <MenuItem primaryText={<FormattedMessage {...messages.userMaterial} />} linkButton={true} href='usermaterial'/>
-              <MenuItem primaryText={<FormattedMessage {...messages.uploadMaterial} />} linkButton={true} href='upload'/>
-              <MenuItem primaryText={<FormattedMessage {...messages.translateArasaac} />} linkButton={true} href='translate'/>
-              <MenuItem primaryText={<FormattedMessage {...messages.signout} />} linkButton={true} href='logout'/>
+              <MenuItem primaryText={<FormattedMessage {...messages.signin} />} linkButton={true} containerElement={<Link to='/login' />}/>
+              <MenuItem primaryText={<FormattedMessage {...messages.register} />} linkButton={true} containerElement={<Link to='/register' />}/>
+              <MenuItem primaryText={<FormattedMessage {...messages.userProfile} />} linkButton={true} containerElement={<Link to='/profile' />}/>
+              <MenuItem primaryText={<FormattedMessage {...messages.userMaterial} />} linkButton={true} containerElement={<Link to='/usermaterial' />}/>
+              <MenuItem primaryText={<FormattedMessage {...messages.uploadMaterial} />} linkButton={true} containerElement={<Link to='/upload' />}/>
+              <MenuItem primaryText={<FormattedMessage {...messages.translateArasaac} />} linkButton={true} containerElement={<Link to='/translate' />}/>
+              <MenuItem primaryText={<FormattedMessage {...messages.signout} />} linkButton={true} href='/logout'/>
             </IconMenu>
           }
         />
