@@ -14,6 +14,7 @@ import SearchPictogramsView from 'views/SearchPictogramsView'
 import ShowPictogramsView from 'views/ShowPictogramsView'
 import PictogramView from 'views/PictogramView'
 import PictogramsGridView from 'views/PictogramsGridView'
+import RegisterView from 'views/RegisterView'
 // import SearchView from 'views/SearchView'
 // import ApiView from 'views/ApiView'
 // import BingoView from 'views/BingoView'
@@ -65,7 +66,7 @@ export default store => (
     </Route>
     // User Routes
     <Route path='signin' component={HomeView} />
-    <Route path='register' component={HomeView} />
+    <Route path='register' component={RegisterView} />
     <Route path='profile' component={HomeView} onEnter={requireAuth} />
     <Route path='usermaterial' component={HomeView} onEnter={requireAuth} />
     <Route path='upload' component={HomeView} onEnter={requireAuth} />
