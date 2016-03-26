@@ -1,36 +1,7 @@
-:global {
-  @import 'base';
-  @import 'vendor/normalize';
-
-  // Some best-practice CSS that's useful for most apps
-  // Just remove them if they're not what you want
-  html {
-    box-sizing: border-box;
-  }
-
-  html,
-  body, #root {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-  }
-  body{padding-top: 64px;}
-
-  *,
-  *:before,
-  *:after {
-    box-sizing: inherit;
-  }
-
-  * {font-family: 'Roboto', sans-serif;}
-
-  /* lo siguiente es para el react-data-grid, debería ir separado... */
-
 .react-grid-Container {
   clear: both;
   margin-top: 0;
   padding: 0;
-  margin: 10;
 }
 
 .react-grid-Toolbar {
@@ -509,26 +480,4 @@ textarea.react-autocomplete-Autocomplete__search {
 
 .react-grid-Cell.readonly {
   background-color : black;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
