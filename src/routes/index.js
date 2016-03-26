@@ -13,7 +13,7 @@ import BingoView from 'views/BingoView/BingoView'
 import SearchPictogramsView from 'views/SearchPictogramsView'
 import ShowPictogramsView from 'views/ShowPictogramsView'
 import PictogramView from 'views/PictogramView'
-import PictogramsGridView from 'views/PictogramsGridView'
+import PictogramsGridView from 'views/PictogramsGridView/PictogramsGridView'
 import RegisterView from 'views/RegisterView'
 // import SearchView from 'views/SearchView'
 // import ApiView from 'views/ApiView'
@@ -70,7 +70,7 @@ export default store => (
     <Route path='profile' component={HomeView} onEnter={requireAuth} />
     <Route path='usermaterial' component={HomeView} onEnter={requireAuth} />
     <Route path='upload' component={HomeView} onEnter={requireAuth} />
-    <Route path='translate' component={PictogramsGridView} onEnter={requireAuth} />
+    <Route path='translate' component={PictogramsGridView} />
     <Route path='signout' component={HomeView} onEnter={requireAuth} />
   </Route>
 )

@@ -5,11 +5,11 @@ import RaisedButton from 'material-ui/lib/raised-button'
 import Paper from 'material-ui/lib/paper'
 
 const style = {
-  height: 200,
+  height: 250,
   width: 300,
-  margin: 30,
   textAlign: 'center',
-  display: 'inline-block'
+  display: 'inline-block',
+  margin: 30
 }
 
 const RegisterForm = React.createClass({
@@ -45,39 +45,38 @@ const RegisterForm = React.createClass({
     let { wordsError } = this.errorMessages
 
     return (
-      <Paper style={style} zDepth={2}>
-      <Formsy.Form
-        onValid={this.enableButton}
-        onInvalid={this.disableButton}
-        onValidSubmit={this.submitForm}
-      >
-
-        <FormsyText
-          name='name'
-          validations='isWords'
-          validationError={wordsError}
-          required
-          hintText='What is your name?'
-          value='Bob'
-          floatingLabelText='Name'
-        />
-        <FormsyText
-          name='name'
-          type='password'
-          validations='isWords'
-          validationError={wordsError}
-          required
-          hintText='What is your password?'
-          value=''
-          floatingLabelText='Password'
-        />
-        <RaisedButton
-          type='submit'
-          label='Submit'
-          disabled={!this.state.canSubmit}
-        />
-      </Formsy.Form>
-      </Paper>
+      <div className='row center-xs'>
+        <div className='col-xs-12 col-sm-6'>
+          <Paper style={style} zDepth={2}>
+            <Formsy.Form onValid={this.enableButton} onInvalid={this.disableButton} onValidSubmit={this.submitForm}>
+              <FormsyText
+                name='name'
+                validations='isWords'
+                validationError={wordsError}
+                required
+                hintText='What is your name?'
+                value='Bob'
+                floatingLabelText='Name'/>
+              <FormsyText
+                name='name'
+                type='password'
+                validations='isWords'
+                validationError={wordsError}
+                required
+                hintText='What is your password?'
+                value=''
+                floatingLabelText='Password'/>
+              <RaisedButton type='submit' label='Registrarse' secondary={true} />
+              <RaisedButton
+                type='submit'
+                label='Entrar'
+                disabled={!this.state.canSubmit}
+                primary={true} />
+              <p><a href='prueba'>He olvidado mi contraseña</a></p>
+            </Formsy.Form>
+          </Paper>
+        </div>
+      </div>
     )
   }
 })
