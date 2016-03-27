@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 var ReactDataGrid = require('react-data-grid/addons')
+import LinearProgress from 'material-ui/lib/linear-progress'
+var Tokenizer = require('react-typeahead').Tokenizer;
 
 var Toolbar = ReactDataGrid.Toolbar
 var _rows = []
@@ -9,11 +11,34 @@ for (var i = 1; i < 1000; i++) {
     name: 'Name_en ' + i,
     tags: 'Tags_en ' + i,
     filters: 'Filter_tags_en ' + i,
-    name_locale: 'Title_locale ' + i,
+    name_locale: i,
     tags_locale: 'Tags_locale ' + i,
     filters_locale: 'Filter_tags_locale ' + i
   })
 }
+
+//Custom Formatter component
+var NameFormatter = React.createClass({
+  render:function(){
+    var percentComplete = this.props.value 
+    return (
+      <LinearProgress mode='determinate' value={percentComplete} />
+    )
+  }
+})
+
+var TagsFormatter = React.createClass({
+  render:function(){
+    var valor = this.props.value 
+    return (
+      <Tokenizer defaultValue={valor}
+        name='spamselect'
+        options={
+          ['foobar', 'spameggs', 'hameggs',
+          'spamfoo', 'spam']} />
+    )
+  }
+})
 
 // A rowGetter function is required by the grid to retrieve a row for a given index
 var rowGetter = function(i) {
@@ -54,14 +79,16 @@ var columns = [
     resizable: true,
     width: 220,
     filterable: true,
-    editable: true
+    editable: true,
+    formatter: NameFormatter
   },
   {
     key: 'tags_locale',
     name: 'Tags',
     resizable: true,
     filterable: true,
-    editable: true
+    editable: true,
+    formatter: TagsFormatter
   },
   {
     key: 'filters_locale',
