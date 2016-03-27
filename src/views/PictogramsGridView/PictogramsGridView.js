@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 var ReactDataGrid = require('react-data-grid/addons')
 import LinearProgress from 'material-ui/lib/linear-progress'
-var Tokenizer = require('react-typeahead').Tokenizer;
+var Tokenizer = require('react-typeahead').Tokenizer
 
 var Toolbar = ReactDataGrid.Toolbar
 var _rows = []
@@ -87,7 +87,6 @@ var columns = [
     name: 'Tags',
     resizable: true,
     filterable: true,
-    editable: true,
     formatter: TagsFormatter
   },
   {
