@@ -53,19 +53,22 @@ var columns = [
     name: 'Name',
     resizable: true,
     width: 220,
-    filterable: true
+    filterable: true,
+    editable: true
   },
   {
     key: 'tags_locale',
     name: 'Tags',
     resizable: true,
-    filterable: true
+    filterable: true,
+    editable: true
   },
   {
     key: 'filters_locale',
     name: 'Filters',
     resizable: true,
-    filterable: true
+    filterable: true,
+    editable: true
   }
 ]
 
@@ -127,8 +130,8 @@ class PictogramsGridView extends Component {
       <div className='row-fluid'>
         <div className='col-xs-12'>
           <ReactDataGrid columns={columns} rowGetter={this.rowGetter} rowsCount={this.state.rows.length}
-           toolbar={<Toolbar enableFilter={true}/>} onAddFilter={this.handleFilterChange} 
-           onRowUpdated={this.handleRowUpdated} minHeight={500} />
+            toolbar={<Toolbar enableFilter={true}/>} onAddFilter={this.handleFilterChange}
+             enableCellSelect={true} onRowUpdated={this.handleRowUpdated} minHeight={500} />
         </div>
       </div>
     )
