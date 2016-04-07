@@ -88,6 +88,7 @@
     "react-redux": "^4.0.0",
     "react-router": "^2.0.0",
     "react-router-redux": "^4.0.0-beta",
+    "react-select": "^1.0.0-beta12",
     "react-swipeable-views": "^0.4.2",
     "react-tap-event-plugin": "^0.2.1",
     "react-title-component": "^1.0.1",

@@ -1,7 +1,10 @@
 import React, {Component} from 'react'
 var ReactDataGrid = require('react-data-grid/addons')
-import LinearProgress from 'material-ui/lib/linear-progress'
-var Tokenizer = require('react-typeahead').Tokenizer
+import TagsEditor from 'components/TagsEditor'
+import TagsFormatter from 'components/TagsFormatter'
+var options = ['prueba1', 'prueba2', 'prueba3', 'prueba4', 'asdfasñdlk fjkñasñldkf asdfj ñ']
+var tagsEditor = <TagsEditor options={options}/>
+
 
 var Toolbar = ReactDataGrid.Toolbar
 var _rows = []
@@ -17,28 +20,25 @@ for (var i = 1; i < 1000; i++) {
   })
 }
 
-//Custom Formatter component
-var NameFormatter = React.createClass({
+var PercentCompleteFormatter = React.createClass({
   render:function(){
-    var percentComplete = this.props.value 
-    return (
-      <LinearProgress mode='determinate' value={percentComplete} />
-    )
-  }
-})
 
-var TagsFormatter = React.createClass({
-  render:function(){
-    var valor = this.props.value 
+
+    var percentComplete = this.props.value + '%';
     return (
-      <Tokenizer defaultValue={valor}
-        name='spamselect'
-        options={
-          ['foobar', 'spameggs', 'hameggs',
-          'spamfoo', 'spam']} />
-    )
-  }
-})
+      
+      <div className="progress" style={{marginTop:'20px'}}>
+        <div className="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style={{width:percentComplete}}>
+        {percentComplete}
+      </div>
+      </div>)
+
+
+      ;
+    }
+  });
+
+
 
 // A rowGetter function is required by the grid to retrieve a row for a given index
 var rowGetter = function(i) {
@@ -79,22 +79,22 @@ var columns = [
     resizable: true,
     width: 220,
     filterable: true,
-    editable: true,
-    formatter: NameFormatter
+    editable: true
   },
   {
     key: 'tags_locale',
     name: 'Tags',
     resizable: true,
     filterable: true,
+    width: 400,
+    editor: tagsEditor,
     formatter: TagsFormatter
   },
   {
     key: 'filters_locale',
     name: 'Filters',
     resizable: true,
-    filterable: true,
-    editable: true
+    filterable: true
   }
 ]
 
@@ -156,6 +156,7 @@ class PictogramsGridView extends Component {
       <div className='row-fluid'>
         <div className='col-xs-12'>
           <ReactDataGrid columns={columns} rowGetter={this.rowGetter} rowsCount={this.state.rows.length}
+          rowHeight={100}
             toolbar={<Toolbar enableFilter={true}/>} onAddFilter={this.handleFilterChange}
              enableCellSelect={true} onRowUpdated={this.handleRowUpdated} minHeight={500} />
         </div>
