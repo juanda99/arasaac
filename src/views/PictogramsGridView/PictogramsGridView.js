@@ -5,8 +5,8 @@ import TagsFormatter from 'components/TagsFormatter'
 var options = ['prueba1', 'prueba2', 'prueba3', 'prueba4', 'asdfasñdlk fjkñasñldkf asdfj ñ']
 var tagsEditor = <TagsEditor options={options}/>
 
-
 var Toolbar = ReactDataGrid.Toolbar
+
 var _rows = []
 for (var i = 1; i < 1000; i++) {
   _rows.push({
@@ -19,24 +19,6 @@ for (var i = 1; i < 1000; i++) {
     filters_locale: 'Filter_tags_locale ' + i
   })
 }
-
-var PercentCompleteFormatter = React.createClass({
-  render:function(){
-
-
-    var percentComplete = this.props.value + '%';
-    return (
-      
-      <div className="progress" style={{marginTop:'20px'}}>
-        <div className="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style={{width:percentComplete}}>
-        {percentComplete}
-      </div>
-      </div>)
-
-
-      ;
-    }
-  });
 
 
 
@@ -76,8 +58,7 @@ var columns = [
   {
     key: 'name_locale',
     name: 'Name',
-    resizable: true,
-    width: 220,
+    resizable: true,    width: 220,
     filterable: true,
     editable: true
   },
