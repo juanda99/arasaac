@@ -8,11 +8,14 @@ class TagsFormatter extends Component {
   }
 
   render() {
-    let tags, formattedTags
-    tags = this.props.value.split(',')
-    tags.forEach(function(tag) {
-      formattedTags = '<span>' + tag + '</span>'
-    })
+    let tags = '', formattedTags
+    var field = this.props.value
+    if (field.length) {
+	  tags = field.split(',')
+	    tags.forEach(function(tag) {
+	    formattedTags = '<span>' + tag + '</span>'
+	  })
+	}	
 
     return (
       <div>{tags}</div>
