@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import Select from 'react-select'
 import ReactDOM from 'react-dom'
+require('./TagsEditor.scss')
 
 const ExcelColumn = {
   name: React.PropTypes.string.isRequired,
@@ -48,7 +49,6 @@ class TagsEditor extends Component {
         options.push({label: name.caption, value: name.id})
       }
     })
-    console.log(options)
     return (
       <Select refs='multiselect' multi simpleValue value={this.state.value} options={options}
         placeholder='Select your favourite(s)' onChange={this.handleSelectChange} />

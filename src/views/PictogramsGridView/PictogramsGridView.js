@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+require('./GridView.scss')
 var ReactDataGrid = require('react-data-grid/addons')
 import TagsEditor from 'components/TagsEditor'
 import TagsFormatter from 'components/TagsFormatter'
