@@ -20,7 +20,7 @@ class TagsEditor extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      value: []
+      value: this.props.value
     }
     this.handleSelectChange = this.handleSelectChange.bind(this)
   }
