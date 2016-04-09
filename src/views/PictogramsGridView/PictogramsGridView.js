@@ -21,13 +21,6 @@ for (var i = 1; i < 1000; i++) {
   })
 }
 
-
-
-// A rowGetter function is required by the grid to retrieve a row for a given index
-var rowGetter = function(i) {
-  return _rows[i]
-}
-
 var columns = [
   {
     key: '_id',
@@ -59,7 +52,8 @@ var columns = [
   {
     key: 'name_locale',
     name: 'Name',
-    resizable: true,    width: 220,
+    resizable: true,
+    width: 220,
     filterable: true,
     editable: true
   },
@@ -138,9 +132,9 @@ class PictogramsGridView extends Component {
       <div className='row-fluid'>
         <div className='col-xs-12'>
           <ReactDataGrid columns={columns} rowGetter={this.rowGetter} rowsCount={this.state.rows.length}
-          rowHeight={100}
+            rowHeight={100}
             toolbar={<Toolbar enableFilter={true}/>} onAddFilter={this.handleFilterChange}
-             enableCellSelect={true} onRowUpdated={this.handleRowUpdated} minHeight={500} />
+            enableCellSelect={true} onRowUpdated={this.handleRowUpdated} minHeight={500} />
         </div>
       </div>
     )

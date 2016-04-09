@@ -56,7 +56,7 @@ class ShowPictogramsView extends Component {
   renderPictogram(pictogram) {
     return (
       <Pictogram picto={pictogram}
-            key={pictogram.id} />
+        key={pictogram.id} />
     )
   }
 
