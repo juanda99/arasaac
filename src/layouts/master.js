@@ -99,6 +99,10 @@ const Master = React.createClass({
     location: React.PropTypes.object
   },
 
+  contextTypes: {
+    router: React.PropTypes.object.isRequired
+  },
+
   childContextTypes: {
     muiTheme: React.PropTypes.object
   },
@@ -199,7 +203,7 @@ const Master = React.createClass({
   },
 
   handleRequestChangeList(event, value) {
-    this.props.history.push(value)
+    this.context.router.push(value)
     this.setState({
       leftNavOpen: false
     })
@@ -213,7 +217,6 @@ const Master = React.createClass({
 
   render() {
     const {
-      history,
       location,
       children
     } = this.props
@@ -225,13 +228,14 @@ const Master = React.createClass({
     const {prepareStyles} = this.state.muiTheme
 
     const styles = this.getStyles()
+    const router = this.context.router
     const title =
-      history.isActive('/pictograms/search') ? <FormattedMessage {...messages.pictogramsSearch} />
-      : history.isActive('/pictograms/api') ? <FormattedMessage {...messages.api} />
-      : history.isActive('/pictograms/catalogs') ? <FormattedMessage {...messages.catalogs} />
-      : history.isActive('/materials') ? <FormattedMessage {...messages.materials} />
-      : history.isActive('/onlinetools') ? <FormattedMessage {...messages.onlineTools} />
-      : history.isActive('/software') ? <FormattedMessage {...messages.software} />
+      router.isActive('/pictograms/search') ? <FormattedMessage {...messages.pictogramsSearch} />
+      : router.isActive('/pictograms/api') ? <FormattedMessage {...messages.api} />
+      : router.isActive('/pictograms/catalogs') ? <FormattedMessage {...messages.catalogs} />
+      : router.isActive('/materials') ? <FormattedMessage {...messages.materials} />
+      : router.isActive('/onlinetools') ? <FormattedMessage {...messages.onlineTools} />
+      : router.isActive('/software') ? <FormattedMessage {...messages.software} />
       : ''
 
     let docked = false
