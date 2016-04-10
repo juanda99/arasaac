@@ -79,7 +79,7 @@ let HomeFeature = React.createClass({
 
     if (this.isDeviceSize(StyleResizable.statics.Sizes.MEDIUM) ||
         this.isDeviceSize(StyleResizable.statics.Sizes.LARGE)) {
-      styles.root = this.mergeAndPrefix(
+      styles.root = Object.assign(
         styles.root,
         styles.rootWhenMedium,
         this.props.firstChild && styles.rootWhenMediumAndFirstChild,
@@ -110,9 +110,10 @@ let HomeFeature = React.createClass({
         zDepth={this.state.zDepth}
         onMouseEnter={this._onMouseEnter}
         onMouseLeave={this._onMouseLeave}
-        style={this.mergeAndPrefix(
+        style={Object.assign(
           styles.root,
-          this.props.lastChild && styles.rootWhenLastChild)}>
+          this.props.lastChild && styles.rootWhenLastChild)}
+      >
         <h3 style={styles.heading}>{this.props.heading}</h3>
         <Link to={this.props.route}>
           <img style={styles.image} src={this.props.img} />
