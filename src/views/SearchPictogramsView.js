@@ -10,6 +10,13 @@ import { changePictogramsKeyword } from 'redux/modules/searchText'
 import { loadKeywords } from 'redux/modules/keywords'
 // import ActionGrade from 'material-ui/lib/svg-icons/action/grade'
 import Filter from 'svg-icons/filter'
+const messages = defineMessages({
+  advancedSearch: {
+    id: 'searchPictograms.advancedSearch',
+    description: 'label for filtering Search',
+    defaultMessage: 'Advanced Search'
+  }
+})
 
 class SearchPictogramsView extends Component {
 
@@ -48,7 +55,7 @@ class SearchPictogramsView extends Component {
       <div>
         <div className='row end-xs'>
           <div className='col-xs-6 col-sm-4 col-md-3'>
-            <Toggle label='Búsqueda avanzada' />
+            <Toggle label={<FormattedMessage {...messages.advancedSearch} />} />
           </div>
         </div>
         <div className='row start-xs'>
