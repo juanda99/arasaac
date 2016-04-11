@@ -12,6 +12,7 @@ var _rows = []
 for (var i = 1; i < 1000; i++) {
   _rows.push({
     _id: i,
+    pictogram: 'Imagen',
     name: 'Name_en ' + i,
     tags: 'Tags_en ' + i,
     filters: 'Filter_tags_en ' + i,
@@ -27,6 +28,12 @@ var columns = [
     name: 'ID',
     resizable: true,
     width: 1
+  },
+  {
+    key: 'pictograma',
+    name: 'Pictograms',
+    resizable: true,
+    width: 120
   },
   {
     key: 'name',
@@ -70,7 +77,8 @@ var columns = [
     key: 'filters_locale',
     name: 'Filters',
     resizable: true,
-    filterable: true
+    filterable: true,
+    width: 300
   }
 ]
 
