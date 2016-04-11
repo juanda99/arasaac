@@ -10,13 +10,6 @@ import { changePictogramsKeyword } from 'redux/modules/searchText'
 import { loadKeywords } from 'redux/modules/keywords'
 // import ActionGrade from 'material-ui/lib/svg-icons/action/grade'
 import Filter from 'svg-icons/filter'
-const messages = defineMessages({
-  heading: {
-    id: 'pictograms.heading',
-    description: 'h1 text',
-    defaultMessage: 'Search Pictograms'
-  }
-})
 
 class SearchPictogramsView extends Component {
 
