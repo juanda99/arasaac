@@ -239,6 +239,7 @@ const Master = React.createClass({
       : router.isActive('/materials') ? <FormattedMessage {...messages.materials} />
       : router.isActive('/onlinetools') ? <FormattedMessage {...messages.onlineTools} />
       : router.isActive('/software') ? <FormattedMessage {...messages.software} />
+      : router.isActive('/translate') ? <FormattedMessage {...messages.translateArasaac} />
       : ''
 
     let docked = false
@@ -299,7 +300,6 @@ const Master = React.createClass({
         </div>
         : children
         }
-        <div style={{paddingTop: '8rem'}}></div>
         <Footer style={styles.footer}/>
       </div>
     )
