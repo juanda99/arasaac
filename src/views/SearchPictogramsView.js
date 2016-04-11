@@ -11,11 +11,6 @@ import { loadKeywords } from 'redux/modules/keywords'
 // import ActionGrade from 'material-ui/lib/svg-icons/action/grade'
 import Filter from 'svg-icons/filter'
 const messages = defineMessages({
-  search: {
-    id: 'pictograms.search',
-    description: 'searchBox message',
-    defaultMessage: 'Enter search text'
-  },
   heading: {
     id: 'pictograms.heading',
     description: 'h1 text',
@@ -54,7 +49,7 @@ class SearchPictogramsView extends Component {
 
   render() {
     const { children, inputValue } = this.props
-    const helpText = <FormattedMessage {...messages.search} />
+
     const { keywords } = this.props.keywords
     return (
       <div>
@@ -64,7 +59,7 @@ class SearchPictogramsView extends Component {
           </div>
         </div>
         <div className='row start-xs'>
-          <SearchBox value={inputValue} helpText={helpText} fullWidth={true} dataSource={keywords} onChange={this.props.changePictogramsKeyword} />
+          <SearchBox value={inputValue} fullWidth={true} dataSource={keywords} onChange={this.props.changePictogramsKeyword} />
           <hr />
           {this.renderErrorMessage()}
         </div>
@@ -90,7 +85,7 @@ SearchPictogramsView.propTypes = {
   loadKeywords: PropTypes.func.isRequired,
   inputValue: PropTypes.string.isRequired,
   keywords: PropTypes.object,
-  locale: PropTypes.string.required,
+  locale: PropTypes.string.isRequired,
   // Injected by React Router
   children: PropTypes.node
 }

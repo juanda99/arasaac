@@ -9,7 +9,7 @@ let HomeFeature = React.createClass({
 
   propTypes: {
     firstChild: React.PropTypes.bool,
-    heading: React.PropTypes.string,
+    heading: React.PropTypes.object,
     img: React.PropTypes.string,
     lastChild: React.PropTypes.bool,
     route: React.PropTypes.string

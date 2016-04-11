@@ -300,6 +300,7 @@ const Master = React.createClass({
         </div>
         : children
         }
+         <div style={{paddingTop: '8rem'}}></div>
         <Footer style={styles.footer}/>
       </div>
     )

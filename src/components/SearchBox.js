@@ -2,6 +2,7 @@ import React, {Component, PropTypes} from 'react'
 import AutoComplete from 'material-ui/lib/auto-complete'
 import RaisedButton from 'material-ui/lib/raised-button'
 import {Link} from 'react-router'
+import { defineMessages, injectIntl, intlShape} from 'react-intl'
 
 const styles = {
   button: {
@@ -9,6 +10,14 @@ const styles = {
     border: 0
   }
 }
+
+const messages = defineMessages({
+  search: {
+    id: 'pictograms.search',
+    description: 'searchBox message',
+    defaultMessage: 'Enter search text'
+  }
+})
 
 class SearchBox extends Component {
   constructor(props) {
@@ -37,13 +46,13 @@ class SearchBox extends Component {
   }
 
   render() {
+    const {formatMessage} = this.props.intl
     let dataSource = this.props.dataSource
-    let helpText = this.props.helpText
     let link = `/pictograms/search/${this.props.value}`
     // if (typeof dataSource === 'undefined') dataSource = []
     return (
       <div>
-        <AutoComplete ref='input' floatingLabelText={helpText} filter={AutoComplete.fuzzyFilter} dataSource={dataSource}
+        <AutoComplete ref='input' floatingLabelText={formatMessage(messages.search)} filter={AutoComplete.fuzzyFilter} dataSource={dataSource}
           onNewRequest={this.handleSubmit} onUpdateInput={this.handleUpdateInput} searchText={this.props.value} />
         <RaisedButton label='Search' primary={true} style={styles.button} containerElement={<Link to={link} />}/>
       </div>
@@ -57,9 +66,11 @@ SearchBox.contextTypes = {
 
 SearchBox.propTypes = {
   dataSource: PropTypes.array.isRequired,
-  helpText: PropTypes.string.isRequired,
+  intl: intlShape.isRequired,
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired
 }
 
-export default SearchBox
+// export default SearchBox
+
+export default injectIntl(SearchBox)
