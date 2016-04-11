@@ -154,6 +154,9 @@ const Master = React.createClass({
         paddingTop: Spacing.desktopKeylineIncrement,
         minHeight: '100%'
       },
+      leftNav: {
+        fontWeight: 100
+      },
       content: {
         margin: Spacing.desktopGutter
       },
@@ -240,15 +243,13 @@ const Master = React.createClass({
 
     let docked = false
     let showMenuIconButton = true
-
     if (this.isDeviceSize(StyleResizable.statics.Sizes.LARGE) && title !== '') {
       docked = true
       leftNavOpen = true
       showMenuIconButton = false
-
       styles.leftNav = {
         zIndex: styles.appBar.zIndex - 1,
-        fontWeight: 300
+        fontWeight: 100
       }
       styles.root.paddingLeft = 256
       styles.footer.paddingLeft = 256
