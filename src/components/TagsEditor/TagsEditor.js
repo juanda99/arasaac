@@ -15,7 +15,7 @@ class TagsEditor extends Component {
   static propTypes = {
     options: React.PropTypes.array.isRequired,
     column: React.PropTypes.shape(ExcelColumn),
-    value: React.PropTypes.array
+    value: React.PropTypes.string
   }
 
   constructor(props) {
@@ -24,6 +24,7 @@ class TagsEditor extends Component {
       value: this.props.value
     }
     this.handleSelectChange = this.handleSelectChange.bind(this)
+    this.hasResults = this.hasResults.bind(this)
   }
 
   getInputNode() {
@@ -38,6 +39,10 @@ class TagsEditor extends Component {
 
   handleSelectChange(value) {
     this.setState({value})
+  }
+
+  hasResults() {
+    return this.state.value.length > 0
   }
 
   render() {
