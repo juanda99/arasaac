@@ -1,15 +1,13 @@
 import React, {Component, PropTypes} from 'react'
 import { defineMessages, FormattedMessage } from 'react-intl'
 import SearchBox from 'components/SearchBox.js'
-import SelectCatalog from 'components/SelectCatalog'
+import FilterPictograms from 'components/FilterPictograms'
 import Toggle from 'material-ui/lib/toggle'
-import IconButton from 'material-ui/lib/icon-button'
 import { connect } from 'react-redux'
 import { resetErrorMessage } from 'redux/modules/error'
 import { changePictogramsKeyword } from 'redux/modules/searchText'
 import { loadKeywords } from 'redux/modules/keywords'
-// import ActionGrade from 'material-ui/lib/svg-icons/action/grade'
-import Filter from 'svg-icons/filter'
+
 const messages = defineMessages({
   advancedSearch: {
     id: 'searchPictograms.advancedSearch',
@@ -18,8 +16,23 @@ const messages = defineMessages({
   }
 })
 
+
 class SearchPictogramsView extends Component {
 
+  constructor(props) {
+    super(props)
+    this.handleDismissClick = this.handleDismissClick.bind(this)
+    this.toggleFilter = this.toggleFilter.bind(this)
+    this.renderErrorMessage = this.renderErrorMessage.bind(this)
+    this.state = {
+            showFilters: false
+        }
+  }
+/*
+  static defaultProps = {
+    showFilters: false    
+  }
+*/
   handleDismissClick(e) {
     this.props.resetErrorMessage()
     e.preventDefault()
@@ -28,6 +41,11 @@ class SearchPictogramsView extends Component {
   componentDidMount() {
     this.props.loadKeywords(this.props.locale)
   }
+
+  toggleFilter(){
+    this.setState({ showFilters: !this.state.showFilters })
+  }
+
 
   renderErrorMessage() {
     const { errorMessage } = this.props
@@ -55,7 +73,7 @@ class SearchPictogramsView extends Component {
       <div>
         <div className='row end-xs'>
           <div className='col-xs-6 col-sm-4 col-md-3'>
-            <Toggle label={<FormattedMessage {...messages.advancedSearch} />} />
+            <Toggle label={<FormattedMessage {...messages.advancedSearch} />} onToggle={this.toggleFilter} />
           </div>
         </div>
         <div className='row start-xs'>
@@ -63,14 +81,7 @@ class SearchPictogramsView extends Component {
           <hr />
           {this.renderErrorMessage()}
         </div>
-        <div className='row'>
-          <div className='col-xs-12 col-sm-4'>
-            <IconButton tooltip='bottom-right' touch={true} tooltipPosition='bottom-right'>
-              <Filter/>
-            </IconButton>
-            <SelectCatalog/>
-          </div>
-        </div>
+        { this.state.showFilters ? <FilterPictograms /> : null }
         {children}
       </div>
     )
@@ -85,6 +96,7 @@ SearchPictogramsView.propTypes = {
   loadKeywords: PropTypes.func.isRequired,
   inputValue: PropTypes.string.isRequired,
   keywords: PropTypes.object,
+  showFilters: PropTypes.boolean,
   locale: PropTypes.string.isRequired,
   // Injected by React Router
   children: PropTypes.node
