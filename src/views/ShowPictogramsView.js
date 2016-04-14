@@ -20,8 +20,6 @@ class ShowPictogramsView extends Component {
     this.searchText = this.props.searchText
   }
 
-
-
   componentWillMount() {
     loadData(this.props)
   }
@@ -44,11 +42,11 @@ class ShowPictogramsView extends Component {
   }
 
   render() {
-    const { searchText, pictogramsList } = this.props
+    const { searchText, pictogramsList, layout } = this.props
     return (
       <div>
         <div className='row'>
-          <ToolbarPictograms />
+          <ToolbarPictograms layout={layout}/>
         </div>
         <List renderItem={this.renderPictogram}
           items={pictogramsList}
@@ -61,6 +59,7 @@ class ShowPictogramsView extends Component {
 
 ShowPictogramsView.propTypes = {
   searchText: PropTypes.string.isRequired,
+  layout: PropTypes.string,
   loadPictograms: PropTypes.func.isRequired,
   pictogramsList: React.PropTypes.arrayOf(React.PropTypes.object)
 }
@@ -72,6 +71,9 @@ function mapStateToProps(state, ownProps) {
     entities: { pictograms }
   } = state
   let pictogramsPagination = pictogramsBySearchText[searchText] || { ids: [] }
+  let {
+    gui: {layout}
+  } = state
   /* http://stackoverflow.com/questions/36129060/extend-one-object-with-another-using-lodash/36130327#36130327 */
   /*
   let listOfPictograms = pictogramsBySearchText[searchText]
@@ -85,7 +87,8 @@ function mapStateToProps(state, ownProps) {
 
   return {
     searchText,
-    pictogramsList
+    pictogramsList,
+    layout
   }
 }
 

@@ -52,8 +52,8 @@ class SelectCatalog extends Component {
   getStyles() {
     return {
       select: {
-        fontSize: 14,
-        marginRight: 30,
+        fontSize: 13,
+        width: 220,
         marginLeft: this.state.value !== 1 ? 0 : 48
       }
     }

@@ -4,6 +4,7 @@ import merge from 'lodash/merge'
 import locale from './modules/locale'
 import errorMessage from './modules/error'
 import searchText from './modules/searchText'
+import layout from './modules/layout'
 import paginate from './paginate'
 import {PICTOGRAMS_REQUEST, PICTOGRAMS_SUCCESS, PICTOGRAMS_FAILURE} from 'redux/modules/pictograms'
 
@@ -28,10 +29,19 @@ const pagination = combineReducers({
   })
 })
 
+// Stores for GUIS
+
+const gui = combineReducers({
+  searchText,
+  layout
+})
+
+
+
 const rootReducer = combineReducers({
   locale,
   router,
-  searchText,
+  gui,
   errorMessage,
   entities,
   pagination
