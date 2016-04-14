@@ -3,6 +3,7 @@ import { loadPictograms } from 'redux/modules/pictograms'
 import {Pictogram} from 'components/Pictogram'
 import { connect } from 'react-redux'
 import List from 'components/List'
+import ToolbarPictograms from 'components/Toolbar/ToolbarPictograms'
 // import { map, keyBy } from 'lodash/zip'
 
 function loadData(props) {
@@ -18,6 +19,8 @@ class ShowPictogramsView extends Component {
     this.handleLoadMoreClick = this.handleLoadMoreClick.bind(this)
     this.searchText = this.props.searchText
   }
+
+
 
   componentWillMount() {
     loadData(this.props)
@@ -44,9 +47,9 @@ class ShowPictogramsView extends Component {
     const { searchText, pictogramsList } = this.props
     return (
       <div>
-        <div className='row end-xs'>
+        <div className='row'>
+          <ToolbarPictograms />
         </div>
-
         <List renderItem={this.renderPictogram}
           items={pictogramsList}
           onLoadMoreClick={this.handleLoadMoreClick}

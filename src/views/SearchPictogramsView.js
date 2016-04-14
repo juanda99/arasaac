@@ -16,7 +16,6 @@ const messages = defineMessages({
   }
 })
 
-
 class SearchPictogramsView extends Component {
 
   constructor(props) {
@@ -25,12 +24,12 @@ class SearchPictogramsView extends Component {
     this.toggleFilter = this.toggleFilter.bind(this)
     this.renderErrorMessage = this.renderErrorMessage.bind(this)
     this.state = {
-            showFilters: false
-        }
+      showFilters: false
+    }
   }
 /*
   static defaultProps = {
-    showFilters: false    
+    showFilters: false
   }
 */
   handleDismissClick(e) {
@@ -42,7 +41,7 @@ class SearchPictogramsView extends Component {
     this.props.loadKeywords(this.props.locale)
   }
 
-  toggleFilter(){
+  toggleFilter() {
     this.setState({ showFilters: !this.state.showFilters })
   }
 
@@ -81,7 +80,7 @@ class SearchPictogramsView extends Component {
           <hr />
           {this.renderErrorMessage()}
         </div>
-        { this.state.showFilters ? <FilterPictograms /> : null }
+        {this.state.showFilters ? <FilterPictograms /> : null}
         {children}
       </div>
     )
