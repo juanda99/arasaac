@@ -5,40 +5,45 @@ import { defineMessages, FormattedMessage } from 'react-intl'
 import FilterIcon from 'components/Toolbar/FilterIcon'
 
 const messages = defineMessages({
-  allCatalogs: {
-    id: 'catalog.all',
+  size: {
+    id: 'size.choose',
     description: 'Menu choose catalog',
-    defaultMessage: 'All catalogs'
+    defaultMessage: 'Size'
   },
-  catalog: {
-    id: 'catalog',
-    description: 'Menu choose catalog initial text',
-    defaultMessage: 'Catalog'
+  any: {
+    id: 'size.any',
+    description: 'Menu choose any Size',
+    defaultMessage: 'Any size'
   },
-  colorPictograms: {
-    id: 'catalog.colorPictograms',
-    description: 'Menu choose catalog',
-    defaultMessage: 'Color pictograms'
+  large: {
+    id: 'size.large',
+    description: 'Menu display large size',
+    defaultMessage: 'Large'
   },
-  blackAndWhitePictograms: {
-    id: 'catalog.blackAndWhitePictograms',
-    description: 'Menu choose catalog',
-    defaultMessage: 'Black and white pictograms'
+  medium: {
+    id: 'size.medium',
+    description: 'Menu display medium size',
+    defaultMessage: 'Medium'
   },
-  pictures: {
-    id: 'catalog.pictures',
-    description: 'Menu choose catalog',
-    defaultMessage: 'Pictures'
+  small: {
+    id: 'size.small',
+    description: 'Menu choose display small size',
+    defaultMessage: 'Small'
   },
-  lseVideos: {
-    id: 'catalog.lseVideos',
-    description: 'Menu choose catalog',
-    defaultMessage: 'LSE Videos'
+  largeChoose: {
+    id: 'size.largeChoose',
+    description: 'Menu choose large size',
+    defaultMessage: 'Large, wider than 1000px'
   },
-  lseColor: {
-    id: 'catalog.lseColor',
-    description: 'Menu choose catalog',
-    defaultMessage: 'LSE Color'
+  mediumChoose: {
+    id: 'size.mediumChoose',
+    description: 'Menu choose meium size',
+    defaultMessage: 'Medium, width between 500px and 1000px'
+  },
+  smallChoose: {
+    id: 'size.smallChoose',
+    description: 'Menu choose small size',
+    defaultMessage: 'Small, wide less than 500px'
   }
 })
 
@@ -66,12 +71,10 @@ class SelectCatalog extends Component {
       <span>
         {this.state.value !== 1 ? <FilterIcon /> : null}
         <SelectField autoWidth={true} value={this.state.value} onChange={this.handleChange} style={styles.select}>
-          <MenuItem value={1} label={<FormattedMessage {...messages.catalog} />} primaryText={<FormattedMessage {...messages.allCatalogs} />} />
-          <MenuItem value={2} primaryText={<FormattedMessage {...messages.colorPictograms} />} />
-          <MenuItem value={3} primaryText={<FormattedMessage {...messages.blackAndWhitePictograms} />} />
-          <MenuItem value={4} primaryText={<FormattedMessage {...messages.pictures} />} />
-          <MenuItem value={5} primaryText={<FormattedMessage {...messages.lseVideos} />} />
-          <MenuItem value={5} primaryText={<FormattedMessage {...messages.lseColor} />} />
+          <MenuItem value={1} label={<FormattedMessage {...messages.size} />} primaryText={<FormattedMessage {...messages.any} />} />
+          <MenuItem value={2} label={<FormattedMessage {...messages.large} />}  primaryText={<FormattedMessage {...messages.largeChoose} />} />
+          <MenuItem value={3} label={<FormattedMessage {...messages.medium} />}  primaryText={<FormattedMessage {...messages.mediumChoose} />} />
+          <MenuItem value={4} label={<FormattedMessage {...messages.small} />}  primaryText={<FormattedMessage {...messages.smallChoose} />} />
         </SelectField>
       </span>
     )
