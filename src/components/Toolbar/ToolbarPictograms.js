@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react'
 import SelectCatalog from './SelectCatalog'
 import SelectLicense from './SelectLicense'
-import SelectSize from './SelectCatalog'
+import SelectSize from './SelectSize'
 import ViewListIcon from 'material-ui/lib/svg-icons/action/view-list'
 import ViewModuleIcon from 'material-ui/lib/svg-icons/action/view-module'
 import Colors from 'material-ui/lib/styles/colors'
@@ -38,4 +38,7 @@ const ToolbarPictograms = props => (
 ToolbarPictograms.propTypes = {
   layout: PropTypes.string
 }
+
+
+
 export default ToolbarPictograms
