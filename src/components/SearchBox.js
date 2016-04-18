@@ -67,7 +67,7 @@ SearchBox.contextTypes = {
 SearchBox.propTypes = {
   dataSource: PropTypes.array.isRequired,
   intl: intlShape.isRequired,
-  value: PropTypes.string.isRequired,
+  value: PropTypes.string,
   onChange: PropTypes.func.isRequired
 }
 

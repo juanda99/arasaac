@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import SelectField from 'material-ui/lib/select-field'
 import MenuItem from 'material-ui/lib/menus/menu-item'
 import { defineMessages, FormattedMessage } from 'react-intl'
-import FilterIcon from 'components/Toolbar/FilterIcon'
+import FilterIcon from './FilterIcon'
 
 const messages = defineMessages({
   choose: {
@@ -48,7 +48,8 @@ class SelectLicense extends Component {
     return {
       select: {
         fontSize: 13,
-        marginLeft: this.state.value !== 1 ? 0 : 48
+        marginLeft: this.state.value !== 1 ? 0 : 48,
+        width: 350
       }
     }
   }

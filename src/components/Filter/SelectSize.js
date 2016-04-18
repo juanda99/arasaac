@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import SelectField from 'material-ui/lib/select-field'
 import MenuItem from 'material-ui/lib/menus/menu-item'
 import { defineMessages, FormattedMessage } from 'react-intl'
-import FilterIcon from 'components/Toolbar/FilterIcon'
+import FilterIcon from './FilterIcon'
 
 const messages = defineMessages({
   size: {

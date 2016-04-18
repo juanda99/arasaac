@@ -1,7 +1,4 @@
 import React, {PropTypes} from 'react'
-import SelectCatalog from './SelectCatalog'
-import SelectLicense from './SelectLicense'
-import SelectSize from './SelectSize'
 import ViewListIcon from 'material-ui/lib/svg-icons/action/view-list'
 import ViewModuleIcon from 'material-ui/lib/svg-icons/action/view-module'
 import Colors from 'material-ui/lib/styles/colors'
@@ -24,9 +21,7 @@ const style = {
 }
 const ToolbarPictograms = props => (
   <div style={style.container}>
-    <SelectCatalog/>
-    <SelectLicense/>
-    <SelectSize/>
+
     <Divider />
     <div className='row end-xs'>
       <ViewListIcon style={style.icon} color={props.layout === 'list' ? Colors.blue500 : Colors.grey500} />
@@ -38,7 +33,5 @@ const ToolbarPictograms = props => (
 ToolbarPictograms.propTypes = {
   layout: PropTypes.string
 }
-
-
 
 export default ToolbarPictograms

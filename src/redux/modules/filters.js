@@ -1,7 +1,7 @@
-export const CHANGE_FILTER = 'CHANGE_FILTER'
+export const SET_FILTER = 'SET_FILTER'
 
 // Resets the currently visible error message.
-export function changeFilter(filter, value) {
+export function setFilter(filter, value) {
   return {
     type: CHANGE_FILTER,
     filter: filter,
@@ -11,9 +11,9 @@ export function changeFilter(filter, value) {
 
 // Updates error message to notify about the failed fetches.
 
-const filter = (state = {'catalog': true, 'license': true, 'size': true}, action) => {
+const filters = (state = {'catalog': true, 'license': true, 'size': true}, action) => {
   switch (action.type) {
-    case CHANGE_FILTER:
+    case SET_FILTER:
       var myFilter = {}
       myFilter[action.filter] = !action.value
       return Object.assign({}, state, myFilter)
@@ -22,4 +22,4 @@ const filter = (state = {'catalog': true, 'license': true, 'size': true}, action
   }
 }
 
-export default filter
+export default filters

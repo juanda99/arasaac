@@ -6,13 +6,13 @@ import SelectSize from './SelectSize'
 const Filter = props => (
   <div>
     {props.filter.catalog ? <SelectCatalog/> : null}
-    {props.filter.catalog ? <SelectLicense/> : null}
     {props.filter.catalog ? <SelectSize/> : null}
+    {props.filter.catalog ? <SelectLicense/> : null}
   </div>
 )
 Filter.propTypes = {
   layout: PropTypes.string,
-  filter: PropTypes.arrayOf(PropTypes.bool).isRequired
+  filter: PropTypes.object.isRequired
 }
 
 export default Filter

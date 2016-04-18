@@ -2,8 +2,7 @@ export const TOGGLE_FILTER = 'TOGGLE_FILTER'
 
 export function toggleFilter(text) {
   return {
-    type: TOGGLE_FILTER,
-    text: text
+    type: TOGGLE_FILTER
   }
 }
 
@@ -11,7 +10,7 @@ export function toggleFilter(text) {
 export default function showFilter(state = false, action) {
   switch (action.type) {
     case TOGGLE_FILTER:
-      return action.text
+      return !state
     default:
       return state
   }

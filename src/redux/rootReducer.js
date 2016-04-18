@@ -6,6 +6,7 @@ import errorMessage from './modules/error'
 import searchText from './modules/searchText'
 import layout from './modules/layout'
 import filters from './modules/filters'
+import showFilter from './modules/showFilter'
 import paginate from './paginate'
 import {PICTOGRAMS_REQUEST, PICTOGRAMS_SUCCESS, PICTOGRAMS_FAILURE} from 'redux/modules/pictograms'
 
@@ -35,7 +36,8 @@ const pagination = combineReducers({
 const gui = combineReducers({
   searchText,
   layout,
-  filters
+  filters,
+  showFilter
 })
 
 const rootReducer = combineReducers({
