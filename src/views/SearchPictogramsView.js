@@ -59,7 +59,6 @@ class SearchPictogramsView extends Component {
   render() {
     const { children, inputValue } = this.props
     const {showFilter, filters} = this.props
-
     const { keywords } = this.props.keywords
     return (
       <div>

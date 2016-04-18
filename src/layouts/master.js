@@ -29,6 +29,11 @@ const messages = defineMessages({
     description: 'User menu item',
     defaultMessage: 'Register'
   },
+  appConfiguration: {
+    id: 'userMenu.appConfiguration',
+    description: 'User menu item',
+    defaultMessage: 'App Configuration'
+  },
   userProfile: {
     id: 'userMenu.userProfile',
     description: 'User menu item',
@@ -284,6 +289,7 @@ const Master = React.createClass({
             >
               <MenuItem primaryText={<FormattedMessage {...messages.signin} />} linkButton={true} containerElement={<Link to='/login' />}/>
               <MenuItem primaryText={<FormattedMessage {...messages.register} />} linkButton={true} containerElement={<Link to='/register' />}/>
+              <MenuItem primaryText={<FormattedMessage {...messages.appConfiguration} />} linkButton={true} containerElement={<Link to='/configuration' />}/>
               <MenuItem primaryText={<FormattedMessage {...messages.userProfile} />} linkButton={true} containerElement={<Link to='/profile' />}/>
               <MenuItem primaryText={<FormattedMessage {...messages.userMaterial} />} linkButton={true} containerElement={<Link to='/usermaterial' />}/>
               <MenuItem primaryText={<FormattedMessage {...messages.uploadMaterial} />} linkButton={true} containerElement={<Link to='/upload' />}/>

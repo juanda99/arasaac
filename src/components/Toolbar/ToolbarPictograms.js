@@ -31,7 +31,7 @@ export default class ToolbarPictograms extends Component {
     this.handleClick = this.handleClick.bind(this)
   }
 
-  handleClick = (value) => {
+  handleClick = value => {
     this.props.changeLayout(value)
   }
 
@@ -41,8 +41,8 @@ export default class ToolbarPictograms extends Component {
       <div style={style.container}>
         <Divider />
         <div className='row end-xs'>
-          <ViewListIcon style={style.icon} color={this.props.layout === 'list' ? Colors.blue500 : Colors.grey500} onClick={()=>changeLayout('list')} />
-          <ViewModuleIcon style={style.icon2} color={this.props.layout === 'modules' ? Colors.blue500 : Colors.grey500} onClick={()=>changeLayout('modules')}/>
+          <ViewListIcon style={style.icon} color={this.props.layout === 'list' ? Colors.blue500 : Colors.grey500} onClick={() => changeLayout('list')} />
+          <ViewModuleIcon style={style.icon2} color={this.props.layout === 'modules' ? Colors.blue500 : Colors.grey500} onClick={() => changeLayout('modules')}/>
         </div>
         <Divider />
       </div>
