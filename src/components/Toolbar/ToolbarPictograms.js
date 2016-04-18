@@ -1,4 +1,4 @@
-import React, {PropTypes} from 'react'
+import React, {PropTypes, Component} from 'react'
 import ViewListIcon from 'material-ui/lib/svg-icons/action/view-list'
 import ViewModuleIcon from 'material-ui/lib/svg-icons/action/view-module'
 import Colors from 'material-ui/lib/styles/colors'
@@ -19,19 +19,33 @@ const style = {
     width: 100 + '%'
   }
 }
-const ToolbarPictograms = props => (
-  <div style={style.container}>
 
-    <Divider />
-    <div className='row end-xs'>
-      <ViewListIcon style={style.icon} color={props.layout === 'list' ? Colors.blue500 : Colors.grey500} />
-      <ViewModuleIcon style={style.icon2} color={props.layout === 'modules' ? Colors.blue500 : Colors.grey500}/>
-    </div>
-    <Divider />
-  </div>
-)
-ToolbarPictograms.propTypes = {
-  layout: PropTypes.string
+export default class ToolbarPictograms extends Component {
+  static propTypes = {
+    layout: PropTypes.string.isRequired,
+    changeLayout: PropTypes.func.isRequired
+  }
+
+  constructor(props) {
+    super(props)
+    this.handleClick = this.handleClick.bind(this)
+  }
+
+  handleClick = (value) => {
+    this.props.changeLayout(value)
+  }
+
+  render() {
+    const changeLayout = this.props.changeLayout
+    return (
+      <div style={style.container}>
+        <Divider />
+        <div className='row end-xs'>
+          <ViewListIcon style={style.icon} color={this.props.layout === 'list' ? Colors.blue500 : Colors.grey500} onClick={()=>changeLayout('list')} />
+          <ViewModuleIcon style={style.icon2} color={this.props.layout === 'modules' ? Colors.blue500 : Colors.grey500} onClick={()=>changeLayout('modules')}/>
+        </div>
+        <Divider />
+      </div>
+    )
+  }
 }
-
-export default ToolbarPictograms

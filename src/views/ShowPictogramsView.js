@@ -1,5 +1,6 @@
 import React, {Component, PropTypes} from 'react'
 import { loadPictograms } from 'redux/modules/pictograms'
+import { changePictogramsLayout } from 'redux/modules/layout'
 import {Pictogram} from 'components/Pictogram'
 import { connect } from 'react-redux'
 import List from 'components/List'
@@ -42,11 +43,11 @@ class ShowPictogramsView extends Component {
   }
 
   render() {
-    const { searchText, pictogramsList, layout } = this.props
+    const { searchText, pictogramsList, layout, changePictogramsLayout } = this.props
     return (
       <div>
         <div className='row'>
-          <ToolbarPictograms layout={layout}/>
+          <ToolbarPictograms layout={layout} changeLayout={changePictogramsLayout}/>
         </div>
         <List renderItem={this.renderPictogram}
           items={pictogramsList}
@@ -61,6 +62,7 @@ ShowPictogramsView.propTypes = {
   searchText: PropTypes.string.isRequired,
   layout: PropTypes.string,
   loadPictograms: PropTypes.func.isRequired,
+  changePictogramsLayout: PropTypes.func.isRequired,
   pictogramsList: React.PropTypes.arrayOf(React.PropTypes.object)
 }
 
@@ -92,4 +94,4 @@ function mapStateToProps(state, ownProps) {
   }
 }
 
-export default connect(mapStateToProps, {loadPictograms})(ShowPictogramsView)
+export default connect(mapStateToProps, {loadPictograms, changePictogramsLayout})(ShowPictogramsView)

@@ -38,7 +38,6 @@ class SearchPictogramsView extends Component {
     this.props.loadKeywords(this.props.locale)
   }
 
-
   renderErrorMessage() {
     const { errorMessage } = this.props
     if (!errorMessage) {
@@ -74,7 +73,7 @@ class SearchPictogramsView extends Component {
           <hr />
           {this.renderErrorMessage()}
         </div>
-        {showFilter? <FilterPictograms filter={filters}/> : null}
+        {showFilter ? <FilterPictograms filter={filters}/> : null}
         {children}
       </div>
     )
@@ -86,6 +85,7 @@ SearchPictogramsView.propTypes = {
   errorMessage: PropTypes.string,
   resetErrorMessage: PropTypes.func.isRequired,
   changePictogramsKeyword: PropTypes.func.isRequired,
+  toggleFilter: PropTypes.func.isRequired,
   loadKeywords: PropTypes.func.isRequired,
   inputValue: PropTypes.string,
   keywords: PropTypes.object,
@@ -94,8 +94,6 @@ SearchPictogramsView.propTypes = {
   filters: PropTypes.object.isRequired,
   // Injected by React Router
   children: PropTypes.node
-
-
 }
 
 const mapStateToProps = state => {
