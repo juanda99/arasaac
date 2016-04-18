@@ -4,10 +4,16 @@ import SelectLicense from './SelectLicense'
 import SelectSize from './SelectSize'
 
 const Filter = props => (
-  <div>
-    {props.filter.catalog ? <SelectCatalog/> : null}
-    {props.filter.catalog ? <SelectSize/> : null}
-    {props.filter.catalog ? <SelectLicense/> : null}
+  <div className='row'>
+    <div className='col-xs-12 col-sm-4'>
+      {props.filter.catalog ? <SelectCatalog/> : null}
+    </div>
+    <div className='col-xs-12 col-sm-4'>
+      {props.filter.catalog ? <SelectSize/> : null}
+    </div>
+    <div className='col-xs-12 col-sm-4'>
+      {props.filter.catalog ? <SelectLicense/> : null}
+    </div>
   </div>
 )
 Filter.propTypes = {

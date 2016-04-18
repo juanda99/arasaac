@@ -58,6 +58,7 @@ class SelectCatalog extends Component {
     return {
       select: {
         fontSize: 13,
+        width: 350,
         marginLeft: this.state.value !== 1 ? 0 : 48
       }
     }
