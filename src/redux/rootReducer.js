@@ -10,8 +10,24 @@ import showFilter from './modules/showFilter'
 import paginate from './paginate'
 import {PICTOGRAMS_REQUEST, PICTOGRAMS_SUCCESS, PICTOGRAMS_FAILURE} from 'redux/modules/pictograms'
 
+// maybe it should go to main.js, to the complete initialState
+const initialState = {
+  pictograms: {},
+  keywords: {
+    'en': {
+      'keywords': []
+    },
+    'es': {
+      'keywords': []
+    },
+    'fr': {
+      'keywords': []
+    }
+  }
+}
+
 // Updates an entity cache in response to any action with response.entities.
-function entities(state = { pictograms: {}, keywords: { 'en': { 'keywords': [] } } }, action) {
+function entities(state = initialState, action) {
   if (action.response && action.response.entities) {
     return merge({}, state, action.response.entities)
   }
