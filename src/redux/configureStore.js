@@ -3,6 +3,11 @@ import thunk from 'redux-thunk'
 import rootReducer from './rootReducer'
 import { routerMiddleware } from 'react-router-redux'
 import api from './middleware/api'
+import persistenceStore from 'redux/persistance/store'
+
+const storeEnhancers = [
+  persistenceStore
+]
 
 export default function configureStore(initialState = {}, history) {
   // Compose final middleware and use devtools in debug environment
@@ -11,8 +16,9 @@ export default function configureStore(initialState = {}, history) {
     const devTools = window.devToolsExtension
       ? window.devToolsExtension()
       : require('containers/DevTools').default.instrument()
-    middleware = compose(middleware, devTools)
+    storeEnhancers.push(devTools)
   }
+  middleware = compose(middleware, ...storeEnhancers)
 
   // Create final store and subscribe router in debug env ie. for devtools
   const store = middleware(createStore)(rootReducer, initialState)

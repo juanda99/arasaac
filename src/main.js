@@ -13,6 +13,7 @@ import it from 'react-intl/locale-data/it'
 import es from 'react-intl/locale-data/es'
 import fr from 'react-intl/locale-data/fr'
 import injectTapEventPlugin from 'react-tap-event-plugin'
+import * as storage from 'redux/persistance/storage'
 
 // Needed for onTouchTap
 // Can go away when react 1.0 release
@@ -25,7 +26,13 @@ const browserHistory = useRouterHistory(createBrowserHistory)({
   basename: __BASENAME__
 })
 
-const initialState = window.__INITIAL_STATE__
+// upps, should I check this with server rendering...
+// const initialState = window.__INITIAL_STATE__
+
+const initialState = {
+  locale: storage.get('locale') || 'es'
+}
+
 const store = configureStore(initialState, browserHistory)
 const history = syncHistoryWithStore(browserHistory, store, {
   selectLocationState: state => state.router
