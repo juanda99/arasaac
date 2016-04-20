@@ -7,7 +7,7 @@ import { connect } from 'react-redux'
 import { resetErrorMessage } from 'redux/modules/error'
 import { changePictogramsKeyword } from 'redux/modules/searchText'
 import { loadKeywords } from 'redux/modules/keywords'
-import { toggleFilter } from 'redux/modules/showFilter'
+import { toggleShowFilter } from 'redux/modules/showFilter'
 
 const messages = defineMessages({
   advancedSearch: {
@@ -64,7 +64,7 @@ class SearchPictogramsView extends Component {
       <div>
         <div className='row end-xs'>
           <div className='col-xs-6 col-sm-4 col-md-3'>
-            <Toggle label={<FormattedMessage {...messages.advancedSearch} />} onToggle={this.props.toggleFilter} />
+            <Toggle label={<FormattedMessage {...messages.advancedSearch} />} onToggle={this.props.toggleShowFilter} />
           </div>
         </div>
         <div className='row start-xs'>
@@ -84,7 +84,7 @@ SearchPictogramsView.propTypes = {
   errorMessage: PropTypes.string,
   resetErrorMessage: PropTypes.func.isRequired,
   changePictogramsKeyword: PropTypes.func.isRequired,
-  toggleFilter: PropTypes.func.isRequired,
+  toggleShowFilter: PropTypes.func.isRequired,
   loadKeywords: PropTypes.func.isRequired,
   inputValue: PropTypes.string,
   keywords: PropTypes.object,
@@ -113,4 +113,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, {resetErrorMessage, changePictogramsKeyword, loadKeywords, toggleFilter})(SearchPictogramsView)
+export default connect(mapStateToProps, {resetErrorMessage, changePictogramsKeyword, loadKeywords, toggleShowFilter})(SearchPictogramsView)
