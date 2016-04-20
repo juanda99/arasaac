@@ -1,11 +1,10 @@
-export const SET_FILTER = 'SET_FILTER'
+export const TOGGLE_FILTER = 'TOGGLE_FILTER'
 
 // Resets the currently visible error message.
-export function setFilter(filter, value) {
+export function togleFilter(filter, value) {
   return {
-    type: CHANGE_FILTER,
-    filter: filter,
-    value: value
+    type: TOGGLE_FILTER,
+    filter: filter
   }
 }
 
@@ -13,9 +12,9 @@ export function setFilter(filter, value) {
 
 const filters = (state = {'catalog': true, 'license': true, 'size': true}, action) => {
   switch (action.type) {
-    case SET_FILTER:
+    case TOGGLE_FILTER:
       var myFilter = {}
-      myFilter[action.filter] = !action.value
+      myFilter[action.filter] = !myFilter[action.filter]
       return Object.assign({}, state, myFilter)
     default:
       return state

@@ -1,26 +1,27 @@
 import React, {Component, PropTypes} from 'react'
-import { changePictogramsLayout } from 'redux/modules/layout'
-import { setFilter } from 'redux/modules/filters'
-import { toggleFilter } from 'redux/modules/showFilter'
+import ToggleFilter from 'components/ToggleFilter'
+import { toggleFilter } from 'redux/modules/filters'
 import { connect } from 'react-redux'
 import { defineMessages, FormattedMessage } from 'react-intl'
+import FullWidthSection from 'components/full-width-section'
 
 const messages = defineMessages({
-  home: {
-    id: 'menu.home',
-    description: 'Menu item',
-    defaultMessage: 'Home'
-  },
-  pictograms: {
-    id: 'menu.pictograms',
-    description: 'Menu item',
-    defaultMessage: 'Pictograms'
+  appConfiguration: {
+    id: 'appconf.title',
+    description: 'Title for Arasaac configuration view',
+    defaultMessage: 'Arasaac configuration'
   },
   searchPictograms: {
     id: 'menu.searchPictograms',
     description: 'Menu item',
     defaultMessage: 'Search Pictograms'
   },
+  filterCatalog: {
+    id: 'appconf.filterCatalog',
+    description: 'Conf option filter by Catalog',
+    defaultMessage: 'Filter by Catalog'
+  },
+
   api: {
     id: 'menu.api',
     description: 'Menu item',
@@ -108,36 +109,33 @@ const messages = defineMessages({
   }
 })
 
-
 // import { map, keyBy } from 'lodash/zip'
 
 class AppConfView extends Component {
-
-  constructor(props) {
-    super(props)
-  }
-
   render() {
-    const { setFilter, changePictogramsLayout, toggleFilter } = this.props
+    const { toggleFilter } = this.props
     return (
-      <div>
+      <FullWidthSection useContent={true}>
         <div className='row'>
-          <h1>{<FormattedMessage {...messages.searchPictograms} />}</h1>
+          <h1>{<FormattedMessage {...messages.appConfiguration} />}</h1>
+        </div>
+        <div className='row'>
+          <h2>{<FormattedMessage {...messages.searchPictograms} />}</h2>
         </div>
         <div className='row'>
           <div className='col-xs-6 col-sm-12'>
-          <h2> Filters</h2>
-          <p>Select the filters you want to enable for searching pictograms</p>
+            <h3>Filters</h3>
+            <p>Select the filters you want to enable for searching pictograms</p>
+            <ToggleFilter label={<FormattedMessage {...messages.filterCatalog} />} onToggle={this.props.toggleFilter} filter='catalog'/>
           </div>
         </div>
-      </div>
+      </FullWidthSection>
     )
   }
 }
 
 AppConfView.propTypes = {
-  changePictogramsLayout: PropTypes.func.isRequired,
-  setFilter: React.PropTypes.func.isRequired
+  toggleFilter: React.PropTypes.func.isRequired
 }
 
-export default connect(null, {setFilter, changePictogramsLayout})(AppConfView)
+export default connect(null, {toggleFilter})(AppConfView)
