@@ -4,6 +4,8 @@ import { toggleFilter } from 'redux/modules/filters'
 import { connect } from 'react-redux'
 import { defineMessages, FormattedMessage } from 'react-intl'
 import FullWidthSection from 'components/full-width-section'
+import Divider from 'material-ui/lib/divider'
+import Paper from 'material-ui/lib/paper'
 
 const messages = defineMessages({
   appConfiguration: {
@@ -19,7 +21,17 @@ const messages = defineMessages({
   filterCatalog: {
     id: 'appconf.filterCatalog',
     description: 'Conf option filter by Catalog',
-    defaultMessage: 'Filter by Catalog'
+    defaultMessage: 'Catalog'
+  },
+  filterLicense: {
+    id: 'appconf.filterLicense',
+    description: 'Conf option filter by License',
+    defaultMessage: 'License'
+  },
+  filterSize: {
+    id: 'appconf.filterSize',
+    description: 'Conf option filter by Size',
+    defaultMessage: 'Size'
   },
 
   api: {
@@ -110,10 +122,18 @@ const messages = defineMessages({
 })
 
 // import { map, keyBy } from 'lodash/zip'
+const style = {
+  padding: 20,
+  textAlign: 'center',
+  display: 'inline-block',
+  width: '100%'
+}
+
 
 class AppConfView extends Component {
   render() {
     const { toggleFilter } = this.props
+    const filter = this.props.filters
     return (
       <FullWidthSection useContent={true}>
         <div className='row'>
@@ -124,9 +144,18 @@ class AppConfView extends Component {
         </div>
         <div className='row'>
           <div className='col-xs-6 col-sm-12'>
+          <Paper style={style} zDepth={2} rounded={false}>
             <h3>Filters</h3>
+
             <p>Select the filters you want to enable for searching pictograms</p>
-            <ToggleFilter label={<FormattedMessage {...messages.filterCatalog} />} onToggle={this.props.toggleFilter} filter='catalog'/>
+            <ToggleFilter label={<FormattedMessage {...messages.filterCatalog} />} onToggle={toggleFilter} filter='catalog'
+              active={filter.catalog}/ >
+            <ToggleFilter label={<FormattedMessage {...messages.filterLicense} />} onToggle={toggleFilter} filter='license'
+              active={filter.license}/ >
+            <ToggleFilter label={<FormattedMessage {...messages.filterSize} />} onToggle={toggleFilter} filter='size'
+              active={filter.size}/ >
+            <Divider/>
+          </Paper>
           </div>
         </div>
       </FullWidthSection>
@@ -135,7 +164,17 @@ class AppConfView extends Component {
 }
 
 AppConfView.propTypes = {
-  toggleFilter: React.PropTypes.func.isRequired
+  toggleFilter: PropTypes.func.isRequired,
+  filters: PropTypes.object.isRequired
 }
 
-export default connect(null, {toggleFilter})(AppConfView)
+const mapStateToProps = state => {
+  const {gui: {filters}} = state
+
+  return {
+    filters
+  }
+}
+
+export default connect(mapStateToProps, {toggleFilter})(AppConfView)
+

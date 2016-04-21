@@ -5,7 +5,13 @@ export default class ToggleFilter extends Component {
   static propTypes = {
     label: PropTypes.object.isRequired,
     onToggle: PropTypes.func.isRequired,
-    filter: PropTypes.string.isRequired
+    filter: PropTypes.string.isRequired,
+    active: React.PropTypes.bool.isRequired
+  }
+
+  constructor(props) {
+    super(props)
+    this.handleToggle = this.handleToggle.bind(this)
   }
 
   handleToggle() {
@@ -14,9 +20,10 @@ export default class ToggleFilter extends Component {
 
   render() {
     const label = this.props.label
+    const active = this.props.active
     return (
-      <Toggle style={{ width: 200 }} label={label} onToggle={this.handleToggle} />
+      <Toggle style={{ width: 100 }} label={label} onToggle={this.handleToggle}
+        defaultToggled={active}/>
     )
   }
 }
-
