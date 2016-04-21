@@ -1,7 +1,7 @@
 export const TOGGLE_FILTER = 'TOGGLE_FILTER'
 
 // Resets the currently visible error message.
-export function togleFilter(filter, value) {
+export function toggleFilter(filter, value) {
   return {
     type: TOGGLE_FILTER,
     filter: filter
@@ -14,7 +14,7 @@ const filters = (state = {'catalog': true, 'license': true, 'size': true}, actio
   switch (action.type) {
     case TOGGLE_FILTER:
       var myFilter = {}
-      myFilter[action.filter] = !myFilter[action.filter]
+      myFilter[action.filter] = !state[action.filter]
       return Object.assign({}, state, myFilter)
     default:
       return state
