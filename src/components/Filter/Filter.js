@@ -9,10 +9,10 @@ const Filter = props => (
       {props.filter.catalog ? <SelectCatalog/> : null}
     </div>
     <div className='col-xs-12 col-sm-4'>
-      {props.filter.catalog ? <SelectSize/> : null}
+      {props.filter.size ? <SelectSize/> : null}
     </div>
     <div className='col-xs-12 col-sm-4'>
-      {props.filter.catalog ? <SelectLicense/> : null}
+      {props.filter.license ? <SelectLicense/> : null}
     </div>
   </div>
 )

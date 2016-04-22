@@ -1,4 +1,5 @@
 export const TOGGLE_FILTER = 'TOGGLE_FILTER'
+export const INITIAL_FILTERS = {'catalog': true, 'license': true, 'size': true}
 
 // Resets the currently visible error message.
 export function toggleFilter(filter, value) {
@@ -10,7 +11,7 @@ export function toggleFilter(filter, value) {
 
 // Updates error message to notify about the failed fetches.
 
-const filters = (state = {'catalog': true, 'license': true, 'size': true}, action) => {
+const filters = (state = INITIAL_FILTERS, action) => {
   switch (action.type) {
     case TOGGLE_FILTER:
       var myFilter = {}
