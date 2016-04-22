@@ -38,7 +38,7 @@ const initialState = {
   locale: storage.get('locale') || 'en',
   gui: {
     layout: storage.get('layout') || INITIAL_LAYOUT,
-    showFilter: storage.get('showFilter') || false,
+    showFilter: storage.get('showFilter') === 'true',
     filters: JSON.parse(storage.get('filters')) || INITIAL_FILTERS
   }
 }

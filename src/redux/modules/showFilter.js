@@ -1,6 +1,6 @@
 export const SHOW_FILTER = 'SHOW_FILTER'
 
-export function toggleShowFilter(text) {
+export function toggleShowFilter() {
   return {
     type: SHOW_FILTER
   }

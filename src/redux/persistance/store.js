@@ -15,8 +15,6 @@ export default function persistenceHandler(next) {
           case TOGGLE_FILTER:
             let filters = JSON.parse(storage.get('filters')) || INITIAL_FILTERS
             filters[action.filter] = !filters[action.filter]
-            var kk = filters
-            var kk2 = JSON.stringify(filters)
             storage.put('filters', JSON.stringify(filters))
             break
           case PICTOGRAMS_LAYOUT:
@@ -26,8 +24,9 @@ export default function persistenceHandler(next) {
             storage.put('locale', action.text)
             break
           case SHOW_FILTER:
-            let showFilter = storage.get('showFilter') || false
-            storage.put('showFilter', !showFilter)
+            var value = storage.get('showFilter') === 'true'
+            // let showFilter = storage.get('showFilter') || false
+            storage.put('showFilter', !value)
         }
         return action
       }
