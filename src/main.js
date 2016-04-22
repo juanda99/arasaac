@@ -14,6 +14,8 @@ import es from 'react-intl/locale-data/es'
 import fr from 'react-intl/locale-data/fr'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 import * as storage from 'redux/persistance/storage'
+import { INITIAL_FILTERS } from 'redux/modules/filters'
+import { INITIAL_LAYOUT } from 'redux/modules/layout'
 
 // Needed for onTouchTap
 // Can go away when react 1.0 release
@@ -29,8 +31,16 @@ const browserHistory = useRouterHistory(createBrowserHistory)({
 // upps, should I check this with server rendering...
 // const initialState = window.__INITIAL_STATE__
 
+// we want to save objects in localStorage
+// see http://stackoverflow.com/questions/2010892/storing-objects-in-html5-localstorage
+
 const initialState = {
-  locale: storage.get('locale') || 'es'
+  locale: storage.get('locale') || 'en',
+  gui: {
+    layout: storage.get('layout') || INITIAL_LAYOUT,
+    showFilter: storage.get('showFilter') || false,
+    filters: JSON.parse(storage.get('filters')) || INITIAL_FILTERS
+  }
 }
 
 const store = configureStore(initialState, browserHistory)

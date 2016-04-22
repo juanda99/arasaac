@@ -13,9 +13,11 @@ export default function persistenceHandler(next) {
         store.dispatch(action)
         switch (action.type) {
           case TOGGLE_FILTER:
-            let filters = storage.get('filters') || INITIAL_FILTERS
-            filters[action.filter] !== filters[action.filter]
-            storage.put('filters', filters)
+            let filters = JSON.parse(storage.get('filters')) || INITIAL_FILTERS
+            filters[action.filter] = !filters[action.filter]
+            var kk = filters
+            var kk2 = JSON.stringify(filters)
+            storage.put('filters', JSON.stringify(filters))
             break
           case PICTOGRAMS_LAYOUT:
             storage.put('layout', action.text)

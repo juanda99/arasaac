@@ -64,7 +64,7 @@ class SearchPictogramsView extends Component {
       <div>
         <div className='row end-xs'>
           <div className='col-xs-6 col-sm-4 col-md-3'>
-            <Toggle label={<FormattedMessage {...messages.advancedSearch} />} onToggle={this.props.toggleShowFilter} active={showFilter} />
+            <Toggle label={<FormattedMessage {...messages.advancedSearch} />} onToggle={this.props.toggleShowFilter} defaultToggled={showFilter} />
           </div>
         </div>
         <div className='row start-xs'>
