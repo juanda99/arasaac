@@ -1,8 +1,5 @@
 import { CALL_API, Schemas } from '../middleware/api'
-
-export const PICTOGRAMS_REQUEST = 'PICTOGRAMS_REQUEST'
-export const PICTOGRAMS_SUCCESS = 'PICTOGRAMS_SUCCESS'
-export const PICTOGRAMS_FAILURE = 'PICTOGRAMS_FAILURE'
+import { PICTOGRAMS_REQUEST, PICTOGRAMS_SUCCESS, PICTOGRAMS_FAILURE } from '../constants.js'
 
 // Fetches all keywords for pictos
 // Relies on the custom API middleware defined in ../middleware/api.js.

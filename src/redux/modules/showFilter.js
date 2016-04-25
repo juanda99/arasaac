@@ -1,4 +1,4 @@
-export const SHOW_FILTER = 'SHOW_FILTER'
+import { SHOW_FILTER } from '../constants.js'
 
 export function toggleShowFilter() {
   return {

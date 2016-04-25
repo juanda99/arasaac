@@ -1,5 +1,4 @@
-export const TOGGLE_FILTER = 'TOGGLE_FILTER'
-export const INITIAL_FILTERS = {'catalog': true, 'license': true, 'size': true}
+import { TOGGLE_FILTER, INITIAL_FILTERS } from '../constants.js'
 
 // Resets the currently visible error message.
 export function toggleFilter(filter, value) {

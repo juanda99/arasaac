@@ -14,8 +14,7 @@ import es from 'react-intl/locale-data/es'
 import fr from 'react-intl/locale-data/fr'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 import * as storage from 'redux/persistance/storage'
-import { INITIAL_FILTERS } from 'redux/modules/filters'
-import { INITIAL_LAYOUT } from 'redux/modules/layout'
+import { INITIAL_FILTERS, INITIAL_LAYOUT } from 'redux/constants'
 
 // Needed for onTouchTap
 // Can go away when react 1.0 release

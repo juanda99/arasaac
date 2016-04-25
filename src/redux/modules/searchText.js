@@ -1,4 +1,4 @@
-export const CHANGE_PICTOGRAMS_KEYWORD = 'CHANGE_PICTOGRAMS_KEYWORD'
+import { CHANGE_PICTOGRAMS_KEYWORD } from '../constants.js'
 
 // Resets the currently visible error message.
 export function changePictogramsKeyword(text) {

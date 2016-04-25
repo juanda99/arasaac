@@ -1,5 +1,5 @@
-export const PICTOGRAMS_LAYOUT = 'PICTOGRAMS_LAYOUT'
-export const INITIAL_LAYOUT = 'modules'
+import { PICTOGRAMS_LAYOUT, INITIAL_LAYOUT } from '../constants.js'
+
 // initial layout could be list but not for mobiles
 
 // Resets the currently visible error message.

@@ -1,8 +1,5 @@
 import * as storage from './storage'
-import { TOGGLE_FILTER, INITIAL_FILTERS } from 'redux/modules/filters'
-import { PICTOGRAMS_LAYOUT } from 'redux/modules/layout'
-import { LOCALE_CHANGE } from 'redux/modules/locale'
-import { SHOW_FILTER } from 'redux/modules/showFilter'
+import { TOGGLE_FILTER, INITIAL_FILTERS, PICTOGRAMS_LAYOUT, LOCALE_CHANGE, SHOW_FILTER } from 'redux/constants'
 
 export default function persistenceHandler(next) {
   return (reducer, initialState) => {

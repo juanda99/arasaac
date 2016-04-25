@@ -1,9 +1,6 @@
 import { CALL_API, Schemas } from '../middleware/api'
 import isEmpty from 'lodash/isEmpty'
-
-export const KEYWORDS_REQUEST = 'KEYWORDS_REQUEST'
-export const KEYWORDS_SUCCESS = 'KEYWORDS_SUCCESS'
-export const KEYWORDS_FAILURE = 'KEYWORDS_FAILURE'
+import { KEYWORDS_REQUEST, KEYWORDS_SUCCESS, KEYWORDS_FAILURE } from '../constants.js'
 
 // Fetches all keywords for pictos
 // Relies on the custom API middleware defined in ../middleware/api.js.

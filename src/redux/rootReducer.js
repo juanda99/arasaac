@@ -8,7 +8,7 @@ import layout from './modules/layout'
 import filters from './modules/filters'
 import showFilter from './modules/showFilter'
 import paginate from './paginate'
-import {PICTOGRAMS_REQUEST, PICTOGRAMS_SUCCESS, PICTOGRAMS_FAILURE} from 'redux/modules/pictograms'
+import { PICTOGRAMS_REQUEST, PICTOGRAMS_SUCCESS, PICTOGRAMS_FAILURE } from './constants'
 
 // maybe it should go to main.js, to the complete initialState
 const initialState = {

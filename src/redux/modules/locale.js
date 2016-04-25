@@ -1,4 +1,5 @@
-export const LOCALE_CHANGE = 'LOCALE_CHANGE'
+import { LOCALE_CHANGE } from '../constants.js'
+
 export function localeChange(text) {
   return { type: LOCALE_CHANGE, text: text }
 }
