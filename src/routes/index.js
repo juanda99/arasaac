@@ -1,5 +1,6 @@
 import React from 'react'
 import { Route, IndexRoute, Redirect } from 'react-router'
+import { routerActions } from 'react-router-redux'
 
 // NOTE: here we're making use of the `resolve.root` configuration
 // option in webpack, which allows us to specify import paths as if
@@ -26,9 +27,10 @@ import SignoutView from 'views/SignoutView'
 // import NotFoundView from 'views/NotFoundView/NotFoundView'
 // import Header from 'layouts/Header'
 import Master from 'layouts/master'
-import auth from 'components/auth'
+import { UserAuthWrapper } from 'redux-auth-wrapper'
+// import auth from 'components/auth'
 
-function requireAuth(nextState, replace) {
+/* function requireAuth(nextState, replace) {
   if (!auth.loggedIn()) {
     replace({
       pathname: '/signin',
@@ -36,6 +38,26 @@ function requireAuth(nextState, replace) {
     })
   }
 }
+*/
+
+const UserIsAuthenticated = UserAuthWrapper({
+  authSelector: state => state.user,
+  redirectAction: routerActions.replace,
+  wrapperDisplayName: 'UserIsAuthenticated'
+})
+const UserIsAdmin = UserAuthWrapper({
+  authSelector: state => state.user,
+  redirectAction: routerActions.replace,
+  wrapperDisplayName: 'UserIsAdmin',
+  predicate: user => user.isAdmin
+})
+
+const UserIsTranslator = UserAuthWrapper({
+  authSelector: state => state.user,
+  redirectAction: routerActions.replace,
+  wrapperDisplayName: 'UserIsTranslator',
+  predicate: user => (user.isTranslator || user.isAdmin)
+})
 
 export default store => (
   <Route path='/' component={Master}>
@@ -71,10 +93,10 @@ export default store => (
     <Route path='signin' component={SigninView} />
     <Route path='register' component={RegisterView} />
     <Route path='configuration' component={AppConfView} />
-    <Route path='profile' component={HomeView} onEnter={requireAuth} />
-    <Route path='usermaterial' component={HomeView} onEnter={requireAuth} />
-    <Route path='upload' component={HomeView} onEnter={requireAuth} />
-    <Route path='translate' component={PictogramsGridView} />
-    <Route path='signout' component={SignoutView} />
+    <Route path='profile' component={UserIsAuthenticated(HomeView)}  />
+    <Route path='usermaterial' component={UserIsAuthenticated(HomeView)}  />
+    <Route path='upload' component={UserIsAdmin(HomeView)} />
+    <Route path='translate' component={UserIsTranslator(PictogramsGridView)} />
+    <Route path='signout' component={HomeView} />
   </Route>
 )
