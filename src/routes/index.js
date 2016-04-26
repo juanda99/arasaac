@@ -16,6 +16,8 @@ import PictogramView from 'views/PictogramView'
 import PictogramsGridView from 'views/PictogramsGridView/PictogramsGridView'
 import RegisterView from 'views/RegisterView'
 import AppConfView from 'views/AppConfView'
+import SigninView from 'views/SigninView'
+import SignoutView from 'views/SignoutView'
 // import SearchView from 'views/SearchView'
 // import ApiView from 'views/ApiView'
 // import BingoView from 'views/BingoView'
@@ -66,13 +68,13 @@ export default store => (
       <Route path='domino-encadenados' component={HomeView} />
     </Route>
     // User Routes
-    <Route path='signin' component={HomeView} />
+    <Route path='signin' component={SigninView} />
     <Route path='register' component={RegisterView} />
     <Route path='configuration' component={AppConfView} />
     <Route path='profile' component={HomeView} onEnter={requireAuth} />
     <Route path='usermaterial' component={HomeView} onEnter={requireAuth} />
     <Route path='upload' component={HomeView} onEnter={requireAuth} />
     <Route path='translate' component={PictogramsGridView} />
-    <Route path='signout' component={HomeView} onEnter={requireAuth} />
+    <Route path='signout' component={SignoutView} />
   </Route>
 )

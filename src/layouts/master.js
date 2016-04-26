@@ -287,14 +287,14 @@ const Master = React.createClass({
               targetOrigin={{horizontal: 'right', vertical: 'top'}}
               anchorOrigin={{horizontal: 'right', vertical: 'top'}}
             >
-              <MenuItem primaryText={<FormattedMessage {...messages.signin} />} linkButton={true} containerElement={<Link to='/login' />}/>
+              <MenuItem primaryText={<FormattedMessage {...messages.signin} />} linkButton={true} containerElement={<Link to='/signin' />}/>
               <MenuItem primaryText={<FormattedMessage {...messages.register} />} linkButton={true} containerElement={<Link to='/register' />}/>
               <MenuItem primaryText={<FormattedMessage {...messages.appConfiguration} />} linkButton={true} containerElement={<Link to='/configuration' />}/>
               <MenuItem primaryText={<FormattedMessage {...messages.userProfile} />} linkButton={true} containerElement={<Link to='/profile' />}/>
               <MenuItem primaryText={<FormattedMessage {...messages.userMaterial} />} linkButton={true} containerElement={<Link to='/usermaterial' />}/>
               <MenuItem primaryText={<FormattedMessage {...messages.uploadMaterial} />} linkButton={true} containerElement={<Link to='/upload' />}/>
               <MenuItem primaryText={<FormattedMessage {...messages.translateArasaac} />} linkButton={true} containerElement={<Link to='/translate' />}/>
-              <MenuItem primaryText={<FormattedMessage {...messages.signout} />} linkButton={true} href='/logout'/>
+              <MenuItem primaryText={<FormattedMessage {...messages.signout} />} linkButton={true} href='/signout'/>
             </IconMenu>
           }
         />
