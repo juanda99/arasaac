@@ -7,6 +7,7 @@ import searchText from './modules/searchText'
 import layout from './modules/layout'
 import filters from './modules/filters'
 import showFilter from './modules/showFilter'
+import auth from './modules/auth'
 import paginate from './paginate'
 import { PICTOGRAMS_REQUEST, PICTOGRAMS_SUCCESS, PICTOGRAMS_FAILURE } from './constants'
 
@@ -57,6 +58,7 @@ const gui = combineReducers({
 })
 
 const rootReducer = combineReducers({
+  auth,
   locale,
   router,
   gui,
