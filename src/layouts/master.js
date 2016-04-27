@@ -93,6 +93,26 @@ const messages = defineMessages({
     id: 'header.materials',
     description: 'Header title',
     defaultMessage: 'Materials'
+  },
+  signinTitle: {
+    id: 'header.signinTitle',
+    description: 'Header Title',
+    defaultMessage: 'Sign in to Arasaac'
+  },
+  registerTitle: {
+    id: 'header.registerTitle',
+    description: 'Header title',
+    defaultMessage: 'Sign up for Arasaac'
+  },
+  userProfileTitle: {
+    id: 'header.userProfileTitle',
+    description: 'Header title',
+    defaultMessage: 'My profile'
+  },
+  configurationTitle: {
+    id: 'header.configurationTitle',
+    description: 'Header title',
+    defaultMessage: 'Arasaac configuration'
   }
 })
 
@@ -236,20 +256,54 @@ const Master = React.createClass({
     const {prepareStyles} = this.state.muiTheme
 
     const styles = this.getStyles()
-    const router = this.context.router
-    const title =
-      router.isActive('/pictograms/search') ? <FormattedMessage {...messages.pictogramsSearch} />
-      : router.isActive('/pictograms/api') ? <FormattedMessage {...messages.api} />
-      : router.isActive('/pictograms/catalogs') ? <FormattedMessage {...messages.catalogs} />
-      : router.isActive('/materials') ? <FormattedMessage {...messages.materials} />
-      : router.isActive('/onlinetools') ? <FormattedMessage {...messages.onlineTools} />
-      : router.isActive('/software') ? <FormattedMessage {...messages.software} />
-      : router.isActive('/translate') ? <FormattedMessage {...messages.translateArasaac} />
-      : ''
 
+    var currentLocation = this.props.location.pathname
+    var title = ''
     let docked = false
+    switch (currentLocation) {
+      case '/pictograms/search':
+        title = <FormattedMessage {...messages.pictogramsSearch} />
+        docked = true
+        break
+      case '/pictograms/api':
+        title = <FormattedMessage {...messages.api} />
+        docked = true
+        break
+      case '/pictograms/catalogs':
+        title = <FormattedMessage {...messages.catalogs} />
+        docked = true
+        break
+      case '/materials':
+        title = <FormattedMessage {...messages.materials} />
+        docked = true
+        break
+      case '/onlinetools':
+        title = <FormattedMessage {...messages.onlineTools} />
+        docked = true
+        break
+      case '/software':
+        title = <FormattedMessage {...messages.software} />
+        docked = true
+        break
+      case '/signin':
+        title = <FormattedMessage {...messages.signinTitle} />
+        docked = false
+        break
+      case '/register':
+        title = <FormattedMessage {...messages.registerTitle} />
+        docked = false
+        break
+      case '/profile':
+        title = <FormattedMessage {...messages.userProfileTitle} />
+        docked = false
+        break
+      case '/configuration':
+        title = <FormattedMessage {...messages.configurationTitle} />
+        docked = false
+        break
+    }
     let showMenuIconButton = true
-    if (this.isDeviceSize(StyleResizable.statics.Sizes.LARGE) && title !== '') {
+    if (this.isDeviceSize(StyleResizable.statics.Sizes.LARGE) && docked) {
       docked = true
       leftNavOpen = true
       showMenuIconButton = false
@@ -306,11 +360,10 @@ const Master = React.createClass({
         </div>
         : children
         }
-         <div style={{paddingTop: '8rem'}}></div>
+        <div style={{paddingTop: '8rem'}}></div>
         <Footer style={styles.footer}/>
       </div>
     )
   }
 })
-
 export default Master
