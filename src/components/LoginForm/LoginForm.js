@@ -8,6 +8,61 @@ import ArasaacLogo from 'images/arasaac-logo.svg'
 // import Google from 'svg-icons/google'
 import GoogleIcon from './GoogleIcon'
 import FacebookIcon from './FacebookIcon'
+import { defineMessages, FormattedMessage } from 'react-intl'
+const messages = defineMessages({
+  google: {
+    id: 'signin.google',
+    description: 'Signin Google button',
+    defaultMessage: 'Sign in with Google'
+  },
+  facebook: {
+    id: 'signin.facebook',
+    description: 'Signin Facebook button',
+    defaultMessage: 'Sign in with Facebook'
+  },
+  or: {
+    id: 'signin.or',
+    description: 'Or, because it offers two posibilities',
+    defaultMessage: 'Or'
+  },
+  user: {
+    id: 'user.signin',
+    description: 'Username field default text for login',
+    defaultMessage: 'User'
+  },
+  email: {
+    id: 'email.signin',
+    description: 'Hint for username login field',
+    defaultMessage: 'e-mail'
+  },
+  password: {
+    id: 'password.signin',
+    description: 'Password field for login, default text',
+    defaultMessage: 'Password'
+  },
+  remember: {
+    id: 'signin.remember',
+    description: 'Signin checkbox option for remembering password',
+    defaultMessage: 'Remember me'
+  },
+  forgotPassword: {
+    id: 'signin.forgotPassword',
+    description: 'Link for password reset if passwords is forgotten',
+    defaultMessage: 'Forgot password?'
+  },
+  offerAccount: {
+    id: 'signin.offerAccount',
+    description: 'Text inviting for creating an account',
+    defaultMessage: 'Don\'t have an account?'
+  },
+  signup: {
+    id: 'signin.signup',
+    description: 'Button for creating a new account',
+    defaultMessage: 'Sign up'
+  }
+
+})
+
 const styles = {
   separator: {
     textAlign: 'center',
@@ -77,30 +132,34 @@ class LoginForm extends Component {
         </div>
         <div className='row'>
           <div className='col-xs-12'>
-            <RaisedButton style={styles.googleButton} backgroundColor={Colors.red500} label='Iniciar sesión con Google' primary={true} icon={<GoogleIcon />}/>
-            <RaisedButton style={styles.facebookButton} backgroundColor={Colors.blue500} label='Iniciar sesión con Facebook' primary={true} icon={<FacebookIcon/>}/>
+            <RaisedButton style={styles.googleButton} backgroundColor={Colors.red500}
+              label={<FormattedMessage {...messages.google} />} primary={true} icon={<GoogleIcon />}/>
+            <RaisedButton style={styles.facebookButton} backgroundColor={Colors.blue500}
+              label={<FormattedMessage {...messages.facebook} />} primary={true} icon={<FacebookIcon/>}/>
           </div>
         </div>
         <div className='row'>
           <div className='col-xs-12'>
             <div style={styles.separator}>
-              <span style={styles.separatorText}>o</span>
+              <span style={styles.separatorText}>{<FormattedMessage {...messages.or} />}</span>
               <hr style={styles.separatorLine} />
             </div>
           </div>
         </div>
         <div className='row'>
           <div className='col-xs-12'>
-            <TextField style={styles.text} hintText='e-mail' floatingLabelText='Usuario'/><br/>
-            <TextField style={styles.text} hintText='Password' floatingLabelText='Password' type='password'/><br/>
+            <TextField style={styles.text} hintText={<FormattedMessage {...messages.email} />}
+              floatingLabelText={<FormattedMessage {...messages.user} />}/><br/>
+            <TextField style={styles.text} hintText={<FormattedMessage {...messages.password} />}
+              floatingLabelText={<FormattedMessage {...messages.password} />} type='password'/><br/>
           </div>
         </div>
         <div className='row' style={{marginTop: 15, marginBottom: 15}}>
           <div className='col-xs-6'>
-            <Checkbox label='Recordarme' style={styles.checkbox} />
+            <Checkbox label={<FormattedMessage {...messages.remember} />} style={styles.checkbox} />
           </div>
           <div className='col-xs-6'>
-            <a style={styles.sendPass} href=''>Contraseña olvidada </a>
+            <a style={styles.sendPass} href=''>{<FormattedMessage {...messages.forgotPassword} />}</a>
           </div>
         </div>
         <div className='row'>
@@ -110,10 +169,10 @@ class LoginForm extends Component {
         </div>
         <div className='row' style={{marginTop: 10}}>
           <div className='col-xs-6'>
-            <p style={{textAlign: 'left'}}>¿No tienes cuenta?</p>
+            <p style={{textAlign: 'left'}}>{<FormattedMessage {...messages.offerAccount} />}</p>
           </div>
           <div className='col-xs-6' style={{position: 'relative'}}>
-            <RaisedButton style={styles.register} label='Registrate' secondary={true} />
+            <RaisedButton style={styles.register} label={<FormattedMessage {...messages.signup} />} secondary={true} />
           </div>
         </div>
       </Paper>
