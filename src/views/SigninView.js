@@ -1,6 +1,5 @@
 import React, {Component, PropTypes} from 'react'
 import { connect } from 'react-redux'
-require('./prueba.scss')
 import LoginForm from 'components/LoginForm/LoginForm'
 
 export default class SigninView extends Component {

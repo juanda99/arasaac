@@ -1,11 +1,16 @@
 import React from 'react'
-import IconButton from 'material-ui/lib/icon-button'
 import Facebook from 'svg-icons/facebook'
+import Colors from 'material-ui/lib/styles/colors'
+
+const style = {
+  top: 7,
+  position: 'relative',
+  width: 30,
+  marginLeft: 40
+}
 
 const FacebookIcon = () => (
-  <IconButton tooltip='bottom-right' touch={true} tooltipPosition='bottom-right'>
-    <Facebook/>
-  </IconButton>
+  <Facebook style={style} color={Colors.white}/>
 )
 
 export default FacebookIcon

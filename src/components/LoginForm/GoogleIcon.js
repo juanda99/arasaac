@@ -2,8 +2,15 @@ import React from 'react'
 import Google from 'svg-icons/google'
 import Colors from 'material-ui/lib/styles/colors'
 
+const style = {
+  top: 7,
+  position: 'relative',
+  width: 30,
+  marginLeft: 25
+}
+
 const GoogleIcon = () => (
-  <Google style={{width: 16}} color={Colors.white}/>
+  <Google style={style} color={Colors.white}/>
 )
 
 export default GoogleIcon

@@ -2,12 +2,14 @@ import React from 'react'
 import pure from 'recompose/pure'
 import SvgIcon from 'material-ui/lib/svg-icon'
 
-let Filter = props => (
-  <SvgIcon {...props}>
-    <path d='M3,2H21V2H21V4H20.92L14,10.92V22.91L10,18.91V10.91L3.09,4H3V2Z'/>
+let FacebookIcon = props => (
+  <SvgIcon {...props} viewBox='0 0 32 32'>
+    <path fill={props.color} d='M30.7,0H1.3C0.6,0,0,0.6,0,1.3v29.3C0,31.4,0.6,32,1.3,32H17V20h-4v-5h4v-4
+  c0-4.1,2.6-6.2,6.3-6.2C25.1,4.8,26.6,5,27,5v4.3l-2.6,0c-2,0-2.5,1-2.5,2.4V15h5l-1,5h-4l0.1,12h8.6c0.7,0,1.3-0.6,1.3-1.3V1.3
+  C32,0.6,31.4,0,30.7,0z'/>
   </SvgIcon>
 )
-Filter = pure(Filter)
-Filter.displayName = 'Filter'
+FacebookIcon = pure(FacebookIcon)
+FacebookIcon.displayName = 'FacebookIcon'
 
-export default Filter
+export default FacebookIcon
