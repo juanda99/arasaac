@@ -129,7 +129,6 @@ const style = {
   width: '100%'
 }
 
-
 class AppConfView extends Component {
   render() {
     const { toggleFilter } = this.props
@@ -144,18 +143,17 @@ class AppConfView extends Component {
         </div>
         <div className='row'>
           <div className='col-xs-6 col-sm-12'>
-          <Paper style={style} zDepth={2} rounded={false}>
-            <h3>Filters</h3>
-
-            <p>Select the filters you want to enable for searching pictograms</p>
-            <ToggleFilter label={<FormattedMessage {...messages.filterCatalog} />} onToggle={toggleFilter} filter='catalog'
-              active={filter.catalog}/ >
-            <ToggleFilter label={<FormattedMessage {...messages.filterLicense} />} onToggle={toggleFilter} filter='license'
-              active={filter.license}/ >
-            <ToggleFilter label={<FormattedMessage {...messages.filterSize} />} onToggle={toggleFilter} filter='size'
-              active={filter.size}/ >
-            <Divider/>
-          </Paper>
+            <Paper style={style} zDepth={2} rounded={false}>
+              <h3>Filters</h3>
+              <p>Select the filters you want to enable for searching pictograms</p>
+              <ToggleFilter label={<FormattedMessage {...messages.filterCatalog} />} onToggle={toggleFilter} filter='catalog'
+                active={filter.catalog}/ >
+              <ToggleFilter label={<FormattedMessage {...messages.filterLicense} />} onToggle={toggleFilter} filter='license'
+                active={filter.license}/ >
+              <ToggleFilter label={<FormattedMessage {...messages.filterSize} />} onToggle={toggleFilter} filter='size'
+                active={filter.size}/ >
+              <Divider/>
+            </Paper>
           </div>
         </div>
       </FullWidthSection>
