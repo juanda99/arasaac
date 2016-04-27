@@ -5,10 +5,10 @@ import Paper from 'material-ui/lib/paper'
 import Checkbox from 'material-ui/lib/checkbox'
 import Colors from 'material-ui/lib/styles/colors'
 import ArasaacLogo from 'images/arasaac-logo.svg'
-// import Google from 'svg-icons/google'
-import GoogleIcon from './GoogleIcon'
-import FacebookIcon from './FacebookIcon'
+import GoogleIcon from './icons/GoogleIcon'
+import FacebookIcon from './icons/FacebookIcon'
 import { defineMessages, FormattedMessage } from 'react-intl'
+import { Link } from 'react-router'
 const messages = defineMessages({
   google: {
     id: 'signin.google',
@@ -23,7 +23,7 @@ const messages = defineMessages({
   or: {
     id: 'signin.or',
     description: 'Or, because it offers two posibilities',
-    defaultMessage: 'Or'
+    defaultMessage: 'or'
   },
   user: {
     id: 'user.signin',
@@ -98,9 +98,6 @@ const styles = {
   checkbox: {
     left: 0
   },
-  sendPass: {
-    textAlign: 'right'
-  },
   text: {
     width: '100%'
   },
@@ -159,7 +156,7 @@ class LoginForm extends Component {
             <Checkbox label={<FormattedMessage {...messages.remember} />} style={styles.checkbox} />
           </div>
           <div className='col-xs-6'>
-            <a style={styles.sendPass} href=''>{<FormattedMessage {...messages.forgotPassword} />}</a>
+            <Link to='http://localhost:3000/register'>{<FormattedMessage {...messages.forgotPassword} />}</Link>
           </div>
         </div>
         <div className='row'>
@@ -168,11 +165,11 @@ class LoginForm extends Component {
           </div>
         </div>
         <div className='row' style={{marginTop: 10}}>
-          <div className='col-xs-6'>
+          <div className='col-xs-6' style={{textAlign: 'right'}}>
             <p style={{textAlign: 'left'}}>{<FormattedMessage {...messages.offerAccount} />}</p>
           </div>
           <div className='col-xs-6' style={{position: 'relative'}}>
-            <RaisedButton style={styles.register} label={<FormattedMessage {...messages.signup} />} secondary={true} />
+            <Link to='/register'><RaisedButton style={styles.register} label={<FormattedMessage {...messages.signup} />} secondary={true} /></Link>
           </div>
         </div>
       </Paper>

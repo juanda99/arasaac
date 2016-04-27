@@ -1,13 +1,19 @@
-import React, {Component} from 'react'
-import RegisterForm from 'components/RegisterForm.js'
+import React, {Component, PropTypes} from 'react'
+import { connect } from 'react-redux'
+import RegisterForm from 'components/RegisterForm'
 
-class RegisterView extends Component {
+export default class RegisterView extends Component {
+  static propTypes = {
+    name: PropTypes.string
+  }
+
+  constructor(props) {
+    super(props)
+  }
+
   render() {
     return (
-      <div>
-        <h1>Formulario de Registro</h1>
-        <RegisterForm/>
-      </div>
+      <RegisterForm/>
     )
   }
 }
