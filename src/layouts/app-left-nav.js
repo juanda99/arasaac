@@ -212,6 +212,10 @@ const AppLeftNav = React.createClass({
                 primaryText={<FormattedMessage {...messages.api} />}
               />,
               <ListItem
+                value='/onlinetools/animations-maker'
+                primaryText={<FormattedMessage {...messages.animationsMaker} />}
+              />,
+              <ListItem
                 value='/pictograms/catalogs'
                 primaryText={<FormattedMessage {...messages.downloads} />}
               />
@@ -230,31 +234,31 @@ const AppLeftNav = React.createClass({
                 primaryText={<FormattedMessage {...messages.animationsMaker} />}
               />,
               <ListItem
-                value='/onlineTools/symbols-creator'
+                value='/onlinetools/symbols-creator'
                 primaryText={<FormattedMessage {...messages.symbolsCreator} />}
               />,
               <ListItem
-                value='/onlineTools/schedule-generator'
+                value='/onlinetools/schedule-generator'
                 primaryText={<FormattedMessage {...messages.scheduleGenerator} />}
               />,
               <ListItem
-                value='/onlineTools/calendar-generator'
+                value='/onlinetools/calendar-generator'
                 primaryText={<FormattedMessage {...messages.calendarGenerator} />}
               />,
               <ListItem
-                value='/onlineTools/bingos-creator'
+                value='/onlinetools/bingos-creator'
                 primaryText={<FormattedMessage {...messages.bingo} />}
               />,
               <ListItem
-                value='/onlineTools/snakes-and-ladders'
+                value='/onlinetools/snakes-and-ladders'
                 primaryText={<FormattedMessage {...messages.snakesAndLadders} />}
               />,
               <ListItem
-                value='/onlineTools/dominos'
+                value='/onlinetools/dominos'
                 primaryText={<FormattedMessage {...messages.dominos} />}
               />,
               <ListItem
-                value='/onlineTools/dominos-encadenados'
+                value='/onlinetools/dominos-encadenados'
                 primaryText={<FormattedMessage {...messages.dominosencadenados} />}
               />
             ]}

@@ -243,6 +243,55 @@ const Master = React.createClass({
     })
   },
 
+  getViewProps() {
+    let title = ''
+    let docked = false
+    var url = this.props.location.pathname
+    switch (true) {
+      case /api/.test(url):
+        title = <FormattedMessage {...messages.api} />
+        docked = true
+        break
+      case /search/.test(url):
+        title = <FormattedMessage {...messages.pictogramsSearch} />
+        docked = true
+        break
+      case /catalogs/.test(url):
+        title = <FormattedMessage {...messages.catalogs} />
+        docked = true
+        break
+      case /materials/.test(url):
+        title = <FormattedMessage {...messages.materials} />
+        docked = true
+        break
+      case /onlinetools/.test(url):
+        title = <FormattedMessage {...messages.onlineTools} />
+        docked = true
+        break
+      case /software/.test(url):
+        title = <FormattedMessage {...messages.software} />
+        docked = true
+        break
+      case /signin/.test(url):
+        title = <FormattedMessage {...messages.signinTitle} />
+        docked = true
+        break
+      case /register/.test(url):
+        title = <FormattedMessage {...messages.registerTitle} />
+        docked = true
+        break
+      case /profile/.test(url):
+        title = <FormattedMessage {...messages.userProfileTitle} />
+        docked = true
+        break
+      case /configuration/.test(url):
+        title = <FormattedMessage {...messages.configurationTitle} />
+        docked = true
+        break
+    }
+    return {docked, title}
+  },
+
   render() {
     const {
       location,
@@ -257,51 +306,8 @@ const Master = React.createClass({
 
     const styles = this.getStyles()
 
-    var currentLocation = this.props.location.pathname
-    var title = ''
-    let docked = false
-    switch (currentLocation) {
-      case '/pictograms/search':
-        title = <FormattedMessage {...messages.pictogramsSearch} />
-        docked = true
-        break
-      case '/pictograms/api':
-        title = <FormattedMessage {...messages.api} />
-        docked = true
-        break
-      case '/pictograms/catalogs':
-        title = <FormattedMessage {...messages.catalogs} />
-        docked = true
-        break
-      case '/materials':
-        title = <FormattedMessage {...messages.materials} />
-        docked = true
-        break
-      case '/onlinetools':
-        title = <FormattedMessage {...messages.onlineTools} />
-        docked = true
-        break
-      case '/software':
-        title = <FormattedMessage {...messages.software} />
-        docked = true
-        break
-      case '/signin':
-        title = <FormattedMessage {...messages.signinTitle} />
-        docked = false
-        break
-      case '/register':
-        title = <FormattedMessage {...messages.registerTitle} />
-        docked = false
-        break
-      case '/profile':
-        title = <FormattedMessage {...messages.userProfileTitle} />
-        docked = false
-        break
-      case '/configuration':
-        title = <FormattedMessage {...messages.configurationTitle} />
-        docked = false
-        break
-    }
+    let {title, docked} = this.getViewProps()
+
     let showMenuIconButton = true
     if (this.isDeviceSize(StyleResizable.statics.Sizes.LARGE) && docked) {
       docked = true

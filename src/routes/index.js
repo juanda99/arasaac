@@ -80,14 +80,14 @@ export default store => (
 
     <Redirect from='onlinetools' to='/onlinetools/bingos-creator' />
     <Route path='onlinetools'>
-      <Route path='animacion' component={HomeView} />
-      <Route path='simbolos' component={HomeView} />
-      <Route path='horarios' component={HomeView} />
-      <Route path='calendarios' component={HomeView} />
+      <Route path='animations-maker' component={HomeView} />
+      <Route path='symbols-creator' component={HomeView} />
+      <Route path='schedule-generator' component={HomeView} />
+      <Route path='calendar-generator' component={HomeView} />
       <Route path='bingos-creator' component={BingoView} />
-      <Route path='oca' component={HomeView} />
-      <Route path='domino' component={HomeView} />
-      <Route path='domino-encadenados' component={HomeView} />
+      <Route path='snakes-and-ladders' component={HomeView} />
+      <Route path='dominos' component={HomeView} />
+      <Route path='dominos-encadenados' component={HomeView} />
     </Route>
     // User Routes
     <Route path='signin' component={SigninView} />
@@ -97,6 +97,6 @@ export default store => (
     <Route path='usermaterial' component={UserIsAuthenticated(HomeView)}  />
     <Route path='upload' component={UserIsAdmin(HomeView)} />
     <Route path='translate' component={UserIsTranslator(PictogramsGridView)} />
-    <Route path='signout' component={HomeView} />
+    <Route path='signout' component={SignOutView} />
   </Route>
 )
