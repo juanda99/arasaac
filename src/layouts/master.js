@@ -274,11 +274,11 @@ const Master = React.createClass({
         break
       case /signin/.test(url):
         title = <FormattedMessage {...messages.signinTitle} />
-        docked = true
+        docked = false
         break
       case /register/.test(url):
         title = <FormattedMessage {...messages.registerTitle} />
-        docked = true
+        docked = false
         break
       case /profile/.test(url):
         title = <FormattedMessage {...messages.userProfileTitle} />
