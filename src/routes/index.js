@@ -97,6 +97,6 @@ export default store => (
     <Route path='usermaterial' component={UserIsAuthenticated(HomeView)}  />
     <Route path='upload' component={UserIsAdmin(HomeView)} />
     <Route path='translate' component={UserIsTranslator(PictogramsGridView)} />
-    <Route path='signout' component={SignOutView} />
+    <Route path='signout' component={SignoutView} />
   </Route>
 )
