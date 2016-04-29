@@ -1,11 +1,6 @@
 import React, {Component, PropTypes} from 'react'
 import RaisedButton from 'material-ui/lib/raised-button'
 import Paper from 'material-ui/lib/paper'
-import Checkbox from 'material-ui/lib/checkbox'
-import Colors from 'material-ui/lib/styles/colors'
-import ArasaacLogo from 'images/arasaac-logo.svg'
-import GoogleIcon from './icons/GoogleIcon'
-import FacebookIcon from './icons/FacebookIcon'
 import { defineMessages, FormattedMessage } from 'react-intl'
 import { Link } from 'react-router'
 import Formsy from 'formsy-react'
@@ -51,15 +46,20 @@ const messages = defineMessages({
     description: 'Link for password reset if passwords is forgotten',
     defaultMessage: 'Forgot password?'
   },
-  offerAccount: {
+  offerSignin: {
     id: 'signin.offerAccount',
     description: 'Text inviting for creating an account',
-    defaultMessage: 'Don\'t have an account?'
+    defaultMessage: 'Already an Arasaac user?'
   },
   signup: {
     id: 'signin.signup',
     description: 'Button for creating a new account',
     defaultMessage: 'Sign up'
+  },
+  signin: {
+    id: 'signup.signin',
+    description: 'Button for going to sign in view',
+    defaultMessage: 'Sign in'
   }
 
 })
@@ -102,13 +102,15 @@ const styles = {
   text: {
     width: '100%'
   },
-  register: {
+  signup: {
+    width: '100%',
+    marginTop: 10,
+    marginBottom: 10
+  },
+  signinButton: {
     position: 'absolute',
     right: 8,
     marginTop: 5
-  },
-  signinButton: {
-    width: '100%'
   },
   svgLogo: {
     width: 180,
@@ -117,7 +119,10 @@ const styles = {
 }
 
 const errorMessages = {
-  wordsError: 'Please only use letters'
+  wordsError: 'Please only use letters',
+  urlError: 'Please provide a valid URL',
+  passwordError: 'Password must contain at least 6 characters',
+  emailError: 'Please provide a valid email'
 }
 
 class RegisterForm extends Component {
@@ -128,13 +133,11 @@ class RegisterForm extends Component {
   constructor(props) {
     super(props)
     this.state = {canSubmit: false}
+    this.enableButton = this.enableButton.bind(this)
+    this.disableButton = this.disableButton.bind(this)
+    this.submitForm = this.submitForm.bind(this)
   }
 
-  getInitialState() {
-    return {
-      canSubmit: false
-    }
-  }
   enableButton() {
     this.setState({
       canSubmit: true
@@ -147,26 +150,22 @@ class RegisterForm extends Component {
     })
   }
 
+  notifyFormError(data) {
+    console.error('Form error:', data)
+  }
+
   submitForm(model) {
     // Submit your validated form
     console.log('Model: ', model)
   }
 
   render() {
-    let { wordsError } = errorMessages
+    let { wordsError, urlError, passwordError, emailError } = errorMessages
     return (
       <Paper zDepth={2} style={styles.paper}>
         <div className='row'>
-          <div className='col-xs-12 col-sm-6'>
-            <img style={styles.svgLogo} src={ArasaacLogo} />
-          </div>
-        </div>
-        <div className='row'>
           <div className='col-xs-12'>
-            <RaisedButton style={styles.googleButton} backgroundColor={Colors.red500}
-              label={<FormattedMessage {...messages.google} />} primary={true} icon={<GoogleIcon />}/>
-            <RaisedButton style={styles.facebookButton} backgroundColor={Colors.blue500}
-              label={<FormattedMessage {...messages.facebook} />} primary={true} icon={<FacebookIcon/>}/>
+            <p style={{textAlign: 'center'}}>Sign up with <a href=''>Google</a> or <a href=''>Facebook</a></p>
           </div>
         </div>
         <div className='row'>
@@ -179,26 +178,84 @@ class RegisterForm extends Component {
         </div>
         <div className='row'>
           <div className='col-xs-12'>
-            <Formsy.Form onValid={this.enableButton} onInvalid={this.disableButton} onValidSubmit={this.submitForm}>
+            <Formsy.Form
+              onValid={this.enableButton}
+              onInvalid={this.disableButton}
+              onValidSubmit={this.submitForm}
+              onInvalidSubmit={this.notifyFormError}>
               <FormsyText
                 name='name'
                 validations='isWords'
                 validationError={wordsError}
                 required
                 hintText='What is your name?'
-                value='Bob'
-                floatingLabelText='Name'/>
+                value=''
+                floatingLabelText='Name'
+                style={{width: '100%'}}
+              />
               <FormsyText
-                name='name'
-                type='password'
+                name='surname'
                 validations='isWords'
                 validationError={wordsError}
                 required
+                hintText='What is your surname?'
+                value=''
+                floatingLabelText='Surname'
+                style={{width: '100%'}}
+              />
+              <FormsyText
+                name='email'
+                validations='isEmail'
+                validationError={emailError}
+                required
+                hintText='What is your email?'
+                value=''
+                floatingLabelText='Email'
+                style={{width: '100%'}}
+              />
+              <FormsyText
+                name='password'
+                type='password'
+                validations='minLength:6'
+                validationError={passwordError}
+                required
                 hintText='What is your password?'
                 value=''
-                floatingLabelText='Password'/>
-              <RaisedButton type='submit' label='Registrarse' disabled={!this.state.canSubmit} primary={true} />
+                floatingLabelText='Password'
+                style={{width: '100%'}}
+              />
+              <FormsyText
+                name='company'
+                hintText='What is your company?'
+                value=''
+                floatingLabelText='Company (optional)'
+                style={{width: '100%'}}
+              />
+              <FormsyText
+                name='website'
+                validations='isUrl'
+                validationError={urlError}
+                hintText='http://www.example.com'
+                value=''
+                floatingLabelText='Website (optional)'
+                style={{width: '100%'}}
+              />
+              <RaisedButton
+                type='submit'
+                label='Sign up'
+                disabled={!this.state.canSubmit}
+                primary={true}
+                style={styles.signup}
+              />
             </Formsy.Form>
+          </div>
+        </div>
+        <div className='row' style={{marginTop: 10}}>
+          <div className='col-xs-8' style={{textAlign: 'right'}}>
+            <p style={{textAlign: 'left'}}>{<FormattedMessage {...messages.offerSignin} />}</p>
+          </div>
+          <div className='col-xs-4' style={{position: 'relative'}}>
+            <Link to='/signin'><RaisedButton style={styles.signinButton} label={<FormattedMessage {...messages.signin} />} secondary={true} /></Link>
           </div>
         </div>
       </Paper>

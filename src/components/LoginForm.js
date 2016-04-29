@@ -155,7 +155,7 @@ class LoginForm extends Component {
           <div className='col-xs-6'>
             <Checkbox label={<FormattedMessage {...messages.remember} />} style={styles.checkbox} />
           </div>
-          <div className='col-xs-6'>
+          <div className='col-xs-6' style={{textAlign: 'right'}}>
             <Link to='http://localhost:3000/register'>{<FormattedMessage {...messages.forgotPassword} />}</Link>
           </div>
         </div>

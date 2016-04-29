@@ -24,7 +24,7 @@ export default class RegisterView extends Component {
     let showRegister = this.state.showRegister
     return (
       <div>
-        { showRegister ?  <RegisterForm/> : <RegisterOptions showRegister={this.showRegister}/> }
+        { showRegister ? <RegisterForm/> : <RegisterOptions showRegister={this.showRegister}/> }
       </div>
     )
   }
