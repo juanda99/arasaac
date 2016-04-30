@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux'
 import { routerReducer as router } from 'react-router-redux'
+import { reducer as formReducer } from 'redux-form'
 import merge from 'lodash/merge'
 import locale from './modules/locale'
 import errorMessage from './modules/error'
@@ -64,7 +65,8 @@ const rootReducer = combineReducers({
   gui,
   errorMessage,
   entities,
-  pagination
+  pagination,
+  form: formReducer
 })
 
 export default rootReducer
