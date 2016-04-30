@@ -9,6 +9,8 @@ import GoogleIcon from './icons/GoogleIcon'
 import FacebookIcon from './icons/FacebookIcon'
 import { defineMessages, FormattedMessage } from 'react-intl'
 import { Link } from 'react-router'
+import { reduxForm } from 'redux-form'
+export const fields = [ 'user', 'password' ]
 const messages = defineMessages({
   google: {
     id: 'signin.google',
@@ -115,11 +117,17 @@ const styles = {
   }
 }
 
-class LoginForm extends Component {
+let LoginForm = class LoginForm extends Component {
   static propTypes = {
     name: PropTypes.string
   }
   render() {
+    const {
+      fields: { user, password },
+      handleSubmit,
+      resetForm,
+      submitting
+    } = this.props
     return (
       <Paper zDepth={2} style={styles.paper}>
         <div className='row'>
@@ -143,27 +151,29 @@ class LoginForm extends Component {
             </div>
           </div>
         </div>
-        <div className='row'>
-          <div className='col-xs-12'>
-            <TextField style={styles.text} hintText={<FormattedMessage {...messages.email} />}
-              floatingLabelText={<FormattedMessage {...messages.user} />}/><br/>
-            <TextField style={styles.text} hintText={<FormattedMessage {...messages.password} />}
-              floatingLabelText={<FormattedMessage {...messages.password} />} type='password'/><br/>
+        <form onSubmit={handleSubmit}>
+          <div className='row'>
+            <div className='col-xs-12'>
+              <TextField style={styles.text} hintText={<FormattedMessage {...messages.email} />}
+                floatingLabelText={<FormattedMessage {...messages.user} />} {...user}/><br/>
+              <TextField style={styles.text} hintText={<FormattedMessage {...messages.password} />}
+                floatingLabelText={<FormattedMessage {...messages.password} {...password} />} type='password'/><br/>
+            </div>
           </div>
-        </div>
-        <div className='row' style={{marginTop: 15, marginBottom: 15}}>
-          <div className='col-xs-6'>
-            <Checkbox label={<FormattedMessage {...messages.remember} />} style={styles.checkbox} />
+          <div className='row' style={{marginTop: 15, marginBottom: 15}}>
+            <div className='col-xs-6'>
+              <Checkbox label={<FormattedMessage {...messages.remember} />} style={styles.checkbox} />
+            </div>
+            <div className='col-xs-6' style={{textAlign: 'right'}}>
+              <Link to='http://localhost:3000/register'>{<FormattedMessage {...messages.forgotPassword} />}</Link>
+            </div>
           </div>
-          <div className='col-xs-6' style={{textAlign: 'right'}}>
-            <Link to='http://localhost:3000/register'>{<FormattedMessage {...messages.forgotPassword} />}</Link>
+          <div className='row'>
+            <div className='col-xs-12'>
+              <RaisedButton style={styles.signinButton} label='SIGN IN' primary={true} />
+            </div>
           </div>
-        </div>
-        <div className='row'>
-          <div className='col-xs-12'>
-            <RaisedButton style={styles.signinButton} label='SIGN IN' primary={true} />
-          </div>
-        </div>
+        </form>
         <div className='row' style={{marginTop: 10}}>
           <div className='col-xs-6' style={{textAlign: 'right'}}>
             <p style={{textAlign: 'left'}}>{<FormattedMessage {...messages.offerAccount} />}</p>
@@ -176,4 +186,15 @@ class LoginForm extends Component {
     )
   }
 }
+LoginForm.propTypes = {
+  fields: PropTypes.object.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  resetForm: PropTypes.func.isRequired,
+  submitting: PropTypes.bool.isRequired
+}
+LoginForm = reduxForm({
+  form: 'signin',
+  fields
+})(LoginForm)
+
 export default LoginForm
