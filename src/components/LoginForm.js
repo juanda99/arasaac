@@ -10,19 +10,22 @@ import FacebookIcon from './icons/FacebookIcon'
 import { defineMessages, FormattedMessage } from 'react-intl'
 import { Link } from 'react-router'
 import { reduxForm } from 'redux-form'
+import Validator from 'validatorjs'
 export const fields = [ 'username', 'password' ]
-const validate = values => {
-  const errors = {}
-  if (!values.username) {
-    errors.username = 'Required'
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.username)) {
-    errors.username = 'Please provide a valid email'
-  }
-  if (!values.password) {
-    errors.password = 'Required'
-  }
-  return errors
+const rules = {
+  username: 'required|email',
+  password: 'required'
 }
+const validateMessages = {
+  'required': 'Required',
+  'email.username': 'Please provide a valid email'
+}
+const validate = values => {
+  const validator = new Validator(values, rules, validateMessages)
+  validator.passes()
+  return validator.errors.all()
+}
+
 const messages = defineMessages({
   google: {
     id: 'signin.google',
@@ -133,7 +136,8 @@ let LoginForm = class LoginForm extends Component {
     name: PropTypes.string
   }
   componentDidMount() {
-    this.refs.user.focus()
+    // si pongo el foco lo pierdo...
+    // this.refs.user.focus()
   }
   render() {
     const {
