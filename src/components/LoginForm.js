@@ -10,7 +10,19 @@ import FacebookIcon from './icons/FacebookIcon'
 import { defineMessages, FormattedMessage } from 'react-intl'
 import { Link } from 'react-router'
 import { reduxForm } from 'redux-form'
-export const fields = [ 'user', 'password' ]
+export const fields = [ 'username', 'password' ]
+const validate = values => {
+  const errors = {}
+  if (!values.username) {
+    errors.username = 'Required'
+  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.username)) {
+    errors.username = 'Please provide a valid email'
+  }
+  if (!values.password) {
+    errors.password = 'Required'
+  }
+  return errors
+}
 const messages = defineMessages({
   google: {
     id: 'signin.google',
@@ -62,7 +74,6 @@ const messages = defineMessages({
     description: 'Button for creating a new account',
     defaultMessage: 'Sign up'
   }
-
 })
 
 const styles = {
@@ -121,9 +132,12 @@ let LoginForm = class LoginForm extends Component {
   static propTypes = {
     name: PropTypes.string
   }
+  componentDidMount() {
+    this.refs.user.focus()
+  }
   render() {
     const {
-      fields: { user, password },
+      fields: { username, password },
       handleSubmit,
       resetForm,
       submitting
@@ -154,10 +168,12 @@ let LoginForm = class LoginForm extends Component {
         <form onSubmit={handleSubmit}>
           <div className='row'>
             <div className='col-xs-12'>
-              <TextField style={styles.text} hintText={<FormattedMessage {...messages.email} />}
-                floatingLabelText={<FormattedMessage {...messages.user} />} {...user}/><br/>
+              <TextField ref='user' style={styles.text} hintText={<FormattedMessage {...messages.email} />}
+                floatingLabelText={<FormattedMessage {...messages.user} />} {...username}
+                errorText={username.touched && username.error ? username.error : ''}/><br/>
               <TextField style={styles.text} hintText={<FormattedMessage {...messages.password} />}
-                floatingLabelText={<FormattedMessage {...messages.password} {...password} />} type='password'/><br/>
+                floatingLabelText={<FormattedMessage {...messages.password} {...password} />} type='password'
+                errorText={password.touched && password.error ? password.error : ''}/><br/>
             </div>
           </div>
           <div className='row' style={{marginTop: 15, marginBottom: 15}}>
@@ -194,7 +210,8 @@ LoginForm.propTypes = {
 }
 LoginForm = reduxForm({
   form: 'signin',
-  fields
+  fields,
+  validate
 })(LoginForm)
 
 export default LoginForm
