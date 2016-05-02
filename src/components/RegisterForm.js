@@ -3,8 +3,9 @@ import RaisedButton from 'material-ui/lib/raised-button'
 import Paper from 'material-ui/lib/paper'
 import { defineMessages, FormattedMessage } from 'react-intl'
 import { Link } from 'react-router'
-import Formsy from 'formsy-react'
-import FormsyText from 'formsy-material-ui/lib/FormsyText'
+import TextField from 'material-ui/lib/text-field'
+import { reduxForm } from 'redux-form'
+import Validator from 'validatorjs'
 const messages = defineMessages({
   google: {
     id: 'signup.google',
@@ -118,49 +119,42 @@ const styles = {
   }
 }
 
-const errorMessages = {
-  wordsError: 'Please only use letters',
-  urlError: 'Please provide a valid URL',
-  passwordError: 'Password must contain at least 6 characters',
-  emailError: 'Please provide a valid email'
+export const fields = [ 'name', 'surname', 'email', 'password', 'company', 'website' ]
+const rules = {
+  name: 'required|alpha',
+  surname: 'required|alpha',
+  email: 'required|email',
+  password: 'required|min:6',
+  url: 'Please provide a valid URL'
+}
+const validateMessages = {
+  'required': 'Required',
+  'email.username': 'Please provide a valid email',
+  'alpha': 'Please only use letters'
+}
+const validate = values => {
+  const validator = new Validator(values, rules, validateMessages)
+  validator.passes()
+  return validator.errors.all()
 }
 
-class RegisterForm extends Component {
+let RegisterForm = class RegisterForm extends Component {
   static propTypes = {
     name: PropTypes.string
   }
 
-  constructor(props) {
-    super(props)
-    this.state = {canSubmit: false}
-    this.enableButton = this.enableButton.bind(this)
-    this.disableButton = this.disableButton.bind(this)
-    this.submitForm = this.submitForm.bind(this)
-  }
-
-  enableButton() {
-    this.setState({
-      canSubmit: true
-    })
-  }
-
-  disableButton() {
-    this.setState({
-      canSubmit: false
-    })
-  }
-
-  notifyFormError(data) {
-    console.error('Form error:', data)
-  }
-
-  submitForm(model) {
-    // Submit your validated form
-    console.log('Model: ', model)
+  componentDidMount() {
+    // si pongo el foco lo pierdo...
+    this.refs.name.focus()
   }
 
   render() {
-    let { wordsError, urlError, passwordError, emailError } = errorMessages
+    const {
+      fields: { name, surname, email, password, company, website },
+      handleSubmit,
+      resetForm,
+      submitting
+    } = this.props
     return (
       <Paper zDepth={2} style={styles.paper}>
         <div className='row'>
@@ -178,76 +172,70 @@ class RegisterForm extends Component {
         </div>
         <div className='row'>
           <div className='col-xs-12'>
-            <Formsy.Form
-              onValid={this.enableButton}
-              onInvalid={this.disableButton}
-              onValidSubmit={this.submitForm}
-              onInvalidSubmit={this.notifyFormError}>
-              <FormsyText
+            <form onSubmit={handleSubmit}>
+              <TextField
                 name='name'
-                validations='isWords'
-                validationError={wordsError}
-                required
+                ref='name'
                 hintText='What is your name?'
                 value=''
                 floatingLabelText='Name'
                 style={{width: '100%'}}
+                errorText={name.touched && name.error ? name.error : ''}
+                {...name}
               />
-              <FormsyText
+              <TextField
                 name='surname'
-                validations='isWords'
-                validationError={wordsError}
-                required
                 hintText='What is your surname?'
                 value=''
                 floatingLabelText='Surname'
                 style={{width: '100%'}}
+                errorText={surname.touched && surname.error ? surname.error : ''}
+                {...surname}
               />
-              <FormsyText
+              <TextField
                 name='email'
-                validations='isEmail'
-                validationError={emailError}
-                required
                 hintText='What is your email?'
                 value=''
                 floatingLabelText='Email'
                 style={{width: '100%'}}
+                errorText={email.touched && email.error ? email.error : ''}
+                {...email}
               />
-              <FormsyText
+              <TextField
                 name='password'
                 type='password'
-                validations='minLength:6'
-                validationError={passwordError}
-                required
                 hintText='What is your password?'
                 value=''
                 floatingLabelText='Password'
                 style={{width: '100%'}}
+                errorText={password.touched && password.error ? password.error : ''}
+                {...password}
               />
-              <FormsyText
+              <TextField
                 name='company'
                 hintText='What is your company?'
                 value=''
                 floatingLabelText='Company (optional)'
                 style={{width: '100%'}}
+                errorText={company.touched && company.error ? company.error : ''}
+                {...company}
               />
-              <FormsyText
+              <TextField
                 name='website'
-                validations='isUrl'
-                validationError={urlError}
                 hintText='http://www.example.com'
                 value=''
                 floatingLabelText='Website (optional)'
                 style={{width: '100%'}}
+                errorText={website.touched && website.error ? website.error : ''}
+                {...website}
               />
               <RaisedButton
                 type='submit'
                 label='Sign up'
-                disabled={!this.state.canSubmit}
                 primary={true}
                 style={styles.signup}
               />
-            </Formsy.Form>
+            </form>
           </div>
         </div>
         <div className='row' style={{marginTop: 10}}>
@@ -262,5 +250,18 @@ class RegisterForm extends Component {
     )
   }
 }
+RegisterForm.propTypes = {
+  fields: PropTypes.object.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  resetForm: PropTypes.func.isRequired,
+  submitting: PropTypes.bool.isRequired
+}
+
+RegisterForm = reduxForm({
+  form: 'signup',
+  fields,
+  validate
+})(RegisterForm)
+
 export default RegisterForm
 
