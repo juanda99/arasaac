@@ -135,14 +135,27 @@ let LoginForm = class LoginForm extends Component {
   static propTypes = {
     name: PropTypes.string
   }
+
+  constructor(props) {
+    super(props)
+    this.handleSubmit = this.handleSubmit.bind(this)
+  }
+
   componentDidMount() {
     // si pongo el foco lo pierdo...
-    // this.refs.user.focus()
+    // this.refs.username.focus()
   }
+  handleSubmit(event) {
+    const username = this.refs.username
+    const password = this.refs.password
+    const creds = { username: username.value.trim(), password: password.value.trim() }
+    this.props.onLoginClick(creds)
+  }
+
+
   render() {
     const {
       fields: { username, password },
-      handleSubmit,
       resetForm,
       submitting
     } = this.props
@@ -169,13 +182,13 @@ let LoginForm = class LoginForm extends Component {
             </div>
           </div>
         </div>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={this.handleSubmit}>
           <div className='row'>
             <div className='col-xs-12'>
-              <TextField ref='user' style={styles.text} hintText={<FormattedMessage {...messages.email} />}
+              <TextField ref='username' style={styles.text} hintText={<FormattedMessage {...messages.email} />}
                 floatingLabelText={<FormattedMessage {...messages.user} />} {...username}
                 errorText={username.touched && username.error ? username.error : ''}/><br/>
-              <TextField style={styles.text} hintText={<FormattedMessage {...messages.password} />}
+              <TextField ref='password' style={styles.text} hintText={<FormattedMessage {...messages.password} />}
                 floatingLabelText={<FormattedMessage {...messages.password} {...password} />} type='password'
                 errorText={password.touched && password.error ? password.error : ''}/><br/>
             </div>
@@ -208,7 +221,7 @@ let LoginForm = class LoginForm extends Component {
 }
 LoginForm.propTypes = {
   fields: PropTypes.object.isRequired,
-  handleSubmit: PropTypes.func.isRequired,
+  onLoginClick: PropTypes.func.isRequired,
   resetForm: PropTypes.func.isRequired,
   submitting: PropTypes.bool.isRequired
 }
