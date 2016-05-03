@@ -1,11 +1,6 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import Title from 'react-title-component'
-import AppBar from 'material-ui/lib/app-bar'
-import IconButton from 'material-ui/lib/icon-button'
-import IconMenu from 'material-ui/lib/menus/icon-menu'
-import MoreVertIcon from 'material-ui/lib/svg-icons/navigation/more-vert'
-import MenuItem from 'material-ui/lib/menus/menu-item'
-import { Link } from 'react-router'
 import {Spacing} from 'material-ui/lib/styles'
 import Footer from './footer'
 import { StyleResizable } from 'material-ui/lib/mixins'
@@ -17,48 +12,9 @@ import MyRawTheme from 'theme/MyRawTheme'
 import ThemeManager from 'material-ui/lib/styles/theme-manager'
 import 'styles/core.scss'
 import myStyle from 'theme/variables'
+import AuthAppBar from './authAppBar'
 
 const messages = defineMessages({
-  signin: {
-    id: 'userMenu.signin',
-    description: 'User menu item',
-    defaultMessage: 'Sign in'
-  },
-  register: {
-    id: 'userMenu.register',
-    description: 'User menu item',
-    defaultMessage: 'Register'
-  },
-  appConfiguration: {
-    id: 'userMenu.appConfiguration',
-    description: 'User menu item',
-    defaultMessage: 'App Configuration'
-  },
-  userProfile: {
-    id: 'userMenu.userProfile',
-    description: 'User menu item',
-    defaultMessage: 'My profile'
-  },
-  userMaterial: {
-    id: 'userMenu.userMaterial',
-    description: 'User menu item',
-    defaultMessage: 'My material'
-  },
-  uploadMaterial: {
-    id: 'userMenu.uploadMaterial',
-    description: 'User menu item',
-    defaultMessage: 'Share material'
-  },
-  translateArasaac: {
-    id: 'userMenu.translateArasaac',
-    description: 'User menu item',
-    defaultMessage: 'Translate Arasaac'
-  },
-  signout: {
-    id: 'userMenu.signout',
-    description: 'User menu item',
-    defaultMessage: 'Sign out'
-  },
   pictograms: {
     id: 'header.pictograms',
     description: 'Header title',
@@ -295,7 +251,8 @@ const Master = React.createClass({
   render() {
     const {
       location,
-      children
+      children,
+      isAuthenticated
     } = this.props
 
     let {
@@ -320,7 +277,6 @@ const Master = React.createClass({
       styles.root.paddingLeft = 256
       styles.footer.paddingLeft = 256
     }
-
     return (
       <div id='1'>
         <AppLeftNav
@@ -333,31 +289,7 @@ const Master = React.createClass({
           open={leftNavOpen}
         />
         <Title render='Arasaac' />
-        <AppBar
-          onLeftIconButtonTouchTap={this.handleTouchTapLeftIconButton}
-          title={title}
-          zDepth={0}
-          style={styles.appBar}
-          showMenuIconButton={showMenuIconButton}
-          iconElementRight={
-            <IconMenu
-              iconButtonElement={
-                <IconButton><MoreVertIcon /></IconButton>
-              }
-              targetOrigin={{horizontal: 'right', vertical: 'top'}}
-              anchorOrigin={{horizontal: 'right', vertical: 'top'}}
-            >
-              <MenuItem primaryText={<FormattedMessage {...messages.signin} />} linkButton={true} containerElement={<Link to='/signin' />}/>
-              <MenuItem primaryText={<FormattedMessage {...messages.register} />} linkButton={true} containerElement={<Link to='/register' />}/>
-              <MenuItem primaryText={<FormattedMessage {...messages.appConfiguration} />} linkButton={true} containerElement={<Link to='/configuration' />}/>
-              <MenuItem primaryText={<FormattedMessage {...messages.userProfile} />} linkButton={true} containerElement={<Link to='/profile' />}/>
-              <MenuItem primaryText={<FormattedMessage {...messages.userMaterial} />} linkButton={true} containerElement={<Link to='/usermaterial' />}/>
-              <MenuItem primaryText={<FormattedMessage {...messages.uploadMaterial} />} linkButton={true} containerElement={<Link to='/upload' />}/>
-              <MenuItem primaryText={<FormattedMessage {...messages.translateArasaac} />} linkButton={true} containerElement={<Link to='/translate' />}/>
-              <MenuItem primaryText={<FormattedMessage {...messages.signout} />} linkButton={true} href='/signout'/>
-            </IconMenu>
-          }
-        />
+        <AuthAppBar showMenuIcon={showMenuIconButton} isAuthenticated={isAuthenticated} title={title}/>
         {title !== ''
         ? <div style={prepareStyles(styles.root)}>
           <div style={prepareStyles(styles.content)}>
@@ -367,9 +299,17 @@ const Master = React.createClass({
         : children
         }
         <div style={{paddingTop: '8rem'}}></div>
-        <Footer style={styles.footer}/>
+        <Footer style={styles.footer} />
       </div>
     )
   }
 })
-export default Master
+const mapStateToProps = state => {
+  const { auth: { isAuthenticated } } = state
+
+  return {
+    isAuthenticated
+  }
+}
+
+export default connect(mapStateToProps)(Master)
