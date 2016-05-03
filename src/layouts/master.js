@@ -289,7 +289,7 @@ const Master = React.createClass({
           open={leftNavOpen}
         />
         <Title render='Arasaac' />
-        <AuthAppBar showMenuIcon={showMenuIconButton} isAuthenticated={isAuthenticated} title={title}/>
+        <AuthAppBar showMenuIcon={showMenuIconButton} isAuthenticated={isAuthenticated} title={title} touchTapLeftIconButton={this.handleTouchTapLeftIconButton}/>
         {title !== ''
         ? <div style={prepareStyles(styles.root)}>
           <div style={prepareStyles(styles.content)}>

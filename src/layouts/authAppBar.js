@@ -63,13 +63,19 @@ export default class AuthAppBar extends Component {
   static propTypes = {
     isAuthenticated: PropTypes.bool.isRequired,
     showMenuIconButton: PropTypes.bool.isRequired,
-    title: React.PropTypes.string.isRequired
+    title: PropTypes.string.isRequired,
+    touchTapLeftIconButton: PropTypes.func.isRequired
   }
-/*
+
   constructor(props) {
     super(props)
+    this.handleTouchTapLeftIconButton = this.handleTouchTapLeftIconButton.bind(this)
   }
-*/
+
+  handleTouchTapLeftIconButton() {
+    this.props.touchTapLeftIconButton()
+  }
+
   render() {
     const { isAuthenticated, showMenuIconButton, title } = this.props
     return (
