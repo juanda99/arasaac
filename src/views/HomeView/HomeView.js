@@ -1,6 +1,5 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import {History} from 'react-router'
 import HomeFeature from './HomeFeature'
 import FullWidthSection from 'components/full-width-section'
 import RaisedButton from 'material-ui/lib/raised-button'
@@ -72,8 +71,7 @@ const HomeView = React.createClass({
 
   mixins: [
     StylePropable,
-    StyleResizable,
-    History
+    StyleResizable
   ],
 
   propTypes: {
@@ -212,10 +210,6 @@ const HomeView = React.createClass({
           style={styles.button}/>
       </FullWidthSection>
     )
-  },
-
-  _onDemoClick() {
-    this.history.pushState(null, '/components')
   },
 
   render() {
