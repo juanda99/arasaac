@@ -17,7 +17,8 @@ function fetchPictograms(searchText, nextPageUrl) {
 export function loadPictograms(searchText, nextPage) {
   return (dispatch, getState) => {
     const {
-      nextPageUrl = `search/${searchText}`,
+      // nextPageUrl = `search/${searchText}`,
+      nextPageUrl = `images?where=name.es.keyword==${searchText}`,
       pageCount = 0
     } = getState().pagination.pictogramsBySearchText[searchText] || {}
 
