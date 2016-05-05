@@ -5,9 +5,9 @@ import FilterPictograms from 'components/Filter/Filter'
 import Toggle from 'material-ui/lib/toggle'
 import { connect } from 'react-redux'
 import { resetErrorMessage } from 'redux/modules/error'
-import { changePictogramsKeyword } from 'redux/modules/searchText'
 import { loadKeywords } from 'redux/modules/keywords'
 import { toggleShowFilter } from 'redux/modules/showFilter'
+import { browserHistory } from 'react-router'
 
 const messages = defineMessages({
   advancedSearch: {
@@ -23,6 +23,7 @@ class SearchPictogramsView extends Component {
     super(props)
     this.handleDismissClick = this.handleDismissClick.bind(this)
     this.renderErrorMessage = this.renderErrorMessage.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   }
 /*
   static defaultProps = {
@@ -32,6 +33,11 @@ class SearchPictogramsView extends Component {
   handleDismissClick(e) {
     this.props.resetErrorMessage()
     e.preventDefault()
+  }
+
+  handleChange(nextValue) {
+    browserHistory.push(`/pictograms/search/${nextValue}`)
+    // this.context.router.push(`/${nextValue}`)
   }
 
   componentDidMount() {
@@ -57,7 +63,7 @@ class SearchPictogramsView extends Component {
   }
 
   render() {
-    const { children, inputValue } = this.props
+    const { children, searchText } = this.props
     const {showFilter, filters} = this.props
     const { keywords } = this.props.keywords
     return (
@@ -68,11 +74,11 @@ class SearchPictogramsView extends Component {
           </div>
         </div>
         <div className='row start-xs'>
-          <SearchBox value={inputValue} fullWidth={true} dataSource={keywords} onChange={this.props.changePictogramsKeyword} />
+          <SearchBox value={searchText} fullWidth={true} dataSource={keywords} onChange={this.handleChange} />
           <hr />
           {this.renderErrorMessage()}
         </div>
-        {showFilter ? <FilterPictograms filter={filters}/> : null}
+        {showFilter ? <FilterPictograms filter={filters} /> : null}
         {children}
       </div>
     )
@@ -83,10 +89,9 @@ SearchPictogramsView.propTypes = {
   // Injected by React Redux
   errorMessage: PropTypes.string,
   resetErrorMessage: PropTypes.func.isRequired,
-  changePictogramsKeyword: PropTypes.func.isRequired,
   toggleShowFilter: PropTypes.func.isRequired,
   loadKeywords: PropTypes.func.isRequired,
-  inputValue: PropTypes.string,
+  searchText: PropTypes.string,
   keywords: PropTypes.object,
   showFilter: PropTypes.bool,
   locale: PropTypes.string.isRequired,
@@ -95,9 +100,9 @@ SearchPictogramsView.propTypes = {
   children: PropTypes.node
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   const errorMessage = state.errorMessage
-  const inputValue = state.searchText
+  const { searchText } = ownProps.params
   const { entities: { keywords } } = state
   const {locale} = state
   const {gui: {filters}} = state
@@ -105,7 +110,8 @@ const mapStateToProps = state => {
 
   return {
     errorMessage,
-    inputValue,
+    searchText,
+   //  inputValue,
     locale,
     keywords: keywords[locale],
     filters,
@@ -113,4 +119,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, {resetErrorMessage, changePictogramsKeyword, loadKeywords, toggleShowFilter})(SearchPictogramsView)
+export default connect(mapStateToProps, {resetErrorMessage, loadKeywords, toggleShowFilter})(SearchPictogramsView)

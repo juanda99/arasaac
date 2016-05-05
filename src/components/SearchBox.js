@@ -24,18 +24,36 @@ class SearchBox extends Component {
     super(props)
     this.handleUpdateInput = this.handleUpdateInput.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleClick = this.handleClick.bind(this)
     /* this.state = {
       dataSource: []
     } */
     // this.handleKeyUp = this.handleKeyUp.bind(this)
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.value !== this.props.value) {
+      this.setInputValue(nextProps.value)
+    }
+  }
+
+  getInputValue() {
+    return this.refs.input.refs.searchTextField.props.value
+  }
+
+  setInputValue(val) {
+    // Generally mutating DOM is a bad idea in React components,
+    // but doing this for a single uncontrolled field is less fuss
+    // than making it controlled and maintaining a state for it.
+    this.refs.input.value = val
+  }
+
   handleUpdateInput = t => {
     if (t.keyCode === 13) {
-      let link = `/pictograms/search/${t}`
-      this.context.router.push(link)
+      // let link = `/pictograms/search/${t}`
+      // this.context.router.push(link)
+      this.props.onChange(this.getInputValue())
     }
-    this.props.onChange(t)
   }
 
   handleSubmit = t => {
@@ -45,16 +63,20 @@ class SearchBox extends Component {
     this.context.router.push(link)
   }
 
+  handleClick() {
+    this.props.onChange(this.getInputValue())
+  }
+
   render() {
     const {formatMessage} = this.props.intl
     let dataSource = this.props.dataSource
-    let link = `/pictograms/search/${this.props.value}`
+    // let link = `/pictograms/search/${this.props.value}`
     // if (typeof dataSource === 'undefined') dataSource = []
     return (
       <div>
         <AutoComplete ref='input' floatingLabelText={formatMessage(messages.search)} filter={AutoComplete.fuzzyFilter} dataSource={dataSource}
           onNewRequest={this.handleSubmit} onUpdateInput={this.handleUpdateInput} searchText={this.props.value} />
-        <RaisedButton label='Search' primary={true} style={styles.button} containerElement={<Link to={link} />}/>
+        <RaisedButton label='Search' primary={true} style={styles.button} onClick={this.handleClick}  />
       </div>
     )
   }

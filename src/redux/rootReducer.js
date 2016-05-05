@@ -4,7 +4,6 @@ import { reducer as formReducer } from 'redux-form'
 import merge from 'lodash/merge'
 import locale from './modules/locale'
 import errorMessage from './modules/error'
-import searchText from './modules/searchText'
 import layout from './modules/layout'
 import filters from './modules/filters'
 import showFilter from './modules/showFilter'
@@ -52,7 +51,6 @@ const pagination = combineReducers({
 // Stores for GUIS
 
 const gui = combineReducers({
-  searchText,
   layout,
   filters,
   showFilter
