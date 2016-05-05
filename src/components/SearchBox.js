@@ -59,8 +59,9 @@ class SearchBox extends Component {
   handleSubmit = t => {
     console.log(t)
     this.props.onChange(t)
-    let link = `/pictograms/search/${t}`
-    this.context.router.push(link)
+    // let link = `/pictograms/search/${t}`
+    // this.context.router.push(link)
+    this.props.onChange(t)
   }
 
   handleClick() {
@@ -76,7 +77,7 @@ class SearchBox extends Component {
       <div>
         <AutoComplete ref='input' floatingLabelText={formatMessage(messages.search)} filter={AutoComplete.fuzzyFilter} dataSource={dataSource}
           onNewRequest={this.handleSubmit} onUpdateInput={this.handleUpdateInput} searchText={this.props.value} />
-        <RaisedButton label='Search' primary={true} style={styles.button} onClick={this.handleClick}  />
+        <RaisedButton label='Search' primary={true} style={styles.button} onClick={this.handleClick} />
       </div>
     )
   }
