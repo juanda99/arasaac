@@ -212,10 +212,6 @@ const AppLeftNav = React.createClass({
                 primaryText={<FormattedMessage {...messages.api} />}
               />,
               <ListItem
-                value='/onlinetools/animations-maker'
-                primaryText={<FormattedMessage {...messages.animationsMaker} />}
-              />,
-              <ListItem
                 value='/pictograms/catalogs'
                 primaryText={<FormattedMessage {...messages.downloads} />}
               />
