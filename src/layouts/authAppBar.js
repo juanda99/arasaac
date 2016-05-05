@@ -80,7 +80,7 @@ export default class AuthAppBar extends Component {
     const { isAuthenticated, showMenuIconButton, title } = this.props
     return (
       <div>
-      {(isAuthenticated)
+      {(!isAuthenticated)
       ? <AppBar
         onLeftIconButtonTouchTap={this.handleTouchTapLeftIconButton}
         title={title}
