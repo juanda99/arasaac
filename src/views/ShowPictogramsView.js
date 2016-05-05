@@ -18,10 +18,9 @@ class ShowPictogramsView extends Component {
     super(props)
     this.renderPictogram = this.renderPictogram.bind(this)
     this.handleLoadMoreClick = this.handleLoadMoreClick.bind(this)
-    this.searchText = this.props.searchText
   }
 
-  componentWillMount() {
+  componentDidMount() {
     loadData(this.props)
   }
 
@@ -47,7 +46,7 @@ class ShowPictogramsView extends Component {
     return (
       <div>
         <div className='row'>
-          <ToolbarPictograms layout={layout} changeLayout={changePictogramsLayout}/>
+          <ToolbarPictograms layout={layout} changeLayout={changePictogramsLayout} />
         </div>
         <List renderItem={this.renderPictogram}
           items={pictogramsList}
