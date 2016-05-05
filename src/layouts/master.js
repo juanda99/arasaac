@@ -77,7 +77,8 @@ const Master = React.createClass({
   propTypes: {
     children: React.PropTypes.node,
     history: React.PropTypes.object,
-    location: React.PropTypes.object
+    location: React.PropTypes.object,
+    isAuthenticated: React.PropTypes.bool
   },
 
   contextTypes: {
@@ -289,7 +290,8 @@ const Master = React.createClass({
           open={leftNavOpen}
         />
         <Title render='Arasaac' />
-        <AuthAppBar showMenuIcon={showMenuIconButton} isAuthenticated={isAuthenticated} title={title} touchTapLeftIconButton={this.handleTouchTapLeftIconButton}/>
+        <AuthAppBar showMenuIcon={showMenuIconButton} isAuthenticated={isAuthenticated} title={title}
+          touchTapLeftIconButton={this.handleTouchTapLeftIconButton} />
         {title !== ''
         ? <div style={prepareStyles(styles.root)}>
           <div style={prepareStyles(styles.content)}>
