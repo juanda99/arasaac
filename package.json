@@ -84,7 +84,7 @@
     "react-dom": "^0.14.0",
     "react-intl": "^2.0.1",
     "react-redux": "^4.0.0",
-    "react-router": "^2.0.0",
+    "react-router": "^2.4.0",
     "react-router-redux": "^4.0.0-beta",
     "react-select": "^1.0.0-beta12",
     "react-swipeable-views": "^0.4.2",

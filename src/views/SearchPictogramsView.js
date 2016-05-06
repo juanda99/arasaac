@@ -7,7 +7,7 @@ import { connect } from 'react-redux'
 import { resetErrorMessage } from 'redux/modules/error'
 import { loadKeywords } from 'redux/modules/keywords'
 import { toggleShowFilter } from 'redux/modules/showFilter'
-import { browserHistory } from 'react-router'
+import { withRouter } from 'react-router'
 
 const messages = defineMessages({
   advancedSearch: {
@@ -36,8 +36,14 @@ class SearchPictogramsView extends Component {
   }
 
   handleChange(nextValue) {
-    browserHistory.push(`/pictograms/search/${nextValue}`)
-    // this.context.router.push(`/${nextValue}`)
+    // not re-rendering, just the push?????
+    // browserHistory.push(`/pictograms/search/${nextValue}`)
+
+    // would need to configure router context:
+    // this.context.router.push(`/pictograms/search/${nextValue}`)
+    
+    // starting in react 2.4 using a higher class:
+    this.props.router.push(`/pictograms/search/${nextValue}`)
   }
 
   componentDidMount() {
@@ -76,6 +82,7 @@ class SearchPictogramsView extends Component {
         <div className='row start-xs'>
           <SearchBox value={searchText} fullWidth={true} dataSource={keywords} onChange={this.handleChange} />
           <hr />
+          <p>{this.props.searchText}</p>
           {this.renderErrorMessage()}
         </div>
         {showFilter ? <FilterPictograms filter={filters} /> : null}
@@ -119,4 +126,4 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-export default connect(mapStateToProps, {resetErrorMessage, loadKeywords, toggleShowFilter})(SearchPictogramsView)
+export default connect(mapStateToProps, {resetErrorMessage, loadKeywords, toggleShowFilter})(withRouter(SearchPictogramsView))
