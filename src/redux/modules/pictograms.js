@@ -9,7 +9,7 @@ function fetchPictograms(searchText, nextPageUrl) {
     [CALL_API]: {
       types: [ PICTOGRAMS_REQUEST, PICTOGRAMS_SUCCESS, PICTOGRAMS_FAILURE ],
       endpoint: nextPageUrl,
-      schema: Schemas.PICTO_ARRAY
+      schema: Schemas.SEARCH
     }
   }
 }

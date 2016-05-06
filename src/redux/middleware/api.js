@@ -18,7 +18,7 @@ function getNextPageUrl(response) {
 }
 
 // const API_ROOT = 'http://localhost:8000/api/'
-const API_ROOT = '178.32.253.90:5000/'
+const API_ROOT = 'http://178.32.253.90:5000/'
 // Fetches an API response and normalizes the result JSON according to schema.
 // This makes every API response have the same shape, regardless of how nested it was.
 function callApi(endpoint, schema) {
@@ -51,19 +51,27 @@ function callApi(endpoint, schema) {
 // Read more about Normalizr: https://github.com/gaearon/normalizr
 
 const pictoSchema = new Schema('pictograms', {
-  idAttribute: 'id'
+  idAttribute: '_id'
 })
 
 const keywordSchema = new Schema('keywords', {
   idAttribute: 'locale'
 })
 
+const searchSchema = new Schema('search', {
+  idAttribute: 'self.href'
+})
+
+searchSchema.define({
+  _items: arrayOf(pictoSchema)
+})
+
 // Schemas for API responses.
 export const Schemas = {
   KEYWORDS: keywordSchema,
   PICTO: pictoSchema,
-  PICTO_ARRAY: arrayOf(pictoSchema)
-
+  PICTO_ARRAY: arrayOf(pictoSchema),
+  SEARCH: searchSchema
 }
 
 // Action key that carries API call info interpreted by this Redux middleware.
