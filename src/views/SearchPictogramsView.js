@@ -81,7 +81,6 @@ class SearchPictogramsView extends Component {
         <div className='row start-xs'>
           <SearchBox value={searchText} fullWidth={true} dataSource={keywords} onChange={this.handleChange} />
           <hr />
-          <p>{this.props.searchText}</p>
           {this.renderErrorMessage()}
         </div>
         {showFilter ? <FilterPictograms filter={filters} /> : null}
