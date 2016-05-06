@@ -41,8 +41,7 @@ class SearchPictogramsView extends Component {
 
     // would need to configure router context:
     // this.context.router.push(`/pictograms/search/${nextValue}`)
-    
-    // starting in react 2.4 using a higher class:
+    // starting in react 2.4 using HOC: https://github.com/reactjs/react-router/blob/master/upgrade-guides/v2.4.0.md
     this.props.router.push(`/pictograms/search/${nextValue}`)
   }
 
@@ -104,7 +103,8 @@ SearchPictogramsView.propTypes = {
   locale: PropTypes.string.isRequired,
   filters: PropTypes.object.isRequired,
   // Injected by React Router
-  children: PropTypes.node
+  children: PropTypes.node,
+  router: React.PropTypes.any.isRequired
 }
 
 const mapStateToProps = (state, ownProps) => {
