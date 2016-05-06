@@ -63,7 +63,11 @@ export default class AuthAppBar extends Component {
   static propTypes = {
     isAuthenticated: PropTypes.bool.isRequired,
     showMenuIconButton: PropTypes.bool.isRequired,
-    title: PropTypes.string.isRequired,
+    // será un string
+    title: PropTypes.oneOfType([
+      PropTypes.string.isRequired,
+      PropTypes.object.isRequired
+    ]),
     touchTapLeftIconButton: PropTypes.func.isRequired
   }
 
