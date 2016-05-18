@@ -1,9 +1,9 @@
 import React, {Component, PropTypes} from 'react'
-import RaisedButton from 'material-ui/lib/raised-button'
-import Paper from 'material-ui/lib/paper'
+import RaisedButton from 'material-ui/RaisedButton';
+import Paper from 'material-ui/Paper';
 import { defineMessages, FormattedMessage } from 'react-intl'
 import { Link } from 'react-router'
-import TextField from 'material-ui/lib/text-field'
+import TextField from 'material-ui/TextField';
 import { reduxForm } from 'redux-form'
 import Validator from 'validatorjs'
 const messages = defineMessages({

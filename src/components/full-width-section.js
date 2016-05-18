@@ -1,49 +1,46 @@
-import React from 'react'
-import {ClearFix, Mixins, Styles} from 'material-ui'
-let {StyleResizable} = Mixins
-let DesktopGutter = Styles.Spacing.desktopGutter
+import React, {Component, PropTypes} from 'react'
+import ClearFix from 'material-ui/internal/ClearFix'
+import spacing from 'material-ui/styles/spacing'
+import withWidth, {SMALL, LARGE} from 'material-ui/utils/withWidth'
 
-const FullWidthSection = React.createClass({
+const deskTopGutter = spacing.deskTopGutter
 
-  propTypes: {
-    children: React.PropTypes.node,
-    contentStyle: React.PropTypes.object,
-    contentType: React.PropTypes.string,
-    style: React.PropTypes.object,
-    useContent: React.PropTypes.bool
-  },
+class FullWidthSection extends Component {
 
-  mixins: [
-    StyleResizable
-  ],
+  static propTypes = {
+    children: PropTypes.node,
+    contentStyle: PropTypes.object,
+    contentType: PropTypes.string,
+    style: PropTypes.object,
+    useContent: PropTypes.bool,
+    width: PropTypes.number.isRequired
+  }
 
-  getDefaultProps() {
-    return {
-      useContent: false,
-      contentType: 'div'
-    }
-  },
+  static defaultProps = {
+    useContent: false,
+    contentType: 'div'
+  }
 
   getStyles() {
     return {
       root: {
-        padding: DesktopGutter + 'px',
+        padding: deskTopGutter,
         boxSizing: 'border-box'
       },
       content: {
-        maxWidth: '1200px',
+        maxWidth: 1200,
         margin: '0 auto'
       },
       rootWhenSmall: {
-        paddingTop: DesktopGutter * 2,
-        paddingBottom: DesktopGutter * 2
+        paddingTop: deskTopGutter * 2,
+        paddingBottom: deskTopGutter * 2
       },
       rootWhenLarge: {
-        paddingTop: DesktopGutter * 3,
-        paddingBottom: DesktopGutter * 3
+        paddingTop: deskTopGutter * 3,
+        paddingBottom: deskTopGutter * 3
       }
     }
-  },
+  }
 
   render() {
     const {
@@ -51,6 +48,7 @@ const FullWidthSection = React.createClass({
       useContent,
       contentType,
       contentStyle,
+      width,
       ...other
     } = this.props
 
@@ -73,13 +71,13 @@ const FullWidthSection = React.createClass({
         style={Object.assign(
         styles.root,
         style,
-        this.isDeviceSize(StyleResizable.statics.Sizes.SMALL) && styles.rootWhenSmall,
-        this.isDeviceSize(StyleResizable.statics.Sizes.LARGE) && styles.rootWhenLarge)}
+        width === SMALL && styles.rootWhenSmall,
+        width === LARGE && styles.rootWhenLarge)}
       >
         {content}
       </ClearFix>
     )
   }
-})
+}
 
-export default FullWidthSection
+export default withWidth()(FullWidthSection)

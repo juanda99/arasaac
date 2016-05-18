@@ -1,9 +1,9 @@
 import React, {Component, PropTypes} from 'react'
-import RaisedButton from 'material-ui/lib/raised-button'
-import TextField from 'material-ui/lib/text-field'
-import Paper from 'material-ui/lib/paper'
-import Checkbox from 'material-ui/lib/checkbox'
-import Colors from 'material-ui/lib/styles/colors'
+import RaisedButton from 'material-ui/RaisedButton';
+import TextField from 'material-ui/TextField';
+import Paper from 'material-ui/Paper';
+import Checkbox from 'material-ui/Checkbox';
+import Colors from 'material-ui/styles/colors';
 import ArasaacLogo from 'images/arasaac-logo.svg'
 import GoogleIcon from './icons/GoogleIcon'
 import FacebookIcon from './icons/FacebookIcon'

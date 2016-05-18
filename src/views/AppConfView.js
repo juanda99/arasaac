@@ -4,8 +4,8 @@ import { toggleFilter } from 'redux/modules/filters'
 import { connect } from 'react-redux'
 import { defineMessages, FormattedMessage } from 'react-intl'
 import FullWidthSection from 'components/full-width-section'
-import Divider from 'material-ui/lib/divider'
-import Paper from 'material-ui/lib/paper'
+import Divider from 'material-ui/Divider';
+import Paper from 'material-ui/Paper';
 
 const messages = defineMessages({
   appConfiguration: {

@@ -1,7 +1,5 @@
 import React, {Component, PropTypes} from 'react'
-import {
-  Colors
-} from 'material-ui/lib/styles'
+import {darkWhite, lightWhite} from 'material-ui/styles/colors'
 import UnionEuropea from 'images/union-europea-logo2.png'
 import GobiernoAragon from 'images/gobierno-aragon-logo.svg'
 import myStyle from 'theme/variables'
@@ -31,7 +29,6 @@ import myStyle from 'theme/variables'
 
 class Footer extends Component {
   getStyles() {
-    const darkWhite = Colors.darkWhite
     const styles = {
       row: {
         minHeight: myStyle.footer.height
@@ -42,7 +39,6 @@ class Footer extends Component {
       p: {
         margin: '0 auto',
         padding: 0,
-        color: Colors.lightWhite,
         maxWidth: 450
       },
       img: {

@@ -1,15 +1,13 @@
-import React from 'react'
+import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import Title from 'react-title-component'
-import {Spacing} from 'material-ui/lib/styles'
+import spacing from 'material-ui/styles/spacing'
+import {darkWhite, lightGreen500, grey800, lightWhite} from 'material-ui/styles/colors'
 import Footer from './footer'
-import { StyleResizable } from 'material-ui/lib/mixins'
-import AppLeftNav from './app-left-nav'
+import withWidth, { MEDIUM, LARGE } from 'material-ui/utils/withWidth'
+import AppNavDrawer from './AppNavDrawer'
 import { defineMessages, FormattedMessage } from 'react-intl'
-// styles
-import {Colors} from 'material-ui/lib/styles'
-import MyRawTheme from 'theme/MyRawTheme'
-import ThemeManager from 'material-ui/lib/styles/theme-manager'
+import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import 'styles/core.scss'
 import myStyle from 'theme/variables'
 import AuthAppBar from './authAppBar'
@@ -72,81 +70,71 @@ const messages = defineMessages({
   }
 })
 
-const Master = React.createClass({
+class Master extends Component {
 
-  propTypes: {
-    children: React.PropTypes.node,
-    history: React.PropTypes.object,
-    location: React.PropTypes.object,
-    isAuthenticated: React.PropTypes.bool
-  },
+  static propTypes = {
+    width: PropTypes.number.isRequired,
+    children: PropTypes.node,
+    history: PropTypes.object,
+    location: PropTypes.object,
+    isAuthenticated: PropTypes.bool
+  }
 
-  contextTypes: {
-    router: React.PropTypes.object.isRequired
-  },
+  static contextTypes = {
+    router: PropTypes.object.isRequired
+  }
 
-  childContextTypes: {
-    muiTheme: React.PropTypes.object
-  },
+  static childContextTypes = {
+    muiTheme: PropTypes.object
+  }
 
-  mixins: [
-    StyleResizable
-  ],
-
-  getInitialState() {
-    return {
-      muiTheme: ThemeManager.getMuiTheme(MyRawTheme),
-      leftNavOpen: false
-    }
-  },
+  state = {
+    navDrawerOpen: false
+  }
 
   getChildContext() {
     return {
       muiTheme: this.state.muiTheme
     }
-  },
+  }
 
   componentWillMount() {
-    const newMuiTheme = this.state.muiTheme
-    newMuiTheme.inkBar.backgroundColor = Colors.yellow200
     this.setState({
-      muiTheme: newMuiTheme
+      muiTheme: getMuiTheme()
     })
-  },
+  }
 
   componentWillReceiveProps(nextProps, nextContext) {
     const newMuiTheme = nextContext.muiTheme ? nextContext.muiTheme : this.state.muiTheme
     this.setState({
       muiTheme: newMuiTheme
     })
-  },
+  }
 
   getStyles() {
-    const darkWhite = Colors.darkWhite
-
     const styles = {
       appBar: {
         position: 'fixed',
         // Needed to overlap the examples
         zIndex: this.state.muiTheme.zIndex.appBar + 1,
         top: 0,
-        backgroundColor: Colors.lightGreen500
+        backgroundColor: lightGreen500
       },
       root: {
-        paddingTop: Spacing.desktopKeylineIncrement,
+        paddingTop: spacing.desktopKeylineIncrement,
         minHeight: '100%'
       },
-      leftNav: {
+      navDrawer: {
         fontWeight: 100
       },
       content: {
-        margin: Spacing.desktopGutter
+        margin: spacing.desktopGutter
       },
       contentWhenMedium: {
-        margin: `${Spacing.desktopGutter * 2}px ${Spacing.desktopGutter * 3}px`
+        margin: `${spacing.desktopGutter * 2}px ${spacing.desktopGutter * 3}px`
       },
       footer: {
-        backgroundColor: Colors.grey800,
+        backgroundColor: grey800,
         textAlign: 'center',
         padding: '1 rem',
         width: '100%',
@@ -160,7 +148,7 @@ const Master = React.createClass({
       p: {
         margin: '0 auto',
         padding: 0,
-        color: Colors.lightWhite,
+        color: lightWhite,
         maxWidth: 450
       },
       iconButton: {
@@ -168,37 +156,36 @@ const Master = React.createClass({
       }
     }
 
-    if (this.isDeviceSize(StyleResizable.statics.Sizes.MEDIUM) ||
-        this.isDeviceSize(StyleResizable.statics.Sizes.LARGE)) {
+    if (this.props.width === MEDIUM || this.props.width === LARGE) {
       styles.content = Object.assign(styles.content, styles.contentWhenMedium)
     }
     return styles
-  },
+  }
 
-  handleTouchTapLeftIconButton() {
+  handleTouchTapLeftIconButton = () => {
     this.setState({
-      leftNavOpen: !this.state.leftNavOpen
+      navDrawerOpen: !this.state.navDrawerOpen
     })
-  },
+  }
 
-  handleChangeRequestLeftNav(open) {
+  handleChangeRequestNavDrawer = open => {
     this.setState({
-      leftNavOpen: open
+      navDrawerOpen: open
     })
-  },
+  }
 
-  handleRequestChangeList(event, value) {
+  handleChangeList = (event, value) => {
     this.context.router.push(value)
     this.setState({
-      leftNavOpen: false
+      navDrawerOpen: false
     })
-  },
+  }
 
-  handleChangeMuiTheme(muiTheme) {
+  handleChangeMuiTheme = muiTheme => {
     this.setState({
       muiTheme: muiTheme
     })
-  },
+  }
 
   getViewProps() {
     let title = ''
@@ -247,17 +234,18 @@ const Master = React.createClass({
         break
     }
     return {docked, title}
-  },
+  }
 
   render() {
     const {
       location,
       children,
-      isAuthenticated
+      isAuthenticated,
+      width
     } = this.props
 
     let {
-      leftNavOpen
+      navDrawerOpen
     } = this.state
 
     const {prepareStyles} = this.state.muiTheme
@@ -267,11 +255,11 @@ const Master = React.createClass({
     let {title, docked} = this.getViewProps()
 
     let showMenuIconButton = true
-    if (this.isDeviceSize(StyleResizable.statics.Sizes.LARGE) && docked) {
+    if (width === LARGE && docked) {
       docked = true
-      leftNavOpen = true
+      navDrawerOpen = true
       showMenuIconButton = false
-      styles.leftNav = {
+      styles.navDrawer = {
         zIndex: styles.appBar.zIndex - 1,
         fontWeight: 100
       }
@@ -279,17 +267,16 @@ const Master = React.createClass({
       styles.footer.paddingLeft = 256
     }
     return (
-      <div id='1'>
-        <AppLeftNav
-          style={styles.leftNav}
-          history={history}
+      <div>
+        <Title render='Arasaac' />
+        <AppNavDrawer
+          style={styles.navDrawer}
           location={location}
           docked={docked}
-          onRequestChangeLeftNav={this.handleChangeRequestLeftNav}
-          onRequestChangeList={this.handleRequestChangeList}
-          open={leftNavOpen}
+          onRequestChangeNavDrawer={this.handleChangeRequestNavDrawer}
+          onChangeList={this.handleChangeList}
+          open={navDrawerOpen}
         />
-        <Title render='Arasaac' />
         <AuthAppBar showMenuIconButton={showMenuIconButton} isAuthenticated={isAuthenticated} title={title}
           touchTapLeftIconButton={this.handleTouchTapLeftIconButton} />
         {title !== ''
@@ -305,7 +292,7 @@ const Master = React.createClass({
       </div>
     )
   }
-})
+}
 const mapStateToProps = state => {
   const { auth: { isAuthenticated } } = state
 
@@ -314,4 +301,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(Master)
+export default connect(mapStateToProps)(withWidth()(Master))

@@ -1,41 +1,38 @@
-import React from 'react'
+import React, {Component, PropTypes} from 'react'
 import {Link} from 'react-router'
-import {Paper, Mixins, Styles} from 'material-ui'
+import withWidth, {MEDIUM, LARGE} from 'material-ui/utils/withWidth'
+import spacing from 'material-ui/styles/spacing'
+import transitions from 'material-ui/styles/transitions'
+import typography from 'material-ui/styles/typography'
+import {grey200} from 'material-ui/styles/colors'
+import Paper from 'material-ui/Paper'
 
-let {StylePropable, StyleResizable} = Mixins
-let {Colors, Spacing, Transitions, Typography} = Styles
+class HomeFeature extends Component {
 
-let HomeFeature = React.createClass({
+  static propTypes = {
+    firstChild: PropTypes.bool,
+    heading: PropTypes.object,
+    img: PropTypes.string,
+    lastChild: PropTypes.bool,
+    route: PropTypes.string,
+    width: PropTypes.number.isRequired
+  }
 
-  propTypes: {
-    firstChild: React.PropTypes.bool,
-    heading: React.PropTypes.object,
-    img: React.PropTypes.string,
-    lastChild: React.PropTypes.bool,
-    route: React.PropTypes.string
-  },
+  static defaultProps = {
+    firstChild: false,
+    lastChild: false
+  }
 
-  mixins: [StylePropable, StyleResizable],
-
-  getDefaultProps() {
-    return {
-      firstChild: false,
-      lastChild: false
-    }
-  },
-
-  getInitialState() {
-    return {
-      zDepth: 0
-    }
-  },
+  state = {
+    zDepth: 0
+  }
 
   getStyles() {
-    let desktopGutter = Spacing.desktopGutter
-    let desktopKeylineIncrement = Spacing.desktopKeylineIncrement
+    let desktopGutter = spacing.desktopGutter
+    let desktopKeylineIncrement = spacing.desktopKeylineIncrement
     let styles = {
       root: {
-        transition: Transitions.easeOut(),
+        transition: transitions.easeOut(),
         maxWidth: '300px',
         margin: '0 auto ' + desktopGutter + 'px auto'
       },
@@ -56,9 +53,9 @@ let HomeFeature = React.createClass({
         paddingTop: 19,
         marginBottom: 13,
         letterSpacing: 0,
-        fontWeight: Typography.fontWeightMedium,
-        color: Typography.textDarkBlack,
-        backgroundColor: Colors.grey200,
+        fontWeight: typography.fontWeightMedium,
+        color: typography.textDarkBlack,
+        backgroundColor: grey200,
         textAlign: 'center',
         margin: 0,
         padding: 0,
@@ -77,8 +74,7 @@ let HomeFeature = React.createClass({
       }
     }
 
-    if (this.isDeviceSize(StyleResizable.statics.Sizes.MEDIUM) ||
-        this.isDeviceSize(StyleResizable.statics.Sizes.LARGE)) {
+    if (this.props.width === MEDIUM || this.props.width === LARGE) {
       styles.root = Object.assign(
         styles.root,
         styles.rootWhenMedium,
@@ -86,21 +82,20 @@ let HomeFeature = React.createClass({
         this.props.lastChild && styles.rootWhenMediumAndLastChild
       )
     }
-
     return styles
-  },
+  }
 
-  _onMouseEnter() {
+  handleMouseEnter = () => {
     this.setState({
       zDepth: 4
     })
-  },
+  }
 
-  _onMouseLeave() {
+  handleMouseLeave = () => {
     this.setState({
       zDepth: 0
     })
-  },
+  }
 
   render() {
     let styles = this.getStyles()
@@ -108,8 +103,8 @@ let HomeFeature = React.createClass({
     return (
       <Paper
         zDepth={this.state.zDepth}
-        onMouseEnter={this._onMouseEnter}
-        onMouseLeave={this._onMouseLeave}
+        onMouseEnter={this.handleMouseEnter}
+        onMouseLeave={this.handleMouseLeave}
         style={Object.assign(
           styles.root,
           this.props.lastChild && styles.rootWhenLastChild)}
@@ -121,6 +116,6 @@ let HomeFeature = React.createClass({
       </Paper>
     )
   }
-})
+}
 
-export default HomeFeature
+export default withWidth()(HomeFeature)

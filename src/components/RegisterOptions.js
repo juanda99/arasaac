@@ -1,11 +1,11 @@
 import React, {Component, PropTypes} from 'react'
-import RaisedButton from 'material-ui/lib/raised-button'
-import Paper from 'material-ui/lib/paper'
-import Colors from 'material-ui/lib/styles/colors'
+import RaisedButton from 'material-ui/RaisedButton';
+import Paper from 'material-ui/Paper';
+import Colors from 'material-ui/styles/colors';
 import ArasaacLogo from 'images/arasaac-logo.svg'
 import GoogleIcon from './icons/GoogleIcon'
 import FacebookIcon from './icons/FacebookIcon'
-import EmailIcon from 'material-ui/lib/svg-icons/communication/email'
+import EmailIcon from 'material-ui/svg-icons/communication/email';
 import { defineMessages, FormattedMessage } from 'react-intl'
 import { Link } from 'react-router'
 

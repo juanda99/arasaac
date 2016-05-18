@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react'
-import Toggle from 'material-ui/lib/toggle'
+import Toggle from 'material-ui/Toggle';
 
 export default class ToggleFilter extends Component {
   static propTypes = {

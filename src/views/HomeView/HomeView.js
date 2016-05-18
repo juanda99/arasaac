@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
+import withWidth, { LARGE } from 'material-ui/utils/withWidth'
 import HomeFeature from './HomeFeature'
 import FullWidthSection from 'components/full-width-section'
-import RaisedButton from 'material-ui/lib/raised-button'
-import {StylePropable, StyleResizable} from 'material-ui/lib/mixins'
-import {Colors, Spacing, Typography, lightBaseTheme} from 'material-ui/lib/styles'
+import RaisedButton from 'material-ui/RaisedButton'
+import {grey200, green900, lightGreen500, darkWhite} from 'material-ui/styles/colors'
+import {spacing, typography, lightBaseTheme} from 'material-ui/styles'
 import LanguageSelector from 'components/LanguageSelector'
 import {localeChange} from 'redux/modules/locale'
 import { defineMessages, FormattedMessage } from 'react-intl'
@@ -67,21 +68,21 @@ const mapStateToProps = state => ({
   counter: state.counter
 })
 
-const HomeView = React.createClass({
+class HomeView extends Component {
 
-  mixins: [
-    StylePropable,
-    StyleResizable
-  ],
-
-  propTypes: {
+  static propTypes = {
+    width: PropTypes.number.isRequired,
     localeChange: React.PropTypes.func.isRequired
-  },
+  };
 
-  _getHomePageHero() {
+  static contextTypes = {
+    router: PropTypes.object.isRequired
+  };
+
+  homePageHero() {
     let styles = {
       root: {
-        backgroundColor: Colors.lightGreen500,
+        backgroundColor: lightGreen500,
         overflow: 'hidden'
       },
       svgLogo: {
@@ -103,8 +104,8 @@ const HomeView = React.createClass({
         margin: '16px 32px 0px 32px'
       },
       h1: {
-        color: Colors.darkWhite,
-        fontWeight: Typography.fontWeightLight
+        color: darkWhite,
+        fontWeight: typography.fontWeightLight
       },
       h2: {
         fontSize: 20,
@@ -117,7 +118,7 @@ const HomeView = React.createClass({
         whiteSpace: 'nowrap'
       },
       strong: {
-        color: Colors.green900
+        color: green900
       },
       taglineWhenLarge: {
         marginTop: 32
@@ -133,12 +134,12 @@ const HomeView = React.createClass({
       }
     }
 
-    styles.h2 = this.mergeStyles(styles.h1, styles.h2)
+    styles.h2 = Object.assign({}, styles.h1, styles.h2)
 
-    if (this.isDeviceSize(StyleResizable.statics.Sizes.LARGE)) {
-      styles.tagline = this.mergeStyles(styles.tagline, styles.taglineWhenLarge)
-      styles.h1 = this.mergeStyles(styles.h1, styles.h1WhenLarge)
-      styles.h2 = this.mergeStyles(styles.h2, styles.h2WhenLarge)
+    if (this.props.width === LARGE) {
+      styles.tagline = Object.assign({}, styles.tagline, styles.taglineWhenLarge)
+      styles.h1 = Object.assign({}, styles.h1, styles.h1WhenLarge)
+      styles.h2 = Object.assign({}, styles.h2, styles.h2WhenLarge)
     }
     const { localeChange } = this.props
     var aragones = (<span style={styles.strong}><FormattedMessage {...messages.aragonese} /> </span>)
@@ -150,13 +151,13 @@ const HomeView = React.createClass({
           <h2 style={styles.h2}>
             <FormattedMessage {...messages.heading} values={{aragones}} />
           </h2>
-          <LanguageSelector style={styles.content} onChange={localeChange}/>
+          <LanguageSelector style={styles.content} onChange={localeChange} />
         </div>
       </FullWidthSection>
     )
-  },
+  }
 
-  _getHomeFeatures() {
+  homeFeatures() {
     const styles = {maxWidth: 906}
     return (
       <FullWidthSection useContent={true} contentStyle={styles}>
@@ -165,7 +166,7 @@ const HomeView = React.createClass({
           heading={<FormattedMessage {...messages.saac} />}
           route='/get-started'
           img={PictogramsImage}
-          firstChild={true}/>
+          firstChild={true} />
         <HomeFeature
           heading={<FormattedMessage {...messages.software} />}
           route='/customization'
@@ -174,26 +175,26 @@ const HomeView = React.createClass({
           heading={<FormattedMessage {...messages.news} />}
           route='/get-news'
           img={NewsImage}
-          lastChild={true}/>
+          lastChild={true} />
       </FullWidthSection>
     )
-  },
+  }
 
-  _getHomeContribute() {
+  homeContribute() {
     const styles = {
       root: {
-        backgroundColor: Colors.grey200,
+        backgroundColor: grey200,
         textAlign: 'center'
       },
       h3: {
         margin: 0,
         padding: 0,
-        fontWeight: Typography.fontWeightLight,
+        fontWeight: typography.fontWeightLight,
         fontSize: 22
       },
       button: {
         marginTop: 32,
-        backgroundColor: Colors.green900
+        backgroundColor: green900
       }
     }
 
@@ -207,25 +208,24 @@ const HomeView = React.createClass({
           primary={true}
           linkButton={true}
           href='https://github.com/callemall/material-ui'
-          style={styles.button}/>
+          style={styles.button} />
       </FullWidthSection>
     )
-  },
+  }
 
   render() {
     const style = {
-      paddingTop: Spacing.desktopKeylineIncrement
+      paddingTop: spacing.desktopKeylineIncrement
     }
-
     return (
-      <div id='2' style={style}>
-        {this._getHomePageHero()}
-        {this._getHomeFeatures()}
-        {this._getHomeContribute()}
+      <div style={style}>
+        {this.homePageHero()}
+        {this.homeFeatures()}
+        {this.homeContribute()}
       </div>
     )
   }
 
-})
+}
 
-export default connect(mapStateToProps, {localeChange})(HomeView)
+export default connect(mapStateToProps, {localeChange})(withWidth()(HomeView))

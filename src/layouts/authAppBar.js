@@ -1,10 +1,10 @@
 import React, {Component, PropTypes} from 'react'
-import {Colors} from 'material-ui/lib/styles'
-import AppBar from 'material-ui/lib/app-bar'
-import IconButton from 'material-ui/lib/icon-button'
-import IconMenu from 'material-ui/lib/menus/icon-menu'
-import MoreVertIcon from 'material-ui/lib/svg-icons/navigation/more-vert'
-import MenuItem from 'material-ui/lib/menus/menu-item'
+import {lightGreen500} from 'material-ui/styles/colors'
+import AppBar from 'material-ui/AppBar'
+import IconButton from 'material-ui/IconButton'
+import IconMenu from 'material-ui/IconMenu'
+import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
+import MenuItem from 'material-ui/MenuItem'
 import { Link } from 'react-router'
 import { defineMessages, FormattedMessage } from 'react-intl'
 const messages = defineMessages({
@@ -55,7 +55,7 @@ const styles = {
     // Needed to overlap the examples
     // zIndex: this.state.muiTheme.zIndex.appBar + 1,
     top: 0,
-    backgroundColor: Colors.lightGreen500
+    backgroundColor: lightGreen500
   }
 }
 

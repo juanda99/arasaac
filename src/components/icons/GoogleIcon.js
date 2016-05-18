@@ -1,6 +1,6 @@
 import React from 'react'
 import Google from 'svg-icons/google'
-import Colors from 'material-ui/lib/styles/colors'
+import Colors from 'material-ui/styles/colors';
 
 const style = {
   top: 7,
