@@ -163,13 +163,15 @@ class AppNavDrawer extends Component {
       style
     } = this.props
 
+
     return (
       <Drawer
         style={style}
         docked={docked}
         open={open}
         onRequestChange={onRequestChangeNavDrawer}
-        containerStyle={{zIndex: zIndex.drawer - 100}}
+       // containerStyle={{zIndex: zIndex.drawer - 100}}
+       containerStyle={{zIndex: 1200}}
       >
 
         <div style={styles.logo} onTouchTap={this.handleTouchTapHeader}>
