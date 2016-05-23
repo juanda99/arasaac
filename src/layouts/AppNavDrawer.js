@@ -171,19 +171,13 @@ class AppNavDrawer extends Component {
         open={open}
         onRequestChange={onRequestChangeNavDrawer}
        // containerStyle={{zIndex: zIndex.drawer - 100}}
-       containerStyle={{zIndex: 1200}}
+        containerStyle={{zIndex: 1200}}
       >
-
         <div style={styles.logo} onTouchTap={this.handleTouchTapHeader}>
           Arasaac
         </div>
         <SelectableList value={location.pathname} onChange={onChangeList}
-
         >
-          <ListItem
-            value='/'
-            primaryText={<FormattedMessage {...messages.home} />}
-          />
           <ListItem
             primaryText={<FormattedMessage {...messages.pictograms} />}
             primaryTogglesNestedList={true}
