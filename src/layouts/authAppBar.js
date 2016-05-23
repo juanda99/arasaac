@@ -49,15 +49,6 @@ const messages = defineMessages({
     defaultMessage: 'Sign out'
   }
 })
-const styles = {
-  appBar: {
-    position: 'fixed',
-    // Needed to overlap the examples
-    // zIndex: this.state.muiTheme.zIndex.appBar + 1,
-    top: 0,
-    backgroundColor: lightGreen500
-  }
-}
 
 export default class AuthAppBar extends Component {
   static propTypes = {
@@ -68,7 +59,8 @@ export default class AuthAppBar extends Component {
       PropTypes.string.isRequired,
       PropTypes.object.isRequired
     ]),
-    touchTapLeftIconButton: PropTypes.func.isRequired
+    touchTapLeftIconButton: PropTypes.func.isRequired,
+    style: PropTypes.object.isRequired
   }
 
   constructor(props) {
@@ -81,7 +73,7 @@ export default class AuthAppBar extends Component {
   }
 
   render() {
-    const { isAuthenticated, showMenuIconButton, title } = this.props
+    const { isAuthenticated, showMenuIconButton, title, style } = this.props
     return (
       <div>
       {(!isAuthenticated)
@@ -89,7 +81,7 @@ export default class AuthAppBar extends Component {
         onLeftIconButtonTouchTap={this.handleTouchTapLeftIconButton}
         title={title}
         zDepth={0}
-        style={styles.appBar}
+        style={style}
         showMenuIconButton={showMenuIconButton}
         iconElementRight={
           <IconMenu
@@ -109,7 +101,7 @@ export default class AuthAppBar extends Component {
         onLeftIconButtonTouchTap={this.handleTouchTapLeftIconButton}
         title={title}
         zDepth={0}
-        style={styles.appBar}
+        style={style}
         showMenuIconButton={showMenuIconButton}
         iconElementRight={
           <IconMenu

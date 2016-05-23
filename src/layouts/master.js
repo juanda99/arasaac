@@ -124,9 +124,6 @@ class Master extends Component {
         paddingTop: spacing.desktopKeylineIncrement,
         minHeight: '100%'
       },
-      navDrawer: {
-        fontWeight: 100
-      },
       content: {
         margin: spacing.desktopGutter
       },
@@ -260,8 +257,7 @@ class Master extends Component {
       navDrawerOpen = true
       showMenuIconButton = false
       styles.navDrawer = {
-        zIndex: styles.appBar.zIndex - 1,
-        fontWeight: 100
+        zIndex: styles.appBar.zIndex - 1
       }
       styles.root.paddingLeft = 256
       styles.footer.paddingLeft = 256
@@ -269,16 +265,8 @@ class Master extends Component {
     return (
       <div>
         <Title render='Arasaac' />
-        <AppNavDrawer
-          style={styles.navDrawer}
-          location={location}
-          docked={docked}
-          onRequestChangeNavDrawer={this.handleChangeRequestNavDrawer}
-          onChangeList={this.handleChangeList}
-          open={navDrawerOpen}
-        />
         <AuthAppBar showMenuIconButton={showMenuIconButton} isAuthenticated={isAuthenticated} title={title}
-          touchTapLeftIconButton={this.handleTouchTapLeftIconButton} />
+          touchTapLeftIconButton={this.handleTouchTapLeftIconButton} style={styles.appBar} zDepth={0} />
         {title !== ''
         ? <div style={prepareStyles(styles.root)}>
           <div style={prepareStyles(styles.content)}>
@@ -287,6 +275,15 @@ class Master extends Component {
         </div>
         : children
         }
+        <AppNavDrawer
+          style={styles.navDrawer}
+          location={location}
+          docked={docked}
+          onRequestChangeNavDrawer={this.handleChangeRequestNavDrawer}
+          onChangeList={this.handleChangeList}
+          open={navDrawerOpen}
+        />
+
         <div style={{paddingTop: '8rem'}}></div>
         <Footer style={styles.footer} />
       </div>
