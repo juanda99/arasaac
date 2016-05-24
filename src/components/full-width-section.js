@@ -3,7 +3,7 @@ import ClearFix from 'material-ui/internal/ClearFix'
 import spacing from 'material-ui/styles/spacing'
 import withWidth, {SMALL, LARGE} from 'material-ui/utils/withWidth'
 
-const deskTopGutter = spacing.deskTopGutter
+const desktopGutter = spacing.desktopGutter
 
 class FullWidthSection extends Component {
 
@@ -24,7 +24,7 @@ class FullWidthSection extends Component {
   getStyles() {
     return {
       root: {
-        padding: deskTopGutter,
+        padding: desktopGutter,
         boxSizing: 'border-box'
       },
       content: {
@@ -32,12 +32,12 @@ class FullWidthSection extends Component {
         margin: '0 auto'
       },
       rootWhenSmall: {
-        paddingTop: deskTopGutter * 2,
-        paddingBottom: deskTopGutter * 2
+        paddingTop: desktopGutter * 2,
+        paddingBottom: desktopGutter * 2
       },
       rootWhenLarge: {
-        paddingTop: deskTopGutter * 3,
-        paddingBottom: deskTopGutter * 3
+        paddingTop: desktopGutter * 4,
+        paddingBottom: desktopGutter * 4
       }
     }
   }
