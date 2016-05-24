@@ -5,9 +5,9 @@ import SelectSize from './SelectSize'
 
 const Filter = props => (
   <div className='row'>
-      {props.filter.catalog ? <div className='col-xs-12 col-sm-4'><SelectCatalog/></div> : null}
-      {props.filter.size ? <div className='col-xs-12 col-sm-4'><SelectSize/></div> : null}
-      {props.filter.license ? <div className='col-xs-12 col-sm-4'><SelectLicense/></div> : null}
+      {props.filter.catalog ? <div className='col-xs-12'><SelectCatalog/></div> : null}
+      {props.filter.size ? <div className='col-xs-12'><SelectSize/></div> : null}
+      {props.filter.license ? <div className='col-xs-12'><SelectLicense/></div> : null}
   </div>
 )
 Filter.propTypes = {
