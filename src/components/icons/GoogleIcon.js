@@ -1,6 +1,6 @@
 import React from 'react'
 import Google from 'svg-icons/google'
-import Colors from 'material-ui/styles/colors';
+import {white} from 'material-ui/styles/colors'
 
 const style = {
   top: 7,
@@ -10,7 +10,7 @@ const style = {
 }
 
 const GoogleIcon = () => (
-  <Google style={style} color={Colors.white}/>
+  <Google style={style} color={white} />
 )
 
 export default GoogleIcon

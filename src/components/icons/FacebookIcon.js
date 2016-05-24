@@ -1,6 +1,6 @@
 import React from 'react'
 import Facebook from 'svg-icons/facebook'
-import Colors from 'material-ui/styles/colors';
+import {white} from 'material-ui/styles/colors'
 
 const style = {
   top: 7,
@@ -10,7 +10,7 @@ const style = {
 }
 
 const FacebookIcon = () => (
-  <Facebook style={style} color={Colors.white}/>
+  <Facebook style={style} color={white} />
 )
 
 export default FacebookIcon
