@@ -49,7 +49,12 @@ class Footer extends Component {
       logoUE: {
         width: '100%',
         position: 'relative',
-        top: '-11px'
+        top: '-11px',
+        maxWidth: '256px'
+      },
+      logoGA: {
+        width: '100%',
+        maxWidth: '256px'
       }
 
     }
@@ -69,7 +74,7 @@ class Footer extends Component {
             </p>
           </div>
           <div className='col-md-2 col-xs-6 first-md'>
-            <img style={styles.img} src={GobiernoAragon} />
+            <img style={styles.logoGA} src={GobiernoAragon} />
           </div>
 
           <div className='col-md-2 col-xs-6'>
