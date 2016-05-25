@@ -1,9 +1,9 @@
 import React, {Component, PropTypes} from 'react'
-import RaisedButton from 'material-ui/RaisedButton';
-import TextField from 'material-ui/TextField';
-import Paper from 'material-ui/Paper';
-import Checkbox from 'material-ui/Checkbox';
-import Colors from 'material-ui/styles/colors';
+import RaisedButton from 'material-ui/RaisedButton'
+import TextField from 'material-ui/TextField'
+import Paper from 'material-ui/Paper'
+import Checkbox from 'material-ui/Checkbox'
+import {red500, blue500} from 'material-ui/styles/colors'
 import ArasaacLogo from 'images/arasaac-logo.svg'
 import GoogleIcon from './icons/GoogleIcon'
 import FacebookIcon from './icons/FacebookIcon'
@@ -152,7 +152,6 @@ let LoginForm = class LoginForm extends Component {
     this.props.onLoginClick(creds)
   }
 
-
   render() {
     const {
       fields: { username, password },
@@ -168,10 +167,10 @@ let LoginForm = class LoginForm extends Component {
         </div>
         <div className='row'>
           <div className='col-xs-12'>
-            <RaisedButton style={styles.googleButton} backgroundColor={Colors.red500}
-              label={<FormattedMessage {...messages.google} />} primary={true} icon={<GoogleIcon />}/>
-            <RaisedButton style={styles.facebookButton} backgroundColor={Colors.blue500}
-              label={<FormattedMessage {...messages.facebook} />} primary={true} icon={<FacebookIcon/>}/>
+            <RaisedButton style={styles.googleButton} backgroundColor={red500}
+              label={<FormattedMessage {...messages.google} />} icon={<GoogleIcon />} labelColor='white' />
+            <RaisedButton style={styles.facebookButton} backgroundColor={blue500}
+              label={<FormattedMessage {...messages.facebook} />} icon={<FacebookIcon />} labelColor='white' />
           </div>
         </div>
         <div className='row'>
@@ -187,10 +186,10 @@ let LoginForm = class LoginForm extends Component {
             <div className='col-xs-12'>
               <TextField ref='username' style={styles.text} hintText={<FormattedMessage {...messages.email} />}
                 floatingLabelText={<FormattedMessage {...messages.user} />} {...username}
-                errorText={username.touched && username.error ? username.error : ''}/><br/>
+                errorText={username.touched && username.error ? username.error : ''} /><br />
               <TextField ref='password' style={styles.text} hintText={<FormattedMessage {...messages.password} />}
                 floatingLabelText={<FormattedMessage {...messages.password} {...password} />} type='password'
-                errorText={password.touched && password.error ? password.error : ''}/><br/>
+                errorText={password.touched && password.error ? password.error : ''} /><br />
             </div>
           </div>
           <div className='row' style={{marginTop: 15, marginBottom: 15}}>

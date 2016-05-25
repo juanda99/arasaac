@@ -1,11 +1,11 @@
 import React, {Component, PropTypes} from 'react'
-import RaisedButton from 'material-ui/RaisedButton';
-import Paper from 'material-ui/Paper';
-import Colors from 'material-ui/styles/colors';
+import RaisedButton from 'material-ui/RaisedButton'
+import Paper from 'material-ui/Paper'
+import {red500, blue500} from 'material-ui/styles/colors'
 import ArasaacLogo from 'images/arasaac-logo.svg'
 import GoogleIcon from './icons/GoogleIcon'
 import FacebookIcon from './icons/FacebookIcon'
-import EmailIcon from 'material-ui/svg-icons/communication/email';
+import EmailIcon from 'material-ui/svg-icons/communication/email'
 import { defineMessages, FormattedMessage } from 'react-intl'
 import { Link } from 'react-router'
 
@@ -71,7 +71,8 @@ const styles = {
   googleButton: {
     width: '100%',
     float: 'left',
-    marginBottom: 5
+    marginBottom: 5,
+    backgroundColor: '#ccc'
   },
   facebookButton: {
     float: 'right',
@@ -126,10 +127,10 @@ class RegisterOptions extends Component {
         </div>
         <div className='row'>
           <div className='col-xs-12'>
-            <RaisedButton style={styles.googleButton} backgroundColor={Colors.red500}
-              label={<FormattedMessage {...messages.google} />} primary={true} icon={<GoogleIcon />}/>
-            <RaisedButton style={styles.facebookButton} backgroundColor={Colors.blue500}
-              label={<FormattedMessage {...messages.facebook} />} primary={true} icon={<FacebookIcon/>}/>
+            <RaisedButton style={styles.googleButton} backgroundColor={red500}
+              label={<FormattedMessage {...messages.google} />} icon={<GoogleIcon />} labelColor='white' />
+            <RaisedButton style={styles.facebookButton} backgroundColor={blue500}
+              label={<FormattedMessage {...messages.facebook} />} icon={<FacebookIcon />} labelColor='white' />
           </div>
         </div>
         <div className='row'>
@@ -143,7 +144,7 @@ class RegisterOptions extends Component {
         <div className='row' style={{marginTop: 10}}>
           <div className='col-xs-12'>
             <RaisedButton style={styles.googleButton} onClick={this.handleClick}
-              label={<FormattedMessage {...messages.signup} />} primary={true} icon={<EmailIcon />}/>
+              label={<FormattedMessage {...messages.signup} />} primary={true} icon={<EmailIcon />} />
           </div>
         </div>
         <div className='row' style={{marginTop: 10}}>
