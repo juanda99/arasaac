@@ -2,14 +2,13 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import Title from 'react-title-component'
 import spacing from 'material-ui/styles/spacing'
-import {darkWhite, lightGreen500, lightGreen800, lightGreen700, grey800, lightWhite} from 'material-ui/styles/colors'
+import {white, lightGreen500, lightGreen800} from 'material-ui/styles/colors'
 import Footer from './footer'
 import withWidth, { MEDIUM, LARGE } from 'material-ui/utils/withWidth'
 import AppNavDrawer from './AppNavDrawer'
 import { defineMessages, FormattedMessage } from 'react-intl'
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import 'styles/core.scss'
-// import myStyle from 'theme/variables'
 import AuthAppBar from './authAppBar'
 
 const messages = defineMessages({
@@ -140,16 +139,16 @@ class Master extends Component {
         minHeight: '8 rem'
       },
       a: {
-        color: darkWhite
+        color: white
       },
       p: {
         margin: '0 auto',
         padding: 0,
-        color: lightWhite,
+        color: white,
         maxWidth: 450
       },
       iconButton: {
-        color: darkWhite
+        color: white
       }
     }
 

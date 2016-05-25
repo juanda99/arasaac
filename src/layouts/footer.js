@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react'
-import {darkWhite, lightWhite} from 'material-ui/styles/colors'
+import {white, lightGreen300} from 'material-ui/styles/colors'
 import UnionEuropea from 'images/union-europea-logo2.png'
 import GobiernoAragon from 'images/gobierno-aragon-logo.svg'
 // import myStyle from 'theme/variables'
@@ -31,15 +31,16 @@ class Footer extends Component {
   getStyles() {
     const styles = {
       a: {
-        color: darkWhite
+        color: lightGreen300,
+        textDecoration: 'none'
       },
-      copyright:{
+      copyright: {
         paddingTop: '10px'
       },
       p: {
         margin: '0 auto',
         maxWidth: 600,
-        color: 'white',
+        color: white,
         fontWeight: 'normal',
         fontSize: '15px'
       },
