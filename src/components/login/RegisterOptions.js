@@ -6,46 +6,9 @@ import ArasaacLogo from 'images/arasaac-logo.svg'
 import GoogleIcon from './icons/GoogleIcon'
 import FacebookIcon from './icons/FacebookIcon'
 import EmailIcon from 'material-ui/svg-icons/communication/email'
-import { defineMessages, FormattedMessage } from 'react-intl'
 import { Link } from 'react-router'
-
-const messages = defineMessages({
-  google: {
-    id: 'signup.google',
-    description: 'Sign up Google button',
-    defaultMessage: 'Continue with Google'
-  },
-  facebook: {
-    id: 'signup.facebook',
-    description: 'Signin Facebook button',
-    defaultMessage: 'Continue with Facebook'
-  },
-  or: {
-    id: 'signup.or',
-    description: 'Or, because it offers two posibilities',
-    defaultMessage: 'or'
-  },
-  user: {
-    id: 'user.signin',
-    description: 'Username field default text for login',
-    defaultMessage: 'User'
-  },
-  offerSignin: {
-    id: 'signin.offerAccount',
-    description: 'Text inviting for creating an account',
-    defaultMessage: 'Already an Arasaac user?'
-  },
-  signup: {
-    id: 'signin.signup',
-    description: 'Button for creating a new account',
-    defaultMessage: 'Sign up with email'
-  },
-  signin: {
-    id: 'signup.signin',
-    description: 'Button for going to sign in view',
-    defaultMessage: 'Sign in'
-  }
-})
+import { FormattedMessage } from 'react-intl'
+import messages from './messages'
 
 const styles = {
   separator: {

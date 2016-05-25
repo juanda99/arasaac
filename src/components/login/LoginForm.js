@@ -7,10 +7,11 @@ import {red500, blue500} from 'material-ui/styles/colors'
 import ArasaacLogo from 'images/arasaac-logo.svg'
 import GoogleIcon from './icons/GoogleIcon'
 import FacebookIcon from './icons/FacebookIcon'
-import { defineMessages, FormattedMessage } from 'react-intl'
+import { FormattedMessage } from 'react-intl'
 import { Link } from 'react-router'
 import { reduxForm } from 'redux-form'
 import Validator from 'validatorjs'
+import messages from './messages'
 export const fields = [ 'username', 'password' ]
 const rules = {
   username: 'required|email',
@@ -25,59 +26,6 @@ const validate = values => {
   validator.passes()
   return validator.errors.all()
 }
-
-const messages = defineMessages({
-  google: {
-    id: 'signin.google',
-    description: 'Signin Google button',
-    defaultMessage: 'Sign in with Google'
-  },
-  facebook: {
-    id: 'signin.facebook',
-    description: 'Signin Facebook button',
-    defaultMessage: 'Sign in with Facebook'
-  },
-  or: {
-    id: 'signin.or',
-    description: 'Or, because it offers two posibilities',
-    defaultMessage: 'or'
-  },
-  user: {
-    id: 'user.signin',
-    description: 'Username field default text for login',
-    defaultMessage: 'User'
-  },
-  email: {
-    id: 'email.signin',
-    description: 'Hint for username login field',
-    defaultMessage: 'e-mail'
-  },
-  password: {
-    id: 'password.signin',
-    description: 'Password field for login, default text',
-    defaultMessage: 'Password'
-  },
-  remember: {
-    id: 'signin.remember',
-    description: 'Signin checkbox option for remembering password',
-    defaultMessage: 'Remember me'
-  },
-  forgotPassword: {
-    id: 'signin.forgotPassword',
-    description: 'Link for password reset if passwords is forgotten',
-    defaultMessage: 'Forgot password?'
-  },
-  offerAccount: {
-    id: 'signin.offerAccount',
-    description: 'Text inviting for creating an account',
-    defaultMessage: 'Don\'t have an account?'
-  },
-  signup: {
-    id: 'signin.signup',
-    description: 'Button for creating a new account',
-    defaultMessage: 'Sign up'
-  }
-})
 
 const styles = {
   separator: {
