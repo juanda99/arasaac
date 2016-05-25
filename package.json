@@ -83,6 +83,7 @@
     "react-data-grid": "^0.14.34",
     "react-dom": "^15.0.0",
     "react-intl": "^2.0.1",
+    "react-masonry-component": "^4.0.4",
     "react-redux": "^4.0.0",
     "react-router": "^2.4.0",
     "react-router-redux": "^4.0.0-beta",
