@@ -50,18 +50,8 @@ const messages = defineMessages({
     description: 'Button for creating a new account',
     defaultMessage: 'Sign up'
   },
-  google: {
-    id: 'signup.google',
-    description: 'Sign up Google button',
-    defaultMessage: 'Continue with Google'
-  },
-  facebook: {
-    id: 'signup.facebook',
-    description: 'Signin Facebook button',
-    defaultMessage: 'Continue with Facebook'
-  },
   offerSignin: {
-    id: 'signin.offerAccount',
+    id: 'signin.offerUseAccount',
     description: 'Text inviting for creating an account',
     defaultMessage: 'Already an Arasaac user?'
   },
