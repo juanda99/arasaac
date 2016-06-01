@@ -2,7 +2,7 @@
 import manageTranslations from 'react-intl-translations-manager'
 
 manageTranslations({
-  messagesDirectory: '../src/_translations/src',
-  translationsDirectory: '../src/_translations/locales/',
+  messagesDirectory: '_translations/src',
+  translationsDirectory: '_translations/locales',
   languages: ['en', 'es', 'fr'] // any language you need
 })
