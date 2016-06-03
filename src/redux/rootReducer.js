@@ -37,6 +37,7 @@ function entities(state = initialState, action) {
 }
 
 // Updates the pagination data for different actions.
+/*
 const pagination = combineReducers({
   pictogramsBySearchText: paginate({
     mapActionToKey: action => action.searchText,
@@ -47,7 +48,7 @@ const pagination = combineReducers({
     ]
   })
 })
-
+*/
 // Stores for GUIS
 
 const gui = combineReducers({
@@ -63,7 +64,7 @@ const rootReducer = combineReducers({
   gui,
   errorMessage,
   entities,
-  pagination,
+  // pagination,
   form: formReducer
 })
 

@@ -17,8 +17,8 @@ function getNextPageUrl(response) {
   return nextLink.split(';')[0].slice(1, -1)
 }
 
-// const API_ROOT = 'http://localhost:8000/api/'
-const API_ROOT = 'http://178.32.253.90:5000/'
+const API_ROOT = 'http://localhost:8000/api/'
+// const API_ROOT = 'http://178.32.253.90:5000/'
 // Fetches an API response and normalizes the result JSON according to schema.
 // This makes every API response have the same shape, regardless of how nested it was.
 function callApi(endpoint, schema) {
@@ -51,7 +51,7 @@ function callApi(endpoint, schema) {
 // Read more about Normalizr: https://github.com/gaearon/normalizr
 
 const pictoSchema = new Schema('pictograms', {
-  idAttribute: '_id'
+  idAttribute: 'id'
 })
 
 const keywordSchema = new Schema('keywords', {
@@ -59,15 +59,16 @@ const keywordSchema = new Schema('keywords', {
 })
 
 const searchSchema = new Schema('search', {
-  idAttribute: 'self.href'
+  idAttribute: 'id'
 })
 
 searchSchema.define({
-  _items: arrayOf(pictoSchema)
+  items: arrayOf(pictoSchema)
 })
 
 // Schemas for API responses.
 export const Schemas = {
+  KEYWORDS_ARRAY:  arrayOf(keywordSchema),
   KEYWORDS: keywordSchema,
   PICTO: pictoSchema,
   PICTO_ARRAY: arrayOf(pictoSchema),

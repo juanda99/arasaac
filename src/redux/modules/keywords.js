@@ -9,7 +9,7 @@ function fetchKeywords() {
     [CALL_API]: {
       types: [ KEYWORDS_REQUEST, KEYWORDS_SUCCESS, KEYWORDS_FAILURE ],
       endpoint: 'keywords',
-      schema: Schemas.KEYWORDS
+      schema: Schemas.KEYWORDS_ARRAY
     }
   }
 }

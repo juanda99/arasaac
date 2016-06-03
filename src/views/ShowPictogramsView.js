@@ -8,8 +8,8 @@ import ToolbarPictograms from 'components/Toolbar/ToolbarPictograms'
 // import { map, keyBy } from 'lodash/zip'
 
 function loadData(props) {
-  const { searchText } = props
-  props.loadPictograms(searchText)
+  const { searchText, locale } = props
+  props.loadPictograms(locale, searchText)
 }
 
 class ShowPictogramsView extends Component {
@@ -17,7 +17,6 @@ class ShowPictogramsView extends Component {
   constructor(props) {
     super(props)
     this.renderPictogram = this.renderPictogram.bind(this)
-    this.handleLoadMoreClick = this.handleLoadMoreClick.bind(this)
   }
 
   componentDidMount() {
@@ -30,9 +29,6 @@ class ShowPictogramsView extends Component {
     }
   }
 
-  handleLoadMoreClick() {
-    this.props.loadPictograms(this.props.searchText, true)
-  }
 
   renderPictogram(pictogram) {
     return (
@@ -50,7 +46,6 @@ class ShowPictogramsView extends Component {
         </div>
         <List renderItem={this.renderPictogram}
           items={pictogramsList}
-          onLoadMoreClick={this.handleLoadMoreClick}
           loadingLabel={`Cargando pictogramas sobre ${searchText}...`} />
       </div>
     )
@@ -67,14 +62,18 @@ ShowPictogramsView.propTypes = {
 
 function mapStateToProps(state, ownProps) {
   const { searchText } = ownProps.params
+  /*
   const {
     pagination: { pictogramsBySearchText },
     entities: { pictograms }
   } = state
-  let pictogramsPagination = pictogramsBySearchText[searchText] || { ids: [] }
+  */
+  // let pictogramsPagination = pictogramsBySearchText[searchText] || { ids: [] }
   let {
     gui: {layout}
   } = state
+
+  let pictogramsList = state.entities.search || {items:[]}
   /* http://stackoverflow.com/questions/36129060/extend-one-object-with-another-using-lodash/36130327#36130327 */
   /*
   let listOfPictograms = pictogramsBySearchText[searchText]
@@ -84,7 +83,7 @@ function mapStateToProps(state, ownProps) {
   })
   listOfPictograms.ids = myIds
   */
-  const pictogramsList = pictogramsPagination.ids.map(id => pictograms[id])
+  // const pictogramsList = pictogramsPagination.ids.map(id => pictograms[id])
 
   return {
     searchText,
