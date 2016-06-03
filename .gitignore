@@ -6,3 +6,4 @@ config/_base.js
 dist
 coverage
 _translations
+cache

@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react'
 import {defineMessages, injectIntl, intlShape} from 'react-intl'
-import SelectField from 'material-ui/lib/select-field'
-import MenuItem from 'material-ui/lib/menus/menu-item'
+import SelectField from 'material-ui/SelectField';
+import MenuItem from 'material-ui/MenuItem';
 const messages = defineMessages({
   spanish: {
     id: 'languageSelector.spanish',

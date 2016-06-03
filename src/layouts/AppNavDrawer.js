@@ -1,17 +1,11 @@
-import React from 'react'
-import LeftNav from 'material-ui/lib/left-nav'
-import List from 'material-ui/lib/lists/list'
-import ListItem from 'material-ui/lib/lists/list-item'
-import Divider from 'material-ui/lib/divider'
-import {SelectableContainerEnhance} from 'material-ui/lib/hoc/selectable-enhance'
-import {
-  Colors,
-  Spacing,
-  Typography
-} from 'material-ui/lib/styles'
-import {StylePropable} from 'material-ui/lib/mixins'
-
+import React, { Component, PropTypes } from 'react'
+import Drawer from 'material-ui/Drawer'
+import {List, ListItem, MakeSelectable} from 'material-ui/List'
+import Divider from 'material-ui/Divider'
+import Subheader from 'material-ui/Subheader'
+import {spacing, typography, zIndex} from 'material-ui/styles'
 import { defineMessages, FormattedMessage } from 'react-intl'
+import {lightGreen500} from 'material-ui/styles/colors'
 
 const messages = defineMessages({
   home: {
@@ -116,89 +110,74 @@ const messages = defineMessages({
   }
 })
 
-const SelectableList = SelectableContainerEnhance(List)
+const SelectableList = MakeSelectable(List)
 
-const AppLeftNav = React.createClass({
+const styles = {
+  logo: {
+    cursor: 'pointer',
+    fontSize: 24,
+    color: typography.textFullWhite,
+    lineHeight: `${spacing.desktopKeylineIncrement}px`,
+    fontWeight: typography.fontWeightLight,
+    backgroundColor: lightGreen500,
+    paddingLeft: spacing.desktopGutter,
+    marginBottom: 8
+  }
+}
 
-  propTypes: {
-    docked: React.PropTypes.bool.isRequired,
-    location: React.PropTypes.object.isRequired,
-    onRequestChangeLeftNav: React.PropTypes.func.isRequired,
-    onRequestChangeList: React.PropTypes.func.isRequired,
-    open: React.PropTypes.bool.isRequired,
-    style: React.PropTypes.object
-  },
+class AppNavDrawer extends Component {
+  static propTypes = {
+    docked: PropTypes.bool.isRequired,
+    location: PropTypes.object.isRequired,
+    onChangeList: PropTypes.func.isRequired,
+    onRequestChangeNavDrawer: PropTypes.func.isRequired,
+    open: PropTypes.bool.isRequired,
+    style: PropTypes.object
+  }
 
-  contextTypes: {
-    muiTheme: React.PropTypes.object,
-    router: React.PropTypes.object.isRequired
-  },
+  static contextTypes = {
+    muiTheme: PropTypes.object.isRequired,
+    router: PropTypes.object.isRequired
+  };
 
-  mixins: [
-    StylePropable
-  ],
+  state = {
+    muiVersions: []
+  }
 
-  handleRequestChangeLink(event, value) {
+  handleRequestChangeLink = (event, value) => {
     window.location = value
-  },
+  }
 
-  handleTouchTapHeader() {
+  handleTouchTapHeader = () => {
     this.context.router.push('/')
-    this.setState({
-      leftNavOpen: false
-    })
-  },
-
-  getStyles() {
-    return {
-      logo: {
-        cursor: 'pointer',
-        fontSize: 24,
-        color: Typography.textFullWhite,
-        lineHeight: Spacing.desktopKeylineIncrement + 'px',
-        fontWeight: Typography.fontWeightLight,
-        backgroundColor: Colors.lightGreen500,
-        paddingLeft: Spacing.desktopGutter,
-        marginBottom: 8
-      }
-    }
-  },
+    this.props.onRequestChangeNavDrawer(false)
+  }
 
   render() {
     const {
       location,
       docked,
-      onRequestChangeLeftNav,
-      onRequestChangeList,
+      onRequestChangeNavDrawer,
+      onChangeList,
       open,
       style
     } = this.props
 
-    const styles = this.getStyles()
 
     return (
-      <LeftNav
+      <Drawer
         style={style}
         docked={docked}
         open={open}
-        onRequestChange={onRequestChangeLeftNav}
+        onRequestChange={onRequestChangeNavDrawer}
+       // containerStyle={{zIndex: zIndex.drawer - 100}}
+        containerStyle={{zIndex: 1200}}
       >
-        <div
-          style={this.prepareStyles(styles.logo)}
-          onTouchTap={this.handleTouchTapHeader}
-        >
+        <div style={styles.logo} onTouchTap={this.handleTouchTapHeader}>
           Arasaac
         </div>
-        <SelectableList
-          valueLink={{
-            value: location.pathname,
-            requestChange: onRequestChangeList
-          }}
+        <SelectableList value={location.pathname} onChange={onChangeList}
         >
-          <ListItem
-            value='/'
-            primaryText={<FormattedMessage {...messages.home} />}
-          />
           <ListItem
             primaryText={<FormattedMessage {...messages.pictograms} />}
             primaryTogglesNestedList={true}
@@ -265,13 +244,9 @@ const AppLeftNav = React.createClass({
           primaryText={<FormattedMessage {...messages.software} />}
         />
         <Divider />
-        <SelectableList
-          subheader={<FormattedMessage {...messages.info} />}
-          valueLink={{
-            value: '',
-            requestChange: this.handleRequestChangeLink
-          }}
-        >
+
+        <SelectableList value='' onChange={this.handleRequestChangeLink} >
+          <Subheader>{<FormattedMessage {...messages.info} />}</Subheader>
           <ListItem
             value='https://github.com/callemall/material-ui'
             primaryText={<FormattedMessage {...messages.news} />}
@@ -285,9 +260,9 @@ const AppLeftNav = React.createClass({
             primaryText={<FormattedMessage {...messages.contact} />}
           />
         </SelectableList>
-      </LeftNav>
+      </Drawer>
     )
   }
-})
+}
 
-export default AppLeftNav
+export default AppNavDrawer

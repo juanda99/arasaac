@@ -1,5 +1,5 @@
 import React from 'react'
-import IconButton from 'material-ui/lib/icon-button'
+import IconButton from 'material-ui/IconButton';
 import Filter from 'svg-icons/filter'
 
 const FilterIcon = () => (

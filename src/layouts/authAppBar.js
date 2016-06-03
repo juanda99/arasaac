@@ -1,10 +1,10 @@
 import React, {Component, PropTypes} from 'react'
-import {Colors} from 'material-ui/lib/styles'
-import AppBar from 'material-ui/lib/app-bar'
-import IconButton from 'material-ui/lib/icon-button'
-import IconMenu from 'material-ui/lib/menus/icon-menu'
-import MoreVertIcon from 'material-ui/lib/svg-icons/navigation/more-vert'
-import MenuItem from 'material-ui/lib/menus/menu-item'
+import {lightGreen500} from 'material-ui/styles/colors'
+import AppBar from 'material-ui/AppBar'
+import IconButton from 'material-ui/IconButton'
+import IconMenu from 'material-ui/IconMenu'
+import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
+import MenuItem from 'material-ui/MenuItem'
 import { Link } from 'react-router'
 import { defineMessages, FormattedMessage } from 'react-intl'
 const messages = defineMessages({
@@ -49,15 +49,6 @@ const messages = defineMessages({
     defaultMessage: 'Sign out'
   }
 })
-const styles = {
-  appBar: {
-    position: 'fixed',
-    // Needed to overlap the examples
-    // zIndex: this.state.muiTheme.zIndex.appBar + 1,
-    top: 0,
-    backgroundColor: Colors.lightGreen500
-  }
-}
 
 export default class AuthAppBar extends Component {
   static propTypes = {
@@ -68,7 +59,8 @@ export default class AuthAppBar extends Component {
       PropTypes.string.isRequired,
       PropTypes.object.isRequired
     ]),
-    touchTapLeftIconButton: PropTypes.func.isRequired
+    touchTapLeftIconButton: PropTypes.func.isRequired,
+    style: PropTypes.object.isRequired
   }
 
   constructor(props) {
@@ -81,7 +73,7 @@ export default class AuthAppBar extends Component {
   }
 
   render() {
-    const { isAuthenticated, showMenuIconButton, title } = this.props
+    const { isAuthenticated, showMenuIconButton, title, style } = this.props
     return (
       <div>
       {(!isAuthenticated)
@@ -89,7 +81,7 @@ export default class AuthAppBar extends Component {
         onLeftIconButtonTouchTap={this.handleTouchTapLeftIconButton}
         title={title}
         zDepth={0}
-        style={styles.appBar}
+        style={style}
         showMenuIconButton={showMenuIconButton}
         iconElementRight={
           <IconMenu
@@ -109,7 +101,7 @@ export default class AuthAppBar extends Component {
         onLeftIconButtonTouchTap={this.handleTouchTapLeftIconButton}
         title={title}
         zDepth={0}
-        style={styles.appBar}
+        style={style}
         showMenuIconButton={showMenuIconButton}
         iconElementRight={
           <IconMenu

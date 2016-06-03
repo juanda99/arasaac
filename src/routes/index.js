@@ -1,14 +1,11 @@
 import { Route, IndexRoute, Redirect } from 'react-router'
 import { routerActions } from 'react-router-redux'
 import React from 'react'
-
 // NOTE: here we're making use of the `resolve.root` configuration
 // option in webpack, which allows us to specify import paths as if
 // they were from the root of the ~/src directory. This makes it
 // very easy to navigate to files regardless of how deeply nested
 // your current file is.
-// import CoreLayout from 'layouts/CoreLayout/CoreLayout'
-// import HomeView from 'views/HomeView/HomeView'
 import HomeView from 'views/HomeView/HomeView'
 import BingoView from 'views/BingoView/BingoView'
 import SearchPictogramsView from 'views/SearchPictogramsView'
@@ -19,17 +16,11 @@ import RegisterView from 'views/RegisterView'
 import AppConfView from 'views/AppConfView'
 import SigninView from 'views/SigninView'
 import SignoutView from 'views/SignoutView'
-// import SearchView from 'views/SearchView'
-// import ApiView from 'views/ApiView'
-// import BingoView from 'views/BingoView'
-// import TableroView from 'views/TableroView'
-// import DominoView from 'views/DominoView'
-// import NotFoundView from 'views/NotFoundView/NotFoundView'
-// import Header from 'layouts/Header'
 import Master from 'layouts/master'
 import { UserAuthWrapper } from 'redux-auth-wrapper'
-// import auth from 'components/auth'
+import Gallery from 'views/Gallery'
 
+// import auth from 'components/auth'
 /* function requireAuth(nextState, replace) {
   if (!auth.loggedIn()) {
     replace({
@@ -79,7 +70,7 @@ export default store => (
       <Route path='api' component={HomeView} />
       <Route path='catalogs' component={HomeView} />
     </Route>
-    <Route path='materials' component={HomeView} />
+    <Route path='materials' component={Gallery} />
 
     <Redirect from='onlinetools' to='/onlinetools/bingos-creator' />
     <Route path='onlinetools'>

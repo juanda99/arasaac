@@ -4,8 +4,8 @@ import { toggleFilter } from 'redux/modules/filters'
 import { connect } from 'react-redux'
 import { defineMessages, FormattedMessage } from 'react-intl'
 import FullWidthSection from 'components/full-width-section'
-import Divider from 'material-ui/lib/divider'
-import Paper from 'material-ui/lib/paper'
+import Divider from 'material-ui/Divider';
+import Paper from 'material-ui/Paper';
 
 const messages = defineMessages({
   appConfiguration: {
@@ -14,7 +14,7 @@ const messages = defineMessages({
     defaultMessage: 'Arasaac configuration'
   },
   searchPictograms: {
-    id: 'menu.searchPictograms',
+    id: 'appconf.searchPictograms',
     description: 'Menu item',
     defaultMessage: 'Search Pictograms'
   },
@@ -32,92 +32,6 @@ const messages = defineMessages({
     id: 'appconf.filterSize',
     description: 'Conf option filter by Size',
     defaultMessage: 'Size'
-  },
-
-  api: {
-    id: 'menu.api',
-    description: 'Menu item',
-    defaultMessage: 'API for developers'
-  },
-  software: {
-    id: 'menu.software',
-    description: 'Menu item',
-    defaultMessage: 'Software'
-  },
-  onlineTools: {
-    id: 'menu.onlineTools',
-    description: 'Menu item',
-    defaultMessage: 'Online Tools'
-  },
-  animationsMaker: {
-    id: 'menu.animationsMaker',
-    description: 'Menu item',
-    defaultMessage: 'Animations Maker'
-  },
-  symbolsCreator: {
-    id: 'menu.symbolsCreator',
-    description: 'Menu item',
-    defaultMessage: 'Symbols Creator'
-  },
-  scheduleGenerator: {
-    id: 'menu.scheduleGenerator',
-    description: 'Menu item',
-    defaultMessage: 'Schedule Generator'
-  },
-  calendarGenerator: {
-    id: 'menu.calendarGenerator',
-    description: 'Menu item',
-    defaultMessage: 'Calendar Generator'
-  },
-  snakesAndLadders: {
-    id: 'menu.snakesAndLadders',
-    description: 'Menu item',
-    defaultMessage: 'Snakes and Ladders'
-  },
-  bingo: {
-    id: 'menu.bingo',
-    description: 'Menu item',
-    defaultMessage: 'Bingo'
-  },
-  dominos: {
-    id: 'menu.dominos',
-    description: 'Menu item',
-    defaultMessage: 'Dominós'
-  },
-  dominosencadenados: {
-    id: 'menu.dominosencadenados',
-    description: 'Menu item',
-    defaultMessage: 'Dominós Encadenados'
-  },
-  news: {
-    id: 'menu.news',
-    description: 'Menu item',
-    defaultMessage: 'News'
-  },
-  materials: {
-    id: 'menu.materials',
-    description: 'Menu item',
-    defaultMessage: 'Materials'
-  },
-  info: {
-    id: 'menu.info',
-    description: 'Menu division title',
-    defaultMessage: 'About us'
-  },
-  downloads: {
-    id: 'menu.downloads',
-    description: 'Menu item',
-    defaultMessage: 'Download Catalogs'
-  },
-  prizes: {
-    id: 'menu.prizes',
-    description: 'Menu item',
-    defaultMessage: 'Prizes'
-  },
-  contact: {
-    id: 'menu.contact',
-    description: 'Menu item',
-    defaultMessage: 'Contact us'
   }
 })
 

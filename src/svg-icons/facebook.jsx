@@ -1,6 +1,6 @@
 import React from 'react'
 import pure from 'recompose/pure'
-import SvgIcon from 'material-ui/lib/svg-icon'
+import SvgIcon from 'material-ui/SvgIcon'
 
 let FacebookIcon = props => (
   <SvgIcon {...props} viewBox='0 0 32 32'>

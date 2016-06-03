@@ -1,51 +1,14 @@
 import React, {Component, PropTypes} from 'react'
-import RaisedButton from 'material-ui/lib/raised-button'
-import Paper from 'material-ui/lib/paper'
-import Colors from 'material-ui/lib/styles/colors'
+import RaisedButton from 'material-ui/RaisedButton'
+import Paper from 'material-ui/Paper'
+import {red500, blue500} from 'material-ui/styles/colors'
 import ArasaacLogo from 'images/arasaac-logo.svg'
 import GoogleIcon from './icons/GoogleIcon'
 import FacebookIcon from './icons/FacebookIcon'
-import EmailIcon from 'material-ui/lib/svg-icons/communication/email'
-import { defineMessages, FormattedMessage } from 'react-intl'
+import EmailIcon from 'material-ui/svg-icons/communication/email'
 import { Link } from 'react-router'
-
-const messages = defineMessages({
-  google: {
-    id: 'signup.google',
-    description: 'Sign up Google button',
-    defaultMessage: 'Continue with Google'
-  },
-  facebook: {
-    id: 'signup.facebook',
-    description: 'Signin Facebook button',
-    defaultMessage: 'Continue with Facebook'
-  },
-  or: {
-    id: 'signup.or',
-    description: 'Or, because it offers two posibilities',
-    defaultMessage: 'or'
-  },
-  user: {
-    id: 'user.signin',
-    description: 'Username field default text for login',
-    defaultMessage: 'User'
-  },
-  offerSignin: {
-    id: 'signin.offerAccount',
-    description: 'Text inviting for creating an account',
-    defaultMessage: 'Already an Arasaac user?'
-  },
-  signup: {
-    id: 'signin.signup',
-    description: 'Button for creating a new account',
-    defaultMessage: 'Sign up with email'
-  },
-  signin: {
-    id: 'signup.signin',
-    description: 'Button for going to sign in view',
-    defaultMessage: 'Sign in'
-  }
-})
+import { FormattedMessage } from 'react-intl'
+import messages from './messages'
 
 const styles = {
   separator: {
@@ -71,7 +34,8 @@ const styles = {
   googleButton: {
     width: '100%',
     float: 'left',
-    marginBottom: 5
+    marginBottom: 5,
+    backgroundColor: '#ccc'
   },
   facebookButton: {
     float: 'right',
@@ -126,10 +90,10 @@ class RegisterOptions extends Component {
         </div>
         <div className='row'>
           <div className='col-xs-12'>
-            <RaisedButton style={styles.googleButton} backgroundColor={Colors.red500}
-              label={<FormattedMessage {...messages.google} />} primary={true} icon={<GoogleIcon />}/>
-            <RaisedButton style={styles.facebookButton} backgroundColor={Colors.blue500}
-              label={<FormattedMessage {...messages.facebook} />} primary={true} icon={<FacebookIcon/>}/>
+            <RaisedButton style={styles.googleButton} backgroundColor={red500}
+              label={<FormattedMessage {...messages.google} />} icon={<GoogleIcon />} labelColor='white' />
+            <RaisedButton style={styles.facebookButton} backgroundColor={blue500}
+              label={<FormattedMessage {...messages.facebook} />} icon={<FacebookIcon />} labelColor='white' />
           </div>
         </div>
         <div className='row'>
@@ -143,7 +107,7 @@ class RegisterOptions extends Component {
         <div className='row' style={{marginTop: 10}}>
           <div className='col-xs-12'>
             <RaisedButton style={styles.googleButton} onClick={this.handleClick}
-              label={<FormattedMessage {...messages.signup} />} primary={true} icon={<EmailIcon />}/>
+              label={<FormattedMessage {...messages.signup} />} primary={true} icon={<EmailIcon />} />
           </div>
         </div>
         <div className='row' style={{marginTop: 10}}>

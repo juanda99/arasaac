@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
-import SelectField from 'material-ui/lib/select-field'
-import MenuItem from 'material-ui/lib/menus/menu-item'
+import SelectField from 'material-ui/SelectField';
+import MenuItem from 'material-ui/MenuItem';
 import { defineMessages, FormattedMessage } from 'react-intl'
 import FilterIcon from './FilterIcon'
 
@@ -49,7 +49,7 @@ class SelectLicense extends Component {
       select: {
         fontSize: 13,
         marginLeft: this.state.value !== 1 ? 0 : 48,
-        width: 350
+        width: '350px'
       }
     }
   }

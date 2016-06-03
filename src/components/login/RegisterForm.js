@@ -1,69 +1,12 @@
 import React, {Component, PropTypes} from 'react'
-import RaisedButton from 'material-ui/lib/raised-button'
-import Paper from 'material-ui/lib/paper'
-import { defineMessages, FormattedMessage } from 'react-intl'
+import RaisedButton from 'material-ui/RaisedButton'
+import Paper from 'material-ui/Paper'
 import { Link } from 'react-router'
-import TextField from 'material-ui/lib/text-field'
+import TextField from 'material-ui/TextField'
 import { reduxForm } from 'redux-form'
 import Validator from 'validatorjs'
-const messages = defineMessages({
-  google: {
-    id: 'signup.google',
-    description: 'Sign up Google button',
-    defaultMessage: 'Continue with Google'
-  },
-  facebook: {
-    id: 'signup.facebook',
-    description: 'Signin Facebook button',
-    defaultMessage: 'Continue with Facebook'
-  },
-  or: {
-    id: 'signin.or',
-    description: 'Or, because it offers two posibilities',
-    defaultMessage: 'or'
-  },
-  user: {
-    id: 'user.signin',
-    description: 'Username field default text for login',
-    defaultMessage: 'User'
-  },
-  email: {
-    id: 'email.signin',
-    description: 'Hint for username login field',
-    defaultMessage: 'e-mail'
-  },
-  password: {
-    id: 'password.signin',
-    description: 'Password field for login, default text',
-    defaultMessage: 'Password'
-  },
-  remember: {
-    id: 'signin.remember',
-    description: 'Signin checkbox option for remembering password',
-    defaultMessage: 'Remember me'
-  },
-  forgotPassword: {
-    id: 'signin.forgotPassword',
-    description: 'Link for password reset if passwords is forgotten',
-    defaultMessage: 'Forgot password?'
-  },
-  offerSignin: {
-    id: 'signin.offerAccount',
-    description: 'Text inviting for creating an account',
-    defaultMessage: 'Already an Arasaac user?'
-  },
-  signup: {
-    id: 'signin.signup',
-    description: 'Button for creating a new account',
-    defaultMessage: 'Sign up'
-  },
-  signin: {
-    id: 'signup.signin',
-    description: 'Button for going to sign in view',
-    defaultMessage: 'Sign in'
-  }
-
-})
+import messages from './messages'
+import { FormattedMessage } from 'react-intl'
 
 const styles = {
   separator: {

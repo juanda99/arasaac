@@ -1,7 +1,6 @@
 import React, {Component, PropTypes} from 'react'
-import { connect } from 'react-redux'
-import RegisterForm from 'components/RegisterForm'
-import RegisterOptions from 'components/RegisterOptions'
+// import { connect } from 'react-redux'
+import {RegisterForm, RegisterOptions} from 'components/login'
 export default class RegisterView extends Component {
   static propTypes = {
     name: PropTypes.string
@@ -24,7 +23,7 @@ export default class RegisterView extends Component {
     let showRegister = this.state.showRegister
     return (
       <div>
-        { showRegister ? <RegisterForm/> : <RegisterOptions showRegister={this.showRegister}/> }
+        {showRegister ? <RegisterForm/> : <RegisterOptions showRegister={this.showRegister} />}
       </div>
     )
   }

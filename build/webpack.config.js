@@ -109,7 +109,7 @@ webpackConfig.module.loaders = [{
   exclude: /node_modules/,
   loader: 'babel',
   query: {
-    cacheDirectory: true,
+    cacheDirectory: 'cache',
     plugins: ['transform-runtime'],
     presets: ['es2015', 'react', 'stage-0'],
     env: {
@@ -139,7 +139,13 @@ webpackConfig.module.loaders = [{
 {
   test: /\.json$/,
   loader: 'json'
-}]
+},
+// add for Masonry, see https://github.com/eiriklv/react-masonry-component
+{
+  test: /masonry|imagesloaded|fizzy\-ui\-utils|desandro\-|outlayer|get\-size|doc\-ready|eventie|eventemitter/,
+  loader: 'imports?define=>false&this=>window'
+}
+]
 
 // ------------------------------------
 // Style Loaders
