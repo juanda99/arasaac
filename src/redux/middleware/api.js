@@ -68,7 +68,7 @@ searchSchema.define({
 
 // Schemas for API responses.
 export const Schemas = {
-  KEYWORDS_ARRAY:  arrayOf(keywordSchema),
+  KEYWORDS_ARRAY: arrayOf(keywordSchema),
   KEYWORDS: keywordSchema,
   PICTO: pictoSchema,
   PICTO_ARRAY: arrayOf(pictoSchema),

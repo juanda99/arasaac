@@ -13,5 +13,3 @@ export default class SigninView extends Component {
     )
   }
 }
-
-export default SigninView

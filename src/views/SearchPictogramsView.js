@@ -2,7 +2,7 @@ import React, {Component, PropTypes} from 'react'
 import { defineMessages, FormattedMessage } from 'react-intl'
 import SearchBox from 'components/SearchBox.js'
 import FilterPictograms from 'components/Filter/Filter'
-import Toggle from 'material-ui/Toggle';
+import Toggle from 'material-ui/Toggle'
 import { connect } from 'react-redux'
 import { resetErrorMessage } from 'redux/modules/error'
 import { loadKeywords } from 'redux/modules/keywords'

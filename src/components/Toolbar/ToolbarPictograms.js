@@ -1,8 +1,8 @@
 import React, {PropTypes, Component} from 'react'
-import ViewListIcon from 'material-ui/svg-icons/action/view-list';
-import ViewModuleIcon from 'material-ui/svg-icons/action/view-module';
-import Colors from 'material-ui/styles/colors';
-import Divider from 'material-ui/Divider';
+import ViewListIcon from 'material-ui/svg-icons/action/view-list'
+import ViewModuleIcon from 'material-ui/svg-icons/action/view-module'
+import Colors from 'material-ui/styles/colors'
+import Divider from 'material-ui/Divider'
 const style = {
   icon: {
     width: 40,

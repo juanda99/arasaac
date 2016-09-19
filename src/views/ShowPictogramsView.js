@@ -29,7 +29,6 @@ class ShowPictogramsView extends Component {
     }
   }
 
-
   renderPictogram(pictogram) {
     return (
       <Pictogram pictogram={pictogram}
@@ -73,7 +72,7 @@ function mapStateToProps(state, ownProps) {
     gui: {layout}
   } = state
 
-  let pictogramsList = state.entities.search || {items:[]}
+  let pictogramsList = state.entities.search || {items: []}
   /* http://stackoverflow.com/questions/36129060/extend-one-object-with-another-using-lodash/36130327#36130327 */
   /*
   let listOfPictograms = pictogramsBySearchText[searchText]

@@ -1,8 +1,7 @@
 import React, {Component, PropTypes} from 'react'
-import AutoComplete from 'material-ui/AutoComplete';
-import RaisedButton from 'material-ui/RaisedButton';
-import {Link} from 'react-router'
-import { defineMessages, injectIntl, intlShape} from 'react-intl'
+import AutoComplete from 'material-ui/AutoComplete'
+import RaisedButton from 'material-ui/RaisedButton'
+import {defineMessages, injectIntl, intlShape} from 'react-intl'
 
 const styles = {
   button: {

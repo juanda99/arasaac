@@ -1,5 +1,4 @@
 import React, {Component, PropTypes} from 'react'
-import {lightGreen500} from 'material-ui/styles/colors'
 import AppBar from 'material-ui/AppBar'
 import IconButton from 'material-ui/IconButton'
 import IconMenu from 'material-ui/IconMenu'

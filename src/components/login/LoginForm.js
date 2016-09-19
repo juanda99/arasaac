@@ -102,9 +102,7 @@ let LoginForm = class LoginForm extends Component {
 
   render() {
     const {
-      fields: { username, password },
-      resetForm,
-      submitting
+      fields: { username, password }
     } = this.props
     return (
       <Paper zDepth={2} style={styles.paper}>

@@ -16,6 +16,11 @@ let Google = props => (
     c9.812,0,14.899,13.229,14.899,21.73C57.599,27.752,57.358,31.528,54.642,34.249z' />
   </SvgIcon>
 )
+
+Google.propTypes = {
+  color: React.PropTypes.object
+}
+
 Google = pure(Google)
 Google.displayName = 'Google'
 

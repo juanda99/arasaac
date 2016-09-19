@@ -11,7 +11,7 @@ const styles = {
   menu: {
     position: 'absolute',
     right: '10px',
-    top: '15px',
+    top: '15px'
   },
   cardHeader: {
     paddingBottom: '40px'

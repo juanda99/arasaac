@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react'
-import Toggle from 'material-ui/Toggle';
+import Toggle from 'material-ui/Toggle'
 
 export default class ToggleFilter extends Component {
   static propTypes = {
@@ -23,7 +23,7 @@ export default class ToggleFilter extends Component {
     const active = this.props.active
     return (
       <Toggle style={{ width: 100 }} label={label} onToggle={this.handleToggle}
-        defaultToggled={active}/>
+        defaultToggled={active} />
     )
   }
 }
