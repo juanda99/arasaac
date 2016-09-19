@@ -4,7 +4,7 @@ var ReactDataGrid = require('react-data-grid/addons')
 import TagsEditor from 'components/TagsEditor'
 import TagsFormatter from 'components/TagsFormatter'
 var options = ['prueba1', 'prueba2', 'prueba3', 'prueba4', 'asdfasñdlk fjkñasñldkf asdfj ñ']
-var tagsEditor = <TagsEditor options={options}/>
+var tagsEditor = <TagsEditor options={options} />
 
 var Toolbar = ReactDataGrid.Toolbar
 
@@ -141,7 +141,7 @@ class PictogramsGridView extends Component {
         <div className='col-xs-12'>
           <ReactDataGrid columns={columns} rowGetter={this.rowGetter} rowsCount={this.state.rows.length}
             rowHeight={100}
-            toolbar={<Toolbar enableFilter={true}/>} onAddFilter={this.handleFilterChange}
+            toolbar={<Toolbar enableFilter={true} />} onAddFilter={this.handleFilterChange}
             enableCellSelect={true} onRowUpdated={this.handleRowUpdated} minHeight={500} />
         </div>
       </div>
