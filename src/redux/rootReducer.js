@@ -1,15 +1,16 @@
 import { combineReducers } from 'redux'
 import { routerReducer as router } from 'react-router-redux'
 import { reducer as formReducer } from 'redux-form'
-import merge from 'lodash.merge'
+import merge from 'lodash/merge'
 import locale from './modules/locale'
 import errorMessage from './modules/error'
 import layout from './modules/layout'
 import filters from './modules/filters'
 import showFilter from './modules/showFilter'
 import auth from './modules/auth'
-import paginate from './paginate'
-import { PICTOGRAMS_REQUEST, PICTOGRAMS_SUCCESS, PICTOGRAMS_FAILURE } from './constants'
+// comentamos lineas siguientes porque eliminamos el paginate:
+// import paginate from './paginate'
+// import { PICTOGRAMS_REQUEST, PICTOGRAMS_SUCCESS, PICTOGRAMS_FAILURE } from './constants'
 
 // maybe it should go to main.js, to the complete initialState
 const initialState = {
