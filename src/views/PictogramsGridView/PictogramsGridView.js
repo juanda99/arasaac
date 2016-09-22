@@ -1,12 +1,14 @@
 import React, {Component} from 'react'
 require('./GridView.scss')
-var ReactDataGrid = require('react-data-grid/addons')
+// var ReactDataGrid = require('react-data-grid/addons')
+import ReactDataGrid from 'react-data-grid'
+import ReactDataGridPlugins from 'react-data-grid/addons'
 import TagsEditor from 'components/TagsEditor'
 import TagsFormatter from 'components/TagsFormatter'
 var options = ['prueba1', 'prueba2', 'prueba3', 'prueba4', 'asdfasñdlk fjkñasñldkf asdfj ñ']
 var tagsEditor = <TagsEditor options={options} />
 
-var Toolbar = ReactDataGrid.Toolbar
+// var Toolbar = ReactDataGridPlugins.Toolbar
 
 var _rows = []
 for (var i = 1; i < 1000; i++) {
@@ -141,7 +143,7 @@ class PictogramsGridView extends Component {
         <div className='col-xs-12'>
           <ReactDataGrid columns={columns} rowGetter={this.rowGetter} rowsCount={this.state.rows.length}
             rowHeight={100}
-            toolbar={<Toolbar enableFilter={true} />} onAddFilter={this.handleFilterChange}
+            onAddFilter={this.handleFilterChange}
             enableCellSelect={true} onRowUpdated={this.handleRowUpdated} minHeight={500} />
         </div>
       </div>

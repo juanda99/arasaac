@@ -4,8 +4,8 @@ import { toggleFilter } from 'redux/modules/filters'
 import { connect } from 'react-redux'
 import { defineMessages, FormattedMessage } from 'react-intl'
 import FullWidthSection from 'components/full-width-section'
-import Divider from 'material-ui/Divider';
-import Paper from 'material-ui/Paper';
+import Divider from 'material-ui/Divider'
+import Paper from 'material-ui/Paper'
 
 const messages = defineMessages({
   appConfiguration: {
@@ -61,12 +61,12 @@ class AppConfView extends Component {
               <h3>Filters</h3>
               <p>Select the filters you want to enable for searching pictograms</p>
               <ToggleFilter label={<FormattedMessage {...messages.filterCatalog} />} onToggle={toggleFilter} filter='catalog'
-                active={filter.catalog}/ >
+                active={filter.catalog} / >
               <ToggleFilter label={<FormattedMessage {...messages.filterLicense} />} onToggle={toggleFilter} filter='license'
-                active={filter.license}/ >
+                active={filter.license} / >
               <ToggleFilter label={<FormattedMessage {...messages.filterSize} />} onToggle={toggleFilter} filter='size'
-                active={filter.size}/ >
-              <Divider/>
+                active={filter.size} / >
+              <Divider />
             </Paper>
           </div>
         </div>

@@ -6,7 +6,7 @@ import PictogramMenu from './PictogramMenu'
 const styles = {
   card: {
     position: 'relative',
-    width: '300px'
+    width: '400px'
   },
   menu: {
     position: 'absolute',
@@ -33,7 +33,7 @@ export default class PictogramCard extends Component {
 
   render() {
     return (
-      <Card style={styles.card} containerStyle={{width: 300}} zDepth={this.state.shadow}
+      <Card style={styles.card} containerStyle={{width: 400}} zDepth={this.state.shadow}
         onMouseOver={this.onMouseOver} onMouseOut={this.onMouseOut}>
         <CardHeader />
         <PictogramMenu style={styles.menu} />
@@ -46,6 +46,10 @@ export default class PictogramCard extends Component {
         <CardActions>
           <FlatButton label='Tag1' />
           <FlatButton label='Tag2' />
+                    <FlatButton label='Tag1' />
+          <FlatButton label='Tag2' />
+                    <FlatButton label='Tag1' />
+          <FlatButton label='Tag2ASDFADFASDFASF' />
         </CardActions>
       </Card>
     )

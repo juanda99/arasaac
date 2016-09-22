@@ -21,7 +21,7 @@ export default class Gallery extends Component {
     this.handleClick = this.handleClick.bind(this)
   }
   handleClick() {
-    //console.log (this)
+    // console.log (this)
   }
   render() {
     var elements = [
@@ -30,8 +30,9 @@ export default class Gallery extends Component {
     ]
     var childElements = elements.map(function(element) {
       return (
-        <li style={{margin: 5}} key={element.id } className='image-element-class'>
-          <PictogramCard title={element.title} img={element.src}/>
+        <li style={{margin: 5}} key={element.id} className='image-element-class'>
+          <PictogramCard title={element.title} img={element.src} />
+          <p>Hola que tal todo? ad ñlajdf añldfkja ñlfkjañdl jkadlñfk adlñfkjalñkjasdlñjadñflj ñj</p>
         </li>
       )
     })

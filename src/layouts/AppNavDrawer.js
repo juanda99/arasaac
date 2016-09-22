@@ -3,7 +3,7 @@ import Drawer from 'material-ui/Drawer'
 import {List, ListItem, MakeSelectable} from 'material-ui/List'
 import Divider from 'material-ui/Divider'
 import Subheader from 'material-ui/Subheader'
-import {spacing, typography, zIndex} from 'material-ui/styles'
+import {spacing, typography} from 'material-ui/styles'
 import { defineMessages, FormattedMessage } from 'react-intl'
 import {lightGreen500} from 'material-ui/styles/colors'
 
@@ -162,7 +162,6 @@ class AppNavDrawer extends Component {
       open,
       style
     } = this.props
-
 
     return (
       <Drawer
