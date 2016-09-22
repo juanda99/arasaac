@@ -11,7 +11,6 @@ import BingoView from 'views/BingoView/BingoView'
 import SearchPictogramsView from 'views/SearchPictogramsView'
 import ShowPictogramsView from 'views/ShowPictogramsView'
 import PictogramView from 'views/PictogramView'
-import PictogramsGridView from 'views/PictogramsGridView/PictogramsGridView'
 import RegisterView from 'views/RegisterView'
 import AppConfView from 'views/AppConfView'
 import SigninView from 'views/SigninView'
@@ -90,8 +89,6 @@ export default store => (
     <Route path='profile' component={UserIsAuthenticated(HomeView)} />
     <Route path='usermaterial' component={UserIsAuthenticated(HomeView)} />
     <Route path='upload' component={UserIsAdmin(HomeView)} />
-    <Route path='translate' component={PictogramsGridView} />
-      // Should be: {UserIsTranslator(PictogramsGridView)}
     <Route path='signout' component={SignoutView} />
   </Route>
 )
