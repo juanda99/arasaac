@@ -18,6 +18,7 @@ import SignoutView from 'views/SignoutView'
 import Master from 'layouts/master'
 import { UserAuthWrapper } from 'redux-auth-wrapper'
 import Gallery from 'views/Gallery'
+import Tagger from 'components/Tagger'
 
 // import auth from 'components/auth'
 /* function requireAuth(nextState, replace) {
@@ -69,6 +70,7 @@ export default store => (
       <Route path='api' component={HomeView} />
       <Route path='catalogs' component={HomeView} />
     </Route>
+    <Route path='tagger' component={Tagger} />
     <Route path='materials' component={Gallery} />
 
     <Redirect from='onlinetools' to='/onlinetools/bingos-creator' />
