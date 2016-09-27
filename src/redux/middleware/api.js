@@ -21,10 +21,23 @@ const API_ROOT = 'http://localhost:8000/api/'
 // const API_ROOT = 'http://178.32.253.90:5000/'
 // Fetches an API response and normalizes the result JSON according to schema.
 // This makes every API response have the same shape, regardless of how nested it was.
-function callApi(endpoint, schema) {
+function callApi(endpoint, schema, authenticated) {
   const fullUrl = (endpoint.indexOf(API_ROOT) === -1) ? API_ROOT + endpoint : endpoint
 
-  return fetch(fullUrl)
+  let token = localStorage.getItem('id_token') || null
+  let config = {}
+
+  if (authenticated) {
+    if (token) {
+      config = {
+        headers: { 'Authorization': `Bearer ${token}` }
+      }
+    } else {
+      throw 'No token saved!'
+    }
+  }
+
+  return fetch(fullUrl, config)
     .then(response =>
       response.json().then(json => ({ json, response }))
     ).then(({ json, response }) => {
