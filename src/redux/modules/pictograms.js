@@ -29,14 +29,12 @@ function fetchPictograms(searchText) {
 export function loadPictograms(searchText) {
   return (dispatch, getState) => {
     const pictograms = getState().entities.pictograms[searchText]
-     if (pictograms && !isEmpty(pictograms)) {
+    if (pictograms && !isEmpty(pictograms)) {
       return null
     }
     return dispatch(fetchPictograms(searchText))
   }
 }
-
-
 
 /*
 lo vamos a hacer sin paginar
