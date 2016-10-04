@@ -3,16 +3,18 @@ import RaisedButton from 'material-ui/RaisedButton'
 import TextField from 'material-ui/TextField'
 import Paper from 'material-ui/Paper'
 import Checkbox from 'material-ui/Checkbox'
-import {red500, blue500} from 'material-ui/styles/colors'
+import {red500} from 'material-ui/styles/colors'
 import ArasaacLogo from 'images/arasaac-logo.svg'
 import GoogleIcon from './icons/GoogleIcon'
-import FacebookIcon from './icons/FacebookIcon'
+// import FacebookIcon from './icons/FacebookIcon'
 import { FormattedMessage } from 'react-intl'
 import { Link } from 'react-router'
 import { reduxForm } from 'redux-form'
 import Validator from 'validatorjs'
 import messages from './messages'
 export const fields = [ 'username', 'password' ]
+// import FacebookLogin from 'react-facebook-login'
+import FacebookButton from './FacebookButton'
 const rules = {
   username: 'required|email',
   password: 'required'
@@ -100,6 +102,10 @@ let LoginForm = class LoginForm extends Component {
     this.props.onLoginClick(creds)
   }
 
+  responseFacebook = response => {
+    console.log(response)
+  }
+
   render() {
     const {
       fields: { username, password }
@@ -115,8 +121,8 @@ let LoginForm = class LoginForm extends Component {
           <div className='col-xs-12'>
             <RaisedButton style={styles.googleButton} backgroundColor={red500}
               label={<FormattedMessage {...messages.google} />} icon={<GoogleIcon />} labelColor='white' />
-            <RaisedButton style={styles.facebookButton} backgroundColor={blue500}
-              label={<FormattedMessage {...messages.facebook} />} icon={<FacebookIcon />} labelColor='white' />
+            <FacebookButton appId='1687810071473822' autoLoad={true} fields='name,email,picture' callback={this.responseFacebook} />
+
           </div>
         </div>
         <div className='row'>
