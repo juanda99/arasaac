@@ -15,7 +15,7 @@ const styles = {
   }
 }
 
-class FacebookLogin extends React.Component {
+class FacebookLogin extends Component {
 
   static propTypes = {
     callback: PropTypes.func.isRequired,

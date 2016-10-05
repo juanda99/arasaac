@@ -14,7 +14,8 @@ import Validator from 'validatorjs'
 import messages from './messages'
 export const fields = [ 'username', 'password' ]
 // import FacebookLogin from 'react-facebook-login'
-import FacebookButton from './FacebookButton'
+import FacebookLogin from './FacebookLogin'
+import GoogleLogin from './GoogleLogin'
 const rules = {
   username: 'required|email',
   password: 'required'
@@ -50,16 +51,10 @@ const styles = {
   separatorLine: {
     margin: '-10px auto 10px'
   },
-  googleButton: {
+  googleLogin: {
     width: '100%',
     float: 'left',
     marginBottom: 5
-  },
-  facebookButton: {
-    float: 'right',
-    width: '100%',
-    marginBottom: 30,
-    top: -10
   },
   checkbox: {
     left: 0
@@ -79,6 +74,18 @@ const styles = {
     width: 180,
     marginLeft: 70
   }
+}
+
+const responseFacebook = response => {
+  console.log(response)
+}
+
+const success = response => {
+  console.log(response);
+}
+
+const error = response => {
+  console.error(response)
 }
 
 let LoginForm = class LoginForm extends Component {
@@ -102,10 +109,6 @@ let LoginForm = class LoginForm extends Component {
     this.props.onLoginClick(creds)
   }
 
-  responseFacebook = response => {
-    console.log(response)
-  }
-
   render() {
     const {
       fields: { username, password }
@@ -119,9 +122,9 @@ let LoginForm = class LoginForm extends Component {
         </div>
         <div className='row'>
           <div className='col-xs-12'>
-            <RaisedButton style={styles.googleButton} backgroundColor={red500}
-              label={<FormattedMessage {...messages.google} />} icon={<GoogleIcon />} labelColor='white' />
-            <FacebookButton appId='1687810071473822' autoLoad={true} fields='name,email,picture' callback={this.responseFacebook} />
+            <GoogleLogin clientId={'856321241205-djlltqe6cpo9vm3hp392giboofdp44ha.apps.googleusercontent.com'}
+              onSuccess={success} onFailure={error} offline={false} />
+            <FacebookLogin appId='1687810071473822' autoLoad={true} fields='name,email,picture' callback={this.responseFacebook} />
 
           </div>
         </div>
