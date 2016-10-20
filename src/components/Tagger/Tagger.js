@@ -6,10 +6,15 @@ import RaisedButton from 'material-ui/RaisedButton'
 import { defineMessages, FormattedMessage } from 'react-intl'
 
 const messages = defineMessages({
-  bingo: {
-    id: 'button.modifyKeywords',
-    description: 'Label for modify keywords button',
-    defaultMessage: 'Update keywords'
+  edit: {
+    id: 'button.editKeywords',
+    description: 'Button for editing pictogram keywords',
+    defaultMessage: 'Edit'
+  },
+  save: {
+    id: 'button.saveKeywords',
+    description: 'Button for saving pictogram keywords',
+    defaultMessage: 'Save'
   }
 })
 
@@ -48,7 +53,7 @@ export default class Tagger extends Component {
     this.setState({ value })
   }
   enableEdit() {
-    
+
     this.setState({disabled: !this.state.disabled, buttonText: "Guardar"})
   }
 

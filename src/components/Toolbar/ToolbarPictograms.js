@@ -1,7 +1,7 @@
 import React, {PropTypes, Component} from 'react'
 import ViewListIcon from 'material-ui/svg-icons/action/view-list'
 import ViewModuleIcon from 'material-ui/svg-icons/action/view-module'
-import Colors from 'material-ui/styles/colors'
+import { grey500, blue500 } from 'material-ui/styles/colors'
 import Divider from 'material-ui/Divider'
 const style = {
   icon: {
@@ -41,8 +41,8 @@ export default class ToolbarPictograms extends Component {
       <div style={style.container}>
         <Divider />
         <div className='row end-xs'>
-          <ViewListIcon style={style.icon} color={this.props.layout === 'list' ? Colors.blue500 : Colors.grey500} onClick={() => changeLayout('list')} />
-          <ViewModuleIcon style={style.icon2} color={this.props.layout === 'modules' ? Colors.blue500 : Colors.grey500} onClick={() => changeLayout('modules')}/>
+          <ViewListIcon style={style.icon} color={this.props.layout === 'list' ? blue500 : grey500} onClick={() => changeLayout('list')} />
+          <ViewModuleIcon style={style.icon2} color={this.props.layout === 'modules' ? blue500 : grey500} onClick={() => changeLayout('modules')}/>
         </div>
         <Divider />
       </div>

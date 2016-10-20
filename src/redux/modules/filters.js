@@ -1,16 +1,22 @@
-import { TOGGLE_FILTER, INITIAL_FILTERS } from '../constants.js'
+import { TOGGLE_FILTER } from '../constants.js'
 
-// Resets the currently visible error message.
-export function toggleFilter(filter, value) {
-  return {
-    type: TOGGLE_FILTER,
-    filter: filter
-  }
+export const initialState = {
+  catalog: true,
+  license: true,
+  size: true
+}
+
+function action(type, payload = {}) {
+  return {type, ...payload}
+}
+
+export const actions = {
+  toggleFilter: (filter, value) => action(TOGGLE_FILTER, {filter})
 }
 
 // Updates error message to notify about the failed fetches.
 
-const filters = (state = INITIAL_FILTERS, action) => {
+export default (state = initialState, action) => {
   switch (action.type) {
     case TOGGLE_FILTER:
       var myFilter = {}
@@ -20,5 +26,3 @@ const filters = (state = INITIAL_FILTERS, action) => {
       return state
   }
 }
-
-export default filters

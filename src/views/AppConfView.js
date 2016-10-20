@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react'
 import ToggleFilter from 'components/ToggleFilter'
-import { toggleFilter } from 'redux/modules/filters'
+import { actions } from 'redux/modules/filters'
 import { connect } from 'react-redux'
 import { defineMessages, FormattedMessage } from 'react-intl'
 import FullWidthSection from 'components/full-width-section'
@@ -60,11 +60,11 @@ class AppConfView extends Component {
             <Paper style={style} zDepth={2} rounded={false}>
               <h3>Filters</h3>
               <p>Select the filters you want to enable for searching pictograms</p>
-              <ToggleFilter label={<FormattedMessage {...messages.filterCatalog} />} onToggle={toggleFilter} filter='catalog'
+              <ToggleFilter label={<FormattedMessage {...messages.filterCatalog} />} onToggle={actions.toggleFilter} filter='catalog'
                 active={filter.catalog} / >
-              <ToggleFilter label={<FormattedMessage {...messages.filterLicense} />} onToggle={toggleFilter} filter='license'
+              <ToggleFilter label={<FormattedMessage {...messages.filterLicense} />} onToggle={actions.toggleFilter} filter='license'
                 active={filter.license} / >
-              <ToggleFilter label={<FormattedMessage {...messages.filterSize} />} onToggle={toggleFilter} filter='size'
+              <ToggleFilter label={<FormattedMessage {...messages.filterSize} />} onToggle={actions.toggleFilter} filter='size'
                 active={filter.size} / >
               <Divider />
             </Paper>
@@ -88,5 +88,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, {toggleFilter})(AppConfView)
-
+export default connect(mapStateToProps, {actions})(AppConfView)

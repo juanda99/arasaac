@@ -1,4 +1,4 @@
-export const INITIAL_FILTERS = {'catalog': true, 'license': true, 'size': true}
+
 
 export const INITIAL_LAYOUT = 'modules'
 export const PICTOGRAMS_LAYOUT = 'PICTOGRAMS_LAYOUT'
@@ -15,7 +15,7 @@ export const KEYWORDS_REQUEST = 'KEYWORDS_REQUEST'
 export const KEYWORDS_SUCCESS = 'KEYWORDS_SUCCESS'
 export const KEYWORDS_FAILURE = 'KEYWORDS_FAILURE'
 
-export const TOGGLE_FILTER = 'TOGGLE_FILTER'
+
 
 export const SHOW_FILTER = 'SHOW_FILTER'
 

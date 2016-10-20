@@ -27,7 +27,6 @@ class SearchBox extends Component {
     /* this.state = {
       dataSource: []
     } */
-    // this.handleKeyUp = this.handleKeyUp.bind(this)
   }
 
   componentWillReceiveProps(nextProps) {
@@ -49,17 +48,11 @@ class SearchBox extends Component {
 
   handleUpdateInput = t => {
     if (t.keyCode === 13) {
-      // let link = `/pictograms/search/${t}`
-      // this.context.router.push(link)
       this.props.onChange(this.getInputValue())
     }
   }
 
   handleSubmit = t => {
-    console.log(t)
-    this.props.onChange(t)
-    // let link = `/pictograms/search/${t}`
-    // this.context.router.push(link)
     this.props.onChange(t)
   }
 
@@ -80,10 +73,6 @@ class SearchBox extends Component {
       </div>
     )
   }
-}
-
-SearchBox.contextTypes = {
-  router: React.PropTypes.object.isRequired
 }
 
 SearchBox.propTypes = {

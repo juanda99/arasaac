@@ -3,9 +3,9 @@ import RaisedButton from 'material-ui/RaisedButton'
 import TextField from 'material-ui/TextField'
 import Paper from 'material-ui/Paper'
 import Checkbox from 'material-ui/Checkbox'
-import {red500} from 'material-ui/styles/colors'
+// import {red500} from 'material-ui/styles/colors'
 import ArasaacLogo from 'images/arasaac-logo.svg'
-import GoogleIcon from './icons/GoogleIcon'
+// import GoogleIcon from './icons/GoogleIcon'
 // import FacebookIcon from './icons/FacebookIcon'
 import { FormattedMessage } from 'react-intl'
 import { Link } from 'react-router'
@@ -81,7 +81,7 @@ const responseFacebook = response => {
 }
 
 const success = response => {
-  console.log(response);
+  console.log(response)
 }
 
 const error = response => {
@@ -124,7 +124,7 @@ let LoginForm = class LoginForm extends Component {
           <div className='col-xs-12'>
             <GoogleLogin clientId={'856321241205-djlltqe6cpo9vm3hp392giboofdp44ha.apps.googleusercontent.com'}
               onSuccess={success} onFailure={error} offline={false} />
-            <FacebookLogin appId='1687810071473822' autoLoad={true} fields='name,email,picture' callback={this.responseFacebook} />
+            <FacebookLogin appId='1687810071473822' autoLoad={true} fields='name,email,picture' callback={responseFacebook} />
 
           </div>
         </div>
