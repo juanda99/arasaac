@@ -47,7 +47,6 @@ const PictogramsFiltersConf = () => (
           <ToggleFilter label={<FormattedMessage {...messages.filterCatalog} />} filter='catalog' />
           <ToggleFilter label={<FormattedMessage {...messages.filterLicense} />} filter='license' />
           <ToggleFilter label={<FormattedMessage {...messages.filterSize} />} filter='size' />
-          <Divider />
         </Paper>
       </div>
     </div>
