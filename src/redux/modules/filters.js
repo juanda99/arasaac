@@ -11,7 +11,7 @@ function action(type, payload = {}) {
 }
 
 export const actions = {
-  toggleFilter: (filter, value) => action(TOGGLE_FILTER, {filter})
+  toggleFilter: (filter) => action(TOGGLE_FILTER, {filter})
 }
 
 // Updates error message to notify about the failed fetches.
