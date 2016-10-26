@@ -1,124 +1,52 @@
-import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT_REQUEST, LOGOUT_SUCCESS } from '../constants.js'
+// values saved in local storage
+export const TOKEN = 'token'
+export const USERNAME = 'username'
 
-function requestLogin(creds) {
-  return {
-    type: LOGIN_REQUEST,
-    isFetching: true,
-    isAuthenticated: false,
-    creds
-  }
+const REQUEST = 'REQUEST'
+const SUCCESS = 'SUCCESS'
+const FAILURE = 'FAILURE'
+
+function createRequestTypes(base) {
+  return [REQUEST, SUCCESS, FAILURE].reduce((acc, type) => {
+    acc[type] = `${base}_${type}`
+    return acc
+  }, {})
 }
 
-function receiveLogin(user) {
-  return {
-    type: LOGIN_SUCCESS,
-    isFetching: false,
-    isAuthenticated: true,
-    id_token: user.id_token
-  }
+export const LOGIN = createRequestTypes('LOGIN')
+export const LOGOUT = createRequestTypes('LOGOUT')
+
+function action(type, payload = {}) {
+  return {type, ...payload}
 }
 
-function loginError(message) {
-  return {
-    type: LOGIN_FAILURE,
-    isFetching: false,
-    isAuthenticated: false,
-    message
-  }
+export const login = {
+  request: (username, password) => action(LOGIN.REQUEST, {username, password}),
+  success: (username, token) => action(LOGIN.SUCCESS, {username, token}),
+  failure: error => action(LOGIN.FAILURE, {error})
 }
 
-function requestLogout() {
-  return {
-    type: LOGOUT_REQUEST,
-    isFetching: true,
-    isAuthenticated: true
-  }
+export const logout = {
+  request: (username, password) => action(LOGIN.REQUEST, {username, password}),
+  success: (username, token) => action(LOGIN.SUCCESS, {username, token})
 }
 
-function receiveLogout() {
-  return {
-    type: LOGOUT_SUCCESS,
-    isFetching: false,
-    isAuthenticated: false
-  }
+const initialState = {
+  username: '',
+  token: ''
 }
-
-// Logs the user out
-export function logoutUser() {
-  return dispatch => {
-    dispatch(requestLogout())
-    localStorage.removeItem('id_token')
-    dispatch(receiveLogout())
-  }
-}
-
-// Calls the API to get a token and
-// dispatches actions along the way
-export function loginUser(creds) {
-  let config = {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: `username=${creds.username}&password=${creds.password}`
-  }
-  return dispatch => {
-    // We dispatch requestLogin to kickoff the call to the API
-    dispatch(requestLogin(creds))
-    return fetch('http://localhost:3001/sessions/create', config)
-      .then(response =>
-        response.json()
-        .then(user => ({ user, response }))
-      ).then(({ user, response }) => {
-        if (!response.ok) {
-          // If there was a problem, we want to
-          // dispatch the error condition
-          dispatch(loginError(user.message))
-          return Promise.reject(user)
-        } else {
-         // If login was successful, set the token in local storage
-          localStorage.setItem('id_token', user.id_token)
-          // Dispatch the success action
-          dispatch(receiveLogin(user))
-        }
-      }).catch(err => console.log('Error: ', err))
-  }
-}
-
 // The auth reducer. The starting state sets authentication
 // based on a token being in local storage. In a real app,
 // we would also want a util to check if the token is expired.
 
-const auth = (state = {
-  isFetching: false,
-  isAuthenticated: !!localStorage.getItem('id_token')
-}, action) => {
+const auth = (state = initialState, action) => {
   switch (action.type) {
-    case LOGIN_REQUEST:
-      return Object.assign({}, state, {
-        isFetching: true,
-        isAuthenticated: false,
-        user: action.creds
-      })
-    case LOGIN_SUCCESS:
-      return Object.assign({}, state, {
-        isFetching: false,
-        isAuthenticated: true,
-        errorMessage: ''
-      })
-    case LOGIN_FAILURE:
-      return Object.assign({}, state, {
-        isFetching: false,
-        isAuthenticated: false,
-        errorMessage: action.message
-      })
-    case LOGOUT_REQUEST:
-      return Object.assign({}, state, {
-        isFetching: true
-      })
-    case LOGOUT_SUCCESS:
-      return Object.assign({}, state, {
-        isFetching: false,
-        isAuthenticated: false
-      })
+    case LOGIN.SUCCESS:
+      return {...state, username: action.username, token: action.token}
+    case LOGIN.FAILURE:
+      return {...state, error: action.error}
+    case LOGOUT.SUCCESS:
+      return {...state, username: '', token: ''}
     default:
       return state
   }
