@@ -1,4 +1,4 @@
-import localStorage from 'localStorage'
+import {put, get, remove} from 'redux/persistance/storage'
 import {userSchema, repoSchema, userSchemaArray, repoSchemaArray} from './schemas'
 import {callApi} from './api'
 import {AUTH} from './config'
@@ -9,8 +9,9 @@ const api = {
   fetchStarred: url => callApi(url, repoSchemaArray),
   fetchStargazers: url => callApi(url, userSchemaArray),
   authorize: (username, password) => callApi(AUTH.url, AUTH.config(username, password)),
-  removeItem: item => localStorage.removeItem(),
-  storeItem: (item, value) => localStorage.addItem(item, value)
+  removeItem: item => remove(item),
+  storeItem: (item, value) => put(item, value),
+  getItem: item => get(item)
 }
 
 export default api

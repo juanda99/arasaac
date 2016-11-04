@@ -5,10 +5,10 @@ export default class List extends Component {
   render() {
     const {
       isFetching,
-      items, renderItem, loadingLabel
+      items, loadingLabel
     } = this.props
      // para el render??? {items.map(renderItem)}
-
+     // he quitado renderItem de las props
     const isEmpty = items.length === 0
     if (isEmpty && isFetching) {
       return <h2><i>{loadingLabel}</i></h2>

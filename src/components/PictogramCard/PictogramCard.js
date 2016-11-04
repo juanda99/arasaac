@@ -46,9 +46,9 @@ export default class PictogramCard extends Component {
         <CardActions>
           <FlatButton label='Tag1' />
           <FlatButton label='Tag2' />
-                    <FlatButton label='Tag1' />
+          <FlatButton label='Tag1' />
           <FlatButton label='Tag2' />
-                    <FlatButton label='Tag1' />
+          <FlatButton label='Tag1' />
           <FlatButton label='Tag2ASDFADFASDFASF' />
         </CardActions>
       </Card>

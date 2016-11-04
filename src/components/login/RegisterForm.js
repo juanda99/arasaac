@@ -94,10 +94,9 @@ let RegisterForm = class RegisterForm extends Component {
   render() {
     const {
       fields: { name, surname, email, password, company, website },
-      handleSubmit,
-      resetForm,
-      submitting
+      handleSubmit
     } = this.props
+    /* en las propiedades estaba resetForm y submitting*/
     return (
       <Paper zDepth={2} style={styles.paper}>
         <div className='row'>
@@ -195,9 +194,9 @@ let RegisterForm = class RegisterForm extends Component {
 }
 RegisterForm.propTypes = {
   fields: PropTypes.object.isRequired,
-  handleSubmit: PropTypes.func.isRequired,
-  resetForm: PropTypes.func.isRequired,
-  submitting: PropTypes.bool.isRequired
+  handleSubmit: PropTypes.func.isRequired
+  // resetForm: PropTypes.func.isRequired,
+  // submitting: PropTypes.bool.isRequired
 }
 
 RegisterForm = reduxForm({

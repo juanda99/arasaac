@@ -1,7 +1,7 @@
 import React from 'react'
 import ToggleFilter from 'containers/ToggleFilter'
 import { defineMessages, FormattedMessage } from 'react-intl'
-import Divider from 'material-ui/Divider'
+// import Divider from 'material-ui/Divider'
 import Paper from 'material-ui/Paper'
 
 const messages = defineMessages({

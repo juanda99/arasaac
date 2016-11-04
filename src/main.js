@@ -15,6 +15,7 @@ import fr from 'react-intl/locale-data/fr'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 import * as storage from 'redux/persistance/storage'
 import { INITIAL_FILTERS, INITIAL_LAYOUT } from 'redux/constants'
+import rootSaga from 'redux/sagas'
 
 // Needed for onTouchTap
 // Can go away when react 1.0 release
@@ -43,6 +44,7 @@ const initialState = {
 }
 
 const store = configureStore(initialState, browserHistory)
+store.runSaga(rootSaga)
 const history = syncHistoryWithStore(browserHistory, store, {
   selectLocationState: state => state.router
 })

@@ -3,7 +3,8 @@ import Select from 'react-select'
 // lo podríamos cambiar a los scss que están disponibles en el componente
 import 'react-select/dist/react-select.css'
 import RaisedButton from 'material-ui/RaisedButton'
-import { defineMessages, FormattedMessage } from 'react-intl'
+
+/* import { defineMessages, FormattedMessage } from 'react-intl'
 
 const messages = defineMessages({
   edit: {
@@ -17,7 +18,7 @@ const messages = defineMessages({
     defaultMessage: 'Save'
   }
 })
-
+*/
 const KEYWORDS = [
   { label: 'Chocolate', value: 'chocolate' },
   { label: 'Vanilla', value: 'vanilla' },
@@ -38,7 +39,7 @@ export default class Tagger extends Component {
       options: KEYWORDS,
       value: [],
       disabled: true,
-      buttonText: "modificar"
+      buttonText: 'modificar'
     }
     this.onChange = this.onChange.bind(this)
     this.enableEdit = this.enableEdit.bind(this)
@@ -53,8 +54,7 @@ export default class Tagger extends Component {
     this.setState({ value })
   }
   enableEdit() {
-
-    this.setState({disabled: !this.state.disabled, buttonText: "Guardar"})
+    this.setState({disabled: !this.state.disabled, buttonText: 'Guardar'})
   }
 
   render() {

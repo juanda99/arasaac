@@ -46,6 +46,7 @@ const UserIsAdmin = UserAuthWrapper({
   predicate: user => user.isAdmin
 })
 
+/*
 const UserIsTranslator = UserAuthWrapper({
   authSelector: state => state.user,
   failureRedirectPath: 'signin',
@@ -53,7 +54,7 @@ const UserIsTranslator = UserAuthWrapper({
   wrapperDisplayName: 'UserIsTranslator',
   predicate: user => (user.isTranslator || user.isAdmin)
 })
-
+*/
 export default store => (
   <Route path='/' component={Master}>
     <IndexRoute component={HomeView} />
