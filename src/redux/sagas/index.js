@@ -1,5 +1,5 @@
 import { fork, call, take, put, cancel } from 'redux-saga/effects'
-import {LOGIN, LOGOUT, TOKEN, USERNAME, login, logout} from 'redux/modules/auth'
+import {LOGIN, LOGOUT, TOKEN, USERNAME, ACTIVATION, login, logout, activate} from 'redux/modules/auth'
 import API from 'services'
 
 // resuable fetch Subroutine
@@ -49,8 +49,21 @@ function * loginFlow() {
   }
 }
 
+function * activationFlow() {
+  while (true) {
+    try {
+      const {urlActivation} = yield take(ACTIVATION.REQUEST)
+      yield call(API.userActivation, {urlActivation})
+      yield put(activate.success())
+    } catch (error) {
+      yield put(activate.failure(error))
+    }
+  }
+}
+
 export default function * root() {
   yield [
-    fork(loginFlow)
+    fork(loginFlow),
+    fork(activationFlow)
   ]
 }

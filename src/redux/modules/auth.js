@@ -15,6 +15,7 @@ function createRequestTypes(base) {
 
 export const LOGIN = createRequestTypes('LOGIN')
 export const LOGOUT = createRequestTypes('LOGOUT')
+export const ACTIVATION = createRequestTypes('ACTIVATION')
 
 function action(type, payload = {}) {
   return {type, ...payload}
@@ -24,6 +25,12 @@ export const login = {
   request: (username, password) => action(LOGIN.REQUEST, {username, password}),
   success: (username, token) => action(LOGIN.SUCCESS, {username, token}),
   failure: error => action(LOGIN.FAILURE, {error})
+}
+
+export const activate = {
+  request: activationURL => action(ACTIVATION.REQUEST, {activationURL}),
+  success: () => action(ACTIVATION.SUCCESS),
+  failure: error => action(ACTIVATION.FAILURE, {error})
 }
 
 export const logout = {
@@ -47,6 +54,8 @@ const auth = (state = initialState, action) => {
       return {...state, error: action.error}
     case LOGOUT.SUCCESS:
       return {...state, username: '', token: ''}
+    case ACTIVATION.FAILURE:
+      return {...state, error: action.error}
     default:
       return state
   }

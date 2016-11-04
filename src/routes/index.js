@@ -14,6 +14,7 @@ import PictogramView from 'views/PictogramView'
 import RegisterView from 'views/RegisterView'
 import AppConfView from 'views/Configuration'
 import SigninView from 'views/SigninView'
+import UserActivationView from 'views/UserActivationView'
 import SignoutView from 'views/SignoutView'
 import Master from 'layouts/master'
 import { UserAuthWrapper } from 'redux-auth-wrapper'
@@ -86,6 +87,7 @@ export default store => (
     </Route>
     // User Routes
     <Route path='signin' component={SigninView} />
+    <Route path='/users/activate/:activationURL' component={UserActivationView} />
     <Route path='register' component={RegisterView} />
     <Route path='configuration' component={AppConfView} />
     <Route path='profile' component={UserIsAuthenticated(HomeView)} />
