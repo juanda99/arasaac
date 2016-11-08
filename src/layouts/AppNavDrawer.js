@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import Drawer from 'material-ui/Drawer'
-import {List, ListItem, MakeSelectable} from 'material-ui/List'
+import {List, ListItem, makeSelectable} from 'material-ui/List'
 import Divider from 'material-ui/Divider'
 import Subheader from 'material-ui/Subheader'
 import {spacing, typography} from 'material-ui/styles'
@@ -110,7 +110,7 @@ const messages = defineMessages({
   }
 })
 
-const SelectableList = MakeSelectable(List)
+const SelectableList = makeSelectable(List)
 
 const styles = {
   logo: {
