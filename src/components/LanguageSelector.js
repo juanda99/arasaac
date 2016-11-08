@@ -38,15 +38,14 @@ class LanguageSelector extends Component {
   render() {
     const {formatMessage} = this.props.intl
     return (
-      <SelectField value={this.props.intl.locale} onChange={this.handleChange} floatingLabelText={formatMessage(messages.chooseLanguage)}>
+      <SelectField style={{textAlign: 'left'}} value={this.props.intl.locale} onChange={this.handleChange} floatingLabelText={formatMessage(messages.chooseLanguage)}>
         <MenuItem value={'es'} primaryText={formatMessage(messages.spanish)} />
         <MenuItem value={'fr'} primaryText={formatMessage(messages.french)} />
         <MenuItem value={'en'} primaryText={formatMessage(messages.english)} />
       </SelectField>
-
         )
   }
-  }
+}
 LanguageSelector.propTypes = {
   intl: intlShape.isRequired,
   onChange: PropTypes.func.isRequired
