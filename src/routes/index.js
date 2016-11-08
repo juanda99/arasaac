@@ -1,11 +1,11 @@
-import { Route, IndexRoute, Redirect } from 'react-router'
-import { routerActions } from 'react-router-redux'
-import React from 'react'
 // NOTE: here we're making use of the `resolve.root` configuration
 // option in webpack, which allows us to specify import paths as if
 // they were from the root of the ~/src directory. This makes it
 // very easy to navigate to files regardless of how deeply nested
 // your current file is.
+import { Route, IndexRoute, Redirect } from 'react-router'
+import { routerActions } from 'react-router-redux'
+import React from 'react'
 import HomeView from 'views/HomeView/HomeView'
 import BingoView from 'views/BingoView/BingoView'
 import SearchPictogramsView from 'views/SearchPictogramsView'
@@ -13,10 +13,11 @@ import ShowPictogramsView from 'views/ShowPictogramsView'
 import PictogramView from 'views/PictogramView'
 import RegisterView from 'views/RegisterView'
 import AppConfView from 'views/Configuration'
+import UploadMaterialView from 'views/UploadMaterialView'
 import SigninView from 'views/SigninView'
 import UserActivationView from 'views/UserActivationView'
 import SignoutView from 'views/SignoutView'
-import Master from 'layouts/master'
+import Master from 'layouts/Master'
 import { UserAuthWrapper } from 'redux-auth-wrapper'
 import Gallery from 'views/Gallery'
 import Tagger from 'components/Tagger'
@@ -89,6 +90,7 @@ export default store => (
     // User Routes
     <Route path='signin' component={SigninView} />
     <Route path='/users/activate/:activationURL' component={UserActivationView} />
+    <Route path='uploadmaterial' component={UploadMaterialView} />
     <Route path='register' component={RegisterView} />
     <Route path='configuration' component={AppConfView} />
     <Route path='profile' component={UserIsAuthenticated(HomeView)} />

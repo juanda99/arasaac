@@ -228,6 +228,10 @@ class Master extends Component {
         title = <FormattedMessage {...messages.configurationTitle} />
         docked = true
         break
+      case /uploadmaterial/.test(url):
+        title = <FormattedMessage {...messages.configurationTitle} />
+        docked = true
+        break
     }
     return {docked, title}
   }

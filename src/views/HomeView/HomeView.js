@@ -151,7 +151,7 @@ class HomeView extends Component {
           <h2 style={styles.h2}>
             <FormattedMessage {...messages.heading} values={{aragones}} />
           </h2>
-          <LanguageSelector style={styles.content} onChange={localeChange} />
+          <LanguageSelector onChange={localeChange} />
         </div>
       </FullWidthSection>
     )
