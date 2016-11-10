@@ -1,156 +1,174 @@
-import React, {Component, PropTypes} from 'react'
-import RaisedButton from 'material-ui/RaisedButton'
-import Checkbox from 'material-ui/Checkbox'
-import SelectField from 'material-ui/SelectField'
+import React, { Component } from 'react'
+import { Field, FieldArray, reduxForm, propTypes } from 'redux-form'
+import { RadioButton } from 'material-ui/RadioButton'
 import MenuItem from 'material-ui/MenuItem'
-
-// import {red500} from 'material-ui/styles/colors'
-import ArasaacLogo from 'images/arasaac-logo.svg'
-// import GoogleIcon from './icons/GoogleIcon'
-// import FacebookIcon from './icons/FacebookIcon'
+import { AutoComplete as MUIAutoComplete, RaisedButton } from 'material-ui'
+import {
+  AutoComplete,
+  Checkbox,
+  DatePicker,
+  RadioButtonGroup,
+  SelectField,
+  Slider,
+  TextField,
+  Toggle
+} from 'redux-form-material-ui'
+import Dropzone from 'react-dropzone'
 import { FormattedMessage } from 'react-intl'
-import { Link } from 'react-router'
-import { reduxForm } from 'redux-form'
-import Validator from 'validatorjs'
 import messages from './messages'
-export const fields = [ 'username', 'password' ]
+import FloatingActionButton from 'material-ui/FloatingActionButton'
+import ContentAdd from 'material-ui/svg-icons/content/add'
+import PersonAdd from 'material-ui/svg-icons/social/person-add'
+import Delete from 'material-ui/svg-icons/action/delete'
 
-const rules = {
-  username: 'required|email',
-  password: 'required'
-}
-const validateMessages = {
-  'required': 'Required',
-  'email.username': 'Please provide a valid email'
-}
-const validate = values => {
-  const validator = new Validator(values, rules, validateMessages)
-  validator.passes()
-  return validator.errors.all()
-}
-
-const styles = {
-  separator: {
-    textAlign: 'center',
-    clear: 'both'
-  },
-  separatorText: {
-    display: 'inlineBlock',
-    padding: 8,
-    position: 'relative',
-    backgroundColor: '#fff'
-  },
-  separatorLine: {
-    margin: '-10px auto 10px'
-  },
-  googleLogin: {
-    width: '100%',
-    float: 'left',
-    marginBottom: 5
-  },
-  checkbox: {
-    left: 0
-  },
-  text: {
-    width: '100%'
-  },
-  register: {
-    position: 'absolute',
-    right: 8,
-    marginTop: 5
-  },
-  signinButton: {
-    width: '100%'
-  },
-  svgLogo: {
-    width: 180,
-    marginLeft: 70
+const style = {
+  marginRight: 20,
+  authorsList: {
+    listStyleType: 'none',
+    margin: 0,
+    padding: 0
   }
 }
 
-let MaterialForm = class MaterialForm extends Component {
-  static propTypes = {
-    name: PropTypes.string
-  }
 
-  constructor(props) {
-    super(props)
-    this.handleSubmit = this.handleSubmit.bind(this)
-  }
+const FILE_FIELD_NAME = 'files'
 
+
+const renderDropzoneInput = field => {
+  const files = field.input.value
+  return (
+    <div>
+      <Dropzone
+        name={field.name}
+        onDrop={( filesToUpload, e ) => field.input.onChange(filesToUpload)}
+      >
+        <div>Try dropping some files here, or click to select files to upload.</div>
+      </Dropzone>
+      {field.meta.touched &&
+        field.meta.error &&
+        <span className="error">{field.meta.error}</span>}
+      {files && Array.isArray(files) && (
+        <ul>
+          {files.map((file, i) => <li key={i}>{file.name}</li>)}
+        </ul>
+      )}
+    </div>
+  )
+}
+
+const nameList = [
+  'Juan', 'Pedro', 'Marcos'
+]
+const surnameList = [
+  'Pérez', 'Gracia', 'Gómez', 'Sanchez'
+]
+
+const renderField = props => (
+  <span style={{'paddingRight': '30px'}}>
+    <Field {...props} component={props.muiComponent} />
+      {props.touched && props.error && <span>{props.error}</span>}
+  </span>
+)
+renderField.propTypes = {
+  ...propTypes
+}
+
+const renderAuthors = ({ fields }) => {
+  const addAuthorField = () => { fields.push({}) }
+  return (
+    <ul style={style.authorsList}>
+      <li>
+        <FloatingActionButton mini={true} onClick={addAuthorField} >
+          <PersonAdd />
+        </FloatingActionButton>
+
+      </li>
+      {fields.map((member, index) =>
+        <li key={index}>
+          <nameField member={member} />
+          <Field
+            name={`${member}.lastName`}
+            type="text"
+            component={renderField}
+            dataSource={surnameList}
+            hintText='Introduce el apellido del autor'
+            muiComponent={AutoComplete}
+            floatingLabelText='Apellido'
+            openOnFocus={true}
+            filter={MUIAutoComplete.fuzzyFilter}
+            />
+          <FloatingActionButton mini={true} style={style} onClick={() => fields.remove(index)} >
+            <Delete />
+          </FloatingActionButton>
+          <FloatingActionButton mini={true} onClick={addAuthorField} >
+            <PersonAdd />
+          </FloatingActionButton>
+        </li>
+      )}
+    </ul>
+  )
+}
+renderAuthors.propTypes = {
+  ...propTypes
+}
+
+const nameField = {member} => (
+  <Field
+    name={`${member}.firstName`}
+    type="text"
+    component={renderField}
+    dataSource={nameList}
+    hintText='Introduce el nombre del autor'
+    muiComponent={AutoComplete}
+    floatingLabelText='Nombrerrr'
+    openOnFocus={true}
+    filter={MUIAutoComplete.fuzzyFilter}
+    />
+)
+
+class MaterialForm extends Component {
   componentDidMount() {
-    // si pongo el foco lo pierdo...
-    // this.refs.username.focus()
-  }
-  handleSubmit(event) {
-    const username = this.refs.username
-    const password = this.refs.password
-    const creds = { username: username.value.trim(), password: password.value.trim() }
-    this.props.onLoginClick(creds)
+    this.refs.name            // the Field
+      .getRenderedComponent() // on Field, returns ReduxFormMaterialUITextField
+      .getRenderedComponent() // on ReduxFormMaterialUITextField, returns TextField
+      .focus()                // on TextField
   }
 
   render() {
-    const {
-      fields: { area, subarea }
-    } = this.props
+    const { handleSubmit, pristine, reset, submitting } = this.props
     return (
-      <div>
-        <div className='row'>
-          <div className='col-xs-12 col-sm-6'>
-            <img style={styles.svgLogo} src={ArasaacLogo} />
-          </div>
+      <form onSubmit={handleSubmit}>
+        <FieldArray name="authors" component={renderAuthors} />
+        <div>
+          <Field
+            name="notes"
+            component={TextField}
+            hintText="Notes"
+            floatingLabelText="Notes"
+            multiLine={true}
+            rows={2} />
         </div>
 
-        <form onSubmit={this.handleSubmit}>
-
-          <div className='row'>
-            <div className='col-xs-12'>
-              <SelectField ref='area' floatingLabelText='Frequency' value={1} onChange={this.handleChange}>
-                <MenuItem value={1} primaryText='Never' />
-                <MenuItem value={2} primaryText='Every Night' />
-                <MenuItem value={3} primaryText='Weeknights' />
-                <MenuItem value={4} primaryText='Weekends' />
-                <MenuItem value={5} primaryText='Weekly' />
-              </SelectField>
-            </div>
-          </div>
-
-          <div className='row' style={{marginTop: 15, marginBottom: 15}}>
-            <div className='col-xs-6'>
-              <Checkbox label={<FormattedMessage {...messages.remember} />} style={styles.checkbox} />
-            </div>
-            <div className='col-xs-6' style={{textAlign: 'right'}}>
-              <Link to='http://localhost:3000/register'>{<FormattedMessage {...messages.forgotPassword} />}</Link>
-            </div>
-          </div>
-          <div className='row'>
-            <div className='col-xs-12'>
-              <RaisedButton style={styles.signinButton} label='SIGN IN' primary={true} />
-            </div>
-          </div>
-        </form>
-        <div className='row' style={{marginTop: 10}}>
-          <div className='col-xs-6' style={{textAlign: 'right'}}>
-            <p style={{textAlign: 'left'}}>{<FormattedMessage {...messages.offerAccount} />}</p>
-          </div>
-          <div className='col-xs-6' style={{position: 'relative'}}>
-            <Link to='/register'><RaisedButton style={styles.register} label={<FormattedMessage {...messages.signup} />} secondary={true} /></Link>
-          </div>
+        <div>
+          <Field
+            name={FILE_FIELD_NAME}
+            component={renderDropzoneInput}
+          />
         </div>
-      </div>
+        <div>
+          <RaisedButton label="Submit" primary={true} disabled={pristine || submitting} />
+          <RaisedButton label="Reset" primary={true} disabled={pristine || submitting} onClick={reset}  />
+        </div>
+      </form>
     )
   }
 }
+
 MaterialForm.propTypes = {
-  fields: PropTypes.object.isRequired,
-  onLoginClick: PropTypes.func.isRequired,
-  resetForm: PropTypes.func.isRequired,
-  submitting: PropTypes.bool.isRequired
+  ...propTypes
 }
-MaterialForm = reduxForm({
-  form: 'materialform',
-  fields,
-  validate
+
+export default reduxForm({
+  form: 'MaterialForm'
 })(MaterialForm)
 
-export default MaterialForm
